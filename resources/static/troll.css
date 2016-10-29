@@ -1,0 +1,32 @@
+/*troll.gg css요소*/
+.ngNavIndex{
+		top:30%;
+		position: fixed;
+		transition: all 0.5s;
+	}
+	.ngNavOther{
+		top:0%;
+		position: fixed;
+		transition: all 0.5s;
+	}
+	
+	.ngFade{
+		background-color:#fff;
+	}
+	.ngFade.ng-enter{
+		background-color:#fff;
+		transition:all 1s;
+	}
+	.ngFade.ng-enter-active{
+		background-color:#7986cb;
+	}
+	.ngFade.ng-leave{
+		background-color:#7986cb;
+		transition:all 1s;
+	}
+	.ngFade.ng-leave-active{
+		background-color:#fff;
+	}
+	.ngGridSearch{
+		transition: all 0.5s
+	}
