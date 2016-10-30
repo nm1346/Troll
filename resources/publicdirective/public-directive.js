@@ -18,3 +18,24 @@ myApp.directive('navBar',function($routeParams){
 		}
 	};
 });
+myApp.directive('loading',function(){
+	return {
+		scope: {}, // {} = isolate, true = child, false/undefined = no change
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		templateUrl: '/resources/publicdirective/loading.html',
+		link: function($scope, iElm, iAttrs, controller) {
+			
+		}
+	};
+});
+myApp.directive('error',function(){
+	// Runs during compile
+	return {
+		scope: {errorCode:"@errorCode",errorMessage:"@errorMessage"}, // {} = isolate, true = child, false/undefined = no change
+		controller: function($scope, $element, $attrs, $transclude) {},
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		templateUrl: '/resources/publicdirective/error.html',
+		link: function($scope, iElm, iAttrs, controller) {
+		}
+	};
+});

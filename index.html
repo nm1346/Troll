@@ -20,6 +20,7 @@
 <script src="/resources/static/angular-animate.js"></script>
 <script src="/resources/static/jquery.fullPage.js"></script>
 <script src="/resources/static/angular-fullpage.js"></script>
+
 <script>
 var myApp=angular.module("exampleApp",["ngRoute","fullPage.js","ngResource","ngAnimate"]);
 //config
@@ -35,9 +36,9 @@ myApp.config(function($routeProvider,$locationProvider) {
 	$routeProvider.when("/index.html",{
 		redirectTo:"/"
 	});
-	$routeProvider.when("/static/champion",{
-		templateUrl:"/resources/page/index/index.html",
-		controller:"searchCtrl"
+	$routeProvider.when("/static/",{
+		templateUrl:"/resources/page/static/static.html",
+		controller:"staticCtrl"
 	});
 	$routeProvider.when("/:summonerName",{
 		templateUrl:"/resources/page/search/search.html",
@@ -50,6 +51,7 @@ myApp.config(function($routeProvider,$locationProvider) {
 myApp.run(function($rootScope){
 
 });
+
 </script>
 <!-- 사용자 정의 서비스 컨트롤러 디렉티브들 ...-->
 <!-- 인덱스페이지 컨트롤러및 디렉티브 -->
@@ -58,6 +60,10 @@ myApp.run(function($rootScope){
 <!-- 검색페이지 컨트롤러 및 디렉티브 -->
 <script src="/resources/page/search/searchctrl.js"></script>
 <script src="/resources/page/search/searchdirective1.js"></script>
+<!-- staticData(롤백과)페이지 컨트롤러 및 디렉티브 -->
+<script src="/resources/page/static/staticctrl.js"></script>
+<script src="/resources/page/static/staticdirective.js"></script>
+<script src="/resources/page/static/staticservice.js"></script>
 <!-- 공용디렉티브 -->
 <script src="/resources/publicdirective/public-directive.js"></script>
 <!-- 필터 -->

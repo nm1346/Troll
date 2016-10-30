@@ -11,21 +11,14 @@
 	}
 	
 	.ngFade{
-		background-color:#fff;
+		opacity: 1
 	}
 	.ngFade.ng-enter{
-		background-color:#fff;
+		opacity: 0;
 		transition:all 1s;
 	}
 	.ngFade.ng-enter-active{
-		background-color:#7986cb;
-	}
-	.ngFade.ng-leave{
-		background-color:#7986cb;
-		transition:all 1s;
-	}
-	.ngFade.ng-leave-active{
-		background-color:#fff;
+		opacity: 1;
 	}
 	.ngGridSearch{
 		transition: all 0.5s
