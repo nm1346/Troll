@@ -1,5 +1,5 @@
 <div class="input-field">
-<select class="browser-default" ng-model="locale" ng-change="localeChange({locale:locale})">
+<select ng-model="locale" ng-change="localeChange({locale:locale})">
 	<option value="" disabled selected>Click your Locale</option>
 	<option ng-repeat="item in data.languagelist" value="{{item}}">{{item}}</option>
 </select>
