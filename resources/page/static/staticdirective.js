@@ -1,4 +1,4 @@
-myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,staticData){
+myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,staticData,$window){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
@@ -8,12 +8,14 @@ myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,stati
 				staticLocaleData.set(data);
 				$scope.data=staticLocaleData.get();
 				$scope.$emit("categoryChangeSuccess",{});
+
 			},function(error){
 				$scope.$emit("categoryChangeError",error);
 			});
 			StaticLocaleResource.get({locale:"ko_KR",category:"champion"}).$promise.then(function(data){
 				staticData.set(data);
 				$scope.$emit("mainChangeSuccess","champion");
+				$('select').material_select();
 			},function(error){
 				$scope.$emit("mainChangeError",error);
 			});
@@ -45,7 +47,9 @@ myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,stati
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/static/static-nav.html',
 		link: function($scope, iElm, iAttrs, controller) {
-			$('select').material_select();
+			
+			
+			
 		}
 	};
 });
@@ -55,9 +59,10 @@ myApp.directive('staticCategory',function(StaticLocaleResource,staticLocaleData,
 		controller: function($scope, $element, $attrs, $transclude) {
 			$scope.data=staticLocaleData.get();
 			$scope.buttonClick=function(view){
-					$scope.$emit("mainChangeStart",{});
-					StaticLocaleResource.get({locale:staticLocaleData.selected(),category:view}).$promise.then(function(data){
+				$scope.$emit("mainChangeStart",{});
+				StaticLocaleResource.get({locale:staticLocaleData.selected(),category:view}).$promise.then(function(data){
 					staticData.set(data);
+					staticData.select(view);
 					console.log(data);
 					$scope.$emit("mainChangeSuccess",view);
 				},function(error){
@@ -72,15 +77,28 @@ myApp.directive('staticCategory',function(StaticLocaleResource,staticLocaleData,
 		}
 	};
 });
-myApp.directive('staticChampion', function(StaticLocaleResource,staticLocaleData,staticData){
+myApp.directive('staticChampion', function(StaticLocaleResource,staticLocaleData,staticData,staticDetail){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
 			$scope.data=staticData.get();
 			$scope.localeData=staticLocaleData.get();
-			$scope.championDetail=function(){
-
-			}
+			$scope.championDetail=function(id){
+				$scope.$broadcast("championModalChangeStart",{});
+				StaticLocaleResource.get({
+					locale:staticLocaleData.selected(),
+					category:"champion",
+					id:id
+				}).$promise.then(function(data){
+					staticDetail.set(data);
+					/*console.log(data);
+					console.log(staticLocaleData.get());
+					console.log(staticData.get());*/
+					$scope.$broadcast("championModalChangeSuccess",{});
+				},function(error){
+					$scope.$broadcast("championModalChangeError",error);
+				});
+			};
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/static/static-champion.html',
@@ -89,16 +107,55 @@ myApp.directive('staticChampion', function(StaticLocaleResource,staticLocaleData
 	};
 });
 
-myApp.directive('staticChampionmodal',function(){
+myApp.directive('staticChampionmodal',function(staticLocaleData,staticData,staticDetail){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
-
+			$scope.layout={
+				loading:true,
+				error:false
+			};
+			$scope.locale=staticLocaleData.get();
+			$scope.champion=staticDetail.get();
+			$scope.$on("championModalChangeStart",function(event,data){
+				$scope.layout.loading=true;
+				$scope.layout.error=false;
+			});
+			$scope.$on("championModalChangeSuccess",function(event,data){
+				$scope.layout.loading=false;
+				$scope.layout.error=false;
+			});
+			$scope.$on("championModalChangeError",function(event,data){
+				$scope.layout.loading=false;
+				$scope.layout.error=true;
+				$scope.layout.errorCode=data.errorCode;
+				$scope.layout.errorMessage=data.errorMessage;
+			});
+			$scope.selected=false;
+			$scope.spellClick=function(data){
+				$scope.selectedSpell=data;
+				$scope.selected=true;
+			}
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/static/static-championmodal.html',
 		link: function($scope, iElm, iAttrs, controller) {
-			$('#championmodal').modal();
+			$('#championmodal').modal({
+				complete: function() { $scope.selected=false; }
+			});
+		}
+	};
+});
+myApp.directive('staticItem', function(staticLocaleData,staticData,staticDetail){
+	return {
+		scope: {}, // {} = isolate, true = child, false/undefined = no change
+		controller: function($scope, $element, $attrs, $transclude) {
+			$scope.itemData=staticData.get();
+		},
+		restrict: 'E', // E = Element, A = Attribute, C = Classit M = Comment
+		templateUrl: '/resources/page/static/static-item.html',
+		link: function($scope, iElm, iAttrs, controller) {
+			
 		}
 	};
 });

@@ -3,7 +3,6 @@
 	<div class="col s12 l3 center ngFade" ng-show="!category.loading">
 		<static-nav></static-nav>
 	</div>
-	
 </div>
 
 <div class="container">
@@ -22,10 +21,9 @@
 	<div ng-switch on="main.view">
 		<div class="ngFade" ng-switch-when="champion">
 			<static-champion></static-champion>
-			<static-championmodal></static-championmodal>
 		</div>
 		<div class="ngFade" ng-switch-when="item">
-			teste!!
+			<static-item></static-item>
 		</div>
 		<div class="ngFade" ng-switch-when="mastery">
 			

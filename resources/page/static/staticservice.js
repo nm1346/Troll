@@ -21,7 +21,6 @@ myApp.factory('staticLocaleData', function(){
 myApp.factory('staticData', function(){
 	var staticData={};
 	var selectedCategory="champion";
-	var selectData={};
 	return {
 		get:function(){
 			return staticData;
@@ -38,4 +37,16 @@ myApp.factory('staticData', function(){
 		}
 
 	};
-})
+});
+myApp.factory('staticDetail', function(){
+	var selectData={};
+	return{
+		get:function(){
+			return selectData;
+		},
+		set:function(data){
+			for (var member in selectData) delete selectData[member];
+			angular.extend(selectData,data);
+		}
+	};
+});
