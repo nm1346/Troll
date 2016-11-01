@@ -6,10 +6,8 @@ myApp.service('OptionInject', function(){
   var _this = this;
   _this.mainOptions = {
     navigation: false,
-    sectionsColor:['','#888'],
     navigationPosition: 'right',
     scrollingSpeed: 700,
-    navigationTooltips:["asd","asd"],
     loopBottom:true,
     responsiveWidth: 600,
     afterLoad: function(anchorLink, index){ 
@@ -19,6 +17,10 @@ myApp.service('OptionInject', function(){
             if(index == 3){ 
                 console.log("test");    //full-page 3페이지로 옮길시 발동되는 메소드
             }
+        },
+    afterRender: function(){
+              //playing the video
+           $('video').get(0).play();
         }
   }
 });
