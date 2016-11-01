@@ -1,6 +1,6 @@
 myApp.factory('staticLocaleData', function(){
 	var localeData={};
-
+	var selectedLocale="ko_KR";
 	return {
 		get:function(){
 			return localeData;
@@ -8,6 +8,33 @@ myApp.factory('staticLocaleData', function(){
 		set:function(data){
 			for (var member in localeData) delete localeData[member];
 			angular.extend(localeData,data);
+		},
+		selected:function(){
+			return selectedLocale;
+		},
+		select:function(locale){
+			selectedLocale=locale;
+		}
+
+	};
+})
+myApp.factory('staticData', function(){
+	var staticData={};
+	var selectedCategory="champion";
+	var selectData={};
+	return {
+		get:function(){
+			return staticData;
+		},
+		set:function(data){
+			for (var member in staticData) delete staticData[member];
+			angular.extend(staticData,data);
+		},
+		selected:function(){
+			return selectedCategory;
+		},
+		select:function(view){
+			selectedCategory=view;
 		}
 
 	};

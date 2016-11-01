@@ -1,11 +1,14 @@
+<!-- locale 셀렉트박스 -->
 <div class="row">
 	<div class="col s12 l3 center ngFade" ng-show="!category.loading">
 		<static-nav></static-nav>
 	</div>
 	
 </div>
+
 <div class="container">
 	<div class="row center">
+		<!-- 카테고리 -->
 		<div class="ngFade" ng-if="!category.loading">
 			<static-category></static-category>	
 		</div>
@@ -14,23 +17,26 @@
 		</div>
 		
 	</div>
+	
+	<!-- 메인뷰 -->
 	<div ng-switch on="main.view">
-		<div ng-switch-when="champion">
-			teste
+		<div class="ngFade" ng-switch-when="champion">
+			<static-champion></static-champion>
+			<static-championmodal></static-championmodal>
 		</div>
-		<div ng-switch-when="item">
+		<div class="ngFade" ng-switch-when="item">
 			teste!!
 		</div>
-		<div ng-switch-when="mastery">
+		<div class="ngFade" ng-switch-when="mastery">
 			
 		</div>
-		<div ng-switch-when="rune">
+		<div class="ngFade" ng-switch-when="rune">
 			
 		</div>
-		<div ng-switch-when="summoner">
+		<div class="ngFade" ng-switch-when="summoner">
 			
 		</div>
-		<div ng-switch-when="error">
+		<div class="ngFade" ng-switch-when="error">
 			<error></error>
 		</div>
 		<div ng-switch-when="loading">

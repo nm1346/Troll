@@ -8,7 +8,6 @@ myApp.controller('staticCtrl',function($scope){
 		$scope.category.error=false;
 	});
 	$scope.$on("categoryChangeError",function(event,data){
-		$scope.category.loading=false;
 		$scope.category.error=true;
 		$scope.category.errorCode=data.errorCode;
 		$scope.category.errorMessage=data.errorMessage;
@@ -17,9 +16,6 @@ myApp.controller('staticCtrl',function($scope){
 		$scope.category.loading=false;
 		$scope.category.error=false;
 	});
-
-
-
 	$scope.main={
 		view:"loading"
 	};

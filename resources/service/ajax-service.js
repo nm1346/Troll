@@ -7,7 +7,8 @@ myApp.factory('SearchResource',function($resource,TrollRestUrl){
     });
 });
 myApp.factory('StaticLocaleResource',function($resource,TrollRestUrl){
-	return $resource(TrollRestUrl+"static/locale/:locale/:category/:id",{locale:"@locale",category:"@category",id:"@id"},{
+	return $resource(TrollRestUrl+"static/locale/:locale/:category/:id",
+		{locale:"@locale",category:"@category",id:"@id"},{
 		get:{method:"GET",isArray:false}
 	});
 });
