@@ -17,10 +17,6 @@ myApp.service('OptionInject', function(){
             if(index == 3){ 
                 console.log("test");    //full-page 3페이지로 옮길시 발동되는 메소드
             }
-        },
-    afterRender: function(){
-              //playing the video
-           $('video').get(0).play();
         }
   }
 });
