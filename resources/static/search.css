@@ -7,23 +7,31 @@
 			border-radius: 10px;
 			box-shadow: 1px 1px 2px 1px rgba(0,0,0,.8) inset , 0 1px 0 rgba(0,0,0,.5);
 			border:none;
-			background:rgba(0,0,0,0.1);
+			background:rgba(0,0,0,0.8);
 			transition: all 0.5s;
+			position: relative;
+			z-index: 2;
+
 		}
 		nav:hover {
 			background:rgba(0,0,0,0.4);
+			
+		}
+		.input-field{
+			z-index: 2;
 		}
 		nav .input-field input{
 			border-radius: 10px;
 			width: 100%
 			border:none;
-			/* background-color: #000000; */
+			z-index: 2;
 		}
 		nav .input-field input[type=search]:focus{
 			cursor: black;
 			color:white;
 			background:rgba(0,0,0,0.0);
 			border-radius: 15px;
+			
 		}
 
 .my {
@@ -38,10 +46,12 @@
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
+	z-index: 2;
 }
 .my-3 {
 	background: rgba(57, 73, 171, 0.8);
 	color: #fff;
+
 }
 .my-3:hover {
 		background: rgba(40, 53, 147, 0.8);
@@ -79,7 +89,6 @@
 .my-3d:active:before {
 	color: rgba(26, 35, 126,0.8);
 }
-
 
 
 		/* nav .nav-wrapper  button{
