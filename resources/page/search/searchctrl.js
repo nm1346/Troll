@@ -7,7 +7,6 @@ myApp.controller('searchCtrl',function($scope,$routeParams){
 	    responsiveWidth: 600,
 	    afterLoad: function(anchorLink, index){ 
 	            var loadedSection = $(this);
-
 	            //using index
 	            if(index == 3){ 
 	                console.log("test");    //full-page 섹션옮긴후 발동 메소드
