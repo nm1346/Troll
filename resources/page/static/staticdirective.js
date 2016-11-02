@@ -162,3 +162,27 @@ myApp.directive('staticItem', function(staticLocaleData,staticData,staticDetail)
 		}
 	};
 });
+myApp.directive('staticMastery', function(){
+	return {
+		scope: {}, // {} = isolate, true = child, false/undefined = no change
+		controller: function($scope, $element, $attrs, $transclude) {
+
+		},
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		templateUrl: '/resources/page/static/static-mastery.html',
+		link: function($scope, iElm, iAttrs, controller) {
+			
+		}
+	};
+});
+myApp.directive('staticRune', function(staticLocaleData,staticData,staticDetail){
+	return {
+		scope: {}, // {} = isolate, true = child, false/undefined = no change
+		controller: function($scope, $element, $attrs, $transclude) {},
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		templateUrl: '/resources/page/static/static-rune.html',
+		link: function($scope, iElm, iAttrs, controller) {
+			
+		}
+	};
+});
