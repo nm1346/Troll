@@ -39,7 +39,7 @@
    		object-fit: cover; /*cover video background */
    		z-index:3;
 	}
-	#videoCover{
+	.videoCover{
 		position: absolute;
 		right: 0;
 		bottom: 0;
