@@ -32,7 +32,7 @@ myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,stati
 						category:staticData.selected()
 					}).$promise.then(function(data){
 						staticData.set(data);
-						console.log(data);
+						/*console.log(data);*/
 						$scope.$emit("mainChangeSuccess",staticData.selected());
 					},function(error){
 						$scope.$emit("mainChangeError",error);
@@ -63,8 +63,8 @@ myApp.directive('staticCategory',function(StaticLocaleResource,staticLocaleData,
 				StaticLocaleResource.get({locale:staticLocaleData.selected(),category:view}).$promise.then(function(data){
 					staticData.set(data);
 					staticData.select(view);
-					console.log(data);
-					console.log($scope.data);
+					/*console.log(data);
+					console.log($scope.data);*/
 					$scope.$emit("mainChangeSuccess",view);
 				},function(error){
 					$scope.$emit("mainChangeError",error);
@@ -201,7 +201,6 @@ myApp.directive('staticSummoner',function(staticData){
 			for(var i=0;i<$scope.spellDataArray.length;i++){
 				$scope.spellData.push(staticData.get().spell.data[$scope.spellDataArray[i]]);
 			}
-			console.log($scope.spellData);
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/static/static-summoner.html',
