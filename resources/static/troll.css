@@ -1,12 +1,12 @@
 /*troll.gg css요소*/
 .ngNavIndex{
-		top:30%;
-		position: fixed;
+		/*top:30%;
+		position: fixed;*/
 		transition: all 0.5s;
 	}
 	.ngNavOther{
-		top:0%;
-		position: fixed;
+		/*top:0%;
+		position: fixed;*/
 		transition: all 0.5s;
 	}
 	
