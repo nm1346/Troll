@@ -1,81 +1,160 @@
+	html {
+		background-image: url('http://cdn.wallpapersafari.com/23/23/rEfZig.jpg');
+	}
+
+
+
+/* ::-webkit-input-placeholder {
+   color: #e1f5fe;
+} 플레이스 홀더 색깔변경
+
+:-moz-placeholder { Firefox 18-
+   color: #e1f5fe;
+}
+
+::-moz-placeholder {  Firefox 19+
+   color: #e1f5fe;
+}
+
+:-ms-input-placeholder {
+   color: #e1f5fe;
+} */
+	.main-nav{
+		background-color:#546e7a;
+		border: none;
+		box-shadow: none;
+	}
+	.logo-search-field {
+		margin: 13px auto 0px auto;
+		height: 40px;
+		background-color: white;
+		border-radius: 7px;
+	}
+	.logo-search-field .logo-search-input{
+		margin-top:-2px;
+		border: none;
+		box-shadow: none;
+		-webkit-appearance: none;
+		background: rgba(0,0,0,0);
+		outline: none;
+		color:black;
+
+	}
+	.logo-search-field .logo-search-input::-webkit-input-placeholder{
+			color: #546e7a;
+	}
+	.logo-search-field > i {
+		position: absolute;
+		margin-top : -11px;
+		right: 130px;
+		color: #546e7a;
+		cursor: pointer;
+	}
+	.logo-search-field .logo-search-input[type=search]:focus{
+		border: none;
+		box-shadow: none;
+		-webkit-appearance: none;
+		outline: none;
+	}
 	@import "font-awesome";
-	nav{
+	.search-nav{
 		margin: 220px auto 0px auto;
 		border:none;
+		border-radius: 15px 5px 5px 15px;
 		background:rgba(0,0,0,0.0);
-	}
-	.input-field:hover {
-		background:rgba(0,0,0,0.4);
-		transition: all 0.5s;
-	}
-	 .input-field {
-	 	border-radius: 10px;
 		box-shadow: 1px 1px 2px 1px rgba(0,0,0,.8) inset , 0 1px 0 rgba(0,0,0,.5);
 	}
-	nav .input-field input{
-		border-radius: 10px;
-		width: 100%
-		border:none;
-		/* background-color: #000000; */
+	.search-field  {
+		border-radius: 15px 0px 0px 15px;
+		transition: all 0.5s;
 	}
-	nav .input-field input[type=search]:focus{
-		cursor: black;
-		color:white;
-		background:rgba(255,255,255,0.5);
-		border-radius: 15px;
-	}
+	/* .search-field:hover {
+		background:rgba(0,0,0,0.4);
+		} */
+		.search-nav .search-field > input{
+			border:none;
+			border-radius: 15px;
+			transition: all 0.5s;
+		}
+		.search-nav .search-field > input::-webkit-input-placeholder{
+					color: #e1f5fe;
+		}
+		.search-field:hover {
+			background:rgba(0,0,0,0.4);
+		}
+		.search-nav .search-field > input:focus {
+			width: 97%;
+			margin-left: -10px;
+			border-radius: 15px 0px 0px 15px;
+			background:rgba(0,0,0,.5);
+			color: white;
+		}
+		.search-nav .search-field > input:focus + .active > i{
+			color:#fff;
+		}
+		.search-nav .search-field .search-label  i{
+			color:rgba(0,0,0,1);
+			z-index: 10;
+		}
+		.my {
+			border: none;
+			cursor: pointer;
+			padding: 25px 80px;
+			margin-left: -10px;
+			text-transform: uppercase;
+			background: rgba(0, 0, 0, 1);
+			color: #fff;
+			/* 	font-weight: 500; */
+			outline: none;
+			position: relative;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			transition: all 0.3s;
+		}
+		.my:focus{
+		background: rgba(0, 0, 0, 1);
+		}
+		.my:hover {
+			background: rgba(100, 100, 100, 1);
+		}
 
-	.my {
-		border: none;
-		cursor: pointer;
-		padding: 25px 80px;
-		text-transform: uppercase;
-		background: rgba(57, 73, 171, 0.8);
-		font-weight: 500;
-		outline: none;
-		position: relative;
-		-webkit-transition: all 0.3s;
-		-moz-transition: all 0.3s;
-		transition: all 0.3s;
-		margin-: ;left: -30px;
-	}
-	.my-3 {
-		background: rgba(57, 73, 171, 0.8);
-		color: #fff;
-	}
-	.my-3:hover {
-		background: rgba(40, 53, 147, 0.8);
-	}
-	.my-3:focus{
-		background: rgba(40, 53, 147, 0.8);
-	}
-	.my-3:active {
-		background: rgba(26, 35, 126,0.8);
-		top: 2px;
-	}
-	.my-3:before {
-		position: absolute;
-		height: 100%;
-		left: 0;
-		top: 0;
-		line-height: 3;
-		font-size: 140%;
-		width: 60px;
-	}
-	.my-3d {
-		padding: 25px 60px 25px 120px;
-		border-radius: 10px;
-	}
-	.my-3d:before {
-		content: "\f002";
-		font-family: FontAwesome;
-		background: #f9fbe7;
-		width: 20%;
-		color: rgba(57, 73, 171, 0.8);
-		z-index: 2;
-		border-radius: 10px 0 0 10px;
-	}
-
-	.my-3d:active:before {
-		color: rgba(26, 35, 126,0.8);
-	}
+		.my:active {
+			background: rgba(0, 0, 0,1);
+			top: 2px;
+		}
+		.my:before {
+			position: absolute;
+			height: 100%;
+			left: 0;
+			top: 0;
+			line-height: 3;
+			font-size: 140%;
+		}
+		.my:before {
+			content: "\f002";
+			font-family: FontAwesome;
+			background: #e8eaf6;
+			color:white;
+			width: 20%;
+			color: rgba(0, 0, 0, 0.8);
+			z-index: 2;
+			border-radius: 5px 0 0 5px;
+		}
+		.my {
+			padding: 25px 60px 25px 120px;
+			border-radius: 5px 5px 5px 5px;
+		}
+		@media only screen and (max-width: 992px){
+			.my:before {
+				content: "\f002";
+				font-family: FontAwesome;
+				background: rgba(0,0,0,0.0);
+				width: 100%;
+				color: rgba(255, 255, 255, 0.8);
+				z-index: 2;
+				border-radius: 5px 0 0 5px;
+			}
+		}
+		.my:active:before {
+			color: rgba(0, 0, 0,0.8);
+		}

@@ -1,13 +1,13 @@
 <div class='container'>
-			<div class="row">
-				<nav class='active'>
-					<div class="nav-wrapper">
-						<div class="input-field col s10">
-							<input id="search" type="search"  required placeholder="소환사명 검색" ng-model='summonerName'>
-							<label for="search"><i class="material-icons">search</i></label>
-						</div>
-						<button class='col s2 my my-3 my-3d icon-search waves-effect waves-light' ng-click="search()">search</button>
-					</div>
-				</nav>
+	<div class="row">
+		<nav class='search-nav'>
+			<div class="nav-wrapper">
+				<div class="search-field input-field col s10">
+					<input id="search" type="search"  required placeholder="소환사명 검색" ng-model='summonerName'>
+					<label for="search" class="search-label"><i class="material-icons">search</i></label>
+				</div>
+				<button type='button' class='col s2 my icon-search waves-effect waves-light' ng-click="search(this)"><span class=" hide-on-med-and-down">search</span>&nbsp;</button>
 			</div>
-			</div>
+		</nav>
+	</div>
+</div>
