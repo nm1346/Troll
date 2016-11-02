@@ -1,5 +1,5 @@
 //공용디렉티브 혹은 메인페이지에 속하는 디렉티브모음
-myApp.directive('searchNav', function(){
+myApp.directive('searchNav', function($location){
 	// Runs during compile
 	return {
 		// name: '',
@@ -13,7 +13,7 @@ myApp.directive('searchNav', function(){
 					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000)
 					return;
 				}
-				$location.path("/" + summonerName);
+				$location.path("/" + $scope.summonerName);
 			}
 		},
 		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
@@ -43,7 +43,7 @@ myApp.directive('navBar',function($routeParams){
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/publicdirective/nav-bar.html',
 		link: function($scope, iElm, iAttrs, controller) {
-			
+
 		}
 	};
 });
@@ -53,7 +53,7 @@ myApp.directive('loading',function(){
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/publicdirective/loading.html',
 		link: function($scope, iElm, iAttrs, controller) {
-			
+
 		}
 	};
 });
