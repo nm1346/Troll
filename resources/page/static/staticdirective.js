@@ -192,7 +192,16 @@ myApp.directive('staticSummoner',function(staticData){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
-			$scope.spellData=staticData.get();
+			
+			$scope.spellDataArray=[];
+			$scope.spellData=[];
+			for (var member in staticData.get().spell.data){
+				$scope.spellDataArray.push(member);
+			}
+			for(var i=0;i<$scope.spellDataArray.length;i++){
+				$scope.spellData.push(staticData.get().spell.data[$scope.spellDataArray[i]]);
+			}
+			console.log($scope.spellData);
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/static/static-summoner.html',
