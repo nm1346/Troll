@@ -64,6 +64,7 @@ myApp.directive('staticCategory',function(StaticLocaleResource,staticLocaleData,
 					staticData.set(data);
 					staticData.select(view);
 					console.log(data);
+					console.log($scope.data);
 					$scope.$emit("mainChangeSuccess",view);
 				},function(error){
 					$scope.$emit("mainChangeError",error);
@@ -151,6 +152,8 @@ myApp.directive('staticItem', function(staticLocaleData,staticData,staticDetail)
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
 			$scope.itemData=staticData.get();
+			$scope.localeData=staticLocaleData.get();
+
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Classit M = Comment
 		templateUrl: '/resources/page/static/static-item.html',

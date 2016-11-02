@@ -1,36 +1,31 @@
-   @import "font-awesome";
-   nav{
-      margin: 220px auto 0px auto;
+     @import "font-awesome";
+   .search-nav{
+       margin: 220px auto 0px auto;
       border:none;
+      border-radius: 15px;
       background:rgba(0,0,0,0.0);
+      box-shadow: 1px 1px 2px 1px rgba(0,0,0,.8) inset , 0 1px 0 rgba(0,0,0,.5);
+      z-index: 3;
       position: relative;
-      z-index: 2;
    }
-   .input-field:hover {
-      background:rgba(0,0,0,0.4);
+    .search-field  {
+       border-radius: 15px 0px 0px 15px;
       transition: all 0.5s;
    }
-    .input-field {
-       border-radius: 10px;
-      box-shadow: 1px 1px 2px 1px rgba(0,0,0,.8) inset , 0 1px 0 rgba(0,0,0,.5);
+   .search-field:hover {
+      background:rgba(0,0,0,0.4);
    }
-   nav .input-field input{
-      border-radius: 10px;
-      width: 100%
+   .search-nav .search-field > input{
       border:none;
-      /* background-color: #000000; */
-   }
-   nav .input-field input[type=search]:focus{
-      cursor: black;
-      color:white;
-      background:rgba(255,255,255,0.5);
       border-radius: 15px;
+      /* background-color: #000000; */
    }
 
    .my {
       border: none;
       cursor: pointer;
       padding: 25px 80px;
+      margin-left: 30px;
       text-transform: uppercase;
       background: rgba(57, 73, 171, 0.8);
       font-weight: 500;
@@ -39,7 +34,6 @@
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s;
-      margin-: ;left: -30px;
    }
    .my-3 {
       background: rgba(57, 73, 171, 0.8);
@@ -65,8 +59,8 @@
       width: 60px;
    }
    .my-3d {
-      padding: 25px 60px 25px 120px;
-      border-radius: 10px;
+      /* padding: 25px 60px 25px 120px; */
+      border-radius: 5px 5px 5px 5px;
    }
    .my-3d:before {
       content: "\f002";
@@ -75,7 +69,7 @@
       width: 20%;
       color: rgba(57, 73, 171, 0.8);
       z-index: 2;
-      border-radius: 10px 0 0 10px;
+      border-radius: 5px 0 0 5px;
    }
 
    .my-3d:active:before {
