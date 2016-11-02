@@ -47,13 +47,14 @@ myApp.directive('error',function($route){
 		}
 	};
 });
-myApp.directive('backCover',function($routeParams){
+myApp.directive('backCover',function($routeParams,$location){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {	
 			$scope.$on("$routeChangeSuccess",function(){
-				if(angular.isUndefined($routeParams.summonerName)){
+				if(angular.isUndefined($routeParams.summonerName)&&!($location.path()=="/static/")){
 					$scope.params=true;
+	
 				}else{
 					$scope.params=false;
 				}
