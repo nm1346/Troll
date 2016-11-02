@@ -162,3 +162,50 @@ myApp.directive('staticItem', function(staticLocaleData,staticData,staticDetail)
 		}
 	};
 });
+myApp.directive('staticMastery', function(){
+	return {
+		scope: {}, // {} = isolate, true = child, false/undefined = no change
+		controller: function($scope, $element, $attrs, $transclude) {
+
+		},
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		templateUrl: '/resources/page/static/static-mastery.html',
+		link: function($scope, iElm, iAttrs, controller) {
+			
+		}
+	};
+});
+myApp.directive('staticRune', function(staticData){
+	return {
+		scope: {}, // {} = isolate, true = child, false/undefined = no change
+		controller: function($scope, $element, $attrs, $transclude) {
+			$scope.runeData=staticData.get();
+		},
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		templateUrl: '/resources/page/static/static-rune.html',
+		link: function($scope, iElm, iAttrs, controller) {
+			
+		}
+	};
+});
+myApp.directive('staticSummoner',function(staticData){
+	return {
+		scope: {}, // {} = isolate, true = child, false/undefined = no change
+		controller: function($scope, $element, $attrs, $transclude) {
+			
+			$scope.spellDataArray=[];
+			$scope.spellData=[];
+			for (var member in staticData.get().spell.data){
+				$scope.spellDataArray.push(member);
+			}
+			for(var i=0;i<$scope.spellDataArray.length;i++){
+				$scope.spellData.push(staticData.get().spell.data[$scope.spellDataArray[i]]);
+			}
+			console.log($scope.spellData);
+		},
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		templateUrl: '/resources/page/static/static-summoner.html',
+		link: function($scope, iElm, iAttrs, controller) {			
+		}
+	};
+});
