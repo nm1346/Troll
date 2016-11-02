@@ -1,10 +1,6 @@
 //공용디렉티브 혹은 메인페이지에 속하는 디렉티브모음
-myApp.directive('searchNav', function($routeParams){
-	// Runs during compile
+myApp.directive('searchNav', function($routeParams,$location){
 	return {
-		// name: '',
-		// priority: 1,
-		// terminal: true,
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
 			$scope.summonerName = "";
@@ -13,21 +9,12 @@ myApp.directive('searchNav', function($routeParams){
 					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000)
 					return;
 				}
-				$location.path("/" + summonerName);
+				$location.path("/" + $scope.summonerName);
 			}
-			$scope.getClass=function(){
-				if(angular.isUndefined($routeParams)){
-					console.log("test");
-				}
-			}
+
 		},
-		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
-		//template: '',
 		templateUrl: '/resources/publicdirective/search-nav.html',
-		// replace: true,asd
-		// transclude: true,
-		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function($scope, iElm, iAttrs, controller) {
 		}
 	};
