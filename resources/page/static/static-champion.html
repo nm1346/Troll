@@ -1,5 +1,16 @@
 <div class="row">
- <div class="col s6 m3" ng-repeat="champion in data.championlist.data">
+  <form ng-init="category='name'">
+      <input name="group1" type="radio" id="test1" checked="true"  
+      ng-click="category='name';champ['title']=''"/>
+      <label for="test1">name</label>
+      <input name="group1" type="radio" id="test3" 
+      ng-click="category='title';champ['name']=''"/>
+      <label for="test3">title</label>
+      <input type="checkbox" id="test5" ng-model="reverse"/>
+      <label for="test5">reverse</label>
+      <input type="text" ng-model="champ[category]">
+  </form>
+ <div class="col s6 m3" ng-repeat="champion in data.championlist.data|orderObjectBy:category:reverse|filter:champ">
    <div class="card" 
    data-target="championmodal" 
    ng-click="championDetail(champion.id)">
