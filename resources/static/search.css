@@ -1,10 +1,13 @@
      @import "font-awesome";
+   .searchlogo{
+      top:20%;
+   }
+   .logoimg{
+      z-index: 1;
+      position: relative;
+   }
    .search-nav{
-       margin: 220px auto 0px auto;
-      border:none;
-      border-radius: 15px;
       background:rgba(0,0,0,0.0);
-      box-shadow: 1px 1px 2px 1px rgba(0,0,0,.8) inset , 0 1px 0 rgba(0,0,0,.5);
       z-index: 3;
       position: relative;
    }
