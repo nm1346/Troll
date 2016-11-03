@@ -45,6 +45,7 @@ myApp.config(function($routeProvider,$locationProvider) {
 		templateUrl:"/resources/page/search/search.html",
 		controller:"searchCtrl"
 	});
+	
 	$routeProvider.otherwise({
 		redirectTo:"/"
 	})
@@ -61,10 +62,13 @@ myApp.run(function($rootScope){
 <!-- 검색페이지 컨트롤러 및 디렉티브 -->
 <script src="/resources/page/search/searchctrl.js"></script>
 <script src="/resources/page/search/searchdirective1.js"></script>
+<script src="/resources/page/search/currentGame/currentdirective.js"></script>
+
 <!-- staticData(롤백과)페이지 컨트롤러 및 디렉티브 -->
 <script src="/resources/page/static/staticctrl.js"></script>
 <script src="/resources/page/static/staticdirective.js"></script>
 <script src="/resources/page/static/staticservice.js"></script>
+<script src="/resources/page/search/currentGame/currentGameService.js"></script>
 <!-- 공용디렉티브 -->
 <script src="/resources/publicdirective/public-directive.js"></script>
 <!-- 필터 -->
@@ -78,6 +82,7 @@ myApp.run(function($rootScope){
 <!--페이지 영역-->
 
 <back-cover></back-cover>
+
 <div ng-view>
 </div><!-- 
  <a href="/static/champion" class="btn">스태틱</a>

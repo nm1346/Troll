@@ -1,4 +1,4 @@
-myApp.controller('searchCtrl',function($scope,$routeParams){
+myApp.controller('searchCtrl',function($scope,$routeParams,CurrentGameResource,currentGameData){
 	$scope.option={
 	    navigation: false,
 	    navigationPosition: 'right',
@@ -13,8 +13,15 @@ myApp.controller('searchCtrl',function($scope,$routeParams){
 	            }
 	    },
 	    afterSlideLoad:function(anchor,sectionindex,slideindex){
-	    	if(slideindex == 1 &&sectionindex==1){ 
-	            console.log("test");    //full-page 슬라이드 옮긴후 발동되는 메소드
+	    	if(slideindex == 1 &&sectionindex==1){
+	    		console.log($routeParams);
+	            CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){
+	            	currentGameData.set(data)
+	            	console.log(data);
+				},function(error){
+					console.log(error);
+				});
+
 	        }
 	    }
 	};
