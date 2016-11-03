@@ -39,13 +39,11 @@ myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,stati
 					$scope.$emit("categoryChangeError",error);
 					$scope.$emit("mainChangeError",{});
 				});
-
 			}
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/static/static-nav.html',
 		link: function($scope, iElm, iAttrs, controller) {
-		}
 		}
 	};
 });

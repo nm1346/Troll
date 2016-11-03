@@ -1,0 +1,47 @@
+
+div .summoner{
+	background-color: #607d8b;
+	font-size: 20px;
+	font-weight: 100;
+	color: white;
+}
+.icon_img{
+	margin:auto auto auto auto;
+	height: 100%;
+	width: 100%;
+} 
+.tier_icon_img{
+	display: block;
+}
+.card-stacked .card-content .nickname {
+	margin-top: -15px;
+	margin-left: -10px;
+
+}
+.card .recent{
+	height: 100px;
+}
+	.summoner-chamimg > img{
+		width: 50px;
+		height: 50px;
+		border-radius: 100px;
+	}
+
+	/* .BRONZE{
+		background-image: url("http://sk2.op.gg/images/borders2/bronze.png");
+	}
+	.GOLD{
+		background-image: url("http://sk2.op.gg/images/borders2/gold.png");
+	}
+	.SILVER{
+		background-image: url("http://sk2.op.gg/images/borders2/silver.png");
+	}
+	.PLATINUM{
+		background-image: url("http://sk2.op.gg/images/borders2/platinum.png");
+	}
+	.MASTER{
+		background-image: url("http://sk2.op.gg/images/borders2/master.png");
+	}
+	.CHALLENGER{
+		background-image: url("http://sk2.op.gg/images/borders2/challenger.png");
+	} */

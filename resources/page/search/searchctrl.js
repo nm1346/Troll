@@ -5,6 +5,7 @@ myApp.controller('searchCtrl',function($scope){
 	    scrollingSpeed: 700,
 	    loopBottom:true,
 	    responsiveWidth: 600,
+	    verticalCentered : false,
 	    afterLoad: function(anchorLink, index){ 
 	            var loadedSection = $(this);
 	            //using index
@@ -24,7 +25,6 @@ myApp.controller('searchCtrl',function($scope){
 		error:false
 	};
 	$scope.$on("searchPageStart",function(event,data){
-		console.log(data.loading , data.error);
 		$scope.search.loading=data.loading;
 		$scope.search.error=data.error;
 	});
@@ -37,5 +37,6 @@ myApp.controller('searchCtrl',function($scope){
 	$scope.$on("searchPageSuccess",function(event,data){
 		$scope.search.loading=data.loading;
 		$scope.search.error=data.error;
+		$scope.$broadcast('pageonview', {});
 	});
 });

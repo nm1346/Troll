@@ -8,16 +8,35 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams){
 			$scope.$emit('searchPageStart', {loading : true , error : false});
 			console.log('summonerData 생성',$routeParams.summonerName);
 			SearchResource.get({summonerName : $routeParams.summonerName}).$promise.then(function (data) {
-				console.log('성공',data);
-				summoner.set(data);
+				if (Boolean(Number(data.success))){
+					summoner.set(data);
+					$scope.$emit('searchPageSuccess', {loading : false , error : false});
+				}else{
+					$scope.$emit('searchPageError', {errorCode : data.errorcode , errorMessage : data.errormsg});
+				}
 			},function (error) {
 				console.log('에러',error);
 			});
+
+
+
+			$scope.$on('pageonview',function (data) {
+				var totaldata = summoner.get();
+				$scope.summonerdata = totaldata['summonerData'];
+				$scope.leaguedata = totaldata['leagueData'];
+				$scope.recentgame = totaldata['recentgamelist'];
+				$scope.tierurl = totaldata['leagueData'].tier.toLowerCase();
+				$scope.divisionurl = totaldata['leagueData'].entrylist[0].division.toLowerCase();
+				console.log($scope.summonerdata , $scope.leaguedata , $scope.recentgame)
+				$scope.kda = function (stats) {
+					var kda= (stats.assists + stats.championsKilled) / stats.numDeaths;
+					return num.toFixed(2);
+				}
+			});
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
-		//templateUrl: 'search.html',
+		templateUrl: '/resources/page/search/summonerdata.html',
 		link: function($scope, iElm, iAttrs, controller) {
-
 		}
 	};
 });

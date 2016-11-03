@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="summoner card horizontal row">
+  	 <div class="card-image profileicon {{leaguedata.tier}} s4">
+        <img class="icon_img s12" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/profileicon/{{summonerdata.profileIconId}}.png">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p class="nickname">{{summonerdata.name}}</p>
+        </div>
+      </div>
+    </div><!-- end summoner card-->
+
+ <div class="row">
+        <div class="col s12">
+          <div class="card recent col l6 s12" data-ng-repeat="data in recentgame">
+            <div class="card-content col s12">
+            <div class="summoner-chamimg"><img  src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{data.chamName}}.png" >
+             KD/A : {{data.rawstats | kdafilter}}
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div><!-- container-->
+
+
+ <!-- <img class="tier_icon_img col s12" src="/resources/tier_icons/{{tierurl}}_{{divisionurl}}.png"> -->

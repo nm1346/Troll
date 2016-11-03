@@ -1,7 +1,3 @@
-
-	html {
-		background-image: url('http://cdn.wallpapersafari.com/23/23/rEfZig.jpg');
-	}
 /* ::-webkit-input-placeholder {
    color: #e1f5fe;
 } 플레이스 홀더 색깔변경
@@ -56,12 +52,16 @@
 		outline: none;
 	}
 	@import "font-awesome";
+	nav {
+		z-index: 4;
+	}
 	.search-nav{
 		margin: 220px auto 0px auto;
 		border:none;
 		border-radius: 15px 5px 5px 15px;
 		background:rgba(0,0,0,0.0);
 		box-shadow: 1px 1px 2px 1px rgba(0,0,0,.8) inset , 0 1px 0 rgba(0,0,0,.5);
+		z-index: 4;
 	}
 	.search-field  {
 		border-radius: 15px 0px 0px 15px;
@@ -93,7 +93,6 @@
 		}
 		.search-nav .search-field .search-label  i{
 			color:rgba(0,0,0,1);
-			z-index: 10;
 		}
 
 		.my {
@@ -110,6 +109,7 @@
 			-webkit-transition: all 0.3s;
 			-moz-transition: all 0.3s;
 			transition: all 0.3s;
+			z-index: 4;
 		}
 		.my:focus{
 		background: rgba(0, 0, 0, 1);
