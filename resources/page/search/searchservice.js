@@ -1,4 +1,11 @@
-myApp.factory('summonerandrecent', function(){
+myApp.factory('SearchResource',function($resource,TrollRestUrl){
+    return $resource(TrollRestUrl+"user/:summonerName", {summonerName:"@summonerName"},{
+        get:{method:"GET"}
+    });
+});
+
+
+myApp.factory('summoner', function(){
 	var searchdata={};
 	return {
 		get:function(){
@@ -7,6 +14,7 @@ myApp.factory('summonerandrecent', function(){
 		set:function(data){
 			for (var member in searchdata) delete searchdata[member];
 			angular.extend(searchdata,data);
-		},
+			console.log('완료',searchdata);
+		}
 	};
 })

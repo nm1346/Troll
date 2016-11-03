@@ -8,7 +8,6 @@ myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,stati
 				staticLocaleData.set(data);
 				$scope.data=staticLocaleData.get();
 				$scope.$emit("categoryChangeSuccess",{});
-
 			},function(error){
 				$scope.$emit("categoryChangeError",error);
 			});
