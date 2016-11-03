@@ -16,12 +16,12 @@
       <img class="activator" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/rune/{{rune.image.full}}" >
     </div>
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4 truncate">{{rune.name}}</span>
-      <p class="truncate">{{rune.sanitizedDescription}}</p>
+      <span class="card-title activator grey-text text-darken-4 truncate">{{::rune.name}}</span>
+      <p class="truncate">{{::rune.sanitizedDescription}}</p>
     </div>
     <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">{{rune.name}}<i class="material-icons right">close</i></span>
-      <p>{{rune.sanitizedDescription}}</p>
+      <span class="card-title grey-text text-darken-4">{{::rune.name}}<i class="material-icons right">close</i></span>
+      <p>{{::rune.sanitizedDescription}}</p>
     </div>
   </div>
 </div>
