@@ -49,3 +49,9 @@ myApp.factory('staticDetail', function(){
 		}
 	};
 });
+myApp.factory('StaticLocaleResource',function($resource,TrollRestUrl){
+	return $resource(TrollRestUrl+"static/locale/:locale/:category/:id",
+		{locale:"@locale",category:"@category",id:"@id"},{
+		get:{method:"GET",isArray:false}
+	});
+});
