@@ -1,8 +1,19 @@
 <div class="row">
-	<div class="col s6 m2" ng-repeat="item in itemData.itemlist.data"
+  <form ng-init="category='name'">
+      <input name="group1" type="radio" id="test1" checked="true"  ng-click="category='name';itemfilter['plaintext']=''"/>
+      <label for="test1">name</label>
+      <input name="group1" type="radio" id="test3" ng-click="category='plaintext'
+      ;itemfilter['name']=''"/>
+      <label for="test3">plaintext</label>
+      <input type="checkbox" id="test5" ng-model="reverse"/>
+      <label for="test5">reverse</label>
+      <input type="text" ng-model="itemfilter[category]">
+  </form>
+	<div class="col s6 m2" 
+  ng-repeat="item in itemData.itemlist.data |orderObjectBy:category:reverse|filter:itemfilter"
   data-target="itemmodal" 
   ng-click="itemClick(item)">
-		<div class="card">
+  <div class="card">
     <div class="card-image waves-effect waves-block waves-light">
       <img class="activator" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{item.image.full}}" >
     </div>
@@ -16,6 +27,6 @@
       <p>{{item.sanitizedDescription}}</p>
     </div>
   </div>
-	</div>
+</div>
 </div>
 
