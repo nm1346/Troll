@@ -3,8 +3,6 @@ myApp.factory('SearchResource',function($resource,TrollRestUrl){
         get:{method:"GET"}
     });
 });
-
-
 myApp.factory('summoner', function(){
 	var searchdata={};
 	return {

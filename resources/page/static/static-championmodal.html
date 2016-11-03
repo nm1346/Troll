@@ -60,8 +60,10 @@
 		<loading ng-if="layout.loading"></loading>
     	<div ng-if="layout.loading">{{locale.language.data.mobilePleaseWait}}</div>
 	</div>
-    <error ng-if="layout.error"></error>
+    <error ng-if="layout.error" 
+    error-code="layout.errorCode"
+    error-message="layout.errorMessage"></error>
 </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+      <button class="modal-action modal-close waves-effect waves-green btn-flat ">{{locale.language.data.back}}</button>
 </div>

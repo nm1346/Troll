@@ -1,2 +1,3 @@
-myApp.controller('indexCtrl', function($scope,OptionInject){
+myApp.controller('indexCtrl', function($scope){
+
 });

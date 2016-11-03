@@ -1,3 +1,4 @@
+
 	html {
 		background-image: url('http://cdn.wallpapersafari.com/23/23/rEfZig.jpg');
 	}
@@ -116,7 +117,6 @@
 		.my:hover {
 			background: rgba(100, 100, 100, 1);
 		}
-
 		.my:active {
 			background: rgba(0, 0, 0,1);
 			top: 2px;

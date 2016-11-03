@@ -15,7 +15,6 @@ myApp.factory('staticLocaleData', function(){
 		select:function(locale){
 			selectedLocale=locale;
 		}
-
 	};
 })
 myApp.factory('staticData', function(){
