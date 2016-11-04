@@ -1,11 +1,10 @@
 //공용디렉티브 혹은 메인페이지에 속하는 디렉티브모음
-myApp.directive('loading',function(){
+myApp.directive('loading',function(){ 
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/publicdirective/loading.html',
 		link: function($scope, iElm, iAttrs, controller) {
-			
 		}
 	};
 });
