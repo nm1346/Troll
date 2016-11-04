@@ -88,6 +88,7 @@ myApp.run(function($rootScope,$window){
 <loading class="firstLoad" ng-if="!fullLoad"></loading>
 <!-- 인덱스페이지가 아니면 사라지는 동영상 투명도 커버 -->
 <back-cover ng-if="fullLoad"></back-cover>
+<img class="backImage" src="/resources/static/backimage.jpg">
 
 <div ng-if="fullLoad" ng-view class="ngFade">
 </div>
