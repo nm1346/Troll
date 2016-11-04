@@ -50,8 +50,12 @@ myApp.config(function($routeProvider,$locationProvider) {
 		redirectTo:"/"
 	})
 });
-myApp.run(function($rootScope){
-
+myApp.run(function($rootScope,$window){
+	$rootScope.fullLoad=false;
+	$window.onload=function(){
+		$rootScope.fullLoad=true;
+		$rootScope.$apply();
+	}
 });
 
 </script>
@@ -80,10 +84,9 @@ myApp.run(function($rootScope){
 <body>
 
 <!--페이지 영역-->
-
-<back-cover></back-cover>
-
-<div ng-view class="ngFade">
+<loading class="firstLoad" ng-if="!fullLoad"></loading>
+<back-cover ng-if="fullLoad"></back-cover>
+<div ng-if="fullLoad" ng-view class="ngFade">
 </div><!-- 
  <a href="/static/champion" class="btn">스태틱</a>
 <a href="/" class="btn">인덱스</a> -->

@@ -39,6 +39,11 @@
     transition: all 0.3s;
     margin-bottom: 15px;
    }
+   .firstLoad{
+      top:45%;
+      left: 45%;
+      position: fixed;
+   }
 
    .my {
       border: none;

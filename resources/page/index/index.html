@@ -20,6 +20,16 @@
       				<input id="search" type="text" placeholder="소환사명을 입력하시오" required class="validate" ng-model="summonerName">
       			</div>
       			<button class='btn' ng-disabled="searchform.$invalid" ng-click="search(summonerName)">검색</button>
+      			<div class="row">
+      				<h5 class="white-text">검색한 소환사</h5>
+      				<div class="col s10 push-s1">
+      					<div class="chip" ng-repeat="list in searchList">
+      						<span ng-click="cookieClick(list)">{{list}}</span>
+      						<i class="close material-icons" ng-click="cookieDelete(list)">close</i>
+      					</div>
+      				</div>
+      				
+      			</div>
       		</form>
       	</div>
         <!--비디오 on off, music on off button -->
