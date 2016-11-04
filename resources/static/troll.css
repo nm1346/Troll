@@ -23,6 +23,9 @@
 	.ngGridSearch{
 		transition: all 0.5s
 	}
+	.section{
+		z-index:1;
+	}
 	
 
 	#myVideo{
@@ -39,7 +42,7 @@
   		background-position: center center;
   		background-size: contain;
    		object-fit: cover; /*cover video background */
-   		z-index:0;
+   		z-index:1;
 	}
 	.backCover{
 		position: absolute;
@@ -59,7 +62,7 @@
    		transition: all 0.5s;
 	}
 	.backImage{
-		position: absolute;
+		position: fixed;
 		right: 0;
 		bottom: 0;
 		top:0;
@@ -71,14 +74,14 @@
   		background-image: /* our video */;
   		background-position: center center;
   		background-size: contain;
-   		object-fit: cover; /*cover video background */
-  		z-index:0;
+  		z-index: 0;
 	}
 	.backCover.ng-leave{
-		background-color: rgba(0,0,0,0.5);
-		transition: all 1s
+		background-color: rgba(0,0,0,1);
+		transition: all 1s;
 	}
 	.backCover.ng-leave-active{
 		background-color: rgba(0,0,0,0);
+		transition: all 1s;
 	}
 

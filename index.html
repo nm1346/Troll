@@ -51,6 +51,7 @@ myApp.config(function($routeProvider,$locationProvider) {
 	})
 });
 myApp.run(function($rootScope,$window){
+	//첫로드가 전부 완료됐을시 페이지 보임
 	$rootScope.fullLoad=false;
 	$window.onload=function(){
 		$rootScope.fullLoad=true;
@@ -83,16 +84,13 @@ myApp.run(function($rootScope,$window){
 <script src="/resources/service/model-service.js"></script>
 </head>
 <body>
-
-<!--페이지 영역-->
+<!-- 처음 페이지 로딩시 로딩영역 -->
 <loading class="firstLoad" ng-if="!fullLoad"></loading>
+<!-- 인덱스페이지가 아니면 사라지는 동영상 투명도 커버 -->
 <back-cover ng-if="fullLoad"></back-cover>
-<div ng-if="fullLoad" ng-view class="ngFade">
-</div><!-- 
- <a href="/static/champion" class="btn">스태틱</a>
-<a href="/" class="btn">인덱스</a> -->
 
-<!-- <a href="/위대한수령님" class="btn">스태틱</a>
- -->
+<div ng-if="fullLoad" ng-view class="ngFade">
+</div>
+
 </body>
 </html>
