@@ -11,6 +11,7 @@ myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,stati
 				console.log(data);
 			},function(error){
 				$scope.$emit("categoryChangeError",error);
+				
 			});
 			StaticLocaleResource.get({locale:"ko_KR",category:"champion"}).$promise.then(function(data){
 				staticData.set(data);
@@ -40,6 +41,7 @@ myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,stati
 				},function(error){
 					$scope.$emit("categoryChangeError",error);
 					$scope.$emit("mainChangeError",{});
+
 				});
 
 			}

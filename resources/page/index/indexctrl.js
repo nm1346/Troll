@@ -2,7 +2,6 @@ myApp.controller('indexCtrl', function($scope,$timeout,$location,$cookies){
 	var video;
 	var searchList=[];
 	$scope.searchList=[];
-
 	if(angular.isDefined($cookies.get("searchList"))){
 		angular.extend(searchList,angular.fromJson($cookies.get("searchList")));
 		$scope.searchList=searchList;
@@ -52,9 +51,6 @@ myApp.controller('indexCtrl', function($scope,$timeout,$location,$cookies){
 		}
 		
 	});
-
-
-
 	$scope.searchLayout={
 		loading:false
 	};
