@@ -2,7 +2,7 @@ myApp.controller('indexCtrl', function($scope,$timeout,$location,$cookies){
 	var video;
 	var searchList=[];
 	$scope.searchList=[];
-	
+
 	if(angular.isDefined($cookies.get("searchList"))){
 		angular.extend(searchList,angular.fromJson($cookies.get("searchList")));
 		$scope.searchList=searchList;
@@ -24,14 +24,6 @@ myApp.controller('indexCtrl', function($scope,$timeout,$location,$cookies){
 			$scope.mute=false;
 		}
 
-		video=document.getElementById("myVideo");
-		if(video!=null){
-			if($scope.mute==true){
-				video.muted=false;
-			}else{
-				video.muted=true;
-			}
-		}
 	}
 	$scope.$watch("videoOn",function(newval,oldval){
 		if(newval==oldval)return;
@@ -55,14 +47,14 @@ myApp.controller('indexCtrl', function($scope,$timeout,$location,$cookies){
 				video.muted=false;
 				$cookies.put("mute",true);
 			}else{
-
-				$cookies.put("mute",false);
-				console.log($cookies.get("mute"))
 				video.muted=true;
 			}
 		}
 		
 	});
+
+
+
 	$scope.searchLayout={
 		loading:false
 	};
