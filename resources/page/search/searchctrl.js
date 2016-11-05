@@ -1,4 +1,4 @@
-myApp.controller('searchCtrl',function($scope,$routeParams,CurrentGameResource,currentGameData){
+myApp.controller('searchCtrl',function($scope,$routeParams,CurrentGameResource,currentGameData,mediaElement){
 	
 	$scope.option={
 	    navigation: false,

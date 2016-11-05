@@ -65,6 +65,7 @@ myApp.run(function($rootScope,$window){
 <!-- 인덱스페이지 컨트롤러및 디렉티브 -->
 <script src="/resources/page/index/indexctrl.js"></script>
 <script src="/resources/page/index/indexdirective.js"></script>
+<script src="/resources/page/index/indexservice.js"></script>
 <!-- 검색페이지 컨트롤러 및 디렉티브 -->
 <script src="/resources/page/search/searchctrl.js"></script>
 <script src="/resources/page/search/searchdirective1.js"></script>
@@ -87,11 +88,13 @@ myApp.run(function($rootScope,$window){
 <!-- 처음 페이지 로딩시 로딩영역 -->
 <loading class="firstLoad" ng-if="!fullLoad"></loading>
 <!-- 인덱스페이지가 아니면 사라지는 동영상 투명도 커버 -->
-<back-cover ng-if="fullLoad"></back-cover>
-<!-- <img class="backImage" src="/resources/static/backimage.jpg"> -->
+<index-video></index-video>
+<index-music></index-music>
+<back-cover></back-cover>
+<img class="backImage" src="/resources/static/backimage.jpg"> 
 
-<div ng-if="fullLoad" ng-view class="ngFade">
+<div ng-if="fullLoad" ng-view class="ngFade search-nav">
 </div>
-<test-video></test-video>
+
 </body>
 </html>

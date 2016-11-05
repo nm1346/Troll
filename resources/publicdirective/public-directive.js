@@ -43,20 +43,3 @@ myApp.directive('backCover',function($routeParams,$location){
 		}
 	};
 });
-myApp.directive('testVideo', function(){
-	return {
-		scope: {}, // {} = isolate, true = child, false/undefined = no change
-		controller: function($scope, $element, $attrs, $transclude) {
-			
-		},
-		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
-		templateUrl: '/resources/publicdirective/test-video.html',
-		link: function($scope, iElm, iAttrs, controller) {
-			var video2=iElm.children().eq(0)[0];
-			video2.muted=true
-			var video=document.getElementById("myVideo");
-			video.muted=true
-			console.log(video)
-		}
-	};
-});
