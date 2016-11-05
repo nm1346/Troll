@@ -21,11 +21,18 @@
 	.ngFade.ng-enter-active{
 		opacity: 1;
 	}
-	.ngGridSearch{
-		transition: all 0.5s
-	}
 	.section{
 		z-index:4;
+	}
+	.ngVideo{
+		opacity: 1;
+	}
+	.ngVideo.ng-leave{
+		opacity: 1;
+		transition: all 0.5s;
+	}
+	.ngVideo.ng-leave-active{
+		opacity: 0;
 	}
 	
 
