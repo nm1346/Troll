@@ -110,7 +110,7 @@ myApp.directive('staticChampion', function(StaticLocaleResource,staticLocaleData
 	};
 });
 
-myApp.directive('staticChampionmodal',function(staticLocaleData,staticData,staticDetail){
+myApp.directive('staticChampionmodal',function(staticLocaleData,staticData,staticDetail,$sce){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
@@ -127,6 +127,7 @@ myApp.directive('staticChampionmodal',function(staticLocaleData,staticData,stati
 			$scope.$on("championModalChangeSuccess",function(event,data){
 				$scope.layout.loading=false;
 				$scope.layout.error=false;
+				$scope.blurb=$sce.trustAsHtml($scope.blurb);
 			});
 			$scope.$on("championModalChangeError",function(event,data){
 				$scope.layout.loading=false;
