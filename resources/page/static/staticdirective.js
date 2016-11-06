@@ -146,6 +146,12 @@ myApp.directive('staticChampionmodal',function(staticLocaleData,staticData,stati
 		link: function($scope, iElm, iAttrs, controller) {
 
 			$('#championmodal').modal({
+				opacity:0,
+				ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+        		var overlay = $('.modal-overlay');
+				// remove it
+				overlay.detach();
+      			},
 				complete: function() { $scope.selected=false; }
 			});
 		}
