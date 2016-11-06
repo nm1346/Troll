@@ -127,7 +127,7 @@ myApp.directive('staticChampionmodal',function(staticLocaleData,staticData,stati
 			$scope.$on("championModalChangeSuccess",function(event,data){
 				$scope.layout.loading=false;
 				$scope.layout.error=false;
-				$scope.blurb=$sce.trustAsHtml($scope.blurb);
+				
 			});
 			$scope.$on("championModalChangeError",function(event,data){
 				$scope.layout.loading=false;
@@ -144,6 +144,7 @@ myApp.directive('staticChampionmodal',function(staticLocaleData,staticData,stati
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/static/static-championmodal.html',
 		link: function($scope, iElm, iAttrs, controller) {
+
 			$('#championmodal').modal({
 				complete: function() { $scope.selected=false; }
 			});
