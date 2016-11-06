@@ -9,7 +9,7 @@ div .summoner{
 	margin:auto auto auto auto;
 	height: 100%;
 	width: 100%;
-} 
+}
 .tier_icon_img{
 	display: block;
 }
@@ -18,9 +18,30 @@ div .summoner{
 	margin-left: -10px;
 
 }
-.card .recent{
-	height: 100px;
+ .recent{
+	margin: 0;
+	padding: 0 !important;
 }
+
+ /* .win{
+ 	background-color : grey;
+ }
+ .lose{
+ 	background-color : black;
+ } */
+.card {
+	text-align: center;
+}
+ .card .recentcontent{
+	padding: 5px;
+}
+
+.card .gamewins{
+	text-align: center;
+	border-right: 1px solid #f1f1f1;
+	padding: 0;
+}
+
 .summoner-chamimg > img{
 	width: 65px;
 	height: 65px;
@@ -31,15 +52,15 @@ div .summoner{
 	height: 38px;
 	border-radius: 70px;
 }
-.allplayers{
-	display: table;
+.card .allplayers{
+	border-top: 1px solid #f1f1f1s;
 	text-align: center;
 }
 .kda{
 	margin-left: -2px;
 
 }
-.item-slot{ 
+.item-slot{
 	padding: 0;
 }
 .item-slot .slot{
@@ -48,20 +69,20 @@ div .summoner{
 	text-align: center !important;
 	width: 100%;
 	height: 25px;
-	font-size: 0; 
+	font-size: 0;
 	display: table-cell;
-	padding: 1px 1px 1px 1px; 
+	padding: 1px 1px 1px 1px;
 	border-radius: 5px;
 }
 
 .item-slot .slot > img{
 	position: relative;
-	width: 100%; 
+	width: 100%;
 	height: 100%;
 	border-radius: 5px;
 
 }
-
+/* 모바일 스마트폰 이하 */
 @media only screen and (max-width: 450px){
 	.summoner-chamimg > img{
 		width: 50px;
@@ -74,12 +95,13 @@ div .summoner{
 		height: 18px;
 		border-radius: 70px;
 	}
-	
-	.vs{
+
+	.row .vs{
+	width: 10px !important;
 	padding: 0px 0px 0px 0px;
 	font-size: 5px;
 	text-align: center;
-	/* font-weight: 300px; */
+	font-weight: bold; */
 	}
 
 	.kda{
@@ -89,11 +111,12 @@ div .summoner{
 		height: 23px;
 	}
 }
+/* 모바일 스마트폰 아이폰 전용 */
 @media only screen and (max-width: 320px){
 	.player-chamimg > img{
 		display: none;
 	}
-	.item-slot{ 
+	.item-slot{
 	width: 30% !important;
 	}
 	.item-slot .slot{
@@ -109,20 +132,19 @@ and (max-device-width : 1024px) {
 		height: 25px;
 	}
 }
-
-
-.vs{
-	padding: 5px 5px 5px 5px;
+.row .vs{
+	width: 15px !important;
+	padding: 0px 0px 0px 0px;
 	font-size: 15px;
 	text-align: center;
-	font-weight: 300px;
+	font-weight: bold;
 }
 .blue{
 	border: 2px solid blue;
 }
 .red {
 	border: 2px solid red;
-}	
+}
 
 
 	/* .BRONZE{

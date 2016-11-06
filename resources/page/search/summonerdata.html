@@ -10,57 +10,74 @@
     </div>
   </div><!-- end summoner card-->
 
- 
-  </div>
- <div class="container row">
-    <div class="col s12">
-      <div class="card recent col l6 m12 s12" ng-repeat="data in recentgame">
-        <div class="card-content col s12">
-    
-          <div class="summoner-chamimg col s1">
-           <img class="{{data.teamId | teamcolorfilter}}" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{data.chamName1}}.png"/>
-          </div>
-          
-          <!--아이템 영역 -->
-          <div class="col l2 m2 s3 item-slot">
-            <div class="col l4 m4 s6 slot">
-            <img ng-if="data.rawstats.item0 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item0}}.png"/>
-            </div>
-         <!-- <img ng-if="data.rawstats.item0 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item0}}.png"/> -->
-              <div class="col l4 m4 s6 slot"><img ng-if="data.rawstats.item1 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item1}}.png"/></div>
 
-                <div class="col l4 m4 s6 slot"><img ng-if="data.rawstats.item2 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item2}}.png"/></div>
+</div>
+<div class="container row">
+  <div class="col s12">
+    <div class="card recent {{data.rawstats.win | victoryclassfilter}} col l12 m12 s12 " ng-repeat="data in recentgame">
+      <div class="card-content col s12 recentcontent">
+      <div class="col s4">
+        <div class="col s8 gamewins">
+        <h6 class="col s12 victory">{{data.rawstats.win | victoryfilter}}</h6>
+        <div class="col s12">{{data.subType}}</div>
+        <div class="col s12">{{3800 | gametimefilter}} <!-- {{data.rawstats.timePlayed | gametimefilter}} --></div>
+        </div>
+        <div class="summoner-chamimg col s4">
+         <img class="{{data.teamId | teamcolorfilter}}" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{data.chamName1}}.png"/>
+       </div>
+       </div>
 
-                  <div class="col l4 m4 s6 slot"><img ng-if="data.rawstats.item3 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item3}}.png"/></div>
-
-                    <div class="col l4 m4 s6 slot"><img ng-if="data.rawstats.item4 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item4}}.png"/></div>
-
-                    <div class="col l4 m4 s6 slot"><img ng-if="data.rawstats.item5 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item5}}.png"/></div>
-          </div>
         <!--   아이템 1 : {{data.rawstats.item1}} &nbsp;
-        아이템 2 : {{data.rawstats.item2}} &nbsp; 
+        아이템 2 : {{data.rawstats.item2}} &nbsp;
         아이템 3 : {{data.rawstats.item3}} &nbsp;
         아이템 4 : {{data.rawstats.item4}} &nbsp;
         아이템 5 : {{data.rawstats.item5}} &nbsp;
         아이템 6 : {{data.rawstats.item6}} &nbsp;
         스펠 1 : {{data.spell1}} &nbsp;
         스펠 2 : {{data.spell2}} &nbsp; -->
-          <div class="col l9 s12  allplayers">
-           <!--플레이어 팀 -->
-          <span ng-repeat="player in data.fellowPlayers" ng-if="data.teamId == player.teamId">
-            <span class="player-chamimg" ><img class="{{player.teamId | teamcolorfilter}}" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{player.chamName1}}.png"/></span>
-            </span>
-            <span class="vs">VS</span>
-         <!--플레이어 상대팀 -->
-           <span ng-repeat="player in data.fellowPlayers" ng-if="data.teamId != player.teamId" >
-            <span class="player-chamimg" ><img class="{{player.teamId | teamcolorfilter}}" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{player.chamName1}}.png"/></span>
-            </span>
+     <div class="col l8 s12  allplayers">
+      <!--   플레이어 팀 -->
+     <div class="col s5">
+      <span class="player-chamimg" ><img class="{{data.teamId | teamcolorfilter}}" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{data.chamName1}}.png"/></span>
+      <span ng-repeat="player in data.fellowPlayers" ng-if="data.teamId == player.teamId">
+        <span class="player-chamimg" ><img class="{{player.teamId | teamcolorfilter}}" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{player.chamName1}}.png"/></span>
+      </span>
+  </div>
+             <div class='col s2 vs'>
+             <span>VS</span>
+             </div>
+          <!--    플레이어 상대팀 -->
+             <div class="col s5">
+     <span ng-repeat="player in data.fellowPlayers" ng-if="data.teamId != player.teamId" >
+      <span class="player-chamimg" ><img class="{{player.teamId | teamcolorfilter}}" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{player.chamName1}}.png"/></span>
+             </span>
+           </div>
+         </div>
 
-          </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+
+    <!--아이템 영역 -->
+   <!--  <div class="col l2 m2 s3 item-slot">
+     <div class="col l4 m4 s6 slot">
+       <img ng-if="data.rawstats.item0 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item0}}.png"/>
+     </div>
+     <img ng-if="data.rawstats.item0 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item0}}.png"/>
+     <div class="col l4 m4 s6 slot"><img ng-if="data.rawstats.item1 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item1}}.png"/></div>
+
+     <div class="col l4 m4 s6 slot"><img ng-if="data.rawstats.item2 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item2}}.png"/></div>
+
+     <div class="col l4 m4 s6 slot"><img ng-if="data.rawstats.item3 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item3}}.png"/></div>
+
+     <div class="col l4 m4 s6 slot"><img ng-if="data.rawstats.item4 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item4}}.png"/></div>
+
+     <div class="col l4 m4 s6 slot"><img ng-if="data.rawstats.item5 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item5}}.png"/></div>
+   </div>
+    -->
+
+  </div>
+</div>
+</div>
+</div>
 
 
  <!-- <img class="tier_icon_img col s12" src="/resources/tier_icons/{{tierurl}}_{{divisionurl}}.png"> -->

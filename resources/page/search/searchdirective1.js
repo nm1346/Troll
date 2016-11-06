@@ -28,10 +28,6 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams){
 				$scope.tierurl = totaldata['leagueData'].tier.toLowerCase();
 				$scope.divisionurl = totaldata['leagueData'].entrylist[0].division.toLowerCase();
 				console.log($scope.summonerdata , $scope.leaguedata , $scope.recentgame)
-				$scope.kda = function (stats) {
-					var kda= (stats.assists + stats.championsKilled) / stats.numDeaths;
-					return num.toFixed(2);
-				}
 			});
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
