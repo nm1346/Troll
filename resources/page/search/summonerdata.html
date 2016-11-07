@@ -20,10 +20,10 @@
         <div class="col s8 gamewins">
         <h6 class="col s12 victory">{{data.rawstats.win | victoryfilter}}</h6>
         <div class="col s12">{{data.subType}}</div>
-        <div class="col s12">{{3800 | gametimefilter}} <!-- {{data.rawstats.timePlayed | gametimefilter}} --></div>
+        <div class="col s12">{{data.rawstats.timePlayed | gametimefilter}} <!-- {{data.rawstats.timePlayed | gametimefilter}} --></div>
         </div>
         <div class="summoner-chamimg col s4">
-         <img class="{{data.teamId | teamcolorfilter}}" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{data.chamName1}}.png"/>
+         <img src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{data.chamName1}}.png"/>
        </div>
        </div>
 
