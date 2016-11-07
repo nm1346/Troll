@@ -4,12 +4,12 @@ myApp.controller('searchCtrl',function(
 
 	$scope.option={
 	    navigation: false,
-	    scrollingSpeed: 700,
-	    loopBottom:true,
-	    responsiveWidth: 600,
-	    verticalCentered : false,
-	    continuousVertical:false,
-	    controllArrows:false,
+        scrollingSpeed: 700,
+        loopBottom:true,
+        responsiveWidth: 600,
+        controlArrows:false, 
+        verticalCentered: true,
+        continuousVertical: false,
 	    afterLoad: function(anchorLink, index){ 
 	            var loadedSection = $(this);
 	            //using index

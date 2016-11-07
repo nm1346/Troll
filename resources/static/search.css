@@ -1,16 +1,10 @@
-
-/* ::-webkit-input-placeholder {
-   color: #e1f5fe;
-} 플레이스 홀더 색깔변경
-
-     @import "font-awesome";
+@import "font-awesome";
    .searchlogo{
       top:20%;
    }
    .logoimg{
       z-index: 3;
       position: relative;
-      top:20%;
    }
    .search-nav{
       background:rgba(0,0,0,0.0);
@@ -27,11 +21,48 @@
    .search-nav .search-field > input{
       border:none;
       border-radius: 15px;
-     
-   }*/
-
-
-   
+      /* background-color: #000000; */
+   }
+   .main-nav{
+		background-color:#546e7a;
+		border: none;
+		box-shadow: none;
+		z-index: 4;
+	}
+	.logo-search-field {
+		margin: 13px auto 0px auto;
+		height: 40px;
+		background-color: white;
+		border-radius: 7px;
+	}
+	.logo-search-field .logo-search-input{
+		margin-top:-2px;
+		border: none;
+		box-shadow: none;
+		-webkit-appearance: none;
+		background: rgba(0,0,0,0);
+		outline: none;
+		color:black;
+	}
+	.logo-search-field .logo-search-input::-webkit-input-placeholder{
+			color: #546e7a;
+	}
+	.search-label {
+		text-align: center;
+	}
+	.logo-search-field .search-label > i {
+		color: #546e7a;
+		margin-top: -10px;
+		cursor: pointer;
+		font-weight: 500px;
+		font-size: 25px;
+	}
+	.logo-search-field .logo-search-input[type=search]:focus{
+		border: none;
+		box-shadow: none;
+		-webkit-appearance: none;
+		outline: none;
+	}
    /*검색폼의 input필드 */
    .input-field.search-input{
    background-color: white;
@@ -53,158 +84,57 @@
       position: fixed;
    }
 
-:-moz-placeholder { Firefox 18-
-   color: #e1f5fe;
-}
+   .my {
+      border: none;
+      cursor: pointer;
+      padding: 25px 80px;
+      margin-left: 30px;
+      text-transform: uppercase;
+      background: rgba(57, 73, 171, 0.8);
+      font-weight: 500;
+      outline: none;
+      position: relative;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+   }
+   .my-3 {
+      background: rgba(57, 73, 171, 0.8);
+      color: #fff;
+   }
+   .my-3:hover {
+      background: rgba(40, 53, 147, 0.8);
+   }
+   .my-3:focus{
+      background: rgba(40, 53, 147, 0.8);
+   }
+   .my-3:active {
+      background: rgba(26, 35, 126,0.8);
+      top: 2px;
+   }
+   .my-3:before {
+      position: absolute;
+      height: 100%;
+      left: 0;
+      top: 0;
+      line-height: 3;
+      font-size: 140%;
+      width: 60px;
+   }
+   .my-3d {
+      /* padding: 25px 60px 25px 120px; */
+      border-radius: 5px 5px 5px 5px;
+   }
+   .my-3d:before {
+      content: "\f002";
+      font-family: FontAwesome;
+      background: #f9fbe7;
+      width: 20%;
+      color: rgba(57, 73, 171, 0.8);
+      z-index: 2;
+      border-radius: 5px 0 0 5px;
+   }
 
-::-moz-placeholder {  Firefox 19+
-   color: #e1f5fe;
-}
-
-:-ms-input-placeholder {
-   color: #e1f5fe;
-} 
-	.main-nav{
-		background-color:#546e7a;
-		border: none;
-		box-shadow: none;
-	}
-	.logo-search-field {
-		margin: 13px auto 0px auto;
-		height: 40px;
-		background-color: white;
-		border-radius: 7px;
-	}
-	.logo-search-field .logo-search-input{
-		margin-top:-2px;
-		border: none;
-		box-shadow: none;
-		-webkit-appearance: none;
-		background: rgba(0,0,0,0);
-		outline: none;
-		color:black;
-	}
-	.logo-search-field .logo-search-input::-webkit-input-placeholder{
-			color: #546e7a;
-	}
-	.logo-search-field > i {
-		position: absolute;
-		margin-top : -11px;
-		right: 130px;
-		color: #546e7a;
-		cursor: pointer;
-		font-weight: 500px;
-		font-size: 25px;
-	}
-	.logo-search-field .logo-search-input[type=search]:focus{
-		border: none;
-		box-shadow: none;
-		-webkit-appearance: none;
-		outline: none;
-	}
-	@import "font-awesome";
-	nav {
-		z-index: 4;
-	}
-	.search-nav{
-		margin: 220px auto 0px auto;
-		border:none;
-		border-radius: 15px 5px 5px 15px;
-		background:rgba(0,0,0,0.0);
-		box-shadow: 1px 1px 2px 1px rgba(0,0,0,.8) inset , 0 1px 0 rgba(0,0,0,.5);
-		z-index: 4;
-	}
-	.search-field  {
-		border-radius: 15px 0px 0px 15px;
-		transition: all 0.5s;
-	}
-	/* .search-field:hover {
-		background:rgba(0,0,0,0.4);
-		} */
-		.search-nav .search-field > input{
-			border:none;
-			border-radius: 15px;
-			transition: all 0.5s;
-		}
-		.search-nav .search-field > input::-webkit-input-placeholder{
-					color: #e1f5fe;
-		}
-		.search-field:hover {
-			background:rgba(0,0,0,0.4);
-		}
-		.search-nav .search-field > input:focus {
-			width: 97%;
-			margin-left: -10px;
-			border-radius: 15px 0px 0px 15px;
-			background:rgba(0,0,0,.5);
-			color: white;
-		}
-		.search-nav .search-field > input:focus + .active > i{
-			color:#fff;
-		}
-		.search-nav .search-field .search-label  i{
-			color:rgba(0,0,0,1);
-		}
-
-		.my {
-			border: none;
-			cursor: pointer;
-			padding: 25px 80px;
-			margin-left: -10px;
-			text-transform: uppercase;
-			background: rgba(0, 0, 0, 1);
-			color: #fff;
-			/* 	font-weight: 500; */
-			outline: none;
-			position: relative;
-			-webkit-transition: all 0.3s;
-			-moz-transition: all 0.3s;
-			transition: all 0.3s;
-			z-index: 4;
-		}
-		.my:focus{
-		background: rgba(0, 0, 0, 1);
-		}
-		.my:hover {
-			background: rgba(100, 100, 100, 1);
-		}
-		.my:active {
-			background: rgba(0, 0, 0,1);
-			top: 2px;
-		}
-		.my:before {
-			position: absolute;
-			height: 100%;
-			left: 0;
-			top: 0;
-			line-height: 3;
-			font-size: 140%;
-		}
-		.my:before {
-			content: "\f002";
-			font-family: FontAwesome;
-			background: #e8eaf6;
-			color:white;
-			width: 20%;
-			color: rgba(0, 0, 0, 0.8);
-			z-index: 2;
-			border-radius: 5px 0 0 5px;
-		}
-		.my {
-			padding: 25px 60px 25px 120px;
-			border-radius: 5px 5px 5px 5px;
-		}
-		@media only screen and (max-width: 992px){
-			.my:before {
-				content: "\f002";
-				font-family: FontAwesome;
-				background: rgba(0,0,0,0.0);
-				width: 100%;
-				color: rgba(255, 255, 255, 0.8);
-				z-index: 2;
-				border-radius: 5px 0 0 5px;
-			}
-		}
-		.my:active:before {
-			color: rgba(0, 0, 0,0.8);
-		}
+   .my-3d:active:before {
+      color: rgba(26, 35, 126,0.8);
+   }

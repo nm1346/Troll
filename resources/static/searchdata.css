@@ -20,9 +20,11 @@ div .summoner{
 }
  .recent{
 	margin: 0;
-	 padding: 10px !important; 
+	padding: 10px !important; 
 }
-
+.recent-games{
+	border-radius: 120px;
+}
  /* .win{
  	background-color : grey;
  }

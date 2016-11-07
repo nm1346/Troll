@@ -12,7 +12,7 @@
 
 
 <div class="container row">
-  <div class="col s12">
+  <div class="col s12 recent-games">
     <div class="card recent {{data.rawstats.win | victoryclassfilter}} col l12 m12 s12 " ng-repeat="data in recentgame">
       <div class="card-content col s12 recentcontent">
         <div class="col s2">
@@ -40,13 +40,13 @@
           </div>
         </div>
           <div class="col s8">
-          <div class="col s12">
+          <div class="col s12 left-align" >
           <span>{{data.chamName2}}</span><br>
-              <span class="{{data.rawstats | kdatxtcolorfilter}}">KA/D: {{data.rawstats | kdafilter}}({{data.rawstats.championsKilled}}/{{data.rawstats.assists}}/{{data.rawstats.numDeaths}})</span>
+             KDA : <span class="{{data.rawstats | kdatxtcolorfilter}}">{{data.rawstats | kdafilter}}({{data.rawstats.championsKilled}}/{{data.rawstats.assists}}/{{data.rawstats.numDeaths}})</span>
           </div>
           <!--아이템 영역 -->
           <div class="col s12 item-slot">
-           <div class="col l2 m4 s6 slot ">
+           <div class="col l2 m4 s6 slot">
              <img  ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item0}}.png"/>
            </div>
            <!--  <img ng-if="data.rawstats.item0 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item0}}.png"/> -->
@@ -61,7 +61,6 @@
            <div class="col l2 m4 s6 slot"><img ng-if="data.rawstats.item5 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item5}}.png"/></div>
          </div> 
          </div>
-       
      </div>
         <!--   아이템 1 : {{data.rawstats.item1}} &nbsp;
         아이템 2 : {{data.rawstats.item2}} &nbsp;

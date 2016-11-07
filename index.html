@@ -87,22 +87,6 @@ myApp.run(function($rootScope,$window){
 </head>
 <body>
 <!--페이지 영역-->
- <nav>
-    <div class="nav-wrapper main-nav">
-      <a href="#" class="brand-logo">&nbsp;&nbsp;Troll.GG</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li class="row">
-        <div class="logo-search-field col s12">
-		<input  type="search" class='col s10 logo-search-input'  required placeholder="소환사명 검색" ng-model='summonerName'>
-				<!-- <label for="search" class="search-label"><i class="material-icons">search</i></label> -->
-		<i class="material-icons s2">search</i>
-		</div>
-		</li>
-       <li><a href="/static">롤 백과사전</a></li>
-      </ul>
-    </div>
-  </nav>
-
 <loading class="firstLoad" ng-if="!fullLoad"></loading>
 <!-- 인덱스페이지가 아니면 사라지는 동영상 투명도 커버 -->
 <index-video></index-video>
