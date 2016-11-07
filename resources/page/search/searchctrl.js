@@ -7,7 +7,8 @@ myApp.controller('searchCtrl',function(
 	    loopBottom:true,
 	    responsiveWidth: 600,
 	    controlArrows:false, 
-	    verticalCentered: false,
+	    verticalCentered: true,
+	    continuousVertical: false,
 	    afterLoad: function(anchorLink, index){ 
 	            var loadedSection = $(this);
 	            //using index

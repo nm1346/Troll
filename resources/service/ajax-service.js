@@ -1,5 +1,5 @@
 myApp.factory('ShardResource', function($resource){
-	return $resource('http://status.leagueoflegends.com/shards/ko_kr',{},{
+	return $resource('http://status.leagueoflegends.com/shards/kr',{},{
 		get:{method:"GET",isArray:false}
 	});
 });//ajax처리 관련 service

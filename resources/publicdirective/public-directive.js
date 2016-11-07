@@ -49,6 +49,7 @@ myApp.directive('statusToast', function(ShardResource){
 		controller: function($scope, $element, $attrs, $transclude) {
 			ShardResource.get().$promise.then(function(data){
 				console.log(data);
+				
 			},function(error){
 				console.log(error);
 			});
