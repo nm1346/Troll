@@ -18,8 +18,6 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams){
 				console.log('에러',error);
 			});
 
-
-
 			$scope.$on('pageonview',function (data) {
 				var totaldata = summoner.get();
 				$scope.summonerdata = totaldata['summonerData'];
