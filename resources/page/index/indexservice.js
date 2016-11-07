@@ -1,3 +1,8 @@
+myApp.factory('ShardResource', function($resource){
+	return $resource('http://status.leagueoflegends.com/shards/KO_kr',{},{
+		get:{method:"GET",isArray:false}
+	});
+});
 myApp.factory('mediaElement', function(){
 	var media={
 		video:{

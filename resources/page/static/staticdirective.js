@@ -33,7 +33,7 @@ myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,stati
 						category:staticData.selected()
 					}).$promise.then(function(data){
 						staticData.set(data);
-						/*console.log(data);*/
+						console.log(data);
 						$scope.$emit("mainChangeSuccess",staticData.selected());
 					},function(error){
 						$scope.$emit("mainChangeError",error);

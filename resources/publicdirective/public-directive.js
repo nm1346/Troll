@@ -43,3 +43,20 @@ myApp.directive('backCover',function($routeParams,$location){
 		}
 	};
 });
+myApp.directive('statusToast', function(ShardResource){
+	return {
+		scope: {}, // {} = isolate, true = child, false/undefined = no change
+		controller: function($scope, $element, $attrs, $transclude) {
+			ShardResource.get().$promise.then(function(data){
+				console.log(data);
+			},function(error){
+				console.log(error);
+			});
+		},
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		// templateUrl: '',
+		link: function($scope, iElm, iAttrs, controller) {
+			
+		}
+	};
+});
