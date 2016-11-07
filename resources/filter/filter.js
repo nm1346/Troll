@@ -4,7 +4,6 @@ myApp.filter('kdafilter',function () {
 		return kda.toFixed(2) + ':1' ;
 	}
 });
-
 myApp.filter('kdatxtcolorfilter',function () {
 	return function (stats) {
 		var kda= (stats.assists + stats.championsKilled) / stats.numDeaths;
@@ -17,7 +16,6 @@ myApp.filter('kdatxtcolorfilter',function () {
 		}
 	}
 });
-
 myApp.filter('victoryfilter',function () {
 	return function (boolean) {
 		if (boolean) {return '승리';
@@ -48,4 +46,18 @@ myApp.filter('teamcolorfilter',function () {
 		if (teamId == '100') {return 'blueteamborder';
 		}else {return 'redteamborder';}
 	}
+});
+
+myApp.filter('orderObjectBy', function() {
+  return function(items, field, reverse) {
+    var filtered = [];
+    angular.forEach(items, function(item) {
+      filtered.push(item);
+    });
+    filtered.sort(function (a, b) {
+      return (a[field] > b[field] ? 1 : -1);
+    });
+    if(reverse) filtered.reverse();
+    return filtered;
+  };
 });

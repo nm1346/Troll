@@ -1,6 +1,57 @@
+
 /* ::-webkit-input-placeholder {
    color: #e1f5fe;
 } 플레이스 홀더 색깔변경
+
+     @import "font-awesome";
+   .searchlogo{
+      top:20%;
+   }
+   .logoimg{
+      z-index: 3;
+      position: relative;
+      top:20%;
+   }
+   .search-nav{
+      background:rgba(0,0,0,0.0);
+      z-index: 2;
+      position: relative;
+   }
+   .search-field  {
+       border-radius: 15px 0px 0px 15px;
+      transition: all 0.5s;
+   }
+   .search-field:hover {
+      background:rgba(0,0,0,0.4);
+   }
+   .search-nav .search-field > input{
+      border:none;
+      border-radius: 15px;
+     
+   }*/
+
+
+   
+   /*검색폼의 input필드 */
+   .input-field.search-input{
+   background-color: white;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    height: 3rem;
+    width: 100%;
+    font-size: 1rem; 
+    padding: 0;
+    box-shadow: none;
+    box-sizing: content-box;
+    transition: all 0.3s;
+    margin-bottom: 15px;
+   }
+   .firstLoad{
+      top:45%;
+      left: 45%;
+      position: fixed;
+   }
 
 :-moz-placeholder { Firefox 18-
    color: #e1f5fe;
@@ -12,7 +63,7 @@
 
 :-ms-input-placeholder {
    color: #e1f5fe;
-} */
+} 
 	.main-nav{
 		background-color:#546e7a;
 		border: none;

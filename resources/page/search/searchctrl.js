@@ -1,7 +1,9 @@
-myApp.controller('searchCtrl',function($scope){
+myApp.controller('searchCtrl',function(
+	$scope,$routeParams,CurrentGameResource,currentGameData){
+	
+
 	$scope.option={
 	    navigation: false,
-	    navigationPosition: 'right',
 	    scrollingSpeed: 700,
 	    loopBottom:true,
 	    responsiveWidth: 600,
@@ -16,9 +18,17 @@ myApp.controller('searchCtrl',function($scope){
 	            }
 	    },
 	    afterSlideLoad:function(anchor,sectionindex,slideindex){
-	    	if(slideindex == 1 &&sectionindex==1){ 
-	            console.log("test");    //full-page 슬라이드 옮긴후 발동되는 메소드
+	    	if(slideindex == 1 &&sectionindex==1){
+	    		console.log($routeParams);
+	            CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){
+	            	currentGameData.set(data)
+	            	console.log(data);
+				},function(error){
+					console.log(error);
+				});
+
 	        }
+
 	    }
 	};
 	console.log("생성됨 indexctrl");

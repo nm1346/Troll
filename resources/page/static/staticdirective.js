@@ -10,6 +10,7 @@ myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,stati
 				$scope.$emit("categoryChangeSuccess",{});
 			},function(error){
 				$scope.$emit("categoryChangeError",error);
+				
 			});
 			StaticLocaleResource.get({locale:"ko_KR",category:"champion"}).$promise.then(function(data){
 				staticData.set(data);
@@ -38,6 +39,7 @@ myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,stati
 				},function(error){
 					$scope.$emit("categoryChangeError",error);
 					$scope.$emit("mainChangeError",{});
+
 				});
 			}
 		},
@@ -57,8 +59,8 @@ myApp.directive('staticCategory',function(StaticLocaleResource,staticLocaleData,
 				StaticLocaleResource.get({locale:staticLocaleData.selected(),category:view}).$promise.then(function(data){
 					staticData.set(data);
 					staticData.select(view);
-					/*console.log(data);
-					console.log($scope.data);*/
+					console.log(data);
+					/*console.log($scope.data);*/
 					$scope.$emit("mainChangeSuccess",view);
 				},function(error){
 					$scope.$emit("mainChangeError",error);
@@ -98,7 +100,9 @@ myApp.directive('staticChampion', function(StaticLocaleResource,staticLocaleData
 		}
 	};
 });
-myApp.directive('staticChampionmodal',function(staticLocaleData,staticData,staticDetail){
+
+myApp.directive('staticChampionmodal',function(staticLocaleData,staticData,staticDetail,$sce){
+
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
@@ -115,6 +119,7 @@ myApp.directive('staticChampionmodal',function(staticLocaleData,staticData,stati
 			$scope.$on("championModalChangeSuccess",function(event,data){
 				$scope.layout.loading=false;
 				$scope.layout.error=false;
+				
 			});
 			$scope.$on("championModalChangeError",function(event,data){
 				$scope.layout.loading=false;
@@ -131,7 +136,14 @@ myApp.directive('staticChampionmodal',function(staticLocaleData,staticData,stati
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/static/static-championmodal.html',
 		link: function($scope, iElm, iAttrs, controller) {
+
 			$('#championmodal').modal({
+				opacity:0,
+				ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+        		var overlay = $('.modal-overlay');
+				// remove it
+				overlay.detach();
+      			},
 				complete: function() { $scope.selected=false; }
 			});
 		}
