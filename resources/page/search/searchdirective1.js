@@ -17,7 +17,6 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams){
 			},function (error) {
 				console.log('에러',error);
 			});
-
 			$scope.$on('pageonview',function (data) {
 				var totaldata = summoner.get();
 				$scope.summonerdata = totaldata['summonerData'];
@@ -27,6 +26,7 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams){
 				$scope.divisionurl = totaldata['leagueData'].entrylist[0].division.toLowerCase();
 				console.log($scope.summonerdata , $scope.leaguedata , $scope.recentgame)
 			});
+			$('.tooltipped').tooltip({delay: 50});
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/summonerdata.html',

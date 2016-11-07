@@ -5,6 +5,19 @@ myApp.filter('kdafilter',function () {
 	}
 });
 
+myApp.filter('kdatxtcolorfilter',function () {
+	return function (stats) {
+		var kda= (stats.assists + stats.championsKilled) / stats.numDeaths;
+		if (kda < 1) {
+			return 'kdared'
+		}else if(kda >= 3){
+			return 'kdablue'
+		}else{
+			return ''
+		}
+	}
+});
+
 myApp.filter('victoryfilter',function () {
 	return function (boolean) {
 		if (boolean) {return '승리';
@@ -32,7 +45,7 @@ myApp.filter('victoryclassfilter',function () {
 
 myApp.filter('teamcolorfilter',function () {
 	return function (teamId) {
-		if (teamId == '100') {return 'blue';
-		}else {return 'red';}
+		if (teamId == '100') {return 'blueteamborder';
+		}else {return 'redteamborder';}
 	}
 });

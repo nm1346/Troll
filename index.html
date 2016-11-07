@@ -15,8 +15,10 @@
 <title>Angular and FullPage and Materialize</title>
 <script type="text/javascript"	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
 <!-- static데이터 불러오기 -->
 <script src="/resources/static/angular.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.1/angular-materialize.min.js"></script>
 <script src="/resources/static/angular-route.js"></script>
 <script src="/resources/static/angular-resource.js"></script>
 <script src="/resources/static/angular-animate.js"></script>
@@ -24,7 +26,8 @@
 <script src="/resources/static/angular-fullpage.js"></script>
 
 <script>
-var myApp=angular.module("exampleApp",["ngRoute","fullPage.js","ngResource","ngAnimate"]);
+
+var myApp=angular.module("exampleApp",["ngRoute","fullPage.js","ngResource","ngAnimate","ui.materialize"]);
 //config
 myApp.config(function($routeProvider,$locationProvider) {
 	$locationProvider.html5Mode({
