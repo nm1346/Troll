@@ -6,7 +6,7 @@ myApp.factory('ShardResource', function($resource){
 myApp.constant('TrollRestUrl', "http://localhost:8080/");
 
 myApp.factory('SearchResource',function($resource,TrollRestUrl){
-    return $resource(TrollRestUrl+"/user/:summonerName", {summonerName:"@summonerName"},{
+    return $resource(TrollRestUrl+"user/:summonerName", {summonerName:"@summonerName"},{
         get:{method:"GET",isArray:false}
     });
 });
