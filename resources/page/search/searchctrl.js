@@ -1,6 +1,7 @@
 myApp.controller('searchCtrl',function(
 	$scope,$routeParams,CurrentGameResource,currentGameData){
 	$scope.$emit("CoverOff",{});
+	$scope.$emit("loadingOff",{});
 	$scope.option={
 	    navigation: false,
 	    scrollingSpeed: 700,
@@ -20,10 +21,12 @@ myApp.controller('searchCtrl',function(
 	    afterSlideLoad:function(anchor,sectionindex,slideindex){
 	    	if(slideindex == 1 &&sectionindex==1){
 	    		$scope.$emit("CoverOn",{});
+	    		$scope.$emit("loadingOn",{});
 	            CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){
-	            	currentGameData.set(data)
+	            	currentGameData.set(data);
+	            	$scope.$emit("loadingOff",{});
 				},function(error){
-					console.log(error);
+					$scope.$emit("loadingOff",{});
 				});
 
 	        }

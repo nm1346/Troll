@@ -7,11 +7,9 @@
 	<div class="col s12 m8 push-m2 l3 push-l1 search-nav">
 		<div class="card search-card">
 			<!-- search form 영역 -->
-			<div class="center" ng-if="searchLayout.loading">
-				<loading></loading>
-			</div>
+			
 			<!--비디오 on off, music on off button -->
-			<div class="card-content search-action" ng-hide="searchLayout.loading">
+			<div class="card-content search-action">
 				<index-checkbox></index-checkbox>
 			</div>
 			<index-searchform ng-hide="searchLayout.loading"></index-searchform>
