@@ -43,16 +43,14 @@ myApp.directive('backCover',function($routeParams,$location){
 	};
 });
 
-myApp.directive('searchNav',function($cookies,$timeout,$location){
+myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
 			//cookie 클릭시 search input에 값 입력
-		
 			$scope.searchList=[];
 			if(angular.isDefined($cookies.get("searchList"))){
 				angular.extend($scope.searchList,angular.fromJson($cookies.get("searchList")));
-				
 			}
 			$scope.cookieClick=function(searchval){
 				$scope.summonerName=searchval;
@@ -74,6 +72,22 @@ myApp.directive('searchNav',function($cookies,$timeout,$location){
 					$location.path("/"+summonerName);
 				},1000);	
 			}
+			$scope.coverLayout={
+				on:false
+			};
+			$scope.menuClick=function(){
+				if($scope.coverLayout.on==true){
+					$scope.coverLayout.on=false;
+				}else{
+					$scope.coverLayout.on=true;
+				}
+			}
+			$scope.coverClick=function(){
+				$scope.coverLayout.on=false;
+			}
+			$scope.media=mediaElement.getMedia();
+
+
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/publicdirective/search-nav.html',

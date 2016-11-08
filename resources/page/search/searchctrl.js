@@ -5,11 +5,11 @@ myApp.controller('searchCtrl',function(
 	$scope.option={
 	    navigation: false,
 	    scrollingSpeed: 700,
-	    loopBottom:true,
+	    loopBottom:false,
 	    responsiveWidth: 600,
 	    controlArrows:false, 
 	    verticalCentered: true,
-	    continuousVertical: false,
+	    continuousVertical: true,
 
 	    afterLoad: function(anchorLink, index){ 
 	            var loadedSection = $(this);

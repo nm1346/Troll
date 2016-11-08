@@ -7,7 +7,6 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval){
 
         $interval(function () {
           if(Object.keys($scope.data).length!=0&&$scope.data.success!=false){
-             console.log($scope.data);
             var o = new Date($scope.data.gameInfo.gameStartTime)
             var n = new Date()
             var r = n.getTime() - o.getTime()
