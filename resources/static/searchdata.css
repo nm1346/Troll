@@ -1,4 +1,4 @@
-
+@import "font-awesome";
 div .summoner{
 	background-color: #607d8b;
 	font-size: 20px;
@@ -16,32 +16,18 @@ div .summoner{
 .card-stacked .card-content .nickname {
 	margin-top: -15px;
 	margin-left: -10px;
-
 }
- .recent{
-	margin: 0;
-	padding: 10px !important; 
-}
-.recent-games{
-	border-radius: 120px;
-}
- /* .win{
- 	background-color : grey;
- }
- .lose{
- 	background-color : black;
- } */
-.card {
+.recent{
+	/* margin: 0; */
+	padding:10px 10px 10px 10px; 
+	/* width: 20% !important; */
 	text-align: center;
 }
- .card .recentcontent{
-	padding: 5px;
+.gamedata .victory{
+	float: left;
 }
-
-.card .gamewins{
-	text-align: center;
-	border-right: 1px solid #f1f1f1;
-	 padding: 0; 
+.gamedata .gametime{
+	float: right;
 }
 
 .my-chamimg{
@@ -51,9 +37,10 @@ div .summoner{
 	border-radius: 100px;
 	border: 2px solid grey;
 }
+
 .player-chamimg > img{
-	width: 35px;
-	height: 35px;
+	width: 29px;
+	height: 29px;
 	border-radius: 70px;
 }
 .card .allplayers{
@@ -73,16 +60,37 @@ div .summoner{
 	color : blue;
 	font-weight: bold;
 }
+.win{
+	background: rgba(187, 222, 251 , 0.8);
+}
+.lose{
+	background: rgba(255, 205, 210 , 0.8);
+}
+
 .item-slot{
 	padding: 0;
 	margin-left: 15px;
 }
-
+.padding-hide{
+	padding: 0 !important;
+}
+.padding-top-hide{
+	padding-top: 0 !important;
+}
+.padding-left-hide{
+	padding-left: 0 !important;
+}
+.padding-right-hide{
+	padding-right:0 !important;
+}
+.padding-bottom-hide{
+	padding-bottom:0 !important;
+}
 .item-slot .slot{
 	background: rgba(0,0,0, 0.5);
 	line-height: 0 !important;
 	text-align: center !important;
-	height: 30px;
+	height: 40px;
 	font-size: 0;
 	display: table-cell;
 	padding: 1px 1px 1px 1px;
@@ -98,13 +106,15 @@ div .summoner{
 
 
 .spell-slot{
-	float: right !important;
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .spell-slot .slot{
 	background: rgba(0,0,0, 0.5);
-	line-height: 0 !important;
-	text-align: center !important;
+	/* line-height: 0 !important;
+	text-align: center !important; */
 	width: 25px !important;
 	height: 25px;
 	font-size: 0;
@@ -116,10 +126,41 @@ div .summoner{
 	position: relative;
 	width: 100%;
 	height: 100%;
-	border-radius: 5px;
+	border-radius:5px 0 0 5px;
 }
-.my-chamimg {
+
+.recent .card-reveal-btn{
+	cursor: pointer;
+	/* text-transform: uppercase; */
+	background: rgba(0, 0, 0,0.0);
+	color: #fff;
+	position: relative;
+	width: 100%;
+	border-radius: 15px 15px 0 0;
 }
+
+.recent .card-reveal-btn:before{
+	-webkit-transition: all 0.3s ease-in;
+	-moz-transition: all 0.3s ease-in;
+	transition: all 0.3s ease-in;
+	position: absolute;
+	height: 100%;
+	left: 0;
+	top: 0;
+	width: 100%;
+	content: "Game Stats  \f106";
+    font-family: FontAwesome;
+    background: rgba(0, 0,0, 0.5);
+    color:white;
+ 	width: 100%;
+    color: rgba(245, 245,245, 0.8);
+    z-index: 2;
+}
+.card-reveal-btn:hover:before {
+    background:rgba(255, 255,255,1);
+    color: black;
+}
+
 /* 모바일 스마트폰 이하 */
 @media only screen and (max-width: 450px){
 	.summoner-chamimg > img{
@@ -128,62 +169,62 @@ div .summoner{
 		border-radius: 100px;
 		font-size: 15px;
 	}
-	.player-chamimg > img{
+	/* .player-chamimg > img{
 		width: 18px;
 		height: 18px;
 		border-radius: 70px;
 	}
-
+	*/
 	.row .vs{
-	width: 10px !important;
-	padding: 0px 0px 0px 0px;
-	font-size: 5px;
-	text-align: center;
-	font-weight: bold;
+		width: 10px !important;
+		padding: 0px 0px 0px 0px;
+		font-size: 5px;
+		text-align: center;
+		font-weight: bold;
 	}
 
 	.kda{
 		margin-left: -10px;
 	}
-	.item-slot .slot{
+	/* .item-slot .slot{
 		width: 23px !important;
 		height: 23px;
 		
+		} */
 	}
-}
-/* 모바일 스마트폰 아이폰 전용 */
-@media only screen and (max-width: 320px){
-	.player-chamimg > img{
-		display: none;
-	}
-	.item-slot .slot{
-		width: 20px !important;
+	/* 모바일 스마트폰 아이폰 전용 */
+	@media only screen and (max-width: 320px){
+		.player-chamimg > img{
+			display: none;
+		}
+	/* .item-slot .slot{
+		 width: 20px !important; 
 		height: 20px;
+		} */
 	}
-}
 
-/* iPads (portrait and landscape) */
-@media only screen
-and (max-width : 1024px) {
-	.item-slot .slot{
+	/* iPads (portrait and landscape) */
+	@media only screen
+	and (max-width : 1024px) {
+	/* .item-slot .slot{
 		width: 30px !important;
 		height: 30px;
 		
+		} */
 	}
-}
-.row .vs{
-	width: 15px !important;
-	padding: 0px 0px 0px 0px;
-	font-size: 15px;
-	text-align: center;
-	font-weight: bold;
-}
-.blueteamborder{
-	border: 2px solid blue;
-}
-.redteamborder{
-	border: 2px solid red;
-}
+	.row .vs{
+		width: 15px !important;
+		padding: 0px 0px 0px 0px;
+		font-size: 15px;
+		text-align: center;
+		font-weight: bold;
+	}
+	.blueteamborder{
+		border: 2px solid blue;
+	}
+	.redteamborder{
+		border: 2px solid red;
+	}
 
 
 	/* .BRONZE{
