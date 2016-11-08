@@ -24,7 +24,7 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams){
 				$scope.recentgame = totaldata['recentgamelist'];
 				$scope.tierurl = totaldata['leagueData'].tier.toLowerCase();
 				$scope.divisionurl = totaldata['leagueData'].entrylist[0].division.toLowerCase();
-				console.log($scope.summonerdata , $scope.leaguedata , $scope.recentgame)
+				
 			});
 			$('.tooltipped').tooltip({delay: 50});
 		},

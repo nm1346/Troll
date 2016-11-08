@@ -91,7 +91,7 @@ myApp.directive('indexSearchform',function($cookies,$timeout,$location){
 					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000)
 					return;
 				}
-				$scope.$emit("searchStart",{});
+				$scope.$emit("loadingOn",{});
 				$timeout(function(){
 					$location.path("/"+summonerName);
 				},1000);	
