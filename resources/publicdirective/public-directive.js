@@ -61,3 +61,27 @@ myApp.directive('statusToast', function(ShardResource){
 		}
 	};
 });
+myApp.directive('loadingCover', function(){
+  return {
+    scope: {}, // {} = isolate, true = child, false/undefined = no change
+    controller: function($scope, $element, $attrs, $transclude) {
+    	$scope.layout={
+    		loading:false,
+    	};
+    	$scope.$on("loadingCoverStart",function(){
+    		$scope.layout.loading=true;
+    	});
+    	$scope.$on("loadingCoverSuccess",function(){
+    		$scope.layout.loading=false;
+    	});
+    	$scope.$on("loadingCoverError",function(){
+    		$scope.layout.loading=false;
+    	});
+    },
+    restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+    templateUrl: '/resources/publicdirective/loading-cover.html',
+    link: function($scope, iElm, iAttrs, controller) {
+      
+    }
+  };
+});
