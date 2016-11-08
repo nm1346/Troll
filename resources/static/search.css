@@ -12,13 +12,12 @@
       position: relative;
    }
    .search-field  {
-       border-radius: 15px 0px 0px 15px;
       transition: all 0.5s;
    }
    .search-field:hover {
       background:rgba(0,0,0,0.4);
    }
-   .search-nav .search-field > input{
+  .search-field > input{
       border:none;
       border-radius: 15px;
       /* background-color: #000000; */
