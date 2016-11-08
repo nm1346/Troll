@@ -12,7 +12,6 @@ myApp.factory('summoner', function(){
 		set:function(data){
 			for (var member in searchdata) delete searchdata[member];
 			angular.extend(searchdata,data);
-			console.log('완료',searchdata);
 		}
 	};
 })

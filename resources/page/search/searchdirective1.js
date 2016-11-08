@@ -6,7 +6,6 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams){
 		 controller: function($scope, $element, $attrs, $transclude) {
 			/*$scope.$emit('searchPageStart',{});*/
 			$scope.$emit('searchPageStart', {loading : true , error : false});
-			console.log('summonerData 생성',$routeParams.summonerName);
 			SearchResource.get({summonerName : $routeParams.summonerName}).$promise.then(function (data) {
 				if (Boolean(Number(data.success))){
 					summoner.set(data);
