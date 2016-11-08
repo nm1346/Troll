@@ -34,7 +34,7 @@ myApp.directive('indexMusic', function(mediaElement,$cookies){
 			mediaElement.setMusic($element.children().eq(0));
 			$scope.music=mediaElement.getMedia().music.element[0];
 			$scope.setting=mediaElement.getMedia().music.setting;
-			console.log($scope.setting);
+			
 			if(angular.isDefined($cookies.get("music"))){
 				if($cookies.get("music")=="true"){
 					$scope.setting.on=true;
@@ -110,7 +110,21 @@ myApp.directive('indexCheckbox', function(mediaElement){
 		controller: function($scope, $element, $attrs, $transclude) {
 			$scope.video=mediaElement.getMedia().video.setting;
 			$scope.music=mediaElement.getMedia().music.setting;
+			$scope.soundmsg = "Click Sound off";
+			$scope.videomsg = "Click Movie off";
+			$scope.musicoff = function () {
+				$scope.music.on = false;
+			}
+			$scope.musicon = function () {
+				$scope.music.on = true;
+			}
 
+			$scope.videoshow = function () {
+				$scope.video.on = false;
+			}
+			$scope.videostop = function () {
+				$scope.video.on = true;
+			}
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/index/index-checkbox.html',

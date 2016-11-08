@@ -1,17 +1,19 @@
+<div class="card-content search-content">
 <form name="searchform" novalidate>
 	<div class="input-field search-input">
-		<input id="search" type="search" placeholder="소환사명을 입력하시오" required ng-model="summonerName">
+		<input id="search" type="search" placeholder="소환사명 입력" required ng-model="summonerName">
 		<label for='search'><i class="material-icons">search</i></label>
 	</div>
-	<button class='btn' ng-disabled="searchform.$invalid" ng-click="search(summonerName)">검색</button>
+	<button class='my' ng-disabled="searchform.$invalid" ng-click="search(summonerName)">검색</button>
+</form>
+</div>
+<div class="card-content search-cookie" ng-if="searchList.length != 0">
 	<div class="row">
-		<h5 class="white-text">검색한 소환사</h5>
 		<div class="col s10 push-s1">
 			<div class="chip" ng-repeat="list in searchList">
 				<span ng-click="cookieClick(list)">{{list}}</span>
 				<i class="close material-icons" ng-click="cookieDelete(list)">close</i>
 			</div>
 		</div>
-
 	</div>
-</form>
+</div>
