@@ -34,7 +34,6 @@ myApp.directive('indexMusic', function(mediaElement,$cookies){
 			mediaElement.setMusic($element.children().eq(0));
 			$scope.music=mediaElement.getMedia().music.element[0];
 			$scope.setting=mediaElement.getMedia().music.setting;
-			console.log($scope.setting);
 			if(angular.isDefined($cookies.get("music"))){
 				if($cookies.get("music")=="true"){
 					$scope.setting.on=true;

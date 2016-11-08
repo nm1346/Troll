@@ -60,6 +60,18 @@ myApp.run(function($rootScope,$window){
 		$rootScope.$apply();
 
 	}
+	$rootScope.$on("CoverOn",function(event,data){
+		$rootScope.$broadcast("backCoverOn",{})
+	})
+	$rootScope.$on("CoverOff",function(event,data){
+		$rootScope.$broadcast("backCoverOff",{})
+	})
+	$rootScope.$on("loadingOn",function(event,data){
+		$rootScope.$broadcast("loadingCoverOn",{})
+	})
+	$rootScope.$on("loadingOff",function(event,data){
+		$rootScope.$broadcast("loadingCoverOff",{})
+	})
 });
 
 </script>

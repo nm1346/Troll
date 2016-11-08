@@ -1,6 +1,6 @@
 myApp.controller('searchCtrl',function(
 	$scope,$routeParams,CurrentGameResource,currentGameData){
-	
+	$scope.$emit("CoverOff",{});
 	$scope.option={
 	    navigation: false,
 	    scrollingSpeed: 700,
@@ -18,6 +18,7 @@ myApp.controller('searchCtrl',function(
 	    },
 	    afterSlideLoad:function(anchor,sectionindex,slideindex){
 	    	if(slideindex == 1 &&sectionindex==1){
+	    		$scope.$emit("CoverOn",{});
 	            CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){
 	            	currentGameData.set(data)
 				},function(error){
@@ -26,6 +27,11 @@ myApp.controller('searchCtrl',function(
 
 	        }
 
+	    },
+	    onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
+	    	if(slideIndex == 1 ||index==1){
+	    		$scope.$emit("CoverOff",{});
+	    	}
 	    }
 	};
 });

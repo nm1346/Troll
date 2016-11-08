@@ -27,13 +27,14 @@ myApp.directive('backCover',function($routeParams,$location){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {	
-			$scope.$on("$routeChangeSuccess",function(){
-				if(angular.isUndefined($routeParams.summonerName)&&!($location.path()=="/static/")){
-					$scope.params=true;
-	
-				}else{
-					$scope.params=false;
-				}
+			$scope.layout={
+				on:true
+			};
+			$scope.$on("backCoverOn",function(event,data){
+				$scope.layout.on=true;
+			});
+			$scope.$on("backCoverOff",function(event,data){
+				$scope.layout.on=false;
 			});
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
@@ -68,13 +69,10 @@ myApp.directive('loadingCover', function(){
     	$scope.layout={
     		loading:false,
     	};
-    	$scope.$on("loadingCoverStart",function(){
+    	$scope.$on("loadingCoverOn",function(){
     		$scope.layout.loading=true;
     	});
-    	$scope.$on("loadingCoverSuccess",function(){
-    		$scope.layout.loading=false;
-    	});
-    	$scope.$on("loadingCoverError",function(){
+    	$scope.$on("loadingCoverOff",function(){
     		$scope.layout.loading=false;
     	});
     },
