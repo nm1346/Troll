@@ -8,7 +8,6 @@ myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,stati
 				staticLocaleData.set(data);
 				$scope.data=staticLocaleData.get();
 				$scope.$emit("categoryChangeSuccess",{});
-				console.log(data);
 			},function(error){
 				$scope.$emit("categoryChangeError",error);
 				
@@ -33,7 +32,6 @@ myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,stati
 						category:staticData.selected()
 					}).$promise.then(function(data){
 						staticData.set(data);
-						console.log(data);
 						$scope.$emit("mainChangeSuccess",staticData.selected());
 					},function(error){
 						$scope.$emit("mainChangeError",error);
@@ -43,15 +41,11 @@ myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,stati
 					$scope.$emit("mainChangeError",{});
 
 				});
-
 			}
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/static/static-nav.html',
 		link: function($scope, iElm, iAttrs, controller) {
-			
-			
-			
 		}
 	};
 });
@@ -94,9 +88,6 @@ myApp.directive('staticChampion', function(StaticLocaleResource,staticLocaleData
 					id:id
 				}).$promise.then(function(data){
 					staticDetail.set(data);
-					/*console.log(data);
-					console.log(staticLocaleData.get());
-					console.log(staticData.get());*/
 					$scope.$broadcast("championModalChangeSuccess",{});
 				},function(error){
 					$scope.$broadcast("championModalChangeError",error);
@@ -111,6 +102,7 @@ myApp.directive('staticChampion', function(StaticLocaleResource,staticLocaleData
 });
 
 myApp.directive('staticChampionmodal',function(staticLocaleData,staticData,staticDetail,$sce){
+
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
