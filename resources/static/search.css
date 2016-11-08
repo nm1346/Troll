@@ -12,6 +12,10 @@
   z-index: 3;
   position: relative;
 }
+
+.soundmovie{
+  margin-bottom: 0;
+}
 .search-card{
   border-radius: 15px 10px 10px 15px;
   background:rgba(175, 180, 43,0.1);
@@ -128,6 +132,7 @@
   border: none;
   box-shadow: none;
   z-index: 4;
+  margin-bottom: 0;
 }
 .logo-search-field {
   margin: 13px auto 0px auto;

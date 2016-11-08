@@ -2,8 +2,12 @@
    <img src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{item}}.png">
 </div> -->
 
-
-<div class="black-text ngFade" ng-if="data.success">
+<div class="center" ng-if="data.errorCode==404" >
+  <h3 class="white-text">현재 게임중이 아닙니다!</h3>
+  <h5 class="white-text">{{data.errorMessage}}</h5>
+  <button class="btn" ng-click="back()">돌아가기</button>
+</div>
+<div class="black-text ngFade" ng-if="data.success" ng-cloak>
   <h3 class="center white-text">CURRENT GAME INFO</h3>
   <br>
   <div class="center white-text">

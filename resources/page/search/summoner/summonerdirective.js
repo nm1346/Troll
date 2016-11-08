@@ -28,7 +28,7 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams){
 			$('.tooltipped').tooltip({delay: 50});
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
-		templateUrl: '/resources/page/search/summonerdata.html',
+		templateUrl: '/resources/page/search/summoner/summonerdata.html',
 		link: function($scope, iElm, iAttrs, controller) {
 		}
 	};

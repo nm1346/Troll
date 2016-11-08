@@ -21,17 +21,20 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval){
           }
 
         }, 1000);
+        $scope.back=function(){
+          $.fn.fullpage.moveSlideLeft();
+        }
 
 // var sec_gap = gap / 1000;
 // var min_gap = gap / 1000 /60;
 
-          },
+},
        restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
       //template: 'asdasd',
       templateUrl: '/resources/page/search/currentGame/currentGame.html',
       link: function($scope, iElm, iAttrs, controller) {
-         
+
       }
-   };
-});
+    };
+  });
 

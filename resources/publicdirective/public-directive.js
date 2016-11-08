@@ -72,20 +72,7 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement){
 					$location.path("/"+summonerName);
 				},1000);	
 			}
-			$scope.coverLayout={
-				on:false
-			};
-			$scope.menuClick=function(){
-				if($scope.coverLayout.on==true){
-					$scope.coverLayout.on=false;
-				}else{
-					$scope.coverLayout.on=true;
-				}
-			}
-			$scope.coverClick=function(){
-				$scope.coverLayout.on=false;
-			}
-			$scope.media=mediaElement.getMedia();
+			
 
 
 		},
