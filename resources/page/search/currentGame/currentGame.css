@@ -16,5 +16,6 @@
 .container.currentGame{
 		background-color: rgba(255,255,255,0.9);
 		background-image: url("/resources/page/search/currentgame/images/Background.png");
-		background-size: 100% 100%;
+		background-size: 100%;
+		padding-top: 1%;
 }

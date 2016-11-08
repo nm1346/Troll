@@ -9,6 +9,7 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams){
 			SearchResource.get({summonerName : $routeParams.summonerName}).$promise.then(function (data) {
 				if (Boolean(Number(data.success))){
 					summoner.set(data);
+					console.log(data)
 					$scope.$emit('searchPageSuccess', {loading : false , error : false});
 				}else{
 					$scope.$emit('searchPageError', {errorCode : data.errorcode , errorMessage : data.errormsg});
@@ -26,6 +27,7 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams){
 				
 			});
 			$('.tooltipped').tooltip({delay: 50});
+
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/summonerdata.html',

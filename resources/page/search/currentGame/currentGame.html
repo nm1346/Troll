@@ -6,11 +6,12 @@
 
 
 <div class="black-text ngFade" ng-if="data.success">
-  <h3 class="center white-text">CURRENT GAME INFO</h3>
-  <br>
+  <h4 class="center white-text">인게임중</h4>
   <div class="center white-text">
+    {{data.gametype[0]}}<br>
     <i class="tiny material-icons center">schedule</i>  <span>{{time}}</span>
   </div>
+
   <div class="container currentGame">
     <div class="row"><!-- 'resources/page/search/currentGame/images/challenger.png' -->
       <div class="col l10 push-l1 m10 push-m1 s10 push-s1">
@@ -55,7 +56,7 @@
        </div>
      </div>
    </div>
-   
+   <br><br>
 
    <div class="row"><!-- 'resources/page/search/currentGame/images/challenger.png' -->
     <div class="col l10 push-l1 m10 push-m1 s10 push-s1">
