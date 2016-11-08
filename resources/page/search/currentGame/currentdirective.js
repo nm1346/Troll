@@ -21,9 +21,6 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval){
 
         }, 1000);
 
-         
-
-
 // var sec_gap = gap / 1000;
 // var min_gap = gap / 1000 /60;
 
@@ -36,3 +33,4 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval){
       }
    };
 });
+

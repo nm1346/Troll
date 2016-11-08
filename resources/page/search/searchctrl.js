@@ -18,10 +18,8 @@ myApp.controller('searchCtrl',function(
 	    },
 	    afterSlideLoad:function(anchor,sectionindex,slideindex){
 	    	if(slideindex == 1 &&sectionindex==1){
-	    		console.log($routeParams);
 	            CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){
 	            	currentGameData.set(data)
-	            	console.log(data);
 				},function(error){
 					console.log(error);
 				});
