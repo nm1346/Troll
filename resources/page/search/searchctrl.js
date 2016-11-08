@@ -1,10 +1,14 @@
-myApp.controller('searchCtrl',function($scope,$routeParams,CurrentGameResource,currentGameData){
+myApp.controller('searchCtrl',function(
+	$scope,$routeParams,CurrentGameResource,currentGameData){
+	
 	$scope.option={
 	    navigation: false,
-	    navigationPosition: 'right',
 	    scrollingSpeed: 700,
 	    loopBottom:true,
 	    responsiveWidth: 600,
+	    controlArrows:false, 
+	    verticalCentered: true,
+	    continuousVertical: false,
 	    afterLoad: function(anchorLink, index){ 
 	            var loadedSection = $(this);
 	            //using index
@@ -23,6 +27,7 @@ myApp.controller('searchCtrl',function($scope,$routeParams,CurrentGameResource,c
 				});
 
 	        }
+
 	    }
 	};
 });
