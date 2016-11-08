@@ -72,7 +72,7 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement){
 					$location.path("/"+summonerName);
 				},1000);	
 			}
-			
+
 
 
 		},
@@ -87,8 +87,21 @@ myApp.directive('statusToast', function(ShardResource){
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
 			ShardResource.get().$promise.then(function(data){
-				console.log(data);
-				
+				var index=0;
+				for(var i=0;i<data.services.length;i++){
+					if(data.services[i].status!="online"){
+						index=i;
+						break;
+					}
+				}
+				if(index==data.services.length){
+					Materialize.toast(data.services[index].name+"이 현재 점검중입니다.",20000)
+				}
+				for(var i=0;i<data.services.length;i++){
+					if(data.services[i].incidents.length!=0){
+						Materialize.toast(data.services[i].incidents[0].updates[0].content,20000)
+					}
+				}
 			},function(error){
 				console.log(error);
 			});
