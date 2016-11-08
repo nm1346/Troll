@@ -1,40 +1,39 @@
-/*troll.gg css요소*/
 
 .ngNavIndex{
-		/*top:30%;
-		position: fixed;*/
-		transition: all 0.5s;
-	}
-	.ngNavOther{
-		/*top:0%;
-		position: fixed;*/
-		transition: all 0.5s;
-	}
-	
-	.ngFade{
-		opacity: 1
-	}
-	.ngFade.ng-enter{
-		opacity: 0;
-		transition:all 1s;
-	}
-	.ngFade.ng-enter-active{
-		opacity: 1;
-	}
-	.section{
-		z-index:4;
-	}
-	.ngVideo{
-		opacity: 1;
-	}
-	.ngVideo.ng-leave{
-		opacity: 1;
-		transition: all 0.5s;
-	}
-	.ngVideo.ng-leave-active{
-		opacity: 0;
-	}
-	
+      /*top:30%;
+      position: fixed;*/
+      transition: all 0.5s;
+   }
+   .ngNavOther{
+      /*top:0%;
+      position: fixed;*/
+      transition: all 0.5s;
+   }
+   
+   .ngFade{
+      opacity: 1
+   }
+   .ngFade.ng-enter{
+      opacity: 0;
+      transition:all 1s;
+   }
+   .ngFade.ng-enter-active{
+      opacity: 1;
+   }
+   .section{
+      z-index:4;
+   }
+   .ngVideo{
+      opacity: 1;
+   }
+   .ngVideo.ng-leave{
+      opacity: 1;
+      transition: all 0.5s;
+   }
+   .ngVideo.ng-leave-active{
+      opacity: 0;
+   }
+   
 
 	.backVideo{
 		position: fixed;
@@ -136,3 +135,4 @@
 		transition: all 1s;
 	}
 	
+

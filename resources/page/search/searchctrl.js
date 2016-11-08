@@ -9,6 +9,7 @@ myApp.controller('searchCtrl',function(
 	    controlArrows:false, 
 	    verticalCentered: true,
 	    continuousVertical: false,
+
 	    afterLoad: function(anchorLink, index){ 
 	            var loadedSection = $(this);
 	            //using index
@@ -34,4 +35,23 @@ myApp.controller('searchCtrl',function(
 	    	}
 	    }
 	};
+	$scope.search={
+		loading:false,
+		error:false
+	};
+	$scope.$on("searchPageStart",function(event,data){
+		$scope.search.loading=data.loading;
+		$scope.search.error=data.error;
+	});
+
+	$scope.$on("searchPageError",function(event,data){
+		$scope.search.error=true;
+		$scope.search.errorCode=data.errorCode;
+		$scope.search.errorMessage=data.errorMessage;
+	});
+	$scope.$on("searchPageSuccess",function(event,data){
+		$scope.search.loading=data.loading;
+		$scope.search.error=data.error;
+		$scope.$broadcast('pageonview', {});
+	});
 });
