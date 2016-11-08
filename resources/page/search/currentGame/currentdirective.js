@@ -1,23 +1,25 @@
-myApp.directive('currentGame', function(currentGameData,$filter){
+myApp.directive('currentGame', function(currentGameData,$filter,$interval){
    // Runs during compile
    return {
       scope: {}, // {} = isolate, true = child, false/undefined = no change
-      controller: function($scope, $element, $attrs, $transclude, $interval) {
+      controller: function($scope, $element, $attrs, $transclude) {
         $scope.data = currentGameData.get();
         $interval(function () {
-           var o = new Date($scope.data.gameInfo.gameStartTime)
-           var n = new Date()
-           var r = n.getTime() - o.getTime()
-             var r2 = new Date(r)
-             $scope.time = Math.floor(r / 1000 / 60) + ':' + r2.getSeconds()
-             if(r2.getSeconds() < 10){
-                $scope.time = Math.floor(r / 1000 / 60) + ':0' + r2.getSeconds()
-             }
-             if(Math.floor(r / 1000 / 60) > 1000){
-                $scope.time = '시간을 받아오는중..'
-             }
+          if(Object.keys($scope.data).length!=0&&$scope.data.success!=false){
+            var o = new Date($scope.data.gameInfo.gameStartTime)
+            var n = new Date()
+            var r = n.getTime() - o.getTime()
+            var r2 = new Date(r)
+            $scope.time = Math.floor(r / 1000 / 60) + ':' + r2.getSeconds()
+            if(r2.getSeconds() < 10){
+              $scope.time = Math.floor(r / 1000 / 60) + ':0' + r2.getSeconds()
+            }
+            if(Math.floor(r / 1000 / 60) > 1000){
+              $scope.time = '시간을 받아오는중..'
+            }
+          }
 
-          }, 1000);
+        }, 1000);
 
          
 
