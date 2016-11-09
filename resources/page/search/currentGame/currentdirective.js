@@ -3,8 +3,9 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval){
    return {
       scope: {}, // {} = isolate, true = child, false/undefined = no change
       controller: function($scope, $element, $attrs, $transclude) {
+        var c = 0;  
         $scope.data = currentGameData.get();
-		console.log($scope.data);
+		    console.log($scope.data);
         $interval(function () {
           if(Object.keys($scope.data).length!=0&&$scope.data.success!=false){
             var o = new Date($scope.data.gameInfo.gameStartTime)
@@ -16,7 +17,18 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval){
               $scope.time = Math.floor(r / 1000 / 60) + ':0' + r2.getSeconds()
             }
             if(Math.floor(r / 1000 / 60) > 1000){
-              $scope.time = '시간을 받아오는중..'
+
+              if(c == 0){
+                $scope.time = '시간을 받아오는중.'
+                c++
+              }else if (c == 1) {
+                $scope.time = '시간을 받아오는중..'
+                c++
+              }else if (c == 2) {
+                $scope.time = '시간을 받아오는중...'
+                c = 0
+              }
+              
             }
           }
 

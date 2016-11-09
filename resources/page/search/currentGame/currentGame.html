@@ -6,22 +6,32 @@
 
 
 <div class="black-text ngFade" ng-if="data.success">
-  <h4 class="center white-text">인게임중</h4>
-  <div class="center white-text">
+
+  <!-- <h4 class="center white-text">인게임중</h4> -->
+  
+  <div class="center white-text" style="position: relative; z-index: 2;">
     {{data.gametype[0]}}<br>
-    <i class="tiny material-icons center">schedule</i>  <span>{{time}}</span>
+    <i class="tiny material-icons center">schedule</i><span>{{time}}</span>
   </div>
 
   <div class="container currentGame">
     <div class="row"><!-- 'resources/page/search/currentGame/images/challenger.png' -->
+    <div class="col s2 offset-s5">     
+        <img src="/resources/page/search/currentgame/images/logo4.png" style="width: 100%; position: relative; z-index: 1">
+      </div>
+      <br><br><br><br>
+    <div class="col s12">
+    <img class="responsive-img" ng-srcset="/resources/page/search/currentgame/images/Background2.png" style="position: absolute; width: 60%; height: 100%; margin-left: -320px; margin-top: -200px; z-index: 0">
+    </div>
+      
       <div class="col l10 push-l1 m10 push-m1 s10 push-s1">
         <div class="col l2 push-l1 m2 push-m1 s2 push-s1" ng-repeat="item in data.championKey1">
 
           <div class="col l12 m12 s12">
-            <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{item}}_0.jpg" style="">
+            <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{item}}_0.jpg">
           </div>
 
-          <div class="col l12 m12 s12" id="sname1">
+          <div class="col l12 m12 s12 sname">
             {{data.summonerName_list1[$index]}}
           </div>
 
@@ -56,7 +66,6 @@
        </div>
      </div>
    </div>
-   <br><br>
 
    <div class="row"><!-- 'resources/page/search/currentGame/images/challenger.png' -->
     <div class="col l10 push-l1 m10 push-m1 s10 push-s1">
@@ -66,7 +75,7 @@
           <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{item}}_0.jpg" style="">
         </div>
 
-        <div class="col l12 m12 s12" id="sname2">
+        <div class="col l12 m12 s12 sname2">
           {{data.summonerName_list2[$index]}}
         </div>
 

@@ -23,6 +23,7 @@ myApp.controller('searchCtrl',function(
 	    		$scope.$emit("CoverOn",{});
 	    		$scope.$emit("loadingOn",{});
 	            CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){
+	            	console.log(data)
 	            	currentGameData.set(data);
 	            	$scope.$emit("loadingOff",{});
 				},function(error){
