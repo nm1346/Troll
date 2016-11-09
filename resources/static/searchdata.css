@@ -1,0 +1,206 @@
+
+div .summoner{
+	background-color: #607d8b;
+	font-size: 20px;
+	font-weight: 100;
+	color: white;
+}
+.icon_img{
+	margin:auto auto auto auto;
+	height: 100%;
+	width: 100%;
+}
+.tier_icon_img{
+	display: block;
+}
+.card-stacked .card-content .nickname {
+	margin-top: -15px;
+	margin-left: -10px;
+
+}
+ .recent{
+	margin: 0;
+	padding: 10px !important; 
+}
+.recent-games{
+	border-radius: 120px;
+}
+ /* .win{
+ 	background-color : grey;
+ }
+ .lose{
+ 	background-color : black;
+ } */
+.card {
+	text-align: center;
+}
+ .card .recentcontent{
+	padding: 5px;
+}
+
+.card .gamewins{
+	text-align: center;
+	border-right: 1px solid #f1f1f1;
+	 padding: 0; 
+}
+
+.my-chamimg{
+	margin-top: 8px;
+	width: 65px;
+	height: 65px;
+	border-radius: 100px;
+	border: 2px solid grey;
+}
+.player-chamimg > img{
+	width: 35px;
+	height: 35px;
+	border-radius: 70px;
+}
+.card .allplayers{
+	text-align: center;
+	margin-right: 100px;
+}
+.kda{
+	margin-left: -2px;
+}
+
+.kdared{
+	color : red;
+	font-weight: bold;
+}
+
+.kdablue{
+	color : blue;
+	font-weight: bold;
+}
+.item-slot{
+	padding: 0;
+	margin-left: 15px;
+}
+
+.item-slot .slot{
+	background: rgba(0,0,0, 0.5);
+	line-height: 0 !important;
+	text-align: center !important;
+	height: 30px;
+	font-size: 0;
+	display: table-cell;
+	padding: 1px 1px 1px 1px;
+	border-radius: 5px;
+}
+
+.item-slot .slot > img{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+}
+
+
+.spell-slot{
+	float: right !important;
+}
+
+.spell-slot .slot{
+	background: rgba(0,0,0, 0.5);
+	line-height: 0 !important;
+	text-align: center !important;
+	width: 25px !important;
+	height: 25px;
+	font-size: 0;
+	display: table-cell;
+	padding: 1px 1px 1px 1px;
+	border-radius: 5px;
+}
+.spell-slot .slot > img{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+}
+.my-chamimg {
+}
+/* 모바일 스마트폰 이하 */
+@media only screen and (max-width: 450px){
+	.summoner-chamimg > img{
+		width: 50px;
+		height: 50px;
+		border-radius: 100px;
+		font-size: 15px;
+	}
+	.player-chamimg > img{
+		width: 18px;
+		height: 18px;
+		border-radius: 70px;
+	}
+
+	.row .vs{
+	width: 10px !important;
+	padding: 0px 0px 0px 0px;
+	font-size: 5px;
+	text-align: center;
+	font-weight: bold;
+	}
+
+	.kda{
+		margin-left: -10px;
+	}
+	.item-slot .slot{
+		width: 23px !important;
+		height: 23px;
+		
+	}
+}
+/* 모바일 스마트폰 아이폰 전용 */
+@media only screen and (max-width: 320px){
+	.player-chamimg > img{
+		display: none;
+	}
+	.item-slot .slot{
+		width: 20px !important;
+		height: 20px;
+	}
+}
+
+/* iPads (portrait and landscape) */
+@media only screen
+and (max-width : 1024px) {
+	.item-slot .slot{
+		width: 30px !important;
+		height: 30px;
+		
+	}
+}
+.row .vs{
+	width: 15px !important;
+	padding: 0px 0px 0px 0px;
+	font-size: 15px;
+	text-align: center;
+	font-weight: bold;
+}
+.blueteamborder{
+	border: 2px solid blue;
+}
+.redteamborder{
+	border: 2px solid red;
+}
+
+
+	/* .BRONZE{
+		background-image: url("http://sk2.op.gg/images/borders2/bronze.png");
+	}
+	.GOLD{
+		background-image: url("http://sk2.op.gg/images/borders2/gold.png");
+	}
+	.SILVER{
+		background-image: url("http://sk2.op.gg/images/borders2/silver.png");
+	}
+	.PLATINUM{
+		background-image: url("http://sk2.op.gg/images/borders2/platinum.png");
+	}
+	.MASTER{
+		background-image: url("http://sk2.op.gg/images/borders2/master.png");
+	}
+	.CHALLENGER{
+		background-image: url("http://sk2.op.gg/images/borders2/challenger.png");
+	} */

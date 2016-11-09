@@ -1,32 +1,138 @@
-/*troll.gg css요소*/
+
 .ngNavIndex{
-		top:30%;
+      /*top:30%;
+      position: fixed;*/
+      transition: all 0.5s;
+   }
+   .ngNavOther{
+      /*top:0%;
+      position: fixed;*/
+      transition: all 0.5s;
+   }
+   
+   .ngFade{
+      opacity: 1
+   }
+   .ngFade.ng-enter{
+      opacity: 0;
+      transition:all 1s;
+   }
+   .ngFade.ng-enter-active{
+      opacity: 1;
+   }
+   .section{
+      z-index:4;
+   }
+   .ngVideo{
+      opacity: 1;
+   }
+   .ngVideo.ng-leave{
+      opacity: 1;
+      transition: all 0.5s;
+   }
+   .ngVideo.ng-leave-active{
+      opacity: 0;
+   }
+   
+
+	.backVideo{
 		position: fixed;
-		transition: all 0.5s;
+		right: 0;
+		bottom: 0;
+		top:0;
+		right:0;
+		width: 100%;
+		height: 100%;
+		background-size: 100% 100%;
+ 		background-color: black; /* in case the video doesn't fit the whole page*/
+  		background-image: /* our video */;
+  		background-position: center center;
+  		background-size: contain;
+   		object-fit: cover; /*cover video background */
+   		z-index:1;
 	}
-	.ngNavOther{
-		top:0%;
+	.backCover{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		top:0;
+		right:0;
+		width: 100%;
+		height: 100%;
+		background-size: 100% 100%;
+ 		background-color: rgba(0,0,0,0.5); /* in case the video doesn't fit the whole page*/
+  		background-image: /* our video */;
+  		background-position: center center;
+  		background-size: contain;
+   		object-fit: cover; /*cover video background */
+  		z-index:2;
+   		transition: all 0.5s;
+	}
+	.backImage{
 		position: fixed;
-		transition: all 0.5s;
+		right: 0;
+		bottom: 0;
+		top:0;
+		right:0;
+		width: 100%;
+		height: 100%;
+		background-size: 100% 100%;
+ 		background-color: rgba(0,0,0,0.5); /* in case the video doesn't fit the whole page*/
+  		background-image: /* our video */;
+  		background-position: center center;
+  		background-size: contain;
+  		z-index: 0;
+	}
+	.backCover.ng-enter{
+		background-color: rgba(0,0,0,0);
+		transition: all 1s;
+	}
+	.backCover.ng-enter-active{
+		background-color: rgba(0,0,0,0.5);
+		transition: all 1s;
+	}
+	.backCover.ng-leave{
+		background-color: rgba(0,0,0,0.5);
+		transition: all 1s;
+	}
+	.backCover.ng-leave-active{
+		background-color: rgba(0,0,0,0);
+		transition: all 1s;
+	}
+
+	.loadingCover{
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		top:0;
+		right:0;
+		width: 100%;
+		height: 100%;
+		background-size: 100% 100%;
+ 		background-color: rgba(0,0,0,0.8); /* in case the video doesn't fit the whole page*/
+  		background-image: /* our video */;
+  		background-position: center center;
+  		background-size: contain;
+   		object-fit: cover; /*cover video background */
+  		z-index:3;
+   		transition: all 0.5s;
+	}
+	.loadingCover.ng-enter{
+		background-color: rgba(0,0,0,0.0);
+		transition: all 1s;
+	}
+	.loadingCover.ng-enter-active{
+		background-color: rgba(0,0,0,0.7);
+		transition: all 1s;
+	}
+
+	.loadingCover.ng-leave{
+		background-color: rgba(0,0,0,0.5);
+		transition: all 1s;
+	}
+	.loadingCover.ng-leave-active{
+		background-color: rgba(0,0,0,0);
+		transition: all 1s;
 	}
 	
-	.ngFade{
-		background-color:#fff;
-	}
-	.ngFade.ng-enter{
-		background-color:#fff;
-		transition:all 1s;
-	}
-	.ngFade.ng-enter-active{
-		background-color:#7986cb;
-	}
-	.ngFade.ng-leave{
-		background-color:#7986cb;
-		transition:all 1s;
-	}
-	.ngFade.ng-leave-active{
-		background-color:#fff;
-	}
-	.ngGridSearch{
-		transition: all 0.5s
-	}
+

@@ -1,0 +1,20 @@
+@media (max-width: 400px) {
+#sname1{
+	font-size: 1px;
+}
+}
+@media (min-width: 500px) and (max-width: 600px) {
+
+#sname1{
+	font-size: 10px;
+}
+
+}
+
+
+
+.container.currentGame{
+		background-color: rgba(255,255,255,0.9);
+		background-image: url("/resources/page/search/currentgame/images/Background.png");
+		background-size: 100% 100%;
+}
