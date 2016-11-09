@@ -23,19 +23,20 @@ myApp.controller('searchCtrl',function(
 	            CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){
 	            	currentGameData.set(data)
 	            	console.log(data);
+	            	$scope.$broadcast('challloadsuccess',{});
 				},function(error){
 					console.log(error);
 				});
-
 	        }
+	    },
 
-	    }
 	};
 	console.log("생성됨 indexctrl");
 	$scope.search={
 		loading:false,
 		error:false
 	};
+
 	$scope.$on("searchPageStart",function(event,data){
 		$scope.search.loading=data.loading;
 		$scope.search.error=data.error;

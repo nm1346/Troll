@@ -3,8 +3,9 @@
      <a href="#" class="brand-logo">&nbsp;&nbsp;Troll.GG</a>
      <ul id="nav-mobile" class="right hide-on-med-and-down logo-nav-ul">
        <li class="row">
-       <div class="logo-search-field col s12">
-		    <input  type="search" class='col s10 logo-search-input'  required placeholder="소환사명 검색" ng-model='summonerName'>
+     <div class="logo-search-field col s12">
+		    <input  type="search" class='col s10 logo-search-input'  required placeholder="소환사명 검색" ng-model='summonerName' 
+         ng-keypress="keysearch($event,summonerName)"> 
 				<label for="search" class="search-label"><i class="material-icons" ng-click="search(summonerName)">search</i></label>
 		</div>
 		</li>

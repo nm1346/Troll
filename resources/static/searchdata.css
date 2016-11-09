@@ -17,17 +17,41 @@ div .summoner{
 	margin-top: -15px;
 	margin-left: -10px;
 }
+.card .statscard{
+	padding: 15px;
+	background-color: #f4ff81;
+}
+.gamedata{
+}
 .recent{
 	/* margin: 0; */
 	padding:10px 10px 10px 10px; 
 	/* width: 20% !important; */
 	text-align: center;
 }
-.gamedata .victory{
-	float: left;
+.victory{
+	font-size: 1rem;
+	font-weight: bold;	
 }
-.gamedata .gametime{
+.subtype {
+	text-align: right;
 	float: right;
+	font-size: .9em;
+	font-weight: bold;
+	color : rgba(70, 70, 70,0.5);
+}
+.승리{
+	color : blue;
+}
+.패배{
+	color : red;
+}
+.gametime{
+	float: left;
+	text-align: center;
+	font-size: .8rem;
+	color : rgba(50, 50, 50,0.8);
+	font-weight: bold;
 }
 
 .my-chamimg{
@@ -62,9 +86,20 @@ div .summoner{
 }
 .win{
 	background: rgba(187, 222, 251 , 0.8);
+	color:rgba(92, 107, 192, 1);
 }
 .lose{
 	background: rgba(255, 205, 210 , 0.8);
+	color:rgba(236, 64, 122, 1);
+}
+
+.win:before{
+	background: rgba(187, 222, 251 , 0.8);
+	color:rgba(92, 107, 192, 1);
+}
+.lose:before{
+	background: rgba(255, 205, 210 , 0.8);
+	color:rgba(236, 64, 122, 1);
 }
 
 .item-slot{
@@ -129,34 +164,48 @@ div .summoner{
 	border-radius:5px 0 0 5px;
 }
 
-.recent .card-reveal-btn{
+.recent .card-btn{
 	cursor: pointer;
 	/* text-transform: uppercase; */
 	background: rgba(0, 0, 0,0.0);
 	color: #fff;
 	position: relative;
 	width: 100%;
-	border-radius: 15px 15px 0 0;
+	border-radius: 7px 7px 0 0;
 }
-
-.recent .card-reveal-btn:before{
+.statscard-btn:before{
 	-webkit-transition: all 0.3s ease-in;
 	-moz-transition: all 0.3s ease-in;
 	transition: all 0.3s ease-in;
 	position: absolute;
+	font-weight: bold;
 	height: 100%;
 	left: 0;
 	top: 0;
 	width: 100%;
-	content: "Game Stats  \f106";
-    font-family: FontAwesome;
-    background: rgba(0, 0,0, 0.5);
-    color:white;
+	content: "Player Stats \f106";
+	font-family: FontAwesome;
  	width: 100%;
-    color: rgba(245, 245,245, 0.8);
+    z-index: 2;
+    border-right: 1px solid #f1f1f1;
+}
+.match-btn:before{
+	-webkit-transition: all 0.3s ease-in;
+	-moz-transition: all 0.3s ease-in;
+	transition: all 0.3s ease-in;
+	position: absolute;
+	font-weight: bold;
+	height: 100%;
+	left: 0;
+	top: 0;
+	width: 100%;
+	content: "match up \f002";
+	font-family: FontAwesome;
+ 	width: 100%;
     z-index: 2;
 }
-.card-reveal-btn:hover:before {
+
+.card-btn:hover:before {
     background:rgba(255, 255,255,1);
     color: black;
 }

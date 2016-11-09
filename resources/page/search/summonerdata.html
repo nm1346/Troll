@@ -9,58 +9,58 @@
     </div>
   </div>
 </div>end summoner card -->
-
-
-
-
-
-
 <div class="container row"> 
-  <div class="col l2 card recent  {{data.rawstats.win | victoryclassfilter}} center-align padding-bottom-hide" ng-repeat="data in recentgame" style="padding-left: -5px;">
+  <div class="col l2 s12 card recent  {{data.rawstats.win | victoryclassfilter}} center-align padding-bottom-hide" ng-repeat="data in recentgame" style="padding-left: -5px;">
    <!-- 승패여부 게임기본정보 -->
-   <div class="card-content gamedata">
-    <b class="victory">{{data.rawstats.win | victoryfilter}}</b>
-    <div class="gametime"> {{data.rawstats.timePlayed | gametimefilter}}</div>
+   <div class="col s12 card-content gamedata padding-hide left-align ">
+   <div class="col s12">
+   <span class="victory {{data.rawstats.win | victoryfilter}}">{{data.rawstats.win | victoryfilter}}</span>
+   <span class="subtype" tooltipped data-position="top" data-delay="100" data-tooltip="{{data.createDate | gamedatefilter}}">
+   {{data.createDate | gameendtimefilter}}[{{data.subType | gametypefilter}}]</span></div>
+   <!-- <div class="col s12">{{data.createDate | gameendtimefilter}}</div> -->
   </div>
-
-
+   <div class="col s12 card-content gamedata padding-hide left-align">
+   <div class="gametime">{{data.rawstats.timePlayed | gametimefilter}}</div>
+  </div>
   <!-- 영웅이미지  스펠 아이템-->
   <div class="card-content padding-top-hide padding-bottom-hide">
-    <img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{data.chamName1}}.png" tooltipped data-position="top" data-delay="50" data-tooltip="{{data.chamName2}}"/>
+    <img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{data.chamName1}}.png" tooltipped data-position="top" data-delay="50" data-tooltip="{{data.chamName2}}" err-src/>
     <div class="spell-slot padding-hide">
       <div class="slot">
-        <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item6}}.png"/>
+        <img ng-if="data.rawstats.item6 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item6}}.png" err-src/>
       </div>
       <div class="slot">
-        <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/spell/{{data.spellName1}}.png"/>
+        <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/spell/{{data.spellName1}}.png" err-src/>
       </div>
       <div class="slot">
-        <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/spell/{{data.spellName2}}.png"/>
+        <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/spell/{{data.spellName2}}.png" err-src/>
       </div>
     </div>
     <div class="row">
       <div class="col s12">&nbsp;</div>
       <div class="col s10 item-slot push-s1">
        <div class="col l4  s2 slot">
-         <img  ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item0}}.png"/>
+         <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item0}}.png" err-src/>
        </div>
-       <!--  <img ng-if="data.rawstats.item0 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item0}}.png"/> -->
-       <div class="col l4 s2 slot" tooltipped data-position="top" data-delay="100" data-tooltip="I am tooltip"><img ng-if="data.rawstats.item1 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item1}}.png"/></div>
-       <div class="col l4 s2 slot"><img ng-if="data.rawstats.item2 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item2}}.png"/></div>
-       <div class="col l4 s2 slot"><img ng-if="data.rawstats.item3 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item3}}.png"/></div>
-       <div class="col l4 s2 slot"><img ng-if="data.rawstats.item4 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item4}}.png"/></div>
-       <div class="col l4 s2 slot"><img ng-if="data.rawstats.item5 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item5}}.png"/></div>
+       <div class="col l4 s2 slot" tooltipped data-position="top" data-delay="100" data-tooltip="I am tooltip"><img ng-if="data.rawstats.item1 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item1}}.png" err-src/></div>
+       <div class="col l4 s2 slot"><img ng-if="data.rawstats.item2 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item2}}.png" err-src /></div>
+       <div class="col l4 s2 slot"><img ng-if="data.rawstats.item3 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item3}}.png" err-src/></div>
+       <div class="col l4 s2 slot"><img ng-if="data.rawstats.item4 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item4}}.png" err-src/></div>
+       <div class="col l4 s2 slot"><img ng-if="data.rawstats.item5 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item5}}.png" err-src/></div>
      </div> 
    </div>
  </div>
-
- <div class="card-content activator card-reveal-btn padding-hide waves-effect waves-light">
+<div class="col s12 card-content padding-hide">
+ <div class="col s6 activator card-btn statscard-btn padding-hide waves-effect waves-light {{data.rawstats.win | victoryclassfilter}}">
   &nbsp;
 </div>
+<div class="col s6 card-btn match-btn padding-hide waves-effect waves-light {{data.rawstats.win | victoryclassfilter}}">
+  &nbsp;
+</div>
+</div>
 
-<div class="card-reveal">
-  <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-  <p>Here is some more information about this product that is only revealed once clicked on.</p>
+<div class="card-reveal statscard {{data.rawstats.win | victoryclassfilter}} ">
+  <span class="col s12 card-title padding-hide"><i class="material-icons right">close</i></span>
 </div>
 
 </div><!-- end recent -->
