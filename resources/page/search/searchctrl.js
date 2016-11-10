@@ -1,5 +1,10 @@
-myApp.controller('searchCtrl',function(
-	$scope,$routeParams,CurrentGameResource,currentGameData){
+myApp.controller('searchCtrl',function($scope,$routeParams){
+	$scope.layout={
+		s1:{
+			s0:false,
+			s1:false
+		}
+	};
 	$scope.$emit("CoverOff",{});
 	$scope.$emit("loadingOff",{});
 	$scope.option={
@@ -19,30 +24,27 @@ myApp.controller('searchCtrl',function(
 	            }
 	    },
 	    afterSlideLoad:function(anchor,sectionindex,slideindex){
-	    	if(slideindex == 1 &&sectionindex==1){
-	    		$scope.$emit("CoverOn",{});
-	    		$scope.$emit("loadingOn",{});
-	            CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){
-	            	console.log(data)
-	            	currentGameData.set(data);
-	            	$scope.$emit("loadingOff",{});
-				},function(error){
-					$scope.$emit("loadingOff",{});
-				});
-
+	    	if(slideindex == 1 && sectionindex==1){
+	    		$scope.layout.s1.s1 = true;
+	    		
 	        }
-
+	        $scope.$apply();
 	    },
-	    onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){
-	    	if(slideIndex == 1 ||index==1){
+	    onSlideLeave: function(anchororLink, index, slideIndex, direction, nextSlideIndex,sectionindex){
+	    	if(slideIndex == 1 || sectionindex==1){
 	    		$scope.$emit("CoverOff",{});
+	    		$scope.layout.s1.s1 = false;
+	    		
 	    	}
+	    	
 	    }
 	};
+	
 	$scope.search={
 		loading:false,
 		error:false
 	};
+
 	$scope.$on("searchPageStart",function(event,data){
 		$scope.search.loading=data.loading;
 		$scope.search.error=data.error;

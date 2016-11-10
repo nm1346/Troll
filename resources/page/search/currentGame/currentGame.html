@@ -1,5 +1,5 @@
 <!-- <div ng-repeat="item in banChampionName">
-   <img src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{item}}.png">
+   <img src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{item}}.png">
 </div> -->
 
 
@@ -7,23 +7,16 @@
 
 <div class="black-text ngFade" ng-if="data.success">
 
-  <!-- <h4 class="center white-text">인게임중</h4> -->
-  
   <div class="center white-text" style="position: relative; z-index: 2;">
     {{data.gametype[0]}}<br>
     <i class="tiny material-icons center">schedule</i><span>{{time}}</span>
   </div>
 
   <div class="container currentGame">
-    <div class="row"><!-- 'resources/page/search/currentGame/images/challenger.png' -->
+    <div class="row">
     <div class="col s2 offset-s5">     
         <img src="/resources/page/search/currentgame/images/logo4.png" style="width: 100%; position: relative; z-index: 1">
       </div>
-      <br><br><br><br>
-    <div class="col s12">
-    <img class="responsive-img" ng-srcset="/resources/page/search/currentgame/images/Background2.png" style="position: absolute; width: 60%; height: 100%; margin-left: -320px; margin-top: -200px; z-index: 0">
-    </div>
-      
       <div class="col l10 push-l1 m10 push-m1 s10 push-s1">
         <div class="col l2 push-l1 m2 push-m1 s2 push-s1" ng-repeat="item in data.championKey1">
 
@@ -37,34 +30,32 @@
 
 
           <div class="col l3 m3 s3" style="padding: 0px;">
-            <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/profileicon/{{data.icon_list1[$index]}}.png" >
+            <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/profileicon/{{data.icon_list1[$index]}}.png" >
           </div>
 
 
           <div class="col l6 push-l0.5 m6 push-m0.5 s6 push-s0.5" style="padding: 5px;">
             <div class="col l6 m6 s6" style="padding: 0px;">
-             <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/spell/{{data.summonerSpell1[$index]}}.png">
+             <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{data.summonerSpell1[$index]}}.png">
            </div>
            <div class="col l6 m6 s6" style="padding: 0px;">
-             <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/spell/{{data.summonerSpell2[$index]}}.png">
+             <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{data.summonerSpell2[$index]}}.png">
            </div>
          </div>
 
 
 
          <div class="col l3 m3 s3" style="padding: 4px 4px 4px 0px;">
-           <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/mastery/{{data.mastery1[[$index]]}}.png" >
+           <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/{{data.mastery1[[$index]]}}.png" >
          </div> 
-
-
-
-
-
 
 
 
        </div>
      </div>
+               <div class="col s2 offset-s5">
+                <img class="responsive-img" ng-srcset="/resources/page/search/currentgame/images/vs.png" >
+               </div>
    </div>
 
    <div class="row"><!-- 'resources/page/search/currentGame/images/challenger.png' -->
@@ -82,23 +73,23 @@
         
 
         <div class="col l3 m3 s3" style="padding: 0px;">
-          <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/profileicon/{{data.icon_list2[$index]}}.png" >
+          <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/profileicon/{{data.icon_list2[$index]}}.png" >
         </div>
 
 
         <div class="col l6 push-l0.5 m6 push-m0.5 s6 push-s0.5" style="padding: 5px;">
           <div class="col l6 m6 s6" style="padding: 0px;">
-           <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/spell/{{data.summonerSpell3[$index]}}.png">
+           <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{data.summonerSpell3[$index]}}.png">
          </div>
          <div class="col l6 m6 s6" style="padding: 0px;">
-           <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/spell/{{data.summonerSpell4[$index]}}.png">
+           <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{data.summonerSpell4[$index]}}.png">
          </div>
        </div>
 
 
 
        <div class="col l3 m3 s3" style="padding: 4px 4px 4px 0px;">
-         <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/mastery/{{data.mastery2[[$index]]}}.png" >
+         <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/{{data.mastery2[[$index]]}}.png" >
        </div> 
 
      </div>
