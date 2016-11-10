@@ -21,6 +21,9 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 			$scope.selectBoard=function(){
 
 			}
+			$scope.selectPage=function(page){
+				console.log(page);
+			}
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/board/board.html',
@@ -65,22 +68,25 @@ myApp.directive('boardCreate', function(summoner,BoardDetailResource){
 		}
 	};
 });
-myApp.constant('pageSize', 10)
-myApp.directive('paging', function(BoardResource,pageSize){
+
+myApp.directive('paging', function(BoardResource){
 	return {
-		scope: {page:"=page",size:"=size"}, // {} = isolate, true = child, false/undefined = no change
+		scope: {
+			page:"=page",
+			size:"=size",
+			pagesize:"@pagesize",
+			pagelength:"@pagelength",
+			pageclick:"&pageclick"}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
-			$scope.size;
-			$scope.pageCount=$scope.size/pageSize;
-
-			$scope.array=[];
-
-
-
 			$scope.$watch("size",function(newval,oldval){
 				if(newval==oldval)return;
-
-				for(var i=0;i<$scope.page;i++){
+				$scope.pageCount=Math.ceil($scope.size/$scope.pagesize);
+				$scope.startPage=(($scope.page-1)/$scope.pagelength)*5+1;
+				$scope.endPage=($scope.startPage+($scope.pagelength-1));
+				console.log($scope.pageCount);
+				$scope.endPage=$scope.endPage>$scope.pageCount?$scope.pageCount:$scope.endPage;
+				$scope.array=[];
+				for(var i=$scope.startPage;i<=$scope.endPage;i++){
 					$scope.array.push(i);
 				}
 			});

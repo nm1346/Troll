@@ -18,7 +18,12 @@
 		</table>
 	</div>
 	<div class="col s12 indigo center">
-		<paging page="selectVal.page" size="boardData.board_count"></paging>
+		<paging page="selectVal.page" 
+			size="boardData.board_count" 
+			pagesize="10" 
+			pagelength="5"
+			pageclick="selectPage(page)"
+			></paging>
 	</div>
 </div>
 
