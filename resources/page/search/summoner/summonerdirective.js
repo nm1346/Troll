@@ -1,6 +1,6 @@
 //search첫번째 페이지에 들어갈 인덱스모음
 
-myApp.directive('summonerData', function(SearchResource,summoner,$routeParams){
+myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,BoardData){
 	return {
 		 scope: {}, // {} = isolate, true = child, false/undefined = no change
 		 controller: function($scope, $element, $attrs, $transclude) {
