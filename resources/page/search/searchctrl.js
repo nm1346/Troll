@@ -1,4 +1,4 @@
-myApp.controller('searchCtrl',function(
+	myApp.controller('searchCtrl',function(
 	$scope,$routeParams,CurrentGameResource,currentGameData){
 	
 

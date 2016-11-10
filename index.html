@@ -24,8 +24,10 @@
 <script src="/resources/static/jquery.fullPage.js"></script>
 <script src="/resources/static/angular-fullpage.js"></script>
 <script src="/resources/static/angular-cookies.js"></script>
+<script src="/resources/static/angular-sanitize.js"></script>
+<script src="/resources/static/angular-sanitize.js"></script>
 <script>
-var myApp=angular.module("exampleApp",["ngRoute","fullPage.js","ngResource","ngAnimate","ngCookies" , "ui.materialize"]);
+var myApp=angular.module("exampleApp",["ngRoute","fullPage.js","ngResource","ngAnimate","ngCookies" , "ui.materialize",'ngSanitize']);
 //config
 myApp.config(function($routeProvider,$locationProvider) {
 	$locationProvider.html5Mode({
@@ -60,6 +62,7 @@ myApp.run(function($rootScope,$window){
 		$rootScope.fullLoad=true;
 		$rootScope.$apply();
 	}
+	$('.tooltipped').tooltip({HTML: true});
 });
 </script>
 <!-- 사용자 정의 서비스 컨트롤러 디렉티브들 ...-->

@@ -72,9 +72,9 @@ myApp.directive('indexSearchform',function($cookies,$timeout,$location){
 				angular.extend($scope.searchList,angular.fromJson($cookies.get("searchList")));
 				
 			}
-			$scope.cookieClick=function(searchval){
+			/*$scope.cookieClick=function(searchval){
 				$scope.summonerName=searchval;
-			}
+			}*/
 			//chip삭제시 쿠키에서도 delete
 			$scope.cookieDelete=function(searchval){
 				$scope.searchList.splice($scope.searchList.indexOf(searchval),1)

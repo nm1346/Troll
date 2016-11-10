@@ -64,7 +64,7 @@ myApp.filter('gameendtimefilter', function () {
 		}else if(endtime < (86400000 * 30)){
 			return Math.round(endtime / 86400000) + '일전';
 		}else if(endtime < ((86400000 * 30)* 12)){
-			return Math.round(endtime / (86400000 * 30)) + '달전';
+			return Math.floor(endtime / (86400000 * 30)) + '달전';
 		}else {
 			return '오래된 게임(1년 이상)';
 		}
@@ -73,7 +73,10 @@ myApp.filter('gameendtimefilter', function () {
 myApp.filter('gamedatefilter', function () {
 	return function(date){
 		var gamedate = new Date(parseInt(date));
-		console.log(gamedate);
+		var year = gamedate.getFullYear();
+		var month = gamedate.getMonth() + 1;
+		var day = gamedate.getDate();
+		return year + '년 '+(month >= 10 ?  month:'0'+month) + '월 '+(day > 10 ? day:'0'+day)+'일'
 	}
 })
 myApp.filter('victoryfilter',function () {

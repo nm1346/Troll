@@ -17,15 +17,39 @@ div .summoner{
 	margin-top: -15px;
 	margin-left: -10px;
 }
-.card .statscard{
-	padding: 15px;
-	background-color: #f4ff81;
+.card-backcover{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	left: 0px;
+	float: left;
+	z-index: 0;
+	top: 0;
 }
-.gamedata{
+
+.card .statscard  {
+	font-weight: bold;
+	font-size: 1rem;
+	background-size: cover;
+	background-repeat: no-repeat;
+
 }
+
+
+.winstat{
+	color : rgba(179, 229, 252 ,1);
+}
+.losestat{
+	color : rgba(255, 205, 210 ,1);
+}
+
+
+
+
 .recent{
-	/* margin: 0; */
-	padding:10px 10px 10px 10px; 
+	margin-bottom: 1px;
+	line-height: 1.3;
 	/* width: 20% !important; */
 	text-align: center;
 }
@@ -39,12 +63,6 @@ div .summoner{
 	font-size: .9em;
 	font-weight: bold;
 	color : rgba(70, 70, 70,0.5);
-}
-.승리{
-	color : blue;
-}
-.패배{
-	color : red;
 }
 .gametime{
 	float: left;
@@ -62,9 +80,14 @@ div .summoner{
 	border: 2px solid grey;
 }
 
+.myplayer-chamimg > img{
+	width: 31px;
+	height: 31px;
+	border-radius: 70px;
+}
 .player-chamimg > img{
-	width: 29px;
-	height: 29px;
+	width: 31px;
+	height: 31px;
 	border-radius: 70px;
 }
 .card .allplayers{
@@ -172,6 +195,7 @@ div .summoner{
 	position: relative;
 	width: 100%;
 	border-radius: 7px 7px 0 0;
+	font-size: .9rem;
 }
 .statscard-btn:before{
 	-webkit-transition: all 0.3s ease-in;
@@ -182,13 +206,13 @@ div .summoner{
 	height: 100%;
 	left: 0;
 	top: 0;
-	width: 100%;
-	content: "Player Stats \f106";
+	content: "Player Stat \f106";
 	font-family: FontAwesome;
- 	width: 100%;
+ 	width: 99%;
     z-index: 2;
-    border-right: 1px solid #f1f1f1;
+  	padding-right: 1px;
 }
+
 .match-btn:before{
 	-webkit-transition: all 0.3s ease-in;
 	-moz-transition: all 0.3s ease-in;
@@ -198,16 +222,15 @@ div .summoner{
 	height: 100%;
 	left: 0;
 	top: 0;
-	width: 100%;
 	content: "match up \f002";
 	font-family: FontAwesome;
- 	width: 100%;
+ 	width: 99%;
     z-index: 2;
 }
 
 .card-btn:hover:before {
-    background:rgba(255, 255,255,1);
-    color: black;
+    background:rgba(255, 255,255,.7);
+    /* color: black; */
 }
 
 /* 모바일 스마트폰 이하 */
@@ -218,53 +241,25 @@ div .summoner{
 		border-radius: 100px;
 		font-size: 15px;
 	}
-	/* .player-chamimg > img{
-		width: 18px;
-		height: 18px;
-		border-radius: 70px;
-	}
-	*/
-	.row .vs{
-		width: 10px !important;
-		padding: 0px 0px 0px 0px;
-		font-size: 5px;
-		text-align: center;
-		font-weight: bold;
-	}
+	
 
 	.kda{
 		margin-left: -10px;
 	}
-	/* .item-slot .slot{
-		width: 23px !important;
-		height: 23px;
-		
-		} */
 	}
 	/* 모바일 스마트폰 아이폰 전용 */
 	@media only screen and (max-width: 320px){
-		.player-chamimg > img{
-			display: none;
-		}
-	/* .item-slot .slot{
-		 width: 20px !important; 
-		height: 20px;
-		} */
+	
 	}
 
 	/* iPads (portrait and landscape) */
 	@media only screen
 	and (max-width : 1024px) {
-	/* .item-slot .slot{
-		width: 30px !important;
-		height: 30px;
-		
-		} */
+	
 	}
-	.row .vs{
-		width: 15px !important;
+	.vs{
 		padding: 0px 0px 0px 0px;
-		font-size: 15px;
+		font-size: 1rem;
 		text-align: center;
 		font-weight: bold;
 	}
@@ -274,23 +269,9 @@ div .summoner{
 	.redteamborder{
 		border: 2px solid red;
 	}
+	.mychampborder{
+		border: 2px solid yellow;
+	}
 
 
-	/* .BRONZE{
-		background-image: url("http://sk2.op.gg/images/borders2/bronze.png");
-	}
-	.GOLD{
-		background-image: url("http://sk2.op.gg/images/borders2/gold.png");
-	}
-	.SILVER{
-		background-image: url("http://sk2.op.gg/images/borders2/silver.png");
-	}
-	.PLATINUM{
-		background-image: url("http://sk2.op.gg/images/borders2/platinum.png");
-	}
-	.MASTER{
-		background-image: url("http://sk2.op.gg/images/borders2/master.png");
-	}
-	.CHALLENGER{
-		background-image: url("http://sk2.op.gg/images/borders2/challenger.png");
-	} */
+	
