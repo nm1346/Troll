@@ -5,15 +5,12 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 			$scope.summonerData=summoner.get();
 			$scope.selectVal=BoardData.getSelect();
 			$scope.boardData=BoardData.get();
+			$scope.category=["고의트롤","하수","핵사용자","어뷰져","욕설"];
 			$scope.$watch("summonerData.$promise",function(newval,oldval){
 				if(newval==oldval)return;
 				newval.then(function(data){
 					$scope.selectVal.id=data.summonerData.id;
-					BoardResource.get($scope.selectVal).$promise.then(function(data){
-						BoardData.set(data);
-					},function(error){
-						console.log(error);
-					});
+					boardChange($scope.selectVal);
 				},function(error){
 					console.log(error);
 				});
@@ -21,8 +18,24 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 			$scope.selectBoard=function(){
 
 			}
+			$scope.categoryChange=function(selectVal) {
+				selectVal.page=1;
+				boardChange(selectVal);
+			}
 			$scope.selectPage=function(page){
-				console.log(page);
+				$scope.selectVal.page=page;
+				boardChange($scope.selectVal);
+				
+			}
+			var boardChange=function(selectVal){
+				$scope.$emit("loadingOn",{});
+				BoardResource.get(selectVal).$promise.then(function(data){
+					BoardData.set(data);
+					$scope.$emit("loadingOff",{});
+				},function(error){
+					console.log(error);
+					$scope.$emit("loadingOff",{});
+				});
 			}
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
@@ -83,7 +96,6 @@ myApp.directive('paging', function(BoardResource){
 				$scope.pageCount=Math.ceil($scope.size/$scope.pagesize);
 				$scope.startPage=(($scope.page-1)/$scope.pagelength)*5+1;
 				$scope.endPage=($scope.startPage+($scope.pagelength-1));
-				console.log($scope.pageCount);
 				$scope.endPage=$scope.endPage>$scope.pageCount?$scope.pageCount:$scope.endPage;
 				$scope.array=[];
 				for(var i=$scope.startPage;i<=$scope.endPage;i++){

@@ -11,7 +11,8 @@
    }
    
    .ngFade{
-      opacity: 1
+      opacity: 1;
+      transition:all 1s;
    }
    .ngFade.ng-enter{
       opacity: 0;
@@ -114,7 +115,7 @@
   		background-position: center center;
   		background-size: contain;
    		object-fit: cover; /*cover video background */
-  		z-index:3;
+  		z-index:5;
    		transition: all 0.5s;
 	}
 	.loadingCover.ng-enter{
@@ -134,16 +135,5 @@
 		background-color: rgba(0,0,0,0);
 		transition: all 1s;
 	}
-	.ngOff.ng-leave{
-		opacity: 0;
-	}
-	.ngOff.ng-leave-active{
-		opacity: 0;
-	}
-	.ngOff.ng-enter{
-		opacity: 0;
-	}
-	.ngOff.ng-enter-active{
-		opacity: 0;
-	}
+	
 
