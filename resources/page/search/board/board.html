@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="col s12">
+		<table class="striped">
+			<tr>
+				<th>종류</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>작성날짜</th>
+				<th>IP</th>
+			</tr>
+			<tr class="indigo" ng-repeat="list in boardData.board_list">
+				<td>{{list.board_category}}</td>
+				<td>{{list.board_subject}}</td>
+				<td>{{list.board_writer}}</td>
+				<td>{{list.board_wdate}}</td>
+				<td>{{list.board_ip}}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col s12 indigo center">
+		<paging page="selectVal.page" 
+			size="boardData.board_count" 
+			pagesize="10" 
+			pagelength="5"
+			pageclick="selectPage(page)"
+			></paging>
+	</div>
+</div>
+
+
