@@ -12,7 +12,7 @@
    
    .ngFade{
       opacity: 1;
-      transition:all 1s;
+      
    }
    .ngFade.ng-enter{
       opacity: 0;

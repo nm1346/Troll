@@ -15,8 +15,8 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 					console.log(error);
 				});
 			});
-			$scope.selectBoard=function(){
-
+			$scope.selectBoard=function(board){
+				$scope.detail=board;
 			}
 			$scope.categoryChange=function(selectVal) {
 				selectVal.page=1;
@@ -28,13 +28,13 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 				
 			}
 			var boardChange=function(selectVal){
-				$scope.$emit("loadingOn",{});
+				//$scope.$emit("loadingOn",{});
 				BoardResource.get(selectVal).$promise.then(function(data){
 					BoardData.set(data);
-					$scope.$emit("loadingOff",{});
+				//	$scope.$emit("loadingOff",{});
 				},function(error){
 					console.log(error);
-					$scope.$emit("loadingOff",{});
+				//	$scope.$emit("loadingOff",{});
 				});
 			}
 		},
@@ -44,10 +44,17 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 		}
 	};
 });
-myApp.directive('boardDetail', function(){
+myApp.directive('boardDetail', function(BoardDetailResource){
 	return {
-		scope: {}, // {} = isolate, true = child, false/undefined = no change
-		controller: function($scope, $element, $attrs, $transclude) {},
+		scope: {board:"@board"}, // {} = isolate, true = child, false/undefined = no change
+		controller: function($scope, $element, $attrs, $transclude) {
+
+			$scope.$watch("board",function(newval,oldval){
+				if(newval==oldval)return;
+				$scope.data=angular.fromJson($scope.board);
+				console.log($scope.data);
+			})
+		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/board/board-detail.html',
 		link: function($scope, iElm, iAttrs, controller) {
@@ -70,7 +77,6 @@ myApp.directive('boardCreate', function(summoner,BoardDetailResource){
 				});
 			});
 			$scope.create=function(data){
-				console.log(data);
 				BoardDetailResource.put(data);
 			}
 		},

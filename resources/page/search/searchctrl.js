@@ -15,7 +15,7 @@ myApp.controller('searchCtrl',function(
 	            var loadedSection = $(this);
 	            //using index
 	            if(index == 3){ 
-	                console.log("test");    //full-page 섹션옮긴후 발동 메소드
+	                   //full-page 섹션옮긴후 발동 메소드
 	            }
 	    },
 	    afterSlideLoad:function(anchor,sectionindex,slideindex){
