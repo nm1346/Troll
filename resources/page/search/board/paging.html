@@ -11,7 +11,7 @@
     <a>{{$index+1}}</a></li>
    
    <li 
-   ng-class="page==endPage?'disabled':'waves-effect'"
-   ng-click="page!=endPage?pageclick({page:(page+1)}):''">
+   ng-class="page==pageCount?'disabled':'waves-effect'"
+   ng-click="page!=pageCount?pageclick({page:(page+1)}):''">
     <a><i class="material-icons">chevron_right</i></a></li>
 </ul>

@@ -4,8 +4,15 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 		controller: function($scope, $element, $attrs, $transclude) {
 			$scope.summonerData=summoner.get();
 			$scope.selectVal=BoardData.getSelect();
+			$scope.selectVal.page=1;
+			$scope.selectVal.board_category='';
+			$scope.selectVal.search_category='';
+			$scope.selectVal.search_value='';
 			$scope.boardData=BoardData.get();
 			$scope.category=["고의트롤","하수","핵사용자","어뷰져","욕설"];
+			$scope.layout={
+				view:""
+			}
 			$scope.$watch("summonerData.$promise",function(newval,oldval){
 				if(newval==oldval)return;
 				newval.then(function(data){
@@ -17,6 +24,7 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 			});
 			$scope.selectBoard=function(board){
 				$scope.detail=board;
+				$scope.layout.view="detail"
 			}
 			$scope.categoryChange=function(selectVal) {
 				selectVal.page=1;
@@ -28,15 +36,18 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 				
 			}
 			var boardChange=function(selectVal){
-				//$scope.$emit("loadingOn",{});
+				$scope.$emit("loadingOn",{});
 				BoardResource.get(selectVal).$promise.then(function(data){
 					BoardData.set(data);
-				//	$scope.$emit("loadingOff",{});
+					$scope.$emit("loadingOff",{});
 				},function(error){
 					console.log(error);
-				//	$scope.$emit("loadingOff",{});
+					$scope.$emit("loadingOff",{});
 				});
 			}
+			$scope.$on("boardViewChange",function(event,data){
+				$scope.layout.view=data;
+			});
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/board/board.html',
@@ -79,6 +90,9 @@ myApp.directive('boardCreate', function(summoner,BoardDetailResource){
 			$scope.create=function(data){
 				BoardDetailResource.put(data);
 			}
+			$scope.back=function(){
+				$scope.$emit("boardViewChange",'');
+			}
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/board/board-create.html',
@@ -98,7 +112,6 @@ myApp.directive('paging', function(BoardResource){
 			pageclick:"&pageclick"}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
 			$scope.$watch("size",function(newval,oldval){
-				if(newval==oldval)return;
 				$scope.pageCount=Math.ceil($scope.size/$scope.pagesize);
 				$scope.startPage=(($scope.page-1)/$scope.pagelength)*5+1;
 				$scope.endPage=($scope.startPage+($scope.pagelength-1));
