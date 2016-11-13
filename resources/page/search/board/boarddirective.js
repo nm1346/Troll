@@ -36,13 +36,13 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 				
 			}
 			var boardChange=function(selectVal){
-				$scope.$emit("loadingOn",{});
+				//$scope.$emit("loadingOn",{});
 				BoardResource.get(selectVal).$promise.then(function(data){
 					BoardData.set(data);
-					$scope.$emit("loadingOff",{});
+				//	$scope.$emit("loadingOff",{});
 				},function(error){
 					console.log(error);
-					$scope.$emit("loadingOff",{});
+				//	$scope.$emit("loadingOff",{});
 				});
 			}
 			$scope.$on("boardViewChange",function(event,data){
@@ -59,12 +59,16 @@ myApp.directive('boardDetail', function(BoardDetailResource){
 	return {
 		scope: {board:"@board"}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
-
-			$scope.$watch("board",function(newval,oldval){
-				if(newval==oldval)return;
-				$scope.data=angular.fromJson($scope.board);
-				console.log($scope.data);
-			})
+			$scope.data=angular.fromJson($scope.board);
+			BoardDetailResource.get({num:$scope.data.board_num}).$promise.then(function(data){
+				$scope.data=data.board_detail;
+				$scope.replylist=data.reply_list;
+			},function(error){
+				console.log(error);
+			});
+			$scope.back=function(){
+				$scope.$emit("boardViewChange",'');
+			}
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/board/board-detail.html',
@@ -112,14 +116,16 @@ myApp.directive('paging', function(BoardResource){
 			pageclick:"&pageclick"}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
 			$scope.$watch("size",function(newval,oldval){
+				
 				$scope.pageCount=Math.ceil($scope.size/$scope.pagesize);
-				$scope.startPage=(($scope.page-1)/$scope.pagelength)*5+1;
+				$scope.startPage=Math.floor(($scope.page-1)/$scope.pagelength)*5+1;
 				$scope.endPage=($scope.startPage+($scope.pagelength-1));
 				$scope.endPage=$scope.endPage>$scope.pageCount?$scope.pageCount:$scope.endPage;
 				$scope.array=[];
 				for(var i=$scope.startPage;i<=$scope.endPage;i++){
 					$scope.array.push(i);
 				}
+				
 			});
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
