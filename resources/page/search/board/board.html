@@ -7,7 +7,7 @@
 	</div>
 	<div ng-switch-when="detail">
 		<!-- 상세정보뷰 -->
-		<board-detail></board-detail>
+		<board-detail board="{{detail}}"></board-detail>
 	</div>
 	<!-- 업데이트 수정뷰 -->
 	<div ng-switch-when="update">
@@ -65,8 +65,10 @@
 					pageclick="selectPage(page)"
 					></paging>
 					<button class="btn" ng-click="layout.view='create'">글쓰기</button>
+
 				</div>
 			</div>
 		</div>
+
 	</div>
 </div>
