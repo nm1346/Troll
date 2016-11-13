@@ -36,13 +36,13 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 				
 			}
 			var boardChange=function(selectVal){
-				//$scope.$emit("loadingOn",{});
+				$scope.$emit("loadingOn",{});
 				BoardResource.get(selectVal).$promise.then(function(data){
 					BoardData.set(data);
-				//	$scope.$emit("loadingOff",{});
+					$scope.$emit("loadingOff",{});
 				},function(error){
 					console.log(error);
-				//	$scope.$emit("loadingOff",{});
+					$scope.$emit("loadingOff",{});
 				});
 			}
 			$scope.$on("boardViewChange",function(event,data){
