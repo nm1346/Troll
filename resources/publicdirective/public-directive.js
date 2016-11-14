@@ -70,7 +70,7 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement){
 				}
 				$scope.$emit("searchStart",{});
 				$timeout(function(){
-					$location.path("/"+summonerName);
+					$location.path("/"+summonerName).replace();
 				},1000);	
 			}
 
@@ -88,9 +88,12 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement){
 				}
 				$scope.$emit("searchStart",{});
 				$timeout(function(){
-					$location.path("/"+summonerName);
+					$location.path("/"+summonerName).replace();
 				},1000);	
 			  }
+			}
+			$scope.goStatic=function(){
+				$location.path("/static").replace();
 			}
 
 		},
