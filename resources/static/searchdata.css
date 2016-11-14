@@ -54,7 +54,9 @@ div .summoner{
 	color : rgba(255, 205, 210 ,1);
 }
 
-
+#sidenav-overlay{
+	display: none !important;
+}
 .recent{
 	margin-bottom: 1px;
 	line-height: 1.3;

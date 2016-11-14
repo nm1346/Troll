@@ -44,7 +44,7 @@ myApp.directive('backCover',function($routeParams,$location){
 	};
 });
 
-myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement){
+myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement,summoner){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
@@ -56,7 +56,19 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement){
 			$scope.cookieClick=function(searchval){
 				$scope.summonerName=searchval;
 			}
-			
+			$scope.$on('pageonview',function (data) {
+				var totaldata = summoner.get();
+				$scope.summonerdata = totaldata['summonerData'];
+				$scope.leaguedata = totaldata['leagueData'];
+				$scope.recentgame = totaldata['recentgamelist'];
+				if (angular.isObject(totaldata['leagueData'])){
+					$scope.tierurl = totaldata['leagueData'].tier.toLowerCase();
+					$scope.divisionurl = totaldata['leagueData'].entrylist[0].division.toLowerCase();
+				}else{
+					$scope.unlanked = totaldata['leagueData'];
+				}
+			});
+
 			//검색시 실행 메소드
 			$scope.search = function (summonerName) {
 				if($scope.searchList.indexOf(summonerName)==-1&&$scope.searchList.length<5){

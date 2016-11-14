@@ -100,11 +100,11 @@
     {{data.rawstats.goldEarned | commafilter}} / {{data.rawstats.goldSpent | commafilter}}
 
      </div>
-     <div class="col s12 card-content padding-top-hide">
+     <div class="col s12 card-content ">
        가한 데미지 : {{data.rawstats.totalDamageDealt | commafilter}}<br>
        받은 데미지 : {{data.rawstats.totalDamageTaken | commafilter}}
      </div>
-     <div class="col s12 card-content padding-hide ">
+     <div class="col s12 card-content">
       <div class="chip {{data.rawstats.win | victoryfilter}}chip" ng-if="data.rawstats.firstBlood">
           퍼스트블러드
       </div>

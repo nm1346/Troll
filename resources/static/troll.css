@@ -126,7 +126,12 @@
 		background-color: rgba(0,0,0,0.7);
 		transition: all 1s;
 	}
-
+	.tierimg{
+		position: relative;
+		top: 0;
+		width: 100px;
+		height:100px;
+	}
 	/*.loadingCover.ng-leave{
 		background-color: rgba(0,0,0,0.5);
 		transition: all 1s;
