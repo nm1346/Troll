@@ -10,6 +10,7 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 			SearchResource.get({summonerName : $routeParams.summonerName}).$promise.then(function (data) {
 				if (Boolean(Number(data.success))){
 					summoner.set(data);
+					console.log(data)
 					$scope.$emit('searchPageSuccess', {loading : false , error : false});
 					$scope.$emit("loadingOff",{});
 				}else{

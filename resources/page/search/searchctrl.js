@@ -2,6 +2,7 @@ myApp.controller('searchCtrl',function(
 	$scope,$routeParams,CurrentGameResource,currentGameData,$window,$document,$timeout){
 	$scope.$emit("CoverOff",{});
 	$scope.$emit("loadingOff",{});
+
 	$scope.search={
 		loading:false,
 		error:false
