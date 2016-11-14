@@ -13,9 +13,8 @@
   position: relative;
 }
 .soundmovie {
-
   margin-bottom: 0px;
-
+  text-align: center;
 }
 .search-card{
   -webkit-transition: all 0.3s ease-out;
@@ -35,7 +34,6 @@
 .search-card .search-action i {
   color:rgba(255, 255, 255,0.8); 
 }
-
 .search-card .search-cookie{
   border-top: 1px solid rgba(245,245,245 , .3);
 }
@@ -46,17 +44,25 @@
   cursor: pointer;
   border-right: 2px solid white;
 }
+.checkicon{
+  width: 40px;
+  cursor: pointer;
+}
+.checkicon:hover{
+   background: rgba(0,0,0,0.1);
+}
 .search-card .search-action .video{
   cursor: pointer;
 }
-.search-card .search-action .sound > span i{
+.search-card .search-action .sound > i{
  transition:all 0.5s ease-out;
  color : rgba(255,255,255 , .5);
 }
-.search-card .search-action .video > span i{
+.search-card .search-action .video > i{
  transition:all 0.5s ease-out;
  color : rgba(255,255,255 , .5);
 }
+
 .search-card .search-action .video .on{
   color : rgba(255,255,255 , 1);
 }
@@ -138,7 +144,7 @@
 }
 
 .main-nav{
-  background-color:#546e7a;
+  background-color: rgba(0,0,0,.5);
   border: none;
   box-shadow: none;
   z-index: 4;

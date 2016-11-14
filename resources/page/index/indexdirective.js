@@ -104,21 +104,31 @@ myApp.directive('indexSearchform',function($cookies,$timeout,$location){
 		}
 	};
 });
-myApp.directive('indexCheckbox', function(mediaElement){
+myApp.directive('indexMusicicon', function(mediaElement){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
-			$scope.video=mediaElement.getMedia().video.setting;
 			$scope.music=mediaElement.getMedia().music.setting;
-			$scope.soundmsg = "Click Sound off";
-			$scope.videomsg = "Click Movie off";
 			$scope.musicoff = function () {
 				$scope.music.on = false;
 			}
 			$scope.musicon = function () {
 				$scope.music.on = true;
 			}
+		},
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		templateUrl: '/resources/page/index/index-musicicon.html',
+		link: function($scope, iElm, iAttrs, controller) {
+			
+		}
+	};
+});
 
+myApp.directive('indexVideoicon', function(mediaElement){
+	return {
+		scope: {}, // {} = isolate, true = child, false/undefined = no change
+		controller: function($scope, $element, $attrs, $transclude) {
+			$scope.video=mediaElement.getMedia().video.setting;
 			$scope.videoshow = function () {
 				$scope.video.on = false;
 			}
@@ -127,7 +137,7 @@ myApp.directive('indexCheckbox', function(mediaElement){
 			}
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
-		templateUrl: '/resources/page/index/index-checkbox.html',
+		templateUrl: '/resources/page/index/index-videoicon.html',
 		link: function($scope, iElm, iAttrs, controller) {
 			
 		}
