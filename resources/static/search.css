@@ -12,6 +12,7 @@
   z-index: 3;
   position: relative;
 }
+
 .soundmovie {
   margin-bottom: 0px;
   text-align: center;
@@ -99,7 +100,7 @@
 
 }
 .search-nav{
-  z-index: 2;
+  z-index:3;
   position: relative;
   border:none;
 }
@@ -148,6 +149,7 @@
   border: none;
   box-shadow: none;
   z-index: 4;
+  margin-bottom: 0;
 }
 .logo-search-field {
   margin: 13px auto 0px auto;

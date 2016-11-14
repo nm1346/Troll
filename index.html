@@ -5,29 +5,27 @@
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <!-- Compiled and minified CSS -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-<link rel="stylesheet" href="/resources/static/jquery.fullPage.css">
 <link rel="stylesheet" type="text/css" href="/resources/static/troll.css">
+<link rel="stylesheet" type="text/css" href="/resources/static/search.css">
+<link rel="stylesheet" type="text/css" href="/resources/page/search/currentGame/currentGame.css">
 <link rel="stylesheet" type="text/css" href="/resources/static/searchdata.css">
+
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8"/>
 <title>Angular and FullPage and Materialize</title>
 <script type="text/javascript"	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/resources/static/search.css">
 <!-- static데이터 불러오기 -->
 <script src="/resources/static/angular.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.1/angular-materialize.min.js"></script>
 <script src="/resources/static/angular-route.js"></script>
 <script src="/resources/static/angular-resource.js"></script>
 <script src="/resources/static/angular-animate.js"></script>
-<script src="/resources/static/jquery.fullPage.js"></script>
-<script src="/resources/static/angular-fullpage.js"></script>
 <script src="/resources/static/angular-cookies.js"></script>
-<script src="/resources/static/angular-sanitize.js"></script>
-<script src="/resources/static/angular-sanitize.js"></script>
 <script>
-var myApp=angular.module("exampleApp",["ngRoute","fullPage.js","ngResource","ngAnimate","ngCookies" , "ui.materialize",'ngSanitize']);
+var myApp=angular.module("exampleApp",["ngRoute","ngResource","ngAnimate","ngCookies" , "ui.materialize"]);
 //config
 myApp.config(function($routeProvider,$locationProvider) {
 	$locationProvider.html5Mode({
@@ -62,7 +60,18 @@ myApp.run(function($rootScope,$window){
 		$rootScope.fullLoad=true;
 		$rootScope.$apply();
 	}
-	$('.tooltipped').tooltip({HTML: true});
+	$rootScope.$on("CoverOn",function(event,data){
+		$rootScope.$broadcast("backCoverOn",{})
+	})
+	$rootScope.$on("CoverOff",function(event,data){
+		$rootScope.$broadcast("backCoverOff",{})
+	})
+	$rootScope.$on("loadingOn",function(event,data){
+		$rootScope.$broadcast("loadingCoverOn",{})
+	})
+	$rootScope.$on("loadingOff",function(event,data){
+		$rootScope.$broadcast("loadingCoverOff",{})
+	})
 });
 </script>
 <!-- 사용자 정의 서비스 컨트롤러 디렉티브들 ...-->
@@ -72,14 +81,17 @@ myApp.run(function($rootScope,$window){
 <script src="/resources/page/index/indexservice.js"></script>
 <!-- 검색페이지 컨트롤러 및 디렉티브 -->
 <script src="/resources/page/search/searchctrl.js"></script>
-<script src="/resources/page/search/searchdirective1.js"></script>
+<script src="/resources/page/search/searchdirective.js"></script>
 <script src="/resources/page/search/searchservice.js"></script>
 <script src="/resources/page/search/currentGame/currentdirective.js"></script>
+<script src="/resources/page/search/currentGame/currentGameService.js"></script>
+<script src="/resources/page/search/summoner/summonerdirective.js"></script>
+<script src="/resources/page/search/board/boarddirective.js"></script>
+<script src="/resources/page/search/board/boardservice.js"></script>
 <!-- staticData(롤백과)페이지 컨트롤러 및 디렉티브 -->
 <script src="/resources/page/static/staticctrl.js"></script>
 <script src="/resources/page/static/staticdirective.js"></script>
 <script src="/resources/page/static/staticservice.js"></script>
-<script src="/resources/page/search/currentGame/currentGameService.js"></script>
 <!-- 공용디렉티브 -->
 <script src="/resources/publicdirective/public-directive.js"></script>
 <!-- 필터 -->
@@ -95,6 +107,8 @@ myApp.run(function($rootScope,$window){
 <index-video></index-video>
 <index-music></index-music>
 <back-cover></back-cover>
+<status-toast></status-toast>
+<loading-cover></loading-cover>
 <img class="backImage" src="/resources/static/backimage.jpg"> 
 <div ng-if="fullLoad" ng-view class="ngFade search-nav">
 </div>

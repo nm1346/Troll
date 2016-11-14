@@ -34,7 +34,7 @@ myApp.directive('indexMusic', function(mediaElement,$cookies){
 			mediaElement.setMusic($element.children().eq(0));
 			$scope.music=mediaElement.getMedia().music.element[0];
 			$scope.setting=mediaElement.getMedia().music.setting;
-			
+
 			if(angular.isDefined($cookies.get("music"))){
 				if($cookies.get("music")=="true"){
 					$scope.setting.on=true;
@@ -91,7 +91,7 @@ myApp.directive('indexSearchform',function($cookies,$timeout,$location){
 					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000)
 					return;
 				}
-				$scope.$emit("searchStart",{});
+				$scope.$emit("loadingOn",{});
 				$timeout(function(){
 					$location.path("/"+summonerName);
 				},1000);	
