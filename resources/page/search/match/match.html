@@ -1,0 +1,171 @@
+
+<div class="container row tff" style="background-color: white;">
+ <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">경기분석</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="#">경기분석</a></li>
+        <li><a href="#">티어,라인별 비교</a></li>
+        <li><a href="#">이번게임 비교</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+
+ <div class="col s6">
+ <table class="bordered">
+ 	<tr>
+       	<th><b class="winner">승리</b><b class="teamName">{{teaId}}</b></th>
+       	<th></th>
+       	<th>아이템</th>
+    	<th>데미지</th>
+    	<th>CS</th>
+    </tr>
+
+
+<!-- ng-repeat -->
+
+
+    <tr ng-repeat="m in match.match" ng-if="m.teamId == teamId">
+    	<div class="col s2">
+       	<td class="ci">
+		<img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{m.championNameE}}.png" err-src/>
+       	</td>
+    	</div>
+
+    	<div class="col s1">
+       	<td>
+       	<ul>
+       		<li>
+       		<img class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/SummonerFlash.png" err-src>
+       		{{m.spell1Id}}
+      		</li>
+      		<li>   
+      		<img class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/SummonerFlash.png" err-src>
+      		{{m.spell2Id}}   
+      		</li>
+      		<li>
+      		<img class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/SummonerFlash.png" err-src>
+      		{{m.mastery}}
+      		</li>
+      	</ul>   
+      	</td>
+       	</div>
+
+      	<div class="col s2">
+       	<td>
+       	<ul>
+       		<li>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item0}}.png" err-src>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item1}}.png" err-src>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item2}}.png" err-src>
+	        </li>
+       		<li>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item3}}.png" err-src>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item4}}.png" err-src>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item5}}.png" err-src>
+       		</li>
+       	</ul>
+       	</td>
+       	</div>
+
+       	<div class="col s1">
+       	<td>
+       	<ul>
+       		<li>
+       		+{{m.totalDamageDealt}}
+       		</li>
+       		<li>
+       		- {{m.totalDamageTaken}}
+       		</li>
+       	</ul>
+       	</td>
+       	</div>
+
+       <div class="col s1">
+       <td>{{m.minionskilled}}</td>
+       </div>
+    </tr>
+
+
+<!-- ng-repeat -->
+
+ </table>
+ </div>
+
+
+<div class="col s6">
+<table class="bordered">
+ 	<tr>
+       	<th><b class="winner">승리</b><b class="teamName">블루팀</b></th>
+       	<th></th>
+       	<th>아이템</th>
+    	<th>데미지</th>
+    	<th>CS</th>
+    </tr>
+
+    <tr>
+    	<div class="col s2">
+       	<td class="ci">
+       	<img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/Bard.png" err-src/>
+       	</td>
+    	</div>
+
+    	<div class="col s1">
+       	<td>
+       	<ul>
+       		<li>
+       		<img class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/SummonerFlash.png" err-src/>
+      		</li>
+      		<li>   
+      		<img class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/SummonerFlash.png" err-src/>   
+      		</li>
+      		<li>
+      		<img class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/SummonerFlash.png" err-src/>
+      		</li>
+      	</ul>   
+      	</td>
+       	</div>
+
+      	<div class="col s2">
+       	<td>
+       	<ul>
+       		<li>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/3111.png" err-src>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/3111.png">
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/3111.png">
+	        </li>
+       		<li>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/3111.png">
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/3111.png">
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/3111.png">
+       		</li>
+       	</ul>
+       	</td>
+       	</div>
+
+       	<div class="col s1">
+       	<td>
+       	<ul>
+       		<li>
+       		+12634.5
+       		</li>
+       		<li>
+       		- 12634.5
+       		</li>
+       	</ul>
+       	</td>
+       	</div>
+
+       <div class="col s1">
+       <td>152</td>
+       </div>
+    </tr>
+
+ </table>
+ </div>
+
+</div>

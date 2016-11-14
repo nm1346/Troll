@@ -1,0 +1,41 @@
+.tff div{
+font-size: 15px;
+margin: 0;
+padding: 0;
+
+}
+
+/*
+.tff .img1{
+vertical-align: middle; 
+margin: 0;
+padding: 0;
+line-height: 0;
+}
+*/
+.ci{
+	background-color: white;
+}
+.ci img{
+	width: 70px; height: 70px;
+}
+
+.si{
+width: 20px; height: 20px;
+}
+
+.itemi{
+width: 30px; height: 30px;
+}
+
+.winner{
+	color: rgb(000,051,255);
+}
+
+.looser{
+	color: rgb(255,021,000);
+}
+
+.teamName{
+	color: rgb(220,215,213);
+}

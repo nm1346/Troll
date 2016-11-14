@@ -74,8 +74,13 @@
  <div class="col s6 activator card-btn statscard-btn padding-hide waves-effect waves-light {{data.rawstats.win | victoryclassfilter}}">
   &nbsp;
 </div>
-<div class="col s6 card-btn match-btn padding-hide waves-effect waves-light {{data.rawstats.win | victoryclassfilter}}">
+
+
+<div class="col s6 card-btn match-btn padding-hide waves-effect waves-light {{data.rawstats.win | victoryclassfilter}}"
+ng-click="match(summonerdata,data.gameId)">
   &nbsp;
+
+
 </div>
 </div>
 
