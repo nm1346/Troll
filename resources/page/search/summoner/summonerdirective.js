@@ -5,13 +5,16 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 scope: {}, // {} = isolate, true = child, false/undefined = no change
 		 controller: function($scope, $element, $attrs, $transclude) {
 			/*$scope.$emit('searchPageStart',{});*/
+			$scope.$emit("loadingOn",{});
 			$scope.$emit('searchPageStart', {loading : true , error : false});
 			SearchResource.get({summonerName : $routeParams.summonerName}).$promise.then(function (data) {
 				if (Boolean(Number(data.success))){
 					summoner.set(data);
 					$scope.$emit('searchPageSuccess', {loading : false , error : false});
+					$scope.$emit("loadingOff",{});
 				}else{
 					$scope.$emit('searchPageError', {errorCode : data.errorcode , errorMessage : data.errormsg});
+					$scope.$emit("loadingOff",{});
 				}
 			},function (error) {
 				console.log('에러',error);

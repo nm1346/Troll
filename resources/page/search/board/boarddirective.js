@@ -14,7 +14,10 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 				view:""
 			}
 			$scope.$watch("summonerData.$promise",function(newval,oldval){
-				if(newval==oldval)return;
+				if(newval==oldval){
+					if(angular.isUndefined(newval))return;
+				}
+
 				newval.then(function(data){
 					$scope.selectVal.id=data.summonerData.id;
 					boardChange($scope.selectVal);
