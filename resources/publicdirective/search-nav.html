@@ -1,17 +1,18 @@
-<nav>
-   <div class="nav-wrapper main-nav row">
- 
-       <a href="#" class="brand-logo">&nbsp;&nbsp;Troll.GG</a>
-     <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+<nav class="main-nav">
+   <div class="nav-wrapper">
+     <a href="#" class="brand-logo">&nbsp;&nbsp;Troll.GG</a>
+     <ul id="nav-mobile" class="right hide-on-med-and-down logo-nav-ul">
        <li class="row">
-       <div class="logo-search-field col s12">
-        <input  type="search" class='col s10 logo-search-input'  required placeholder="소환사명 검색" ng-model='summonerName'>
-        <label for="search" class="search-label"><i class="material-icons" ng-click="search(summonerName)">search</i></label>
-    </div>
-    </li>
+     <div class="logo-search-field col s12">
+		    <input  type="search" class='col s10 logo-search-input'  required placeholder="소환사명 검색" ng-model='summonerName' 
+         ng-keypress="keysearch($event,summonerName)"> 
+				<label for="search" class="search-label"><i class="material-icons" ng-click="search(summonerName)">search</i></label>
+		</div>
+		</li>
       <li><a href="/static">롤 백과사전</a></li>
-      <li>&nbsp;</li>
-      <li><index-checkbox></index-checkbox></li>
+      <li class="checkicon"><index-musicicon></index-musicicon></li>
+      <li class="checkicon"><index-videoicon></index-videoicon></li>
      </ul>
     </div>
 

@@ -6,6 +6,7 @@ myApp.controller('searchCtrl',function(
 		loading:false,
 		error:false
 	};
+
 	$scope.$on("searchPageStart",function(event,data){
 		$scope.search.loading=data.loading;
 		$scope.search.error=data.error;
