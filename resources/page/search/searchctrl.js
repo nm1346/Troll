@@ -21,11 +21,15 @@ myApp.controller('searchCtrl',function(
 		$scope.search.error=data.error;
 		$scope.$broadcast('pageonview', {});
 	});
+	//
 	$scope.layout={
 		section:[1,2,3,4],
 		index:0,
 		available:true
 	}
+	$scope.$on("searchViewChange",function(event,data){
+		$scope.layout.index=data;
+	});
 	$window.onmousewheel=function(data){
 		//loading이 끝날경우에만 페이지내에서 뷰변경 가능
 		if($scope.layout.available){
@@ -35,7 +39,6 @@ myApp.controller('searchCtrl',function(
 				if($scope.layout.index<0){
 					$scope.layout.index=$scope.layout.section.length;
 				}
-				$window.scroll(0,$document.context.scrollingElement.offsetHeight);
 				$scope.$apply();
 			}
 			//페이지가 하단에 닿았을 경우 하단 뷰로 이동
@@ -44,7 +47,6 @@ myApp.controller('searchCtrl',function(
 				if(!($scope.layout.index<$scope.layout.section.length)){
 					$scope.layout.index=0;
 				}
-				console.log($scope.layout.section[$scope.layout.index])
 				$window.scroll(0,0)
 				$scope.$apply();
 			}
