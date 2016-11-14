@@ -1,6 +1,4 @@
-<!-- <div ng-repeat="item in banChampionName">
-   <img src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{item}}.png">
-</div> -->
+
 
 
 
@@ -49,13 +47,25 @@
            <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/{{data.mastery1[[$index]]}}.png" >
          </div> 
 
-
-
        </div>
+     </div> 
+
+     <div class="col s5">
+        <div ng-repeat="item in data.banChampionName" class="col s4" style="border: 1px solid white; padding: 5%">
+          <img class="responsive-img" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{item}}.png">
+        </div>
      </div>
-               <div class="col s2 offset-s5">
-                <img class="responsive-img" ng-srcset="/resources/page/search/currentgame/images/vs.png" >
-               </div>
+
+    <div class="col s2">
+      <img class="responsive-img" ng-srcset="/resources/page/search/currentgame/images/vs.png" >
+    </div>
+
+    <div class="col s5">
+        <div ng-repeat="item in data.banChampionName2" class="col s4">
+          <img class="responsive-img" src="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{item}}.png">
+        </div>
+     </div>
+
    </div>
 
    <div class="row"><!-- 'resources/page/search/currentGame/images/challenger.png' -->
