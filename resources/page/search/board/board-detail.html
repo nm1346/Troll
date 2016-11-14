@@ -1,29 +1,36 @@
 <div class="container">
 	<div class="row">
 		<div class="col s12" style="background-color: rgba(255,255,255,0.9); border-radius: 5px">
-			<form name="boardform" novalidate>
-				<div input-field class="col s12">
+			<form name="detailform" novalidate>
+				<div class="col s12">
 					{{data.board_category}}
 				</div>
-				<div class="col s6 input-field inline">
-					<input id="boardwriter" name="writer" type="text" ng-model="data.board_writer" ng-readonly="true">
+				<div class="col s6 input-field inline detail">
+					<input id="boardwriter" name="writer" type="text" ng-model="data.board_writer" ng-readonly="layout">
 					<label for="boardwriter">작성자</label>
 				</div>
-				<div class="col s6 input-field inline">
-					<input id="boardpassword" name="password" type="password" class="validate" required ng-model="createBoard.board_password">
-					<label for="boardpassword">암호</label>
-				</div>
-				<div class="col s12 input-field inline">
-					<input id="boardsubject" name="subject" type="text" class="validate" required ng-model="createBoard.board_subject">
+				<div class="col s12 input-field inline detail">
+					<input id="boardsubject" name="subject" type="text" required ng-model="data.board_subject" ng-readonly="layout">
 					<label for="boardsubject" >제목</label>
 				</div>
 				<div class="input-field col s12">
-					<textarea id="boardcontent" name="content" required class="materialize-textarea" ng-model="createBoard.board_content"></textarea>
+					<textarea id="boardcontent" name="content" required class="materialize-textarea" ng-model="data.board_content" ng-readonly="layout"></textarea>
 					<label for="boardcontent">내용</label>
 				</div>
 				<div class="row center">
-					<button class="btn" ng-click="create(createBoard)" ng-disabled="boardform.$invalid">입력</button>
-					<button class="btn" ng-click="back()">되돌아가기</button>
+					<div class="col s12">
+						<button class="btn" ng-disabled="boardform.$invalid">수정</button>
+						<button class="btn" ng-click="create(createBoard)" ng-disabled="	boardform.$invalid">삭제</button>
+						<button class="btn" ng-click="back()">되돌아가기</button>
+					</div>
+					<!-- 암호확인 뷰 -->
+					<div class="col s12 center" ng-if="passwordlayout">
+						<div class="input-field col s12 center">
+						<input id="boardpassword" name="password" required type="password" ng-model="boardpassword">
+							<label for="boardpassword">암호</label>
+						</div>
+						<button class="btn" ng-disabled="detailform.password.$invalid" ng-click="passwordConfirm(boardpassword)">암호확인</button>
+					</div>
 				</div>
 			</form>
 		</div>

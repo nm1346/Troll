@@ -1,20 +1,20 @@
 
 
-<div ng-switch on="layout.view">
-	<div ng-switch-when="create">
+<div class="container" ng-switch on="layout.view">
+	<div class="ngFade" ng-switch-when="create">
 		<!-- 게시판 추가화면 -->
 		<board-create></board-create>
 	</div>
-	<div ng-switch-when="detail">
+	<div class="ngFade" ng-switch-when="detail">
 		<!-- 상세정보뷰 -->
 		<board-detail board="{{detail}}"></board-detail>
 	</div>
 	<!-- 업데이트 수정뷰 -->
-	<div ng-switch-when="update">
+	<div class="ngFade" ng-switch-when="update">
 		<board-update></board-update>
 	</div>
 	<!-- 게시판 -->
-	<div ng-switch-default>
+	<div class="ngFade" ng-switch-default>
 		<div class="row" style="background-color: rgba(0,0,0,0.9);">
 
 			<div class="row">

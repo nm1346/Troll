@@ -63,6 +63,7 @@ myApp.directive('boardDetail', function(BoardDetailResource){
 		scope: {board:"@board"}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
 			$scope.data=angular.fromJson($scope.board);
+			$scope.layout=true;
 			BoardDetailResource.get({num:$scope.data.board_num}).$promise.then(function(data){
 				$scope.data=data.board_detail;
 				$scope.replylist=data.reply_list;
@@ -72,6 +73,16 @@ myApp.directive('boardDetail', function(BoardDetailResource){
 			$scope.back=function(){
 				$scope.$emit("boardViewChange",'');
 			}
+			$scope.passwordlayout=false;
+			$scope.passwordConfirm=function(data){
+				BoardDetailResource.confirm({num:$scope.data.board_num,board_password:data}).$promise
+				.then(function(data){
+					console.log(data);
+				}, function(error){
+					console.log(error);
+				});
+			}
+			
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/board/board-detail.html',
