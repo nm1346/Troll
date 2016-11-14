@@ -21,7 +21,6 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval,Curren
                 $scope.time = Math.floor(r / 1000 / 60) + ':0' + r2.getSeconds()
               }
               if(Math.floor(r / 1000 / 60) > 1000){
-
                 if(c == 0){
                   $scope.time = '시간을 받아오는중.'
                   c++
@@ -34,7 +33,9 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval,Curren
                 }
                 
               }
-            }
+          }
+            
+
 
           }, 1000);
               },function(error){
@@ -42,18 +43,18 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval,Curren
 
               });
 
-          
+      
 
 // var sec_gap = gap / 1000;
 // var min_gap = gap / 1000 /60;
 
-          },
+},
        restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
       //template: 'asdasd',
       templateUrl: '/resources/page/search/currentGame/currentGame.html',
       link: function($scope, iElm, iAttrs, controller) {
-         
+
       }
-   };
-});
+    };
+  });
 

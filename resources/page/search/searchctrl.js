@@ -1,45 +1,8 @@
-myApp.controller('searchCtrl',function($scope,$routeParams){
-	$scope.layout={
-		s1:{
-			s0:false,
-			s1:false
-		}
-	};
+myApp.controller('searchCtrl',function(
+	$scope,$routeParams,CurrentGameResource,currentGameData,$window,$document,$timeout){
 	$scope.$emit("CoverOff",{});
 	$scope.$emit("loadingOff",{});
-	$scope.option={
-	    navigation: false,
-	    scrollingSpeed: 700,
-	    loopBottom:true,
-	    responsiveWidth: 600,
-	    controlArrows:false, 
-	    verticalCentered: true,
-	    continuousVertical: false,
 
-	    afterLoad: function(anchorLink, index){ 
-	            var loadedSection = $(this);
-	            //using index
-	            if(index == 3){ 
-	                console.log("test");    //full-page 섹션옮긴후 발동 메소드
-	            }
-	    },
-	    afterSlideLoad:function(anchor,sectionindex,slideindex){
-	    	if(slideindex == 1 && sectionindex==1){
-	    		$scope.layout.s1.s1 = true;
-	    		
-	        }
-	        $scope.$apply();
-	    },
-	    onSlideLeave: function(anchororLink, index, slideIndex, direction, nextSlideIndex,sectionindex){
-	    	if(slideIndex == 1 || sectionindex==1){
-	    		$scope.$emit("CoverOff",{});
-	    		$scope.layout.s1.s1 = false;
-	    		
-	    	}
-	    	
-	    }
-	};
-	
 	$scope.search={
 		loading:false,
 		error:false
@@ -60,4 +23,45 @@ myApp.controller('searchCtrl',function($scope,$routeParams){
 		$scope.search.error=data.error;
 		$scope.$broadcast('pageonview', {});
 	});
+	//
+	$scope.layout={
+		section:[1,2,3,4],
+		index:0,
+		available:true
+	}
+	$scope.$on("searchViewChange",function(event,data){
+		$scope.layout.index=data;
+	});
+	$window.onmousewheel=function(data){
+		//loading이 끝날경우에만 페이지내에서 뷰변경 가능
+		if($scope.layout.available){
+			//페이지가 상단에 닿았을경우 상단 뷰로 이동
+			if($window.screenTop==$window.pageYOffset&&data.deltaY<0){
+				$scope.layout.index--;
+				if($scope.layout.index<0){
+					$scope.layout.index=$scope.layout.section.length;
+				}
+				$scope.$apply();
+			}
+			//페이지가 하단에 닿았을 경우 하단 뷰로 이동
+			if($window.screenTop==($window.pageYOffset+$window.innerHeight)-$document.context.scrollingElement.offsetHeight&&data.deltaY>0||(data.clientY==data.layerY&&data.deltaY>0)){
+				$scope.layout.index++;
+				if(!($scope.layout.index<$scope.layout.section.length)){
+					$scope.layout.index=0;
+				}
+				$window.scroll(0,0)
+				$scope.$apply();
+			}
+		}
+	}
+	$scope.$on("loadingCoverOn",function(event,data){
+		$scope.layout.available=false;
+	});
+	$scope.$on("loadingCoverOff",function(event,data){
+		$timeout(function(){
+			$scope.layout.available=true;
+		},2000);
+	})
+
+	
 });
