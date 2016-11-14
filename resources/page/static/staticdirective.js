@@ -155,6 +155,7 @@ myApp.directive('staticItem', function(staticLocaleData,staticData,staticDetail)
 		controller: function($scope, $element, $attrs, $transclude) {
 			$scope.itemData=staticData.get();
 			$scope.localeData=staticLocaleData.get();
+			console.log($scope.itemData);
 
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Classit M = Comment

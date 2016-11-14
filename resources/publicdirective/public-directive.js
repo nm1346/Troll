@@ -34,6 +34,7 @@ myApp.directive('backCover',function($routeParams,$location){
 			});
 			$scope.$on("backCoverOff",function(event,data){
 				$scope.layout.on=false;
+
 			});
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
@@ -69,11 +70,31 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement){
 				}
 				$scope.$emit("searchStart",{});
 				$timeout(function(){
-					$location.path("/"+summonerName);
+					$location.path("/"+summonerName).replace();
 				},1000);	
 			}
 
 
+			$scope.keysearch = function (event,summonerName) {
+				if(event.keyCode == 13){
+				if($scope.searchList.indexOf(summonerName)==-1&&$scope.searchList.length<5){
+					$scope.searchList.push(summonerName)
+				}
+				$cookies.putObject("searchList",$scope.searchList);
+				
+				if (summonerName == "" ||summonerName == null) {
+					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000)
+					return;
+				}
+				$scope.$emit("searchStart",{});
+				$timeout(function(){
+					$location.path("/"+summonerName).replace();
+				},1000);	
+			  }
+			}
+			$scope.goStatic=function(){
+				$location.path("/static").replace();
+			}
 
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
@@ -82,6 +103,7 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement){
 		}
 	};
 });
+
 myApp.directive('statusToast', function(ShardResource){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -134,3 +156,15 @@ myApp.directive('loadingCover', function(){
     }
   };
 });
+
+myApp.directive('errSrc', function() {
+  return {
+  	restrict : "A",
+    link: function(scope, element, attrs) {
+      element.bind('error', function() {
+      	attrs.$$element.context.outerHTML = "";
+      });
+    }
+  }
+});
+

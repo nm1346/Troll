@@ -7,7 +7,6 @@
 <!-- Compiled and minified CSS -->
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-<link rel="stylesheet" href="/resources/static/jquery.fullPage.css">
 <link rel="stylesheet" type="text/css" href="/resources/static/troll.css">
 <link rel="stylesheet" type="text/css" href="/resources/static/search.css">
 <link rel="stylesheet" type="text/css" href="/resources/page/search/currentGame/currentGame.css">
@@ -24,11 +23,9 @@
 <script src="/resources/static/angular-route.js"></script>
 <script src="/resources/static/angular-resource.js"></script>
 <script src="/resources/static/angular-animate.js"></script>
-<script src="/resources/static/jquery.fullPage.js"></script>
-<script src="/resources/static/angular-fullpage.js"></script>
 <script src="/resources/static/angular-cookies.js"></script>
 <script>
-var myApp=angular.module("exampleApp",["ngRoute","fullPage.js","ngResource","ngAnimate","ngCookies" , "ui.materialize"]);
+var myApp=angular.module("exampleApp",["ngRoute","ngResource","ngAnimate","ngCookies" , "ui.materialize"]);
 //config
 myApp.config(function($routeProvider,$locationProvider) {
 	$locationProvider.html5Mode({

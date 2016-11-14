@@ -11,7 +11,8 @@
    }
    
    .ngFade{
-      opacity: 1
+      opacity: 1;
+      
    }
    .ngFade.ng-enter{
       opacity: 0;
@@ -52,7 +53,7 @@
    		z-index:1;
 	}
 	.backCover{
-		position: absolute;
+		position: fixed;
 		right: 0;
 		bottom: 0;
 		top:0;
@@ -114,7 +115,7 @@
   		background-position: center center;
   		background-size: contain;
    		object-fit: cover; /*cover video background */
-  		z-index:3;
+  		z-index:5;
    		transition: all 0.5s;
 	}
 	.loadingCover.ng-enter{
@@ -126,24 +127,24 @@
 		transition: all 1s;
 	}
 
-	.loadingCover.ng-leave{
+	/*.loadingCover.ng-leave{
 		background-color: rgba(0,0,0,0.5);
 		transition: all 1s;
 	}
 	.loadingCover.ng-leave-active{
 		background-color: rgba(0,0,0,0);
 		transition: all 1s;
+	}*/
+	input[type=text][readonly="readonly"]{
+		color: black;
 	}
-	.ngOff.ng-leave{
-		opacity: 0;
+	input[type=text][readonly="readonly"]+label{
+		color: black;
 	}
-	.ngOff.ng-leave-active{
-		opacity: 0;
+	textarea.materialize-textarea[readonly="readonly"]{
+		color: black;
 	}
-	.ngOff.ng-enter{
-		opacity: 0;
-	}
-	.ngOff.ng-enter-active{
-		opacity: 0;
+	textarea.materialize-textarea[readonly="readonly"]+label{
+		color: black;
 	}
 
