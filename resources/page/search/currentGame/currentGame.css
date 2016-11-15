@@ -1,21 +1,18 @@
-@media (max-width: 400px) {
-.sname1{
+@media (max-width: 1100px) {
+.sname{
+	font-size: 1px;
+}
+.sname2{
 	font-size: 1px;
 }
 }
-@media (min-width: 500px) and (max-width: 600px) {
 
-.sname1{
-	font-size: 100px;
-}
-
-}
 
 
 
 /*.container.currentGame{
-		background-color: rgba(255,255,255,0.9);
-		background-image: url("/resources/page/search/currentgame/images/Background.png");
+		
+		background-image: url("/resources/page/search/currentgame/images/Background2.png");
 		background-size: 100%;
 		padding-top: 1%;
 }*/

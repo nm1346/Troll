@@ -31,26 +31,37 @@ div .summoner{
 .card .statscard  {
 	font-weight: bold;
 	font-size: 1rem;
+	line-height: 150%;
 	background-size: cover;
 	background-repeat: no-repeat;
-
 }
 
 
-.winstat{
+.Winstat{
 	color : rgba(179, 229, 252 ,1);
 }
-.losestat{
+.Losestat{
 	color : rgba(255, 205, 210 ,1);
 }
 
+.Winchip{
+	background:rgba(0, 0, 0 ,0.8);
+	font-weight: bold;
+	color : rgba(179, 229, 252 ,1);
+}
+.Losechip{
+	background : rgba(0, 0, 0 ,0.8);
+	font-weight: bold;
+	color : rgba(255, 205, 210 ,1);
+}
 
-
-
+#sidenav-overlay{
+	display: none !important;
+}
 .recent{
 	margin-bottom: 1px;
 	line-height: 1.3;
-	/* width: 20% !important; */
+	width: 20%; 
 	text-align: center;
 }
 .victory{
@@ -107,20 +118,26 @@ div .summoner{
 	color : blue;
 	font-weight: bold;
 }
-.win{
+.Win{
 	background: rgba(187, 222, 251 , 0.8);
 	color:rgba(92, 107, 192, 1);
 }
-.lose{
+.Lose{
 	background: rgba(255, 205, 210 , 0.8);
 	color:rgba(236, 64, 122, 1);
 }
+.Wins{
+	color:rgba(92, 107, 192, 1);
+}
+.Loses{
+	color:rgba(236, 64, 122, 1);
+}
 
-.win:before{
+.Win:before{
 	background: rgba(187, 222, 251 , 0.8);
 	color:rgba(92, 107, 192, 1);
 }
-.lose:before{
+.Lose:before{
 	background: rgba(255, 205, 210 , 0.8);
 	color:rgba(236, 64, 122, 1);
 }

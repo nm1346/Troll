@@ -41,11 +41,10 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval,Curren
          $scope.$emit("loadingOff",{});
 
        });
+        $scope.back=function(){
+          $scope.$emit("searchViewChange",0);
+        }
 
-
-
-// var sec_gap = gap / 1000;
-// var min_gap = gap / 1000 /60;
 
       },
        restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment

@@ -30,9 +30,12 @@ myApp.controller('searchCtrl',function(
 		available:true
 	}
 	$scope.$on("searchViewChange",function(event,data){
+		$scope.$emit("loadingOff",{});
+		$scope.$emit("CoverOff",{});
 		$scope.layout.index=data;
 	});
-	$window.onmousewheel=function(data){
+	//scroll이벤트 기능 취소
+	/*$window.onmousewheel=function(data){
 		//loading이 끝날경우에만 페이지내에서 뷰변경 가능
 		if($scope.layout.available){
 			//페이지가 상단에 닿았을경우 상단 뷰로 이동
@@ -53,7 +56,7 @@ myApp.controller('searchCtrl',function(
 				$scope.$apply();
 			}
 		}
-	}
+	}*/
 	$scope.$on("loadingCoverOn",function(event,data){
 		$scope.layout.available=false;
 	});

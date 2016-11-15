@@ -21,6 +21,24 @@
    .ngFade.ng-enter-active{
       opacity: 1;
    }
+   .enter.ng-enter{
+      height: 0px;
+      overflow: hidden;
+      transition:all 0.5s;
+   }
+   .enter.ng-enter-active{
+      height: 120px;
+      
+   }
+   .leave.ng-leave{
+      height: 120px;
+      overflow: hidden;
+      transition:all 0.5s;
+   }
+   .leave.ng-leave-active{
+      height: 0px;
+      
+   }
    .section{
       z-index:4;
    }
@@ -34,8 +52,16 @@
    .ngVideo.ng-leave-active{
       opacity: 0;
    }
-   
-
+   .summonerdata{
+   	font-weight: bold;
+   }
+	.nav-profileicon{
+		position: relative;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
 	.backVideo{
 		position: fixed;
 		right: 0;
@@ -126,7 +152,23 @@
 		background-color: rgba(0,0,0,0.7);
 		transition: all 1s;
 	}
-
+	.profile-data{
+		height: 100px;
+	}
+	.search-side-nav{
+		background-color: black;
+		color:#fff !important;
+	}
+	.search-side-nav a{
+		color:#fff;
+	}
+	.tierimg{
+		position: relative;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height:100%;
+	}
 	/*.loadingCover.ng-leave{
 		background-color: rgba(0,0,0,0.5);
 		transition: all 1s;

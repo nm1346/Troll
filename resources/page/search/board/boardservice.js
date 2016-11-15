@@ -18,7 +18,7 @@ myApp.factory('BoardDetailResource', function(TrollRestUrl,$resource){
 			get:{method:"GET",isArray:false},
 			put:{method:"PUT",isArray:false},
 			confirm:{method:"POST",isArray:false},
-			patch:{method:"PATCH",isArray:false},
+			patch:{method:"PUT",isArray:false},
 			delete:{method:"DELETE",isArray:false}
 		});
 });

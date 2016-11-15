@@ -50,7 +50,7 @@
   cursor: pointer;
 }
 .checkicon:hover{
-   background: rgba(0,0,0,0.1);
+ background: rgba(0,0,0,0.1);
 }
 .search-card .search-action .video{
   cursor: pointer;
@@ -84,7 +84,7 @@
 }
 
 
-.chip{
+.cookiechip{
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
@@ -94,11 +94,11 @@
   color:rgba(255,255,255, 1);
 }
 
-.chip:hover{
+.cookiechip:hover{
  color: rgba(33, 150, 243 , 1);
  background: rgba(255,255,255,1);
-
 }
+
 .search-nav{
   z-index:3;
   position: relative;
@@ -128,7 +128,6 @@
 .search-input > input[type="search"]{
   border:none;
   border-radius: 15px;
-  font-family: 'Noto Sans KR', sans-serif;
   color: white;
 }
 
@@ -217,7 +216,7 @@
   height: 35px;
   width: 35%;
 }
- .my[disabled='disabled'] {
+.my[disabled='disabled'] {
   background: rgba(0,0,0,0);
 }
 .my[disabled='disabled']:before {
@@ -226,37 +225,37 @@
 .my:focus{
   background: rgba(38, 50, 56, 0.5);
 }
-     .my:hover {
-     background: rgba(50, 126, 150, .9);
-     } 
-     .my:active {
-      top: 2px;
-     }
-    .my:before {
-      -webkit-transition: all 0.4s ease-out;
-      -moz-transition: all 0.4s ease-out;
-      transition: all 0.4s ease-out;
-      position: absolute;
-      height: 100%;
-      left: 0;
-      top: 0;
-      width: 100%;
-      line-height: 2.3;
-      content: "\f002     검색";
-      font-family: FontAwesome;
-      background: rgba(245, 245,245, 0);
-      color: rgba(255, 255,255, 1);
-      border-radius: 5px 0 0 5px;
-    }
-    .my {
-     /*  padding: 25px 60px 25px 120px; */
-     border-radius: 10px 10px 10px 10px;
-   }
-   @media only screen and (max-width: 992px){
-    .my:before {
-      content: "\f002";
-    }
+.my:hover {
+ background: rgba(50, 126, 150, .9);
+} 
+.my:active {
+  top: 2px;
+}
+.my:before {
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  line-height: 2.3;
+  content: "\f002     검색";
+  font-family: FontAwesome;
+  background: rgba(245, 245,245, 0);
+  color: rgba(255, 255,255, 1);
+  border-radius: 5px 0 0 5px;
+}
+.my {
+ /*  padding: 25px 60px 25px 120px; */
+ border-radius: 10px 10px 10px 10px;
+}
+@media only screen and (max-width: 992px){
+  .my:before {
+    content: "\f002";
   }
-  .my:active:before {
-    color: rgba(0, 0, 0,0.8);
-  }
+}
+.my:active:before {
+  color: rgba(0, 0, 0,0.8);
+}

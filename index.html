@@ -81,7 +81,6 @@ myApp.run(function($rootScope,$window){
 <script src="/resources/page/index/indexservice.js"></script>
 <!-- 검색페이지 컨트롤러 및 디렉티브 -->
 <script src="/resources/page/search/searchctrl.js"></script>
-<script src="/resources/page/search/searchdirective.js"></script>
 <script src="/resources/page/search/searchservice.js"></script>
 <script src="/resources/page/search/currentGame/currentdirective.js"></script>
 <script src="/resources/page/search/currentGame/currentGameService.js"></script>
@@ -108,13 +107,15 @@ myApp.run(function($rootScope,$window){
 </head>
 <body>
 <!--페이지 영역-->
+
 <loading class="firstLoad" ng-if="!fullLoad"></loading>
 <!-- 인덱스페이지가 아니면 사라지는 동영상 투명도 커버 -->
 <index-video></index-video>
 <index-music></index-music>
 <back-cover></back-cover>
-<status-toast></status-toast>
+<!-- <status-toast></status-toast> -->
 <loading-cover></loading-cover>
+
 <img class="backImage" src="/resources/static/backimage.jpg"> 
 <div ng-if="fullLoad" ng-view class="ngFade search-nav">
 </div>

@@ -46,6 +46,10 @@ myApp.directive('summonerData', function(matchResource,matchData,SearchResource,
 					$scope.unlanked = totaldata['leagueData'];
 				}
 			});
+			$scope.avgcs =  function (stats) {
+				console.log(stats.minionsKilled,stats.timePlayed);
+				return (stats.minionsKilled / (stats.timePlayed / 60)).toFixed(2);
+			}
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/summoner/summonerdata.html',
