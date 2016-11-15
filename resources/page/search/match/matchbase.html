@@ -2,10 +2,10 @@
  <div class="col s6">
  <table class="bordered">
   <tr class="ban">
-      <td colspan="5">
+      <td colspan="3">
       <img src="http://sk2.op.gg/images/scoreboardicon_score.png">{{uteamkill}} / {{uteamdeath}} / {{uteamassist}}
       </td>
-      <td>
+      <td colspan="3" style="text-align: right;">
         <img src="http://sk2.op.gg/images/baron_nashor_100.png" align="center"> {{uteambaron}} 
         <img src="http://sk2.op.gg/images/dragon_100.png" align="center"> {{uteamdragon}} 
         <img src="http://sk2.op.gg/images/turret_100.png" align="center"> {{uteamturret}}
@@ -53,7 +53,10 @@
             <li>
               <a href="/{{m.summonerName}}">{{m.summonerName}}</a>
             </li>
-            <li>
+            <li ng-if="m.deaths == 0">
+              {{(m.kills+m.assists) | number: 2}}({{m.kills}}/{{m.deaths}}/{{m.assists}}) 
+            </li>
+            <li ng-if="m.deaths != 0">
               {{(m.kills+m.assists)/m.deaths | number: 2}}({{m.kills}}/{{m.deaths}}/{{m.assists}}) 
             </li>
         </b>
@@ -103,12 +106,12 @@
  <div class="col s6">
  <table class="bordered">
      <tr class="ban">
-      <td colspan="5">
+      <td colspan="3">
         <img src="http://sk2.op.gg/images/baron_nashor_100.png" align="center"> {{ateambaron}} 
         <img src="http://sk2.op.gg/images/dragon_100.png" align="center"> {{ateamdragon}} 
         <img src="http://sk2.op.gg/images/turret_100.png" align="center"> {{ateamturret}}
       </td>
-      <td>
+      <td colspan="3" style="text-align: right;">
       <img src="http://sk2.op.gg/images/scoreboardicon_score.png">{{ateamkill}} / {{ateamdeath}} / {{ateamassist}}
       </td>
     </tr>
