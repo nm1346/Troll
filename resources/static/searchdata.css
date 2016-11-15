@@ -4,22 +4,60 @@
 	font-size: 1rem;
 	font-weight: bold;
 	color: black;
+	height: 365px;
+	margin-bottom: 0px;
+	line-height: 120%;
+	border-radius: 10px;
 }
-
-.summoner img{
+.level{
+	font-size: 0.9em;
+	font-weight: bold;
+	top: -10px;
+}
+.season{
+	font-size: 0.9em;
+	font-weight: bold;
+}
+.summoner .profileicon{
 	border-radius: 15px;
+	width: 120px;
+	height: 120px;
+	margin-top: -10px;
 }
-
+.tier-img{
+	width: 80px;
+	height: 80px;
+}
+.tier{
+	font-size: .8em;
+}
+.point{
+	font-size: .8em;
+}
+.league{
+	 border-top: 1px solid rgba(0,0,0,0.15);
+	 padding-top: 10px !important;
+}
 .summoner .nickname {
 	font-size: 1.3rem;
 }
-.tier_icon_img{
-	display: block;
+.veteran{
+	position: relative;
+	height: 20px;
+	font-size: 0.1rem;
+	background-color: rgba(153, 158, 191, 0.5);
+	font-weight: bold;
+	line-height: 18px;
+	color: white;
+	top: -10px;
 }
-.card-stacked .card-content .nickname {
-	margin-top: -15px;
-	margin-left: -10px;
+.most-content{
+	position: relative;
+	height: 33%;
+	border-bottom: 1px solid rgba(0,0,0, 0.1);
 }
+
+
 .card-backcover{
 	position: fixed;
 	width: 100%;
@@ -66,6 +104,7 @@
 	line-height: 1.3;
 	width: 20%; 
 	text-align: center;
+	border-radius: 7px;
 }
 .victory{
 	font-size: 1rem;
@@ -252,7 +291,6 @@
     background:rgba(255, 255,255,.7);
     /* color: black; */
 }
-
 /* 모바일 스마트폰 이하 */
 @media only screen and (max-width: 450px){
 	.summoner-chamimg > img{
@@ -262,7 +300,7 @@
 		font-size: 15px;
 	}
 	
-
+	
 	.kda{
 		margin-left: -10px;
 	}
@@ -275,8 +313,14 @@
 	/* iPads (portrait and landscape) */
 	@media only screen
 	and (max-width : 1024px) {
-	
+	.summoner{
+		height: 320px;
+
 	}
+	.league{
+		padding-top: 0px !important;
+	}
+}
 	.vs{
 		padding: 0px 0px 0px 0px;
 		font-size: 1rem;

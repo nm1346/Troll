@@ -25,11 +25,15 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 				$scope.summonerdata = totaldata['summonerData'];
 				$scope.leaguedata = totaldata['leagueData'];
 				$scope.recentgame = totaldata['recentgamelist'];
+				$scope.mostchamp = totaldata['most'];
 				if (angular.isObject(totaldata['leagueData'])){
-					$scope.tierurl = totaldata['leagueData'].tier.toLowerCase();
-					$scope.divisionurl = totaldata['leagueData'].entrylist[0].division.toLowerCase();
+					if (totaldata['leagueData'].entrylist[0].division === 'I') {
+						$scope.tierurl = totaldata['leagueData'].tier.toLowerCase();
+					}else{
+						$scope.tierurl = totaldata['leagueData'].tier.toLowerCase() +'_'+totaldata['leagueData'].entrylist[0].division.toLowerCase();
+					}
 				}else{
-					$scope.unlanked = totaldata['leagueData'];
+					$scope.tierurl = "unlanked";
 				}
 			});
 			$scope.avgcs =  function (stats) {
