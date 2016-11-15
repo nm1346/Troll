@@ -9,6 +9,7 @@ myApp.filter('kdafilter',function () {
 		return kda.toFixed(2) + ':1' ;
 	}
 });
+
 myApp.filter('kdatxtcolorfilter',function () {
 	return function (stats) {
 		var kda= (stats.assists + stats.championsKilled) / stats.numDeaths;
@@ -22,6 +23,12 @@ myApp.filter('kdatxtcolorfilter',function () {
 	}
 });
 
+myApp.filter('avgcsfilter' ,function(){
+	return function (stats) {
+		console.log(stats.minionsKilled,stats.timePlayed);
+		return (stats.minionsKilled / (stats.timePlayed / 60)).toFixed(2);
+	}
+});
 myApp.filter('commafilter',function () {
 	return function (stats) {
 	  return stats.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

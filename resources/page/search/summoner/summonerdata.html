@@ -10,7 +10,21 @@
   </div>
 </div>end summoner card -->
 <div class="container row"> 
-  <div class="col l2 m6 s12 card recent  {{data.rawstats.win | victoryfilter}} center-align padding-bottom-hide" ng-repeat="data in recentgame" style="padding-left: -5px;">
+<div class="col l2 m6 s12 card summoner center-align padding-bottom-hide">
+  <div class="card-content profileicon">
+    <img class="icon_img" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/profileicon/{{summonerdata.profileIconId}}.png">
+  </div>
+  <div class="card-stacked">
+    <div class="card-content">
+      <p class="nickname">{{summonerdata.name}}</p>
+    </div>
+  </div>
+</div><!-- end recent -->
+<div class="col l2 m6 s12 card recent" >
+  
+</div><!-- end recent -->
+
+  <div class="col l2 m6 s12 card recent  {{data.rawstats.win | victoryfilter}} center-align padding-bottom-hide" ng-repeat="data in recentgame" >
    <!-- 승패여부 게임기본정보 -->
    <div class="col s12 card-content gamedata padding-hide left-align ">
    <div class="col s12">
@@ -44,7 +58,7 @@
        <div class="col l4  s2 slot">
          <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item0}}.png" err-src/>
        </div>
-       <div class="col l4 s2 slot" tooltipped data-position="top" data-delay="100" data-tooltip="{{htmlData}}"><img ng-if="data.rawstats.item1 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item1}}.png" err-src/></div>
+       <div class="col l4 s2 slot"><img ng-if="data.rawstats.item1 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item1}}.png" err-src/></div>
        <div class="col l4 s2 slot"><img ng-if="data.rawstats.item2 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item2}}.png" err-src /></div>
        <div class="col l4 s2 slot"><img ng-if="data.rawstats.item3 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item3}}.png" err-src/></div>
        <div class="col l4 s2 slot"><img ng-if="data.rawstats.item4 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item4}}.png" err-src/></div>
@@ -84,7 +98,6 @@
  <div class="card-backcover">
    <span class="col s12 card-title" style="padding-top: 10px;"><i class="material-icons right" >close</i></span>
   <div class="card-content padding-hide">
-  <div class="col s12">Player : {{summonerdata.name}}</div>
    <div class="col s12"> Level :  {{data.rawstats.level}}</div>
     <img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{data.chamName1}}.png" tooltipped data-position="top" data-delay="50" data-tooltip="{{data.chamName2}}" err-src/>
     <div class="col s12 card-content padding-hide center-align">
@@ -97,14 +110,15 @@
   </div>
      <div class="col s12">
     <img class='goldimg' ng-srcset="/resources/static/gold.png" height="15" > 
-    {{data.rawstats.goldEarned | commafilter}} / {{data.rawstats.goldSpent | commafilter}}
-
+    {{data.rawstats.goldEarned | commafilter}} / {{data.rawstats.goldSpent | commafilter}}<br>
+    C S : {{data.rawstats.minionsKilled}} ({{data.rawstats | avgcsfilter}})
+    
      </div>
-     <div class="col s12 card-content ">
-       가한 데미지 : {{data.rawstats.totalDamageDealt | commafilter}}<br>
+     <div class="col s12 card-content padding-hide ">
+       가한 데미지 : {{data.rawstats.totalDamageDealtToChampions | commafilter}}<br>
        받은 데미지 : {{data.rawstats.totalDamageTaken | commafilter}}
      </div>
-     <div class="col s12 card-content">
+     <div class="col s12 card-content padding-hide">
       <div class="chip {{data.rawstats.win | victoryfilter}}chip" ng-if="data.rawstats.firstBlood">
           퍼스트블러드
       </div>
