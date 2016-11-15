@@ -21,6 +21,24 @@
    .ngFade.ng-enter-active{
       opacity: 1;
    }
+   .enter.ng-enter{
+      height: 0px;
+      overflow: hidden;
+      transition:all 0.5s;
+   }
+   .enter.ng-enter-active{
+      height: 120px;
+      
+   }
+   .leave.ng-leave{
+      height: 120px;
+      overflow: hidden;
+      transition:all 0.5s;
+   }
+   .leave.ng-leave-active{
+      height: 0px;
+      
+   }
    .section{
       z-index:4;
    }
@@ -159,5 +177,16 @@
 		background-color: rgba(0,0,0,0);
 		transition: all 1s;
 	}*/
-	
+	input[type=text][readonly="readonly"]{
+		color: black;
+	}
+	input[type=text][readonly="readonly"]+label{
+		color: black;
+	}
+	textarea.materialize-textarea[readonly="readonly"]{
+		color: black;
+	}
+	textarea.materialize-textarea[readonly="readonly"]+label{
+		color: black;
+	}
 
