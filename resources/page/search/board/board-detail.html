@@ -69,7 +69,7 @@
 					<a 
 					ng-if="replydata.reply_gnum.split('-').length==1"
 					ng-click="replydata[$index]?replydata[$index]=false:replydata[$index]=true">
-					{{replydata[$index]?'댓글추가':'취소'}}
+					{{replydata[$index]?'취소':'댓글추가'}}
 					</a>
 					<a
 					ng-click="replydelete(replydata.reply_num)">
