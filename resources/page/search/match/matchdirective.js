@@ -5,17 +5,12 @@ myApp.directive('match', function(matchResource,matchData,$filter,$interval){
       controller: function($scope, $element, $attrs, $transclude) {
         //console.log(matchData.getmatch());
         //console.log(matchData.getsummoner());
-        $scope.summoner=matchData.getsummoner();
-        $scope.match=matchData.getmatch();
-        console.log($scope.match);
-        console.log($scope.summoner);
-        for (var i = 0; i < 10; i++) {
-          if ($scope.match.match[i].summonerName == $scope.summoner.name) {
-            $scope.teamId = $scope.match.match[i].teamId;
-          }
-        }
-
+        $scope.dt='경기분석';
+        $scope.selectdt=function(data){
+          $scope.dt=data;
+        };
         $scope.$emit("loadingOff",{});
+
       },
       restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
       //template: 'asdasd',

@@ -1,20 +1,20 @@
+/*base css*/
 .tff div{
+color: white;
 font-size: 15px;
 margin: 0;
 padding: 0;
-
+background-color: rgba(223,231,254,0.5);
 }
-
-/*
-.tff .img1{
-vertical-align: middle; 
-margin: 0;
-padding: 0;
-line-height: 0;
+.ban img{
+	width: 20px;
+	height: 20px;"
 }
-*/
+.sn a{
+color: white;
+}
 .ci{
-	background-color: white;
+	width: 70px; height: 100px;
 }
 .ci img{
 	width: 70px; height: 70px;
@@ -27,7 +27,12 @@ width: 20px; height: 20px;
 .itemi{
 width: 30px; height: 30px;
 }
-
+.dealt{
+	color: rgb(000,051,255);
+}
+.taken{
+	color: rgb(242,53,87);
+}
 .winner{
 	color: rgb(000,051,255);
 }
@@ -39,3 +44,5 @@ width: 30px; height: 30px;
 .teamName{
 	color: rgb(220,215,213);
 }
+
+/*game css*/
