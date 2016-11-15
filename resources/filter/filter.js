@@ -25,7 +25,6 @@ myApp.filter('kdatxtcolorfilter',function () {
 
 myApp.filter('avgcsfilter' ,function(){
 	return function (stats) {
-		console.log(stats.minionsKilled,stats.timePlayed);
 		return (stats.minionsKilled / (stats.timePlayed / 60)).toFixed(2);
 	}
 });
