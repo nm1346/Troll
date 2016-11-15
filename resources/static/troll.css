@@ -189,4 +189,21 @@
 	textarea.materialize-textarea[readonly="readonly"]+label{
 		color: black;
 	}
-
+	.reply.ng-enter{
+      height: 0px;
+      overflow: hidden;
+      transition:all 0.5s;
+   }
+   .reply.ng-enter-active{
+      height: 200px;
+      
+   }
+   .reply.ng-leave{
+      height: 200px;
+      overflow: hidden;
+      transition:all 0.5s;
+   }
+   .reply.ng-leave-active{
+      height: 0px;
+      
+   }
