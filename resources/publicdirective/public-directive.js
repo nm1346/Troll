@@ -44,7 +44,7 @@ myApp.directive('backCover',function($routeParams,$location){
 	};
 });
 
-myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement){
+myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement,$routeParams){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
@@ -74,7 +74,6 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement){
 				},1000);	
 			}
 
-
 			$scope.keysearch = function (event,summonerName) {
 				if(event.keyCode == 13){
 				if($scope.searchList.indexOf(summonerName)==-1&&$scope.searchList.length<5){
@@ -95,6 +94,24 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement){
 			$scope.goStatic=function(){
 				$location.path("/static").replace();
 			}
+			$scope.viewChange=function(view){
+				$scope.$emit("searchViewChange",view);
+			}
+			$scope.params=$routeParams;
+			$scope.dropdownLayout=true;
+			$scope.$watch("params",function(newval,oldval){
+				console.log(newval,oldval)
+				if(angular.isUndefined($scope.params.summonerName)){
+					$scope.dropdownLayout=false;
+					
+					
+				}else{
+					$scope.dropdownLayout=true;
+					$scope.summonerName=oldval.summonerName;
+				}
+			})
+
+
 
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
