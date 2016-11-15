@@ -126,3 +126,61 @@ myApp.filter('orderObjectBy', function() {
     return filtered;
   };
 });
+
+myApp.filter('skillTooltip', function() {
+	return function(skilldata,skillKey) {
+		var skill;
+		angular.forEach(skilldata, function(value, key) {
+			// console.log(key)
+			// console.log(value.name)
+            if (key == skillKey) {
+               	skill = value.name
+                
+            }
+            
+        });
+
+		return skill;
+	}
+})
+
+myApp.filter('skillTooltipDetail', function() {
+	return function(skilldata,skillKey) {
+		var skill;
+		angular.forEach(skilldata, function(value, key) {
+			// console.log(key)
+			// console.log(value.name)
+            if (key == skillKey) {
+               	skill = value.description
+            }
+            
+        });
+
+		var result = skill.substring(0, 30)
+		result += '<br>' + skill.substring(30, 60)
+		if(skillKey == "SummonerSmite"){
+			if(skill.length > 60){
+			result += '<br>' + skill.substring(60, 86)
+			}
+
+			if(skill.length > 90){
+			result += '<br>' + skill.substring(86, 120)	
+			}
+		}else{
+			if(skill.length > 60){
+			result += '<br>' + skill.substring(60, 90)
+			}
+
+			if(skill.length > 90){
+			result += '<br>' + skill.substring(90, 120)	
+			}
+
+		}
+		
+		if(skill.length > 120){
+			result += '<br>' + skill.substring(120, 150)	
+		}
+		
+		return result;
+	}
+})

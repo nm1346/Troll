@@ -1,15 +1,15 @@
-myApp.directive('currentGame', function(currentGameData,$filter,$interval,CurrentGameResource,$routeParams){
+myApp.directive('currentGame', function(currentGameData,$interval,CurrentGameResource,$routeParams){
    // Runs during compile
    return {
       scope: {}, // {} = isolate, true = child, false/undefined = no change
       controller: function($scope, $element, $attrs, $transclude) {
           $scope.$emit("CoverOn",{});
           $scope.$emit("loadingOn",{});
-          CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){        
+          CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){
+            console.log(data)        
             $scope.$emit("loadingOff",{});
-            var c = 0;  
             $scope.data = data
-            console.log($scope.data);
+            var c = 0;  
             $interval(function () {
             if(Object.keys($scope.data).length!=0&&$scope.data.success!=false){
               var o = new Date($scope.data.gameInfo.gameStartTime)
@@ -44,9 +44,6 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval,Curren
               });
 
       
-
-// var sec_gap = gap / 1000;
-// var min_gap = gap / 1000 /60;
 
 },
        restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
