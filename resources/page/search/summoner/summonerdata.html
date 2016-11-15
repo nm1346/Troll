@@ -10,19 +10,24 @@
   </div>
 </div>end summoner card -->
 <div class="container row"> 
-<div class="col l2 m6 s12 card summoner center-align padding-bottom-hide">
-  <div class="card-content profileicon">
-    <img class="icon_img" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/profileicon/{{summonerdata.profileIconId}}.png">
-  </div>
-  <div class="card-stacked">
-    <div class="card-content">
-      <p class="nickname">{{summonerdata.name}}</p>
+<div class="col l2 m6 s12 card summoner center-align padding-hide">
+     <div class="card-content">
+      <img ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/profileicon/{{summonerdata.profileIconId}}.png">
+       <p class="nickname">{{summonerdata.name}}</p>
+       <p class="level">Level : {{summonerdata.summonerLevel}}</p>
+       <p class="date" tooltipped data-position="top" data-delay="100" data-tooltip="최근 갱신">{{summonerdata.searchDate}}</p>
     </div>
-  </div>
-</div><!-- end recent -->
+    <div class="col s12 league">
+      <img ng-srcset="/resources/tier_icons/{{tierurl}}_{{divisionurl}}.png">
+
+    </div>
+
+  
+
+</div><!-- end summoner -->
 <div class="col l2 m6 s12 card recent" >
   
-</div><!-- end recent -->
+</div><!-- end league -->
 
   <div class="col l2 m6 s12 card recent  {{data.rawstats.win | victoryfilter}} center-align padding-bottom-hide" ng-repeat="data in recentgame" >
    <!-- 승패여부 게임기본정보 -->
@@ -115,10 +120,9 @@
     
      </div>
      <div class="col s12 card-content padding-hide ">
-       가한 데미지 : {{data.rawstats.totalDamageDealtToChampions | commafilter}}<br>
-       받은 데미지 : {{data.rawstats.totalDamageTaken | commafilter}}
+       영웅에게 가한 피해 : {{data.rawstats.totalDamageDealtToChampions | commafilter}}
      </div>
-     <div class="col s12 card-content padding-hide">
+     <div class="col s12 card-content " style="padding: 10px;">
       <div class="chip {{data.rawstats.win | victoryfilter}}chip" ng-if="data.rawstats.firstBlood">
           퍼스트블러드
       </div>
