@@ -1,9 +1,15 @@
 myApp.filter('kdafilter',function () {
 	return function (stats) {
-		var kda= (stats.assists + stats.championsKilled) / stats.numDeaths;
+		var kda;
+		if (stats.numDeaths === 0) {
+			kda= (stats.assists + stats.championsKilled) / 1;
+		}else{
+			kda= (stats.assists + stats.championsKilled) / stats.numDeaths;
+		}
 		return kda.toFixed(2) + ':1' ;
 	}
 });
+
 myApp.filter('kdatxtcolorfilter',function () {
 	return function (stats) {
 		var kda= (stats.assists + stats.championsKilled) / stats.numDeaths;
@@ -17,9 +23,28 @@ myApp.filter('kdatxtcolorfilter',function () {
 	}
 });
 
+myApp.filter('avgcsfilter' ,function(){
+	return function (stats) {
+		return (stats.minionsKilled / (stats.timePlayed / 60)).toFixed(2);
+	}
+});
+myApp.filter('commafilter',function () {
+	return function (stats) {
+	  return stats.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+});
+
+/*myApp.filter('Killingsfilter',function () {
+	return function (stats) {
+	  var killdata = [stats.firstBlood , stats.doubleKills , stats.tripleKills , stats.quadraKills , stats.pentaKills];
+	  console.log(killdata);
+	  return killdata;
+	}
+});*/
+
 myApp.filter('gametypefilter',function () {
 	return function (type) {
-		if (type == null) {
+		if (type == 'RANKED_FLEX_TT' || type == 'RANKED_FLEX_SR'){
 			return '자유랭크'
 		}else if(type == 'NORMAL' || type === 'NORMAL_3x3'){
 			return '일반'
@@ -49,6 +74,8 @@ myApp.filter('gametypefilter',function () {
 			return '왕과포로'
 		}else if(type === 'BILGEWATER'){
 			return '배'
+		}else{
+			return '커스텀'
 		}
 	}
 });
@@ -97,12 +124,6 @@ myApp.filter('gametimefilter',function () {
 			return hour + '시간' + (hourminute >= 10? hourminute:'0'+hourminute) + '분';
 		}
 		return (minutes >= 10? minutes:'0'+minutes)  + '분' + (millisecond >= 10? millisecond:'0'+millisecond) + '초';
-	}
-});
-myApp.filter('victoryclassfilter',function () {
-	return function (boolean) {
-		if (boolean) {return 'win';
-		}else {return 'lose';}
 	}
 });
 

@@ -3,14 +3,13 @@ myApp.directive('currentGame', function(currentGameData,$interval,CurrentGameRes
    return {
       scope: {}, // {} = isolate, true = child, false/undefined = no change
       controller: function($scope, $element, $attrs, $transclude) {
-          $scope.$emit("CoverOn",{});
-          $scope.$emit("loadingOn",{});
-          CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){
-            console.log(data)        
-            $scope.$emit("loadingOff",{});
-            $scope.data = data
-            var c = 0;  
-            $interval(function () {
+        $scope.$emit("CoverOn",{});
+        $scope.$emit("loadingOn",{});
+        CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){        
+          $scope.$emit("loadingOff",{});
+          var c = 0;  
+          $scope.data = data
+          $interval(function () {
             if(Object.keys($scope.data).length!=0&&$scope.data.success!=false){
               var o = new Date($scope.data.gameInfo.gameStartTime)
               var n = new Date()
@@ -33,19 +32,22 @@ myApp.directive('currentGame', function(currentGameData,$interval,CurrentGameRes
                 }
                 
               }
-          }
-            
+            }
 
 
           }, 1000);
-              },function(error){
-                 $scope.$emit("loadingOff",{});
+        },function(error){
+         $scope.$emit("loadingOff",{});
 
-              });
+       });
+        $scope.back=function(){
+          $scope.$emit("searchViewChange",0);
+        }
 
-      
 
-},
+
+      },
+
        restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
       //template: 'asdasd',
       templateUrl: '/resources/page/search/currentGame/currentGame.html',

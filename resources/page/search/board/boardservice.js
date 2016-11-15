@@ -13,13 +13,12 @@ myApp.factory('BoardResource', function(TrollRestUrl,$resource){
 });
 myApp.factory('BoardDetailResource', function(TrollRestUrl,$resource){
 	return $resource(TrollRestUrl+"boarddetail/:num",
-		{
-			num:"@num"
-		}, 
+		{num:"@num"}, 
 		{
 			get:{method:"GET",isArray:false},
 			put:{method:"PUT",isArray:false},
-			patch:{method:"PATCH",isArray:false},
+			confirm:{method:"POST",isArray:false},
+			patch:{method:"PUT",isArray:false},
 			delete:{method:"DELETE",isArray:false}
 		});
 });
