@@ -61,17 +61,15 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 		}
 	};
 });
-myApp.directive('boardDetail', function(BoardDetailResource){
+myApp.directive('boardDetail', function(BoardDetailResource,BoardDetailData){
 	return {
 		scope: {board:"@board"}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
 			$scope.data=angular.fromJson($scope.board);
-
-
 			BoardDetailResource.get({num:$scope.data.board_num}).$promise.then(function(data){
-				$scope.data=data.board_detail;
-				$scope.data.num=data.board_detail.board_num;
-				$scope.replylist=data.reply_list;
+				BoardDetailData.set(data);
+				$scope.data=BoardDetailData.get();
+				
 			},function(error){
 				$scope.$emit("boardViewChange",'');
 				$scope.$emit("boardRedirect",{});
@@ -156,9 +154,25 @@ myApp.directive('boardDetail', function(BoardDetailResource){
 				}else{
 					$scope.modify=true;
 					$scope.passwordlayout=true;
-				}
-				
+				}	
 			}
+			$scope.replydelete=function(data){
+				BoardDetailResource.delete(data).$promise.then(function(data){
+					if(data.success){
+						BoardDetailResource.get({num:$scope.data.board_detail.board_num}).$promise.then(function(data){
+							BoardDetailData.set(data);
+							$scope.data=BoardDetailData.get();
+						},function(error){
+							$scope.$emit("boardViewChange",'');
+							$scope.$emit("boardRedirect",{});
+							Materialize.toast('존재하지않는 게시물입니다.', 4000);
+						});
+					}
+				},function(error){
+
+				});
+			}
+			
 			
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
@@ -221,6 +235,43 @@ myApp.directive('paging', function(BoardResource){
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/board/paging.html',
+		link: function($scope, iElm, iAttrs, controller) {
+			
+		}
+	};
+});
+
+myApp.directive('replyForm', function(ReplyResource,BoardDetailResource,BoardDetailData){
+	return {
+		scope: {boardnum:"=boardnum",selectgnum:"=selectgnum"}, // {} = isolate, true = child, false/undefined = no change
+		controller: function($scope, $element, $attrs, $transclude) {
+			$scope.create=function(replydata){
+				replydata.board_num=$scope.boardnum;
+				replydata.selectgnum=$scope.selectgnum;
+				ReplyResource.put(replydata).$promise.then(function(data){
+					if(data.success){
+						$scope.renewal();
+					}
+				},function(error){
+					Materialize.toast("자료추가 오류!",2000);
+				});
+			}
+			$scope.renewal=function(){
+				$scope.$emit("loadingOn",{});
+				BoardDetailResource.get({num:$scope.createReply.board_num})
+					.$promise.then(function(data){
+					$scope.$emit("loadingOff",{});
+					BoardDetailData.set(data);
+
+				},function(error){
+					Materialize.toast("자료추가 오류!",2000);
+					$scope.$emit("loadingOff",{});
+				});
+			}
+			
+		},
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		templateUrl: '/resources/page/search/board/reply-form.html',
 		link: function($scope, iElm, iAttrs, controller) {
 			
 		}
