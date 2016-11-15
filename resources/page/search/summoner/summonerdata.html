@@ -9,7 +9,7 @@
     </div>
   </div>
 </div>end summoner card -->
-<div class="container row"> 
+<div class="container row">
 <div class="col l2 m6 s12 card summoner center-align padding-bottom-hide padding-right-hide padding-left-hide">
       <p class="level col s12">Level : {{summonerdata.id}}</p>
      <div class="card-content padding-bottom-hide">
@@ -41,8 +41,8 @@
 
 <div class="col l2 m6 s12 card summoner center-align padding-bottom-hide padding-right-hide padding-left-hide">
   <p class="level col s12">시즌 모스트 챔프3</p>
-     <div class="card-content padding-bottom-hide most-content" data-ng-repeat="data in mostchamp" data-ng-if="$index < 3">
-        
+     <div class="card-content padding-bottom-hide most-content{{$index}}" data-ng-repeat="data in mostchamp" data-ng-if="$index < 3">
+
     </div>
 </div><!-- end summoner -->
 
@@ -55,7 +55,7 @@
    <div class="col s12">
    <span class="victory {{data.rawstats.win? 'Win':'Lose'}}s">{{data.rawstats.win? 'Win':'Lose'}}</span>
    <span class="subtype" tooltipped data-position="top" data-delay="100" data-tooltip="{{data.createDate | gamedatefilter}}">
-   {{data.createDate | gameendtimefilter}}[{{data.subType | gametypefilter}}{{data.gameId}}]</span></div>
+   {{data.createDate | gameendtimefilter}}[{{data.subType | gametypefilter}}]</span></div>
    <!-- <div class="col s12">{{data.createDate | gameendtimefilter}}</div> -->
   </div>
    <div class="col s12 card-content gamedata padding-hide left-align">
@@ -88,14 +88,14 @@
        <div class="col l4 s2 slot"><img ng-if="data.rawstats.item3 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item3}}.png" err-src/></div>
        <div class="col l4 s2 slot"><img ng-if="data.rawstats.item4 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item4}}.png" err-src/></div>
        <div class="col l4 s2 slot"><img ng-if="data.rawstats.item5 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item5}}.png" err-src/></div>
-     </div> 
+     </div>
    </div>
  </div>
   <div class="col s12 card-content padding-hide">
    <div class="col s12 padding-hide">
      <span class="player-chamimg"><img class="mychampborder" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{data.chamName1}}.png"/></span>
          <span ng-repeat="player in data.fellowPlayers" ng-if="data.teamId == player.teamId">
-           <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.chamName2}}">
+           <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.summonerName}}">
            <img class="{{player.teamId === 100 ? 'blueteamborder':'redteamborder'}}" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{player.chamName1}}.png"/>
            </span>
          </span>
@@ -104,7 +104,7 @@
           <!-- 플레이어 상대팀 -->
     <div class="col s12 padding-hide">
       <span ng-repeat="player in data.fellowPlayers" ng-if="data.teamId != player.teamId" >
-       <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.chamName2}}" >
+       <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.summonerName}}" >
          <img class="{{player.teamId === 100 ? 'blueteamborder':'redteamborder'}}" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{player.chamName1}}.png"/></span>
        </span>
    </div>
@@ -129,15 +129,15 @@
      <div class="col s12">
      KDA :  {{data.rawstats | kdafilter}}
      <div class="col s12 padding-hide">
-     ({{data.rawstats.championsKilled}} / {{data.rawstats.numDeaths}} / {{data.rawstats.assists}})  
+     ({{data.rawstats.championsKilled}} / {{data.rawstats.numDeaths}} / {{data.rawstats.assists}})
      </div>
   </div>
   </div>
      <div class="col s12">
-    <img class='goldimg' ng-srcset="/resources/static/gold.png" height="15" > 
+    <img class='goldimg' ng-srcset="/resources/static/gold.png" height="15" >
     {{data.rawstats.goldEarned | commafilter}} / {{data.rawstats.goldSpent | commafilter}}<br>
     C S : {{data.rawstats.minionsKilled}} ({{data.rawstats | avgcsfilter}})
-    
+
      </div>
      <div class="col s12 card-content padding-hide ">
        영웅에게 가한 피해 : {{data.rawstats.totalDamageDealtToChampions | commafilter}}
@@ -160,8 +160,8 @@
       </div>
      </div>
  </div>
- </div> 
-  
+ </div>
+
 </div>
 
 </div><!-- end recent -->
@@ -220,7 +220,7 @@
            <div class="col l2 m4 s6 slot"><img ng-if="data.rawstats.item4 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item4}}.png"/></div>
 
            <div class="col l2 m4 s6 slot"><img ng-if="data.rawstats.item5 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item5}}.png"/></div>
-         </div> 
+         </div>
          </div>
      </div>
         아이템 1 : {{data.rawstats.item1}} &nbsp;
@@ -234,7 +234,7 @@
      <div class="col l3 s12  allplayers center-align">
      플레이어 팀
        <div class="col s12">
-         
+
      </div>
           </div>
 
