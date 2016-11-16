@@ -33,7 +33,7 @@
   color:white;
 }
 .search-card .search-action i {
-  color:rgba(255, 255, 255,0.8); 
+  color:rgba(255, 255, 255,0.8);
 }
 .search-card .search-cookie{
   border-top: 1px solid rgba(245,245,245 , .3);
@@ -104,6 +104,9 @@
   position: relative;
   border:none;
 }
+.side-nav{
+	z-index: 999;
+}
 .input-field.search-input{
   background: rgba(0,0,0,0.3);
   border: none;
@@ -111,7 +114,7 @@
   outline: none;
   height: 3rem;
   width: 100%;
-  font-size: 1rem; 
+  font-size: 1rem;
   padding: 0;
   box-shadow: 1px 1px 2px 1px rgba(232, 245, 233,.8) inset ,0px 0px 1px 0px rgba(232, 245, 233,.5);
   transition: all 0.3s;
@@ -124,7 +127,7 @@
 .search-input > label > i{
   transition:all 0.2s ease-out;
   color: rgba(241, 241, 241 , 0.5);
-}  
+}
 .search-input > input[type="search"]{
   border:none;
   border-radius: 15px;
@@ -154,19 +157,27 @@
   margin: 13px auto 0px auto;
   height: 40px;
   background-color: white;
-  border-radius: 7px;
+  border-radius: 4px;
 }
 .logo-search-field .logo-search-input{
-  margin-top:-2px;
+  transition: all 0.3s ease-out;
+  margin-top:-3px;
   border: none;
   box-shadow: none;
   -webkit-appearance: none;
   background: rgba(0,0,0,0);
   outline: none;
-  color:black;
+ color: rgba(0,0,0 , 0.9);
+  font-size: 0.8em;
+  font-weight: 500;
+
+
+}
+.logo-search-input:focus{
+	border:4px solid grey;
 }
 .logo-search-field .logo-search-input::-webkit-input-placeholder{
- color: #546e7a;
+ color: rgba(0,0,0 , 0.5);
 }
 .search-label {
   text-align: center;
@@ -175,7 +186,7 @@
   color: #546e7a;
   margin-top: -10px;
   cursor: pointer;
-  font-weight: 500px;
+  font-weight: 500;
   font-size: 25px;
 }
 .logo-search-field .logo-search-input[type=search]:focus{
@@ -200,7 +211,7 @@
 
  :-ms-input-placeholder {
    color: rgba(241, 241, 241 , 0.5);
- }   
+ }
 
 
 
@@ -210,7 +221,7 @@
   cursor: pointer;
   text-transform: uppercase;
   background: rgba(50, 126, 150, 0.5);
-  outline: none;  
+  outline: none;
   position: relative;
   z-index: 4;
   height: 35px;
@@ -227,7 +238,7 @@
 }
 .my:hover {
  background: rgba(50, 126, 150, .9);
-} 
+}
 .my:active {
   top: 2px;
 }

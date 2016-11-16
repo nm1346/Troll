@@ -20,6 +20,9 @@ myApp.factory('summoner', function(){
 		 				if (mostarray[i].deaths === 0) {
 		 					mostarray[i].deaths = 1
 		 				}
+		 				if(mostarray[i].avgwinlate === 0){
+		 					mostarray[i].avgwinlate = 50;
+		 				}
 		 				var kda = (mostarray[i].kills + mostarray[i].assists) /  mostarray[i].deaths;
 		 				var winlatescore = mostarray[i].winlate / mostarray[i].avgwinlate;
 		 				var scoreobject = {index : mostarray[i],
@@ -29,9 +32,9 @@ myApp.factory('summoner', function(){
 		 				}
 		 				console.log(jumsu);
 		 				jumsu.sort(function (a,b) {
-		 					return parseFloat(a.score) > parseFloat(b.score) ? -1 : parseFloat(a.score) < parseFloat(b.score) ? 1 : 0;  
+		 					return parseFloat(a.score) > parseFloat(b.score) ? -1 : parseFloat(a.score) < parseFloat(b.score) ? 1 : 0;
 		 				});
 		 		return jumsu;
-		 } 
+		 }
 	};
 })

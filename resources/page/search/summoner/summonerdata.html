@@ -16,22 +16,30 @@
     <img class="profileicon" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/profileicon/{{summonerdata.profileIconId}}.png">
     <p class="nickname">{{summonerdata.name}}</p>
     <p class="level">{{leaguedata.name}}</p>
-    <p class="season">시즌 전적 : {{leaguedata.entrylist[0].leaguePoints}}승 {{leaguedata.entrylist[0].leaguePoints}}패</p>
+    <p class="season">시즌 전적 : {{leaguedata.entrylist[0].wins}}승 {{leaguedata.entrylist[0].losses}}패</p>
    <!--  <p class="date" tooltipped data-position="top" data-delay="100" data-tooltip="최근 갱신">{{summonerdata.searchDate}}</p> -->
   </div>
 
-  <div class="col s6 league center-align" tooltipped data-position="bottom" data-delay="100" data-tooltip="{{mostchamp.index.championNameK}}">
-   <span class="col s12 tier {{leaguedata.tier}} padding-hide">Most Champ</span>
+  <div class="col s6 league center-align mostchamp padding-hide" >
+   <span class="col l12 m12 s12">Most Champ</span>
+   <div class="col l12 m6" tooltipped data-position="bottom" data-delay="100" data-tooltip="{{mostchamp.index.championNameK}}">
      <img class="most-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{mostchamp.index.championNameE}}.png" err-src/>
-     <span class="col s12 tier {{leaguedata.tier}} padding-hide">{{mostchamp.index.championNameK}}</span>
-     <span class="col s12 tier {{leaguedata.tier}} padding-hide">점수 : {{mostchamp.score}}
-     <br>KDA : {{mostchamp.kda}}<br>
-     승률 : {{mostchamp.index.winlate}}%</span>
+     </div>
+     <span class="col l12 m6 padding-hide">{{mostchamp.index.championNameK}}
+      <br>점수 : {{mostchamp.score}}
+      <br>KDA : {{mostchamp.kda}}
+      <br>승률 : {{mostchamp.index.winlate}}%
+     </span>
   </div>
-<div class="col s6 league center-align">
- <div class="col s12">
-</div>
-</div>
+<!--워스트 챔프 -->
+<div class="col s6 league center-align wostchamp padding-hide" tooltipped data-position="bottom" data-delay="100" data-tooltip="{{wostchamp.index.championNameK}}">
+   <span class="col s12 padding-hide">Wost Champ</span>
+     <img class="most-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{wostchamp.index.championNameE}}.png" err-src/>
+     <span class="col s12  padding-hide">{{wostchamp.index.championNameK}}</span>
+     <span class="col s12  padding-hide">점수 : {{wostchamp.score}}
+     <br>KDA : {{wostchamp.kda}}<br>
+     승률 : {{wostchamp.index.winlate}}%</span>
+  </div>
 </div><!-- end summoner -->
 
 
@@ -50,9 +58,9 @@
 
 <div class="col l2 m6 s12 card summoner center-align padding-bottom-hide padding-right-hide padding-left-hide">
 <div class="category-most col s12"><h6 class="left-align">모스트 챔피언</h6></div>
-<div class="card-content padding-bottom-hide most-content{{$index}} col s12" data-ng-repeat="data in mostchamp" 
+<div class="card-content padding-bottom-hide most-content{{$index}} col s12" data-ng-repeat="data in mostchamp"
  ng-if="$index < 3">
-  
+
 </div>
 </div><!-- end summoner -->
 
@@ -125,15 +133,15 @@
   </div>
 
   <div class="col s12 card-content padding-hide">
-   <div class="col s6 activator card-btn statscard-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}" 
+   <div class="col s6 activator card-btn statscard-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
    ng-if="!(data.subType | botfilter)">
    &nbsp;
  </div>
- <div class="col s6 card-btn match-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}" 
+ <div class="col s6 card-btn match-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
  ng-if="!(data.subType | botfilter)">
  &nbsp;
 </div>
-<div class="col s12 activator solocard-btn statscard-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}" 
+<div class="col s12 activator solocard-btn statscard-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
  ng-if="data.subType | botfilter">
 &nbsp;
 </div>

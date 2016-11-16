@@ -44,7 +44,7 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 		});
 		 	$scope.researchsummoner = function (summonerName) {
 		 		console.log(summonerName);
-		 		$location.url('/'+summonerName);
+		 		$location.path('/'+summonerName);
 		 	}
 		 },
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
