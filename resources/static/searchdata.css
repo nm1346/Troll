@@ -155,7 +155,12 @@
 	border-radius: 100px;
 	border: 2px solid grey;
 }
-
+.most-chamimg{
+	width: 45px;
+	height: 45px;
+	border-radius: 100px;
+	border: 2px solid gold;
+}
 .myplayer-chamimg > img{
 	width: 31px;
 	height: 31px;

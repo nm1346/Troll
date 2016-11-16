@@ -11,15 +11,31 @@
 </div>end summoner card -->
 <div class="container row">
  <div class="col l2 m6 s12 card summoner center-align padding-bottom-hide padding-right-hide padding-left-hide">
-  <p class="level col s12">Level : {{summonerdata.id}}</p>
+  <p class="level col s12">Level : {{summonerdata.summonerLevel}}</p>
   <div class="card-content padding-bottom-hide">
     <img class="profileicon" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/profileicon/{{summonerdata.profileIconId}}.png">
     <p class="nickname">{{summonerdata.name}}</p>
     <p class="level">{{leaguedata.name}}</p>
     <p class="season">시즌 전적 : {{leaguedata.entrylist[0].leaguePoints}}승 {{leaguedata.entrylist[0].leaguePoints}}패</p>
-    <p class="date" tooltipped data-position="top" data-delay="100" data-tooltip="최근 갱신">{{summonerdata.searchDate}}</p>
+   <!--  <p class="date" tooltipped data-position="top" data-delay="100" data-tooltip="최근 갱신">{{summonerdata.searchDate}}</p> -->
   </div>
-  <div class="col s6 league center-align">
+
+  <div class="col s6 league center-align" tooltipped data-position="bottom" data-delay="100" data-tooltip="{{mostchamp.index.championNameK}}">
+   <span class="col s12 tier {{leaguedata.tier}} padding-hide">Most Champ</span>
+     <img class="most-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{mostchamp.index.championNameE}}.png" err-src/>
+     <span class="col s12 tier {{leaguedata.tier}} padding-hide">{{mostchamp.index.championNameK}}</span>
+     <span class="col s12 tier {{leaguedata.tier}} padding-hide">점수 : {{mostchamp.score}}
+     <br>KDA : {{mostchamp.kda}}<br>
+     승률 : {{mostchamp.index.winlate}}%</span>
+  </div>
+<div class="col s6 league center-align">
+ <div class="col s12">
+</div>
+</div>
+</div><!-- end summoner -->
+
+
+<!-- <div class="col s6 league center-align">
    <div class="col s12 padding-hide">
     <span class="col s12 tier {{leaguedata.tier}} padding-hide">{{leaguedata.tier}} {{leaguedata.entrylist[0].division}}</span>
     <span class="col s12 point">LP : {{leaguedata.entrylist[0].leaguePoints}}</span>
@@ -30,19 +46,12 @@
   <div class="col s12 center-align padding-hide hide-on-med-and-down" ng-if="leaguedata.entrylist[0].veteran">
     <div class="chip veteran">베테랑</div>
   </div>
-</div>
-<div class="col s6 league center-align">
- <div class="col s12">
-  범서형 영역
-</div>
-</div>
-
-</div><!-- end summoner -->
+</div> -->
 
 <div class="col l2 m6 s12 card summoner center-align padding-bottom-hide padding-right-hide padding-left-hide">
 <div class="category-most col s12"><h6 class="left-align">모스트 챔피언</h6></div>
 <div class="card-content padding-bottom-hide most-content{{$index}} col s12" data-ng-repeat="data in mostchamp" 
-ng-if="$index < 3">
+ ng-if="$index < 3">
   
 </div>
 </div><!-- end summoner -->
@@ -50,6 +59,7 @@ ng-if="$index < 3">
 <!-- <div class="col l2 m6 s12 card recent">
 </div>end league
 -->
+
 <div class="col l2 m6 s12 card recent {{data.rawstats.win? 'Win':'Lose' }} center-align padding-bottom-hide" ng-repeat="data in recentgame" ng-if="data.rawstats !== null">
  <!-- 승패여부 게임기본정보 -->
  <div class="col s12 card-content gamedata padding-hide left-align ">
