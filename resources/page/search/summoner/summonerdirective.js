@@ -18,6 +18,7 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 						$scope.$emit('searchPageSuccess', {loading : false , error : false});
 						$scope.$emit("loadingOff",{});
 					},function(error){
+						$scope.$emit('searchPageSuccess', {loading : false , error : false});
 						$scope.$emit("loadingOff",{});
 					});
 				}else{
