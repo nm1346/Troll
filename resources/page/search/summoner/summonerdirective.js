@@ -1,6 +1,6 @@
 //search첫번째 페이지에 들어갈 인덱스모음
 
-myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,BoardData,$location){
+myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,BoardData,BoardResource,$location){
 	return {
 		 scope: {}, // {} = isolate, true = child, false/undefined = no change
 		 controller: function($scope, $element, $attrs, $transclude) {
@@ -10,9 +10,16 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 			SearchResource.get({summonerName : $routeParams.summonerName}).$promise.then(function (data) {
 				if (Boolean(Number(data.success))){
 					summoner.set(data);
-					console.log(data)
-					$scope.$emit('searchPageSuccess', {loading : false , error : false});
-					$scope.$emit("loadingOff",{});
+					BoardResource.get({id:data.leagueData.id,board_category:"category"}).$promise.then(function(data){
+						if(data.success){
+							$scope.boardCategory=data;
+							console.log(data)
+						}
+						$scope.$emit('searchPageSuccess', {loading : false , error : false});
+						$scope.$emit("loadingOff",{});
+					},function(error){
+						$scope.$emit("loadingOff",{});
+					});
 				}else{
 					$scope.$emit('searchPageError', {errorCode : data.errorcode , errorMessage : data.errormsg});
 					$scope.$emit("loadingOff",{});
@@ -20,6 +27,7 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 			},function (error) {
 				console.log('에러',error);
 			});
+
 			$scope.$on('pageonview',function (data) {
 				var totaldata = summoner.get();
 				$scope.summonerdata = totaldata['summonerData'];

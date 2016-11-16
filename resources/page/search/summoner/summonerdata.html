@@ -33,14 +33,16 @@
 </div>
 <div class="col s6 league center-align">
  <div class="col s12">
-  범서형 영역
 </div>
 </div>
 
 </div><!-- end summoner -->
 
 <div class="col l2 m6 s12 card summoner center-align padding-bottom-hide padding-right-hide padding-left-hide">
-<div class="category-most col s12"><h6 class="left-align">모스트 챔피언</h6></div>
+<div class="category-most col s12">
+<h6 class="left-align">모스트 챔피언</h6>
+<!-- <div ng-repeat="category in boardCategory.categoryList">{{category.board_category}}:{{category.count}}</div> -->
+</div>
 <div class="card-content padding-bottom-hide most-content{{$index}} col s12" data-ng-repeat="data in mostchamp" 
 ng-if="$index < 3">
   
