@@ -47,8 +47,8 @@ myApp.factory('BoardData', function(){
 	};
 })
 myApp.factory('ReplyResource', function(TrollRestUrl,$resource){
-	return $resource(TrollRestUrl+"reply/:num",
-		{num:"@num"}, 
+	return $resource(TrollRestUrl+"reply/:reply_num",
+		{reply_num:"@reply_num"}, 
 		{
 			get:{method:"GET",isArray:false},
 			put:{method:"PUT",isArray:false},

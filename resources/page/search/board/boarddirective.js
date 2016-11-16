@@ -14,10 +14,7 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 				view:""
 			}
 			$scope.$watch("summonerData.$promise",function(newval,oldval){
-				if(newval==oldval){
-					if(angular.isUndefined(newval))return;
-				}
-
+				if(angular.isUndefined(newval))return;
 				newval.then(function(data){
 					$scope.selectVal.id=data.summonerData.id;
 					boardChange($scope.selectVal);
@@ -61,7 +58,7 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 		}
 	};
 });
-myApp.directive('boardDetail', function(BoardDetailResource,BoardDetailData){
+myApp.directive('boardDetail', function(BoardDetailResource,BoardDetailData,ReplyResource){
 	return {
 		scope: {board:"@board"}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
@@ -87,7 +84,8 @@ myApp.directive('boardDetail', function(BoardDetailResource,BoardDetailData){
 			$scope.passwordConfirm=function(data){
 				if($scope.modify){
 					if($scope.confirmPassword){
-						BoardDetailResource.patch($scope.data).$promise.then(function(data){
+						$scope.data.board_detail.num=$scope.data.board_detail.board_num;
+						BoardDetailResource.patch($scope.data.board_detail).$promise.then(function(data){
 							$scope.$emit("boardRedirect",{});
 							$scope.$emit("boardViewChange",'');
 							Materialize.toast('수정에 성공했습니다.', 4000);
@@ -95,7 +93,7 @@ myApp.directive('boardDetail', function(BoardDetailResource,BoardDetailData){
 							console.log(error);
 						});
 					}else{
-						BoardDetailResource.confirm({num:$scope.data.board_num,board_password:data}).$promise
+						BoardDetailResource.confirm({num:$scope.data.board_detail.board_num,board_password:data}).$promise
 						.then(function(data){
 							if(data.success){
 								$scope.confirmPassword=true;
@@ -117,7 +115,7 @@ myApp.directive('boardDetail', function(BoardDetailResource,BoardDetailData){
 					}
 					
 				}else if($scope.delete){
-					BoardDetailResource.delete({num:$scope.data.board_num,board_password:data}).$promise
+					BoardDetailResource.delete({num:$scope.data.board_detail.board_num,board_password:data}).$promise
 					.then(function(data){
 						if(data.success){
 							Materialize.toast('삭제에 성공했습니다.', 4000);
@@ -138,7 +136,7 @@ myApp.directive('boardDetail', function(BoardDetailResource,BoardDetailData){
 					$scope.delete=false;
 					$scope.passwordlayout=false;
 					$scope.confirmPassword=false;
-					$scope.data.board_password="";
+					$scope.data.board_detail.board_password="";
 				}else{
 					$scope.delete=true;
 					$scope.passwordlayout=true;
@@ -150,26 +148,32 @@ myApp.directive('boardDetail', function(BoardDetailResource,BoardDetailData){
 					$scope.modify=false;
 					$scope.passwordlayout=false;
 					$scope.confirmPassword=false;
-					$scope.data.board_password="";
+					$scope.data.board_detail.board_password="";
 				}else{
 					$scope.modify=true;
 					$scope.passwordlayout=true;
 				}	
 			}
 			$scope.replydelete=function(data){
-				BoardDetailResource.delete(data).$promise.then(function(data){
+				$scope.$emit("loadingOn",{});
+				ReplyResource.delete(data).$promise.then(function(data){
 					if(data.success){
 						BoardDetailResource.get({num:$scope.data.board_detail.board_num}).$promise.then(function(data){
 							BoardDetailData.set(data);
-							$scope.data=BoardDetailData.get();
+							$scope.$emit("loadingOff",{});
 						},function(error){
+							$scope.$emit("loadingOff",{});
 							$scope.$emit("boardViewChange",'');
 							$scope.$emit("boardRedirect",{});
 							Materialize.toast('존재하지않는 게시물입니다.', 4000);
 						});
+
+					}else{
+						Materialize.toast("암호가 틀렸습니다",2000);
+						$scope.$emit("loadingOff",{});
 					}
 				},function(error){
-
+					$scope.$emit("loadingOff",{});
 				});
 			}
 			
@@ -182,7 +186,7 @@ myApp.directive('boardDetail', function(BoardDetailResource,BoardDetailData){
 		}
 	};
 });
-myApp.directive('boardCreate', function(summoner,BoardDetailResource){
+myApp.directive('boardCreate', function(summoner,BoardDetailResource,BoardResource,BoardData){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
@@ -190,14 +194,23 @@ myApp.directive('boardCreate', function(summoner,BoardDetailResource){
 			$scope.createBoard={};
 			$scope.category=["고의트롤","하수","핵사용자","어뷰져","욕설"];
 			$scope.$watch("summonerData.$promise",function(newval,oldval){
-				if(newval==oldval)return;
+				if(angular.isUndefined(newval))return;
 				newval.then(function(data){
 					$scope.createBoard.id=data.summonerData.id;
 				},function(error){
 				});
 			});
 			$scope.create=function(data){
-				BoardDetailResource.put(data);
+				BoardDetailResource.put(data).$promise.then(function(result){
+					if(result.success==true){
+						BoardResource.get(BoardData.getSelect()).$promise.then(function(data){
+							BoardData.set(data);
+							$scope.$emit("boardViewChange",'');
+						});
+					}
+				},function(error){
+					Materialize.toast("서버와 통신에러",1000);
+				});
 			}
 			$scope.back=function(){
 				$scope.$emit("boardViewChange",'');

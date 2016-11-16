@@ -7,9 +7,6 @@
 				</div>
 				<div ng-if="confirmPassword" input-field class="col s12 ngFade">
 					<select name="category" ng-model="data.board_detail.board_category" material-select watch required class="black-text">
-						<option value="{{data.board_detail.board_category}}" disabled selected>
-							{{data.board_detail.board_category}}
-						</option>
 						<option ng-repeat="text in category" value="{{text}}">{{text}}</option>
 					</select>
 				</div>
@@ -72,9 +69,16 @@
 					{{replydata[$index]?'취소':'댓글추가'}}
 					</a>
 					<a
-					ng-click="replydelete(replydata.reply_num)">
+					ng-click="replyPasswordLayout?replyPasswordLayout=false:replyPasswordLayout=true">
 						댓글삭제
 					</a>
+				</div>
+				<div class="row" ng-init="replyPasswordLayout=false" ng-if="replyPasswordLayout">
+					<div class="input-field col s12 center">
+						<input id="replypassword" name="password" required type="password" ng-model="replydata.reply_password">
+							<label for="replypassword">암호</label>
+							<button class="btn" ng-click="replydelete(replydata)">삭제</button>
+					</div>
 				</div>
 			</div>
 			<div class="reply" ng-if="replydata[$index]">
