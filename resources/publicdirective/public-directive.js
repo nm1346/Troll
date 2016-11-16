@@ -113,7 +113,6 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement,su
 			$scope.params=$routeParams;
 			$scope.dropdownLayout=true;
 			$scope.$watch("params",function(newval,oldval){
-				console.log(newval,oldval)
 				if(angular.isUndefined($scope.params.summonerName)){
 					$scope.dropdownLayout=false;
 					

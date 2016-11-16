@@ -19,7 +19,7 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 					$scope.selectVal.id=data.summonerData.id;
 					boardChange($scope.selectVal);
 				},function(error){
-					console.log(error);
+					Materialize.toast('게시판정보를 가져오는데 실패했습니다.', 4000);
 				});
 			});
 			$scope.selectBoard=function(board){
@@ -90,7 +90,7 @@ myApp.directive('boardDetail', function(BoardDetailResource,BoardDetailData,Repl
 							$scope.$emit("boardViewChange",'');
 							Materialize.toast('수정에 성공했습니다.', 4000);
 						},function(error){
-							console.log(error);
+							Materialize.toast('수정실패!', 4000);
 						});
 					}else{
 						BoardDetailResource.confirm({num:$scope.data.board_detail.board_num,board_password:data}).$promise
@@ -126,7 +126,7 @@ myApp.directive('boardDetail', function(BoardDetailResource,BoardDetailData,Repl
 							$scope.layout=false;
 						}
 					}, function(error){
-						console.log(error);
+						Materialize.toast('에러!.', 4000);
 					});
 				}
 			}
@@ -207,6 +207,8 @@ myApp.directive('boardCreate', function(summoner,BoardDetailResource,BoardResour
 							BoardData.set(data);
 							$scope.$emit("boardViewChange",'');
 						});
+					}else{
+						Materialize.toast("데이터 삽입에러",1000);
 					}
 				},function(error){
 					Materialize.toast("서버와 통신에러",1000);
