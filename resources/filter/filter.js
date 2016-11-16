@@ -42,6 +42,15 @@ myApp.filter('commafilter',function () {
 	}
 });*/
 
+myApp.filter('botfilter',function () {
+	return function(type){
+	if(type === 'BOT' ||type === 'BOT_3x3' || type ==='NIGHTMARE_BOT'){
+		return true;
+	}
+		return false;
+	}
+	
+})
 myApp.filter('gametypefilter',function () {
 	return function (type) {
 		if (type == 'RANKED_FLEX_SR'){
@@ -67,7 +76,7 @@ myApp.filter('gametypefilter',function () {
 		}else if(type === 'URF' ||type === 'URF_BOT' ){
 			return '우르프'
 		}else if(type === 'NIGHTMARE_BOT'){
-			return '봇(나이트메어)'
+			return '나이트메어'
 		}else if(type === 'HEXAKILL' || type ==='SR_6x6'){
 			return '헥사킬'
 		}else if(type === 'KING_PORO' ){

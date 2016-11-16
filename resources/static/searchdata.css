@@ -51,16 +51,31 @@
 	color: white;
 	top: -10px;
 }
-.most-content1{
+.category-most{
 	position: relative;
-	height: 33%;
+	height: 10%;
 	border-bottom: 1px solid rgba(0,0,0, 0.1);
+}
+.category-most > p{
+	font-size: 1rem;
+	font-weight: bold;
 }
 .most-content0{
 	position: relative;
-	height: 33%;
+	height: 30%;
 	border-bottom: 1px solid rgba(0,0,0, 0.1);
 }
+.most-content1{
+	position: relative;
+	height: 30%;
+	border-bottom: 1px solid rgba(0,0,0, 0.1);
+}
+
+.most-content2{
+	position: relative;
+	height: 30%;
+}
+
 
 
 .card-backcover{
@@ -122,6 +137,9 @@
 	font-weight: bold;
 	color : rgba(70, 70, 70,0.5);
 }
+.bot{
+	height: 36px;
+}
 .gametime{
 	float: left;
 	text-align: center;
@@ -147,6 +165,7 @@
 	width: 31px;
 	height: 31px;
 	border-radius: 70px;
+	cursor: pointer;
 }
 .card .allplayers{
 	text-align: center;
@@ -251,7 +270,7 @@
 	border-radius:5px 0 0 5px;
 }
 
-.recent .card-btn{
+.card-btn{
 	cursor: pointer;
 	/* text-transform: uppercase; */
 	background: rgba(0, 0, 0,0.0);
@@ -259,6 +278,16 @@
 	position: relative;
 	width: 100%;
 	border-radius: 7px 7px 0 0;
+	font-size: .9rem;
+}
+.solocard-btn{
+	cursor: pointer;
+	/* text-transform: uppercase; */
+	background: rgba(0, 0, 0,0.0);
+	color: #fff;
+	position: relative;
+	width: 100%;
+	border-radius: 7px 10px 0 0;
 	font-size: .9rem;
 }
 .statscard-btn:before{

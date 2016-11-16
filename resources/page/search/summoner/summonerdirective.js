@@ -1,6 +1,6 @@
 //search첫번째 페이지에 들어갈 인덱스모음
 
-myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,BoardData){
+myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,BoardData,$location){
 	return {
 		 scope: {}, // {} = isolate, true = child, false/undefined = no change
 		 controller: function($scope, $element, $attrs, $transclude) {
@@ -36,9 +36,9 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 					$scope.tierurl = "unlanked";
 				}
 			});
-			$scope.avgcs =  function (stats) {
-				console.log(stats.minionsKilled,stats.timePlayed);
-				return (stats.minionsKilled / (stats.timePlayed / 60)).toFixed(2);
+			$scope.researchsummoner = function (summonerName) {
+				console.log(summonerName);
+				$location.url('/'+summonerName);
 			}
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
