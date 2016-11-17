@@ -1,4 +1,4 @@
-myApp.directive('featuredgame',function(FeaturedResource,TrollRestUrl,StaticLocaleResource,$cookies,$location,$filter){
+myApp.directive('featuredgame',function(FeaturedResource,TrollRestUrl,StaticLocaleResource,$cookies,$location,$filter,$interval){
 	// Runs during compile
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -40,11 +40,16 @@ myApp.directive('featuredgame',function(FeaturedResource,TrollRestUrl,StaticLoca
 				$location.path("/"+summonerName).replace();
 			}
 			$scope.restUrl=TrollRestUrl;
+			
+
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/featuredgame/featuredgame.html',
 		link: function($scope, iElm, iAttrs, controller) {
 			
+			iElm.on("$destroy",function(){
+				console.log("destroy!");
+			});
 		}
 	};
 });

@@ -1,7 +1,7 @@
 <div class="container" ng-cloak>
 	<div class="row">
 	<div class="col m12 l6" ng-repeat="game in featuredList">
-		<div class="card-panel grey lighten-5 z-depth-1">
+		<div style="background-color: rgba(255,255,255,0.7); padding:10px;border-radius: 10px;margin:10px">
 			<div class="row valign-wrapper">
 				<div class="col s5">
 					<div ng-repeat="user in game.participants|filter:{teamId:'100'}">
@@ -33,6 +33,10 @@
 						<img class="responsive-img" ng-srcset="/resources/page/search/currentgame/images/vs4.png" >
 					</span>
 					<a ng-href="{{restUrl}}featuredgames/{{game.gameId}}?encryptionKey={{game.observers.encryptionKey}}" target="_blank">관전하기</a>
+					<span>
+						{{game.gameStartTime|date:'mediumTime'}}
+						시작시간
+					</span>
 				</div>
 				<div class="col s5 right-align">
 					<div ng-repeat="user in game.participants|filter:{teamId:'200'}">
