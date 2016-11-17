@@ -1,0 +1,66 @@
+<div class="container" ng-cloak>
+	<div class="row">
+	<div class="col m12 l6" ng-repeat="game in featuredList">
+		<div class="card-panel grey lighten-5 z-depth-1">
+			<div class="row valign-wrapper">
+				<div class="col s5">
+					<div ng-repeat="user in game.participants|filter:{teamId:'100'}">
+						<span ng-repeat="champion in championList">
+							<img ng-if="champion.id==user.championId" ng-srcset="{{imgsrc}}champion/{{champion.image.full}}" class="circle"
+							style="width: 50px;height:50px">
+						</span>
+						<span class="hide-on-med-and-down" style="padding: 10px">
+							<a ng-click="search(user.summonerName)">{{user.summonerName}}</a>
+						</span>
+						<div>
+							<span ng-repeat="spell in spellList">
+								<img ng-if="spell.id==user.spell1Id" ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
+								style="width: 30px;height:30px">
+							</span>
+							<span ng-repeat="spell in spellList">
+								<img ng-if="spell.id==user.spell2Id" ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
+								style="width: 30px;height:30px">
+							</span>
+						</div>
+						<span class="hide-on-large-only" style="padding: 10px">
+							<a ng-click="search(user.summonerName)">{{user.summonerName}}</a>
+						</span>
+
+					</div>
+				</div>
+				<div class="col s2 center">
+					<span class="black-text">
+						<img class="responsive-img" ng-srcset="/resources/page/search/currentgame/images/vs.png" >
+					</span>
+				</div>
+				<div class="col s5 right-align">
+					<div ng-repeat="user in game.participants|filter:{teamId:'200'}">
+
+						<span class="hide-on-med-and-down" style="padding:10px;">
+							<a ng-click="search(user.summonerName)">{{user.summonerName}}</a>
+						</span>
+						<span ng-repeat="champion in championList">
+							 <img ng-if="champion.id==user.championId" ng-srcset="{{imgsrc}}champion/{{champion.image.full}}" class="circle"
+						}
+					style="width: 50px;height:50px">
+						</span>
+						<div>
+							<span ng-repeat="spell in spellList">
+								<img ng-if="spell.id==user.spell1Id" ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
+								style="width: 30px;height:30px">
+							</span>
+							<span ng-repeat="spell in spellList">
+								<img ng-if="spell.id==user.spell2Id" ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
+								style="width: 30px;height:30px">
+							</span>
+						</div>
+						<span class="hide-on-large-only" style="padding: 10px">
+							<a ng-click="search(user.summonerName)">{{user.summonerName}}</a>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>

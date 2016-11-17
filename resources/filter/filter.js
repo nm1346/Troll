@@ -42,9 +42,18 @@ myApp.filter('commafilter',function () {
 	}
 });*/
 
+myApp.filter('botfilter',function () {
+	return function(type){
+	if(type === 'BOT' ||type === 'BOT_3x3' || type ==='NIGHTMARE_BOT'){
+		return true;
+	}
+		return false;
+	}
+	
+})
 myApp.filter('gametypefilter',function () {
 	return function (type) {
-		if (type == 'RANKED_FLEX_TT' || type == 'RANKED_FLEX_SR'){
+		if (type == 'RANKED_FLEX_SR'){
 			return '자유랭크'
 		}else if(type == 'NORMAL' || type === 'NORMAL_3x3'){
 			return '일반'
@@ -67,13 +76,15 @@ myApp.filter('gametypefilter',function () {
 		}else if(type === 'URF' ||type === 'URF_BOT' ){
 			return '우르프'
 		}else if(type === 'NIGHTMARE_BOT'){
-			return '봇(나이트메어)'
+			return '나이트메어'
 		}else if(type === 'HEXAKILL' || type ==='SR_6x6'){
 			return '헥사킬'
 		}else if(type === 'KING_PORO' ){
 			return '왕과포로'
 		}else if(type === 'BILGEWATER'){
 			return '배'
+		}else if(type == 'RANKED_FLEX_TT'){
+			return '뒤틀린 숲'
 		}else{
 			return '커스텀'
 		}
@@ -106,13 +117,6 @@ myApp.filter('gamedatefilter', function () {
 		return year + '년 '+(month >= 10 ?  month:'0'+month) + '월 '+(day > 10 ? day:'0'+day)+'일'
 	}
 })
-myApp.filter('victoryfilter',function () {
-	return function (boolean) {
-		if (boolean) {return 'Win';
-		}else {return 'Lose';}
-	}
-});
-
 
 myApp.filter('gametimefilter',function () {
 	return function (gametime) {
@@ -127,12 +131,6 @@ myApp.filter('gametimefilter',function () {
 	}
 });
 
-myApp.filter('teamcolorfilter',function () {
-	return function (teamId) {
-		if (teamId == '100') {return 'blueteamborder';
-		}else {return 'redteamborder';}
-	}
-});
 
 myApp.filter('orderObjectBy', function() {
   return function(items, field, reverse) {

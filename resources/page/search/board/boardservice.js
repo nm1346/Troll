@@ -22,7 +22,7 @@ myApp.factory('BoardDetailResource', function(TrollRestUrl,$resource){
 			delete:{method:"DELETE",isArray:false}
 		});
 });
-myApp.factory('BoardData', function(BoardResource,$q){
+myApp.factory('BoardData', function(){
 	var boardData={};
 	var selectVal={
 		id:"",
@@ -46,3 +46,29 @@ myApp.factory('BoardData', function(BoardResource,$q){
 
 	};
 })
+myApp.factory('ReplyResource', function(TrollRestUrl,$resource){
+	return $resource(TrollRestUrl+"reply/:reply_num",
+		{reply_num:"@reply_num"}, 
+		{
+			get:{method:"GET",isArray:false},
+			put:{method:"PUT",isArray:false},
+			confirm:{method:"POST",isArray:false},
+			patch:{method:"PUT",isArray:false},
+			delete:{method:"DELETE",isArray:false}
+		});
+});
+
+myApp.factory('BoardDetailData', function(){
+	var detailData={};
+	return {
+		get:function(){
+			return detailData;
+		},
+		set:function(data){
+			for (var member in detailData) delete detailData[member];
+			angular.extend(detailData,data);
+		}
+	};
+})
+
+

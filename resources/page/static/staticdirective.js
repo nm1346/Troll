@@ -59,7 +59,6 @@ myApp.directive('staticCategory',function(StaticLocaleResource,staticLocaleData,
 				StaticLocaleResource.get({locale:staticLocaleData.selected(),category:view}).$promise.then(function(data){
 					staticData.set(data);
 					staticData.select(view);
-					console.log(data);
 					/*console.log($scope.data);*/
 					$scope.$emit("mainChangeSuccess",view);
 				},function(error){

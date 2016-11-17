@@ -1,22 +1,83 @@
 @import "font-awesome";
-div .summoner{
-	background-color: #607d8b;
-	font-size: 20px;
-	font-weight: 100;
+.summoner{
+	background-color: rgba(255,255,255 , 0.8);
+	font-size: 1rem;
+	font-weight: bold;
+	color: black;
+	height: 365px;
+	margin-bottom: 0px;
+	line-height: 120%;
+	border-radius: 10px;
+}
+.level{
+	font-size: 0.9em;
+	font-weight: bold;
+	top: -10px;
+}
+.season{
+	font-size: 0.9em;
+	font-weight: bold;
+}
+.summoner .profileicon{
+	border-radius: 15px;
+	width: 120px;
+	height: 120px;
+	margin-top: -10px;
+}
+.tier-img{
+	width: 80px;
+	height: 80px;
+}
+.tier{
+	font-size: .8em;
+}
+.point{
+	font-size: .8em;
+}
+.league{
+	 border-top: 1px solid rgba(0,0,0,0.15);
+	 padding-top: 10px !important;
+}
+.summoner .nickname {
+	font-size: 1.3rem;
+}
+.veteran{
+	position: relative;
+	height: 20px;
+	font-size: 0.1rem;
+	background-color: rgba(153, 158, 191, 0.5);
+	font-weight: bold;
+	line-height: 18px;
 	color: white;
+	top: -10px;
 }
-.icon_img{
-	margin:auto auto auto auto;
-	height: 100%;
-	width: 100%;
+.category-most{
+	position: relative;
+	height: 10%;
+	border-bottom: 1px solid rgba(0,0,0, 0.1);
 }
-.tier_icon_img{
-	display: block;
+.category-most > p{
+	font-size: 1rem;
+	font-weight: bold;
 }
-.card-stacked .card-content .nickname {
-	margin-top: -15px;
-	margin-left: -10px;
+.most-content0{
+	position: relative;
+	height: 30%;
+	border-bottom: 1px solid rgba(0,0,0, 0.1);
 }
+.most-content1{
+	position: relative;
+	height: 30%;
+	border-bottom: 1px solid rgba(0,0,0, 0.1);
+}
+
+.most-content2{
+	position: relative;
+	height: 30%;
+}
+
+
+
 .card-backcover{
 	position: fixed;
 	width: 100%;
@@ -31,7 +92,7 @@ div .summoner{
 .card .statscard  {
 	font-weight: bold;
 	font-size: 1rem;
-	line-height: 150%;
+	line-height: 160%;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -61,12 +122,13 @@ div .summoner{
 .recent{
 	margin-bottom: 1px;
 	line-height: 1.3;
-	width: 20%; 
+	width: 20%;
 	text-align: center;
+	border-radius: 7px;
 }
 .victory{
 	font-size: 1rem;
-	font-weight: bold;	
+	font-weight: bold;
 }
 .subtype {
 	text-align: right;
@@ -74,6 +136,9 @@ div .summoner{
 	font-size: .9em;
 	font-weight: bold;
 	color : rgba(70, 70, 70,0.5);
+}
+.bot{
+	height: 36px;
 }
 .gametime{
 	float: left;
@@ -100,6 +165,7 @@ div .summoner{
 	width: 31px;
 	height: 31px;
 	border-radius: 70px;
+	cursor: pointer;
 }
 .card .allplayers{
 	text-align: center;
@@ -204,7 +270,7 @@ div .summoner{
 	border-radius:5px 0 0 5px;
 }
 
-.recent .card-btn{
+.card-btn{
 	cursor: pointer;
 	/* text-transform: uppercase; */
 	background: rgba(0, 0, 0,0.0);
@@ -212,6 +278,16 @@ div .summoner{
 	position: relative;
 	width: 100%;
 	border-radius: 7px 7px 0 0;
+	font-size: .9rem;
+}
+.solocard-btn{
+	cursor: pointer;
+	/* text-transform: uppercase; */
+	background: rgba(0, 0, 0,0.0);
+	color: #fff;
+	position: relative;
+	width: 100%;
+	border-radius: 7px 10px 0 0;
 	font-size: .9rem;
 }
 .statscard-btn:before{
@@ -249,7 +325,6 @@ div .summoner{
     background:rgba(255, 255,255,.7);
     /* color: black; */
 }
-
 /* 모바일 스마트폰 이하 */
 @media only screen and (max-width: 450px){
 	.summoner-chamimg > img{
@@ -258,7 +333,7 @@ div .summoner{
 		border-radius: 100px;
 		font-size: 15px;
 	}
-	
+
 
 	.kda{
 		margin-left: -10px;
@@ -266,14 +341,20 @@ div .summoner{
 	}
 	/* 모바일 스마트폰 아이폰 전용 */
 	@media only screen and (max-width: 320px){
-	
+
 	}
 
 	/* iPads (portrait and landscape) */
 	@media only screen
 	and (max-width : 1024px) {
-	
+	.summoner{
+		height: 320px;
+
 	}
+	.league{
+		padding-top: 0px !important;
+	}
+}
 	.vs{
 		padding: 0px 0px 0px 0px;
 		font-size: 1rem;
@@ -291,4 +372,3 @@ div .summoner{
 	}
 
 
-	
