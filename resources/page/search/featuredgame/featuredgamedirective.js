@@ -37,11 +37,6 @@ myApp.directive('featuredgame',function(FeaturedResource,StaticLocaleResource,$c
 					$scope.searchList.push(summonerName)
 				}
 				$cookies.putObject("searchList",$scope.searchList);
-				
-				if (summonerName == "" ||summonerName == null) {
-					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000)
-					return;
-				}
 				$location.path("/"+summonerName).replace();
 			}
 		},
