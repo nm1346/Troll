@@ -14,6 +14,7 @@ myApp.directive('featuredgame',function(FeaturedResource,TrollRestUrl,StaticLoca
 			StaticLocaleResource.get({locale:"ko_KR",category:"summoner"})
 			.$promise.then(function(data){
 				$scope.spellList=$filter('orderObjectBy')(data.spell.data,'id');
+				console.log($scope.spellList);
 			},function(error){
 				Materialize.toast("ddragon server에 문제가 생겼습니다 스펠을 불러올 수 없습니다.",2000)
 			});

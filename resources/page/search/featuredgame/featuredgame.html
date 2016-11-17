@@ -6,7 +6,9 @@
 				<div class="col s5">
 					<div ng-repeat="user in game.participants|filter:{teamId:'100'}">
 						<span ng-repeat="champion in championList|binaryWhere:{id:user.championId}">
-							<img ng-srcset="{{imgsrc}}champion/{{champion.image.full}}" class="circle"
+							<img 
+							tooltipped data-html="true" data-position="bottom" data-delay="50" data-tooltip="<h6>{{champion.name}}</h6><h6>{{champion.title}}</h6>"
+							ng-srcset="{{imgsrc}}champion/{{champion.image.full}}" class="circle"
 							style="width: 50px;height:50px">
 						</span>
 						<span class="hide-on-med-and-down" style="padding: 10px">
@@ -14,11 +16,17 @@
 						</span>
 						<div>
 							<span ng-repeat="spell in spellList|binaryWhere:{id:user.spell1Id}">
-								<img ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
+								<img 
+								tooltipped data-html="true" data-position="bottom" data-delay="50" data-tooltip="<h6>{{spell.name}}</h6><div style='width:200px'>{{spell.description}}</div>
+									<div>쿨다운:{{spell.cooldownBurn}}초</div>"
+								ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
 								style="width: 30px;height:30px">
 							</span>
 							<span ng-repeat="spell in spellList|binaryWhere:{id:user.spell2Id}">
-								<img ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
+								<img 
+								tooltipped data-html="true" data-position="bottom" data-delay="50" data-tooltip="<h6>{{spell.name}}</h6><div style='width:200px'>{{spell.description}}</div>
+									<div>쿨다운:{{spell.cooldownBurn}}초</div>"
+								ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
 								style="width: 30px;height:30px">
 							</span>
 						</div>
@@ -45,17 +53,24 @@
 							<a ng-click="search(user.summonerName)">{{user.summonerName}}</a>
 						</span>
 						<span ng-repeat="champion in championList|binaryWhere:{id:user.championId}">
-							 <img ng-srcset="{{imgsrc}}champion/{{champion.image.full}}" class="circle"
-						}
-					style="width: 50px;height:50px">
+							 <img 
+							 tooltipped data-html="true" data-position="bottom" data-delay="50" data-tooltip="<h6>{{champion.name}}</h6><h6>{{champion.title}}</h6>"
+							 ng-srcset="{{imgsrc}}champion/{{champion.image.full}}" class="circle"
+		  					 style="width: 50px;height:50px">
 						</span>
 						<div>
 							<span ng-repeat="spell in spellList|binaryWhere:{id:user.spell1Id}">
-								<img ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
+								<img 
+								tooltipped data-html="true" data-position="bottom" data-delay="50" data-tooltip="<h6>{{spell.name}}</h6><div style='width:200px'>{{spell.description}}</div>
+									<div>쿨다운:{{spell.cooldownBurn}}초</div>"
+								ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
 								style="width: 30px;height:30px">
 							</span>
 							<span ng-repeat="spell in spellList|binaryWhere:{id:user.spell2Id}">
-								<img ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
+								<img 
+								tooltipped data-html="true" data-position="bottom" data-delay="50" data-tooltip="<h6>{{spell.name}}</h6><div style='width:200px'>{{spell.description}}</div>
+									<div>쿨다운:{{spell.cooldownBurn}}초</div>"
+								ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
 								style="width: 30px;height:30px">
 							</span>
 						</div>
