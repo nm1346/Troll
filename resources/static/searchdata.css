@@ -173,7 +173,7 @@
 	width: 31px;
 	height: 31px;
 	border-radius: 70px;
-	cursor: pointer;
+	/* cursor: pointer; */
 }
 .card .allplayers{
 	text-align: center;

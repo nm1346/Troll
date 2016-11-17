@@ -1,41 +1,43 @@
 
 <nav class="main-nav">
-   <div class="nav-wrapper">
+ <div class="nav-wrapper">
    <ul id="nav-mobile" class="left hide-on-med-and-down logo-nav-ul">
-      <li class="checkicon"><index-musicicon></index-musicicon></li>
-      <li class="checkicon"><index-videoicon></index-videoicon></li>
-    </ul>
-     <a class="brand-logo center"><img class="nav-logo-img" ng-srcset="/resources/static/logo.png"></a>
-     <a data-activates="slide-out" class="button-collapse" data-sidenav="left" data-menuwidth="200" data-closeonclick="true"
-     data-draggable="true" ><i class="material-icons">menu</i></a>
-     <ul id="nav-mobile" class="right hide-on-med-and-down logo-nav-ul">
-       <li class="row">
-     <div class="logo-search-field col s12">
-		    <input  type="search" class='col s10 logo-search-input'  required placeholder="소환사명 검색" ng-model='summonerName'
-         ng-keypress="keysearch($event,summonerName)">
-				<label for="search" class="search-label"><i class="material-icons" ng-click="search(summonerName)">search</i></label>
-		</div>
-		</li>
-    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-      <li ng-if="dropdownLayout" class='dropdown-button' data-activates='demoDropdown' dropdown data-hover="true">
-        <span>유저 메뉴</span>
-      </li>
-      <li><a ng-click="goStatic()">롤 백과사전</a></li>
-     </ul>
+    <li class="checkicon"><index-musicicon></index-musicicon></li>
+    <li class="checkicon"><index-videoicon></index-videoicon></li>
+  </ul>
+  <a class="brand-logo center"><img class="nav-logo-img" ng-srcset="/resources/static/logo.png"></a>
+  <a href="#" data-activates="slide-out" class="button-collapse" data-sidenav="left" data-menuwidth="200" data-closeonclick="false"
+  data-draggable="true" ><i class="material-icons">menu</i></a>
+  <ul id="nav-mobile" class="right hide-on-med-and-down logo-nav-ul">
+   <li class="row">
+    <div class="logo-search-field col s12">
+      <input type="search" class='col s10 logo-search-input'  required placeholder="소환사명 입력" ng-model='summonerName'
+      ng-keypress="keysearch($event,summonerName)">
+      <label for="search" class="search-label"><i class="material-icons" ng-click="search(summonerName)">search</i></label>
     </div>
+  </li>
+  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+  <li><a ng-click="goStatic()">롤 백과사전</a></li>
+  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+  <li ng-if="dropdownLayout" class='dropdown-button' data-activates='demoDropdown' dropdown data-hover="true">
+    <span>유저 메뉴</span>
+  </li>
+  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+</ul>
+</div>
 
- </nav>
+</nav>
 
 
- <!-- Dropdown Structure -->
+<!-- Dropdown Structure -->
 <ul id='demoDropdown' class='dropdown-content'>
   <li><a ng-click="viewChange('0')">최근게임</a></li>
   <li><a ng-click="viewChange('1');">게시판</a></li>
   <li><a ng-click="viewChange('2');">인게임</a></li>
 </ul>
 
-
-<ul id="slide-out " class="side-nav">
+<!--
+<ul id="slide-out" class="side-nav fixed" style="transform: translateX(-100%);">
   <li>
     <div class="userView summonerdata center-align row">
       <div class="col s12 padding-hide">
@@ -46,16 +48,6 @@
          ng-keypress="keysearch($event,summonerName)">
     </div>
       </div>
-      <div class="col s12">
-
-      </div>
-    </div>
-
   </li>
-  <li><a href=""><i class="material-icons">cloud</i>First Link With Icon</a></li>
-  <li><a href="">Second Link</a></li>
-  <li><div class="divider"></div></li>
-  <li><a class="subheader">Subheader</a></li>
-  <li><a class="waves-effect" href="">Third Link With Waves</a></li>
-</ul>
+</ul> -->
 

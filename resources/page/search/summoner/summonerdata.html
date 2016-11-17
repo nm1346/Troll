@@ -114,7 +114,11 @@
      <div class="col s12 padding-hide">
        <span class="myplayer-chamimg"><img class="mychampborder" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{data.chamName1}}.png"/></span>
        <span ng-repeat="player in data.fellowPlayers" ng-if="data.teamId == player.teamId">
-         <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.summonerName}}" ng-click="researchsummoner(player.summonerName)">
+         <!--  <-- 플레이어 클릭시 리서치 임시보류 -->
+         <!-- <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.summonerName}}" ng-click="researchsummoner(player.summonerName)">
+           <img class="{{player.teamId === 100 ? 'blueteamborder':'redteamborder'}}" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{player.chamName1}}.png"/>
+         </span> -->
+            <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.chamName2}}" >
            <img class="{{player.teamId === 100 ? 'blueteamborder':'redteamborder'}}" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{player.chamName1}}.png"/>
          </span>
        </span>
@@ -123,7 +127,10 @@
      <!-- 플레이어 상대팀 -->
      <div class="col s12 padding-hide">
       <span ng-repeat="player in data.fellowPlayers" ng-if="data.teamId != player.teamId" >
-       <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.summonerName}}"  ng-click="researchsummoner(player.summonerName)">
+    <!--   플레이어 클릭시 리서치 임시보류 -->
+     <!--   <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.summonerName}}"  ng-click="researchsummoner(player.summonerName)">
+       <img class="{{player.teamId === 100 ? 'blueteamborder':'redteamborder'}}" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{player.chamName1}}.png"/></span> -->
+         <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.chamName2}}" >
          <img class="{{player.teamId === 100 ? 'blueteamborder':'redteamborder'}}" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{player.chamName1}}.png"/></span>
        </span>
      </div>

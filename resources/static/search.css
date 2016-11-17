@@ -104,9 +104,6 @@
   position: relative;
   border:none;
 }
-.side-nav{
-	z-index: 999;
-}
 .input-field.search-input{
   background: rgba(0,0,0,0.3);
   border: none;
@@ -178,6 +175,8 @@
 }
 .logo-search-field .logo-search-input::-webkit-input-placeholder{
  color: rgba(0,0,0 , 0.5);
+ font-weight: bold;
+ font-size: 0.8rem;
 }
 .search-label {
   text-align: center;

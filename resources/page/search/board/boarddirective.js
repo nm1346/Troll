@@ -36,7 +36,7 @@ myApp.directive('board', function(BoardResource,BoardData,summoner){
 			$scope.selectPage=function(page){
 				$scope.selectVal.page=page;
 				boardChange($scope.selectVal);
-				
+
 			}
 			var boardChange=function(selectVal){
 				$scope.$emit("loadingOn",{});
@@ -117,7 +117,7 @@ myApp.directive('boardDetail', function(BoardDetailResource){
 								$scope.error=false;
 						});
 					}
-					
+
 				}else if($scope.delete){
 					BoardDetailResource.delete({num:$scope.data.board_num,board_password:data}).$promise
 					.then(function(data){
@@ -157,14 +157,14 @@ myApp.directive('boardDetail', function(BoardDetailResource){
 					$scope.modify=true;
 					$scope.passwordlayout=true;
 				}
-				
+
 			}
-			
+
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/board/board-detail.html',
 		link: function($scope, iElm, iAttrs, controller) {
-			
+
 		}
 	};
 });
@@ -192,7 +192,7 @@ myApp.directive('boardCreate', function(summoner,BoardDetailResource){
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/board/board-create.html',
 		link: function($scope, iElm, iAttrs, controller) {
-			
+
 		}
 	};
 });
@@ -207,7 +207,7 @@ myApp.directive('paging', function(BoardResource){
 			pageclick:"&pageclick"}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
 			$scope.$watch("size",function(newval,oldval){
-				
+
 				$scope.pageCount=Math.ceil($scope.size/$scope.pagesize);
 				$scope.startPage=Math.floor(($scope.page-1)/$scope.pagelength)*5+1;
 				$scope.endPage=($scope.startPage+($scope.pagelength-1));
@@ -216,13 +216,13 @@ myApp.directive('paging', function(BoardResource){
 				for(var i=$scope.startPage;i<=$scope.endPage;i++){
 					$scope.array.push(i);
 				}
-				
+
 			});
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/board/paging.html',
 		link: function($scope, iElm, iAttrs, controller) {
-			
+
 		}
 	};
 });

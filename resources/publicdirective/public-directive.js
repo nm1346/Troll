@@ -1,4 +1,4 @@
-myApp.directive('loading',function(){ 
+myApp.directive('loading',function(){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
@@ -25,7 +25,7 @@ myApp.directive('error',function($route){
 myApp.directive('backCover',function($routeParams,$location){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
-		controller: function($scope, $element, $attrs, $transclude) {	
+		controller: function($scope, $element, $attrs, $transclude) {
 			$scope.layout={
 				on:true
 			};
@@ -44,7 +44,76 @@ myApp.directive('backCover',function($routeParams,$location){
 	};
 });
 
+myApp.directive('searchSidenav',function($cookies,$timeout,$location,mediaElement,summoner,$routeParams){
+	return {
+		scope: {}, // {} = isolate, true = child, false/undefined = no change
+		controller: function($scope, $element, $attrs, $transclude) {
+			//cookie 클릭시 search input에 값 입력
+			$scope.searchList=[];
+			if(angular.isDefined($cookies.get("searchList"))){
+				angular.extend($scope.searchList,angular.fromJson($cookies.get("searchList")));
+			}
+			$scope.cookieClick=function(searchval){
+				$scope.summonerName=searchval;
+			}
+			$scope.$on('pageonview',function (data) {
+				var totaldata = summoner.get();
+				$scope.summonerdata = totaldata['summonerData'];
+				$scope.leaguedata = totaldata['leagueData'];
+				$scope.recentgame = totaldata['recentgamelist'];
+				if (angular.isObject(totaldata['leagueData'])){
+					$scope.tierurl = totaldata['leagueData'].tier.toLowerCase();
+					$scope.divisionurl = totaldata['leagueData'].entrylist[0].division.toLowerCase();
+				}else{
+					$scope.unlanked = totaldata['leagueData'];
+				}
+			});
 
+			//검색시 실행 메소드
+			$scope.search = function (summonerName) {
+				if($scope.searchList.indexOf(summonerName)==-1&&$scope.searchList.length<5){
+					$scope.searchList.push(summonerName)
+				}
+				$cookies.putObject("searchList",$scope.searchList);
+
+				if (summonerName == "" ||summonerName == null) {
+					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000)
+					return;
+				}
+				$scope.$emit("searchStart",{});
+				$timeout(function(){
+					$location.path("/"+summonerName).replace();
+				},1000);
+			}
+
+			$scope.keysearch = function (event,summonerName) {
+				if(event.keyCode == 13){
+				if($scope.searchList.indexOf(summonerName)==-1&&$scope.searchList.length<5){
+					$scope.searchList.push(summonerName)
+				}
+				$cookies.putObject("searchList",$scope.searchList);
+
+				if (summonerName == "" ||summonerName == null) {
+					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000)
+					return;
+				}
+				$scope.$emit("searchStart",{});
+				$timeout(function(){
+					$location.path("/"+summonerName).replace();
+				},1000);
+			  }
+			}
+			$scope.clicktest = function (event) {
+				  $('.button-collapse').sideNav('hide');
+			}
+
+		},
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		templateUrl: '/resources/publicdirective/sidesearch-nav.html',
+		link: function($scope, iElm, iAttrs, controller) {
+		}
+	};
+});
 myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement,summoner,$routeParams){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -76,7 +145,7 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement,su
 					$scope.searchList.push(summonerName)
 				}
 				$cookies.putObject("searchList",$scope.searchList);
-				
+
 				if (summonerName == "" ||summonerName == null) {
 					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000)
 					return;
@@ -84,7 +153,7 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement,su
 				$scope.$emit("searchStart",{});
 				$timeout(function(){
 					$location.path("/"+summonerName).replace();
-				},1000);	
+				},1000);
 			}
 
 			$scope.keysearch = function (event,summonerName) {
@@ -93,7 +162,7 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement,su
 					$scope.searchList.push(summonerName)
 				}
 				$cookies.putObject("searchList",$scope.searchList);
-				
+
 				if (summonerName == "" ||summonerName == null) {
 					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000)
 					return;
@@ -101,7 +170,7 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement,su
 				$scope.$emit("searchStart",{});
 				$timeout(function(){
 					$location.path("/"+summonerName).replace();
-				},1000);	
+				},1000);
 			  }
 			}
 			$scope.goStatic=function(){
@@ -116,8 +185,8 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement,su
 				console.log(newval,oldval)
 				if(angular.isUndefined($scope.params.summonerName)){
 					$scope.dropdownLayout=false;
-					
-					
+
+
 				}else{
 					$scope.dropdownLayout=true;
 					$scope.summonerName=oldval.summonerName;
@@ -161,7 +230,7 @@ myApp.directive('statusToast', function(ShardResource){
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		// templateUrl: '',
 		link: function($scope, iElm, iAttrs, controller) {
-			
+
 		}
 	};
 });
@@ -182,7 +251,7 @@ myApp.directive('loadingCover', function(){
     restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
     templateUrl: '/resources/publicdirective/loading-cover.html',
     link: function($scope, iElm, iAttrs, controller) {
-      
+
     }
   };
 });
