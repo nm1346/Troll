@@ -5,19 +5,19 @@
 			<div class="row valign-wrapper">
 				<div class="col s5">
 					<div ng-repeat="user in game.participants|filter:{teamId:'100'}">
-						<span ng-repeat="champion in championList">
-							<img ng-if="champion.id==user.championId" ng-srcset="{{imgsrc}}champion/{{champion.image.full}}" class="circle"
+						<span ng-repeat="champion in championList|binaryWhere:{id:user.championId}">
+							<img ng-srcset="{{imgsrc}}champion/{{champion.image.full}}" class="circle"
 							style="width: 50px;height:50px">
 						</span>
 						<span class="hide-on-med-and-down" style="padding: 10px">
 							<a ng-click="search(user.summonerName)">{{user.summonerName}}</a>
 						</span>
 						<div>
-							<span ng-repeat="spell in spellList">
-								<img ng-if="spell.id==user.spell1Id" ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
+							<span ng-repeat="spell in spellList|binaryWhere:{id:user.spell1Id}">
+								<img ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
 								style="width: 30px;height:30px">
 							</span>
-							<span ng-repeat="spell in spellList">
+							<span ng-repeat="spell in spellList|binaryWhere:{id:user.spell2Id}">
 								<img ng-if="spell.id==user.spell2Id" ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
 								style="width: 30px;height:30px">
 							</span>
@@ -39,18 +39,18 @@
 						<span class="hide-on-med-and-down" style="padding:10px;">
 							<a ng-click="search(user.summonerName)">{{user.summonerName}}</a>
 						</span>
-						<span ng-repeat="champion in championList">
-							 <img ng-if="champion.id==user.championId" ng-srcset="{{imgsrc}}champion/{{champion.image.full}}" class="circle"
+						<span ng-repeat="champion in championList|binaryWhere:{id:user.championId}">
+							 <img ng-srcset="{{imgsrc}}champion/{{champion.image.full}}" class="circle"
 						}
 					style="width: 50px;height:50px">
 						</span>
 						<div>
-							<span ng-repeat="spell in spellList">
-								<img ng-if="spell.id==user.spell1Id" ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
+							<span ng-repeat="spell in spellList|binaryWhere:{id:user.spell1Id}">
+								<img ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
 								style="width: 30px;height:30px">
 							</span>
-							<span ng-repeat="spell in spellList">
-								<img ng-if="spell.id==user.spell2Id" ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
+							<span ng-repeat="spell in spellList|binaryWhere:{id:user.spell2Id}">
+								<img ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
 								style="width: 30px;height:30px">
 							</span>
 						</div>

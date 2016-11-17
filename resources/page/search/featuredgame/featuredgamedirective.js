@@ -1,4 +1,4 @@
-myApp.directive('featuredgame',function(FeaturedResource,StaticLocaleResource,$cookies,$location){
+myApp.directive('featuredgame',function(FeaturedResource,StaticLocaleResource,$cookies,$location,$filter){
 	// Runs during compile
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -7,18 +7,18 @@ myApp.directive('featuredgame',function(FeaturedResource,StaticLocaleResource,$c
 			$scope.$emit("loadingOn");
 			StaticLocaleResource.get({locale:"ko_KR",category:"champion"})
 			.$promise.then(function(data){
-				$scope.championList=data.championlist.data;
-				console.log($scope.championList);
+				$scope.championList=$filter('orderObjectBy')(data.championlist.data,'id');
 			},function(error){
 				Materialize.toast("ddragon server에 문제가 생겼습니다 챔피언을 불러올 수 없습니다.",2000)
 			});
 			StaticLocaleResource.get({locale:"ko_KR",category:"summoner"})
 			.$promise.then(function(data){
-				$scope.spellList=data.spell.data;
-				console.log($scope.spellList);
+				$scope.spellList=$filter('orderObjectBy')(data.spell.data,'id');
 			},function(error){
 				Materialize.toast("ddragon server에 문제가 생겼습니다 스펠을 불러올 수 없습니다.",2000)
 			});
+			
+			
 			FeaturedResource.get().$promise.then(function(data){
 				$scope.featuredList=data.featuredList.gameList;
 				console.log(data);
