@@ -18,7 +18,7 @@
 								style="width: 30px;height:30px">
 							</span>
 							<span ng-repeat="spell in spellList|binaryWhere:{id:user.spell2Id}">
-								<img ng-if="spell.id==user.spell2Id" ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
+								<img ng-srcset="{{imgsrc}}spell/{{spell.image.full}}"
 								style="width: 30px;height:30px">
 							</span>
 						</div>
@@ -32,6 +32,7 @@
 					<span class="black-text">
 						<img class="responsive-img" ng-srcset="/resources/page/search/currentgame/images/vs4.png" >
 					</span>
+					<a ng-href="{{restUrl}}featuredgames/{{game.gameId}}?encryptionKey={{game.observers.encryptionKey}}" target="_blank">관전하기</a>
 				</div>
 				<div class="col s5 right-align">
 					<div ng-repeat="user in game.participants|filter:{teamId:'200'}">
