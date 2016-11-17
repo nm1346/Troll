@@ -152,8 +152,6 @@ myApp.filter('skillTooltip', function() {
 	return function(skilldata,skillKey) {
 		var skill;
 		angular.forEach(skilldata, function(value, key) {
-			// console.log(key)
-			// console.log(value.name)
             if (key == skillKey) {
                	skill = value.name
                 
@@ -169,8 +167,6 @@ myApp.filter('skillTooltipDetail', function() {
 	return function(skilldata,skillKey) {
 		var skill;
 		angular.forEach(skilldata, function(value, key) {
-			// console.log(key)
-			// console.log(value.name)
             if (key == skillKey) {
                	skill = value.description
             }
@@ -203,5 +199,58 @@ myApp.filter('skillTooltipDetail', function() {
 		}
 		
 		return result;
+	}
+})
+
+myApp.filter('masteryTooltip', function() {
+	return function(masterydata,masteryid) {
+		var mastery;
+		angular.forEach(masterydata, function(value, key) {
+            if (key == masteryid) {
+               	mastery = value.name
+                
+            }
+            
+        });
+
+		return mastery;
+	}
+})
+
+myApp.filter('masteryTooltipDetail', function() {
+	return function(masterydata,masteryid) {
+		var mastery;
+		angular.forEach(masterydata, function(value, key) {
+            if (key == masteryid) {
+               	mastery = value.description[0]
+                
+            }
+            
+        });
+        if(masteryid == '6164' || masteryid == '6362'){
+        	return mastery;
+        }else{
+        	var result = mastery.substring(0, 30)
+        	if(masteryid == '6262'){
+        		result += '<br>' + mastery.substring(30, 64)
+        		result += '<br>' + mastery.substring(64, 100)
+        		return result;
+        	}if(masteryid == '6261'){
+        		result += '<br>' + mastery.substring(30, 58)
+        		result += '<br>' + mastery.substring(58, 88)
+        		result += '<br>' + mastery.substring(88, 120)
+        		return result;
+        	}else{
+        		result += '<br>' + mastery.substring(30, 60)
+        		result += '<br>' + mastery.substring(60, 90)
+        		result += '<br>' + mastery.substring(90, 120)
+        		return result;
+        	}
+			
+		
+        }
+		
+
+		
 	}
 })

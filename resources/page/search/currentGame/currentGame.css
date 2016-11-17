@@ -49,6 +49,27 @@
 	font-size: 12px;
 }
 
+.tooltipMName{
+	text-align: left;
+	font-size: 15px;
+	color: #B2CCFF;
+}
+
+.tooltipMDesc{
+	text-align: left;
+	font-size: 12px;
+}
+
 .gtype{
 	font-size: 17px;
+}
+
+/*.championimg{
+	border: 1px solid gray;
+	border-color: rgba(178,204,255,0.5);
+}*/
+
+.championimg2{
+	border: 1px solid gray;
+	border-color: rgba(255,167,167,0.5);
 }
