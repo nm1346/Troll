@@ -2,10 +2,10 @@ myApp.filter('kdafilter',function () {
 	return function (stats) {
 		var kda;
 		if (stats.numDeaths === 0) {
-			kda= (stats.assists + stats.championsKilled) / 1;
-		}else{
-			kda= (stats.assists + stats.championsKilled) / stats.numDeaths;
+			stats.numDeaths = 1;
 		}
+		
+		kda= (stats.assists + stats.championsKilled) / stats.numDeaths;
 		return kda.toFixed(2) + ':1' ;
 	}
 });
