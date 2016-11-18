@@ -1,5 +1,5 @@
 myApp.controller('searchCtrl',function(
-	$scope,$routeParams,CurrentGameResource,currentGameData,$window,$document,$timeout){
+	$scope,$routeParams,CurrentGameResource,$window,$document,$timeout){
 	$scope.$emit("CoverOff",{});
 	$scope.$emit("loadingOff",{});
 
@@ -25,7 +25,7 @@ myApp.controller('searchCtrl',function(
 	});
 	//
 	$scope.layout={
-		section:[1,2,3,4],
+		section:[1,2,3,4,5],
 		index:0,
 		available:true
 	}

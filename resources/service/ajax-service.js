@@ -11,3 +11,9 @@ myApp.factory('CurrentGameResource',function($resource,TrollRestUrl){
     });
 });
 
+myApp.factory('ChallengerResource',function($resource,TrollRestUrl){
+    return $resource(TrollRestUrl+"challenger",{},{
+        get:{method:"GET",isArray:false}
+    });
+});
+

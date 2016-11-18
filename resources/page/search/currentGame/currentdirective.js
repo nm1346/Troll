@@ -1,4 +1,4 @@
-myApp.directive('currentGame', function(currentGameData,$interval,CurrentGameResource,$routeParams){
+myApp.directive('currentGame', function($interval,CurrentGameResource,$routeParams){
    // Runs during compile
    return {
       scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -9,6 +9,7 @@ myApp.directive('currentGame', function(currentGameData,$interval,CurrentGameRes
           $scope.$emit("loadingOff",{});
           var c = 0;  
           $scope.data = data
+          console.log(data)
           $interval(function () {
             if(Object.keys($scope.data).length!=0&&$scope.data.success!=false){
               var o = new Date($scope.data.gameInfo.gameStartTime)

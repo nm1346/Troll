@@ -252,3 +252,11 @@ myApp.filter('masteryTooltipDetail', function() {
 		
 	}
 })
+
+myApp.filter('winningrate', function() {
+	return function(wins,losses) {
+		var rate;
+		rate = Math.floor(100 / (wins + losses) * wins)
+		return rate;
+	}
+})

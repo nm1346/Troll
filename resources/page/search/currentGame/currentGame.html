@@ -15,7 +15,7 @@
     <div class="row">
 
     <div class="col s2 offset-s5">     
-        <img src="/resources/page/search/currentgame/images/logo4.png" style="width: 100%; position: relative; z-index: 1">
+        <img src="/resources/page/search/currentgame/images/logo5.png" class="logo">
       </div>
       <div class="center white-text col s12" style="font-size: 16px;">
         <div class="gtype">{{data.gametype[0]}}</div>
@@ -23,19 +23,22 @@
       </div>
       <div class="col l10 push-l1 m10 push-m1 s10 push-s1">
 
-      <div class="col l2 push-l1 m2 push-m1 s2 push-s1" ng-repeat="item in data.championKey1" ng-if="data.gameInfo.participants.length == 1 || data.gameInfo.participants.length == 3"></div>
+      <div class="col l2 push-l1 m2 push-m1 s2 push-s1" ng-repeat="item in data.championKey1" ng-if="data.gameInfo.participants.length == 1 || data.gameInfo.participants.length == 6"></div>
       <div class="col l2 push-l1 m2 push-m1 s2 push-s1" ng-repeat="item in data.championKey1" ng-if="data.gameInfo.participants.length == 1"></div>
 
         <div class="col l2 push-l1 m2 push-m1 s2 push-s1" ng-repeat="item in data.championKey1">
-            <div style="border: 1px solid red;"> 
-          <div class="col l12 m12 s12">
-            <img class="responsive-img championimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{item}}_0.jpg" style="padding: 0px;">
             
+         
+          <div class="col l12 m12 s12">
+            <img class="responsive-img championimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{item}}_0.jpg" style="border-image: url('/resources/page/search/currentgame/images/{{data.tier1[$index]}}.png') 6 5 7 6 round;">
+
           </div>
 
+          <div class="col l12 m12 s12 cname">
+            {{data.championName1[$index]}}
+          </div>
           <div class="col l12 m12 s12 sname">
             {{data.summonerName_list1[$index]}}
-
           </div>
 
 
@@ -64,7 +67,7 @@
                 <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/{{data.mastery1[$index]}}.png" >
             </a>
          </div> 
-                            </div>
+                            
        </div>
      </div> 
      
@@ -89,14 +92,21 @@
 
    </div>
 
-   <div class="row" style="margin-top: -1%"><!-- 'resources/page/search/currentGame/images/challenger.png' -->
+   <div class="row" style="margin-top: -1%; margin-bottom: 0px;"><!-- 'resources/page/search/currentGame/images/challenger.png' -->
     <div class="col l10 push-l1 m10 push-m1 s10 push-s1">
+
+        <div class="col l2 push-l1 m2 push-m1 s2 push-s1" ng-repeat="item in data.championKey1" ng-if="data.gameInfo.participants.length == 1 || data.gameInfo.participants.length == 3"></div>
+        <div class="col l2 push-l1 m2 push-m1 s2 push-s1" ng-repeat="item in data.championKey1" ng-if="data.gameInfo.participants.length == 1"></div>
+
       <div class="col l2 push-l1 m2 push-m1 s2 push-s1" ng-repeat="item in data.championKey2">
 
         <div class="col l12 m12 s12">
-          <img class="responsive-img championimg2" ng-srcset="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{item}}_0.jpg">
+          <img class="responsive-img championimg2" ng-srcset="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{item}}_0.jpg" style="border-image: url('/resources/page/search/currentgame/images/{{data.tier2[$index]}}.png') 7 7 8 7 round;">
         </div>
 
+        <div class="col l12 m12 s12 cname2">
+          {{data.championName2[$index]}}
+        </div>
         <div class="col l12 m12 s12 sname2">
           {{data.summonerName_list2[$index]}}
         </div>
