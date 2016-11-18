@@ -6,12 +6,14 @@ myApp.directive('game', function(matchResource,matchData,$filter,$interval){
         $scope.summoner=matchData.getsummoner();
         $scope.match=matchData.getmatch();
         console.log($scope.match);
-        console.log($scope.summoner);
+        var matchdata = matchData.getmatch();
+        var avgdata = matchData.avg(matchdata);
       },
+
+
       restrict: 'E',
       templateUrl: '/resources/page/search/match/matchgame.html',
       link: function($scope, iElm, iAttrs, controller) {
-
       }
     };
   });

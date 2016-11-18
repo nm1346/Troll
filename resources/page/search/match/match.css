@@ -1,12 +1,19 @@
 /*base css*/
-.tff div{
+.tff .tffnav div{
 color: white;
-font-size: 15px;
+font-size: 14px;
 margin: 0;
 padding: 0;
 background-color: rgba(223,231,254,0.5);
 }
-.ban img{
+.tff .based{
+color: white;
+font-size: 14px;
+margin: 0;
+padding: 0;
+background-color: rgba(223,231,254,0.5);
+}
+.object img{
 	width: 20px;
 	height: 20px;"
 }
@@ -46,3 +53,12 @@ width: 30px; height: 30px;
 }
 
 /*game css*/
+
+/*tier css*/
+.tff .tierd div{
+/*color: white;*/
+font-size: 14px;
+margin: 0;
+padding: 0;
+background-color: rgb(255,255,255);
+}

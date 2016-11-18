@@ -1,7 +1,7 @@
 
- <div class="col s6">
+ <div class="col s6 based">
  <table class="bordered">
-  <tr class="ban">
+  <tr class="object">
       <td colspan="3">
       <img src="http://sk2.op.gg/images/scoreboardicon_score.png">{{uteamkill}} / {{uteamdeath}} / {{uteamassist}}
       </td>
@@ -13,7 +13,20 @@
     </tr>
  
  	<tr>
-       	<th><b class="winner">승리</b><b class="teamName">{{teaId}}</b></th>
+          <th ng-switch on="win">
+          <b ng-switch-when="true">
+            <b ng-switch on="teamId">
+              <b ng-switch-when="100" class="winner">블루팀</b>
+              <b ng-switch-when="200" class="winner">레드팀</b>
+            </b>
+          </b>
+          <b ng-switch-when="false">
+            <b ng-switch on="teamId">
+              <b ng-switch-when="100" class="looser">블루팀</b>
+              <b ng-switch-when="200" class="looser">레드팀</b>
+           </b>
+          </b>  
+        </th>
        	<th></th>
         <th></th>
        	<th>아이템</th>
@@ -103,9 +116,9 @@
  </div>
 
 
- <div class="col s6">
+ <div class="col s6 based">
  <table class="bordered">
-     <tr class="ban">
+     <tr class="object">
       <td colspan="3">
         <img src="http://sk2.op.gg/images/baron_nashor_100.png" align="center"> {{ateambaron}} 
         <img src="http://sk2.op.gg/images/dragon_100.png" align="center"> {{ateamdragon}} 
@@ -117,7 +130,20 @@
     </tr>
 
   <tr>
-        <th><b class="winner">승리</b><b class="teamName">{{teaId}}</b></th>
+        <th ng-switch on="win">
+          <b ng-switch-when="true">
+            <b ng-switch on="teamId">
+              <b ng-switch-when="200" class="looser">블루팀</b>
+              <b ng-switch-when="100" class="looser">레드팀</b>
+            </b>
+          </b>  
+          <b ng-switch-when="false">
+            <b ng-switch on="teamId">
+              <b ng-switch-when="200" class="winner">블루팀</b>
+              <b ng-switch-when="100" class="winner">레드팀</b>
+           </b>
+          </b>  
+        </th>
         <th></th>
         <th></th>
         <th>아이템</th>
@@ -139,13 +165,13 @@
         <td>
         <ul>
           <li>
-          <img ng-repeat="spell in match.spell" ng-if="m.spell1Id == spell.id" class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{spell.kee}}.png" err-src>
+          <img ng-repeat="spell in match.spell" ng-if="m.spell1Id == spell.id" class="si" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{spell.kee}}.png" err-src>
           </li>
           <li>   
-          <img ng-repeat="spell in match.spell" ng-if="m.spell2Id == spell.id" class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{spell.kee}}.png" err-src>
+          <img ng-repeat="spell in match.spell" ng-if="m.spell2Id == spell.id" class="si" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{spell.kee}}.png" err-src>
           </li>
           <li>
-          <img class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/{{m.mastery}}.png" err-src>
+          <img class="si" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/{{m.mastery}}.png" err-src>
           </li>
         </ul>   
         </td>
@@ -169,14 +195,14 @@
         <td>
         <ul>
           <li>
-          <img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item0}}.png" err-src>
-          <img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item1}}.png" err-src>
-          <img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item2}}.png" err-src>
+          <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item0}}.png" err-src>
+          <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item1}}.png" err-src>
+          <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item2}}.png" err-src>
           </li>
           <li>
-          <img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item3}}.png" err-src>
-          <img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item4}}.png" err-src>
-          <img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item5}}.png" err-src>
+          <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item3}}.png" err-src>
+          <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item4}}.png" err-src>
+          <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item5}}.png" err-src>
           </li>
         </ul>
         </td>

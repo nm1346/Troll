@@ -5,14 +5,13 @@ myApp.directive('summonerData', function(matchResource,matchData,SearchResource,
 		 scope: {}, // {} = isolate, true = child, false/undefined = no change
 		 controller: function($scope, $element, $attrs, $transclude) {
 			/*$scope.$emit('searchPageStart',{});*/
-			$scope.match= function(sdata,matchId){
+			$scope.match= function(matchId){
 				//alert(matchId);
 				//match로 전달 후 페이지 시작
 	    		$scope.$emit("CoverOn",{});
 	    		$scope.$emit("loadingOn",{});
 	            matchResource.get({matchId : matchId}).$promise.then(function(data){
 	            	matchData.setmatch(data);
-	            	matchData.setsummoner(sdata);
 	            	$scope.$emit("searchViewChange",3);
 				},function(error){
 					$scope.$emit("loadingOff",{});
@@ -24,6 +23,7 @@ myApp.directive('summonerData', function(matchResource,matchData,SearchResource,
 			SearchResource.get({summonerName : $routeParams.summonerName}).$promise.then(function (data) {
 				if (Boolean(Number(data.success))){
 					summoner.set(data);
+					matchData.setsummoner(data);
 					console.log(data)
 					$scope.$emit('searchPageSuccess', {loading : false , error : false});
 					$scope.$emit("loadingOff",{});

@@ -1,1 +1,364 @@
-<h2>tier</h2>
+<!-- 
+<div class="col s4">
+	<table>
+		<tr>
+			<td>
+				<img ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{user.championNameE}}.png" err-src/>
+			</td>
+		</tr>
+	</table>
+</div>
+<div class="col s8">
+	<table>
+		<tr>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>3</td>
+		</tr>
+	</table>
+</div>
+ -->
+<!-- 공격 -->
+<div class="col s4">
+	<table>
+		<thead>
+		<tr>
+			<th colspan="3">공격기여</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>킬</td>
+			<td></td>
+			<td>{{user.kills}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.kills}})</td>
+			<td>최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td>어시스트</td>
+			<td></td>
+			<td>{{user.assists}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.assists}})</td>
+			<td>최대</td>
+		</tr>	
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td>가한 데미지</td>
+			<td></td>
+			<td>{{user.totalDamageDealt}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.totalDamageDealt}})</td>
+			<td>최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>	
+		</tbody>	
+	</table>
+</div>
+<!-- 운영 -->
+<div class="col s4">
+	<table>
+		<thead>
+		<tr>
+			<th colspan="3">운영능력</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>타워철거</td>
+			<td></td>
+			<td>{{user.towerkills}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.towerkills}})</td>
+			<td>최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td>CS</td>
+			<td></td>
+			<td>{{user.minionskilled}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.minionskilled}})</td>
+			<td>최대</td>
+		</tr>	
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td>카정몬스터</td>
+			<td></td>
+			<td>{{user.neutralMinionsKilledEnemyjungle}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.neutralMinionsKilledEnemyjungle}})</td>
+			<td>최대</td>
+		</tr>	
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+		</tbody>	
+	</table>
+</div>
+<!-- css -->
+<div class="col s4">
+	<table>
+		<thead>
+		<tr>
+			<th colspan="3">CSS</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>CS</td>
+			<td></td>
+			<td>{{user.minionskilled}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.minionskilled}})</td>
+			<td>최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td>중립 몬스터</td>
+			<td></td>
+			<td>{{user.neutralMinionsKilledTeamjungle}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.neutralMinionsKilledTeamjungle}})</td>
+			<td>최대</td>
+		</tr>	
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td>카정몬스터</td>
+			<td></td>
+			<td>{{user.neutralMinionsKilledEnemyjungle}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.neutralMinionsKilledEnemyjungle}})</td>
+			<td>최대</td>
+		</tr>	
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+		</tbody>	
+	</table>
+</div>
+
+<!-- 수비 -->
+<div class="col s4">
+	<table>
+		<thead>
+		<tr>
+			<th colspan="3">수비기여</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>데스</td>
+			<td></td>
+			<td>{{user.deaths}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.deaths}})</td>
+			<td>최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td>받은 데미지</td>
+			<td></td>
+			<td>{{user.totalDamageTaken}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.totalDamageTaken}})</td>
+			<td>최대</td>
+		</tr>	
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+		</tbody>	
+	</table>
+</div>
+
+<!-- 돈 -->
+<div class="col s4">
+	<table>
+		<thead>
+		<tr>
+			<th colspan="3">골드획득</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>골드</td>
+			<td></td>
+			<td>{{user.goldEarned}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.goldEarned}})</td>
+			<td>최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td>CS</td>
+			<td></td>
+			<td>{{user.minionskilled}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.minionskilled}})</td>
+			<td>최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+		</tbody>	
+	</table>
+</div>
+<!-- 시야 -->
+<div class="col s4">
+	<table>
+		<thead>
+		<tr>
+			<th colspan="3">시야싸움</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>와드 설치</td>
+			<td></td>
+			<td>{{user.wardsPlaced}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.wardsPlaced}})</td>
+			<td>최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td>와드 제거</td>
+			<td></td>
+			<td>{{user.wardsKilled}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>기대치({{tavgdata.wardsKilled}})</td>
+			<td>최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div style="width: 100%;height: 10px;background-color: #ddd;">
+  					<div style="width: 50%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+		</tbody>	
+	</table>
+</div>
+
+
