@@ -251,7 +251,6 @@ myApp.directive('loadingCover', function(){
     restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
     templateUrl: '/resources/publicdirective/loading-cover.html',
     link: function($scope, iElm, iAttrs, controller) {
-
     }
   };
 });

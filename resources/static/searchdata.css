@@ -1,4 +1,5 @@
 @import "font-awesome";
+@import "";
 .summoner{
 	background-color: rgba(255,255,255 , 0.8);
 	font-size: 1rem;
@@ -9,11 +10,40 @@
 	line-height: 120%;
 	border-radius: 10px;
 }
+.most-card{
+	background-color: rgba(0,0,0 , .3);
+	font-size: 1rem;
+	font-weight: bold;
+	color: white;
+	height: 365px;
+	margin-bottom: 0px;
+	line-height: 120%;
+	border-radius: 10px;
+}
 .level{
 	font-size: 0.9em;
 	font-weight: bold;
 	top: -10px;
 }
+.MASTER{
+	color:#00acc1;
+}
+.BRONZE{
+  color: #a1887f;
+}
+.SILVER{
+  color: rgba(158, 158, 158,1);
+}
+.PLATINUM{
+  color: black;
+}
+.DIAMOND{
+  color: #0277bd;
+}
+.CHALLENGER{
+	color : #f57f17;
+}
+
 .wostchamp{
 	font-size: 0.5rem;
 }
@@ -31,14 +61,15 @@
 	margin-top: -10px;
 }
 .tier-img{
-	width: 80px;
-	height: 80px;
+	width: 90px;
+	height: 90px;
+	margin-top: -10px;
 }
 .tier{
-	font-size: .8em;
+	font-size: .8rem;
 }
 .point{
-	font-size: .8em;
+	font-size: .7rem;
 }
 .league{
 	 border-top: 1px solid rgba(0,0,0,0.15);
@@ -59,28 +90,40 @@
 }
 .category-most{
 	position: relative;
-	height: 10%;
-	border-bottom: 1px solid rgba(0,0,0, 0.1);
+	height: 13%;
+	border-bottom: 1px solid rgba(255,255,255, 0.2);
+	background: rgba(0,0,0,0.0);
+	border-radius: 10px 10px 0 0;
+}
+.category-most ul{
+	border-radius: 10px;
+}
+.category-most li > span{
+	border: 1px solid rgba(245,245,245,.2);
+	color:white;
+	font-size : 0.8em;
+	background: rgba(0,0,0,1);
+}
+.category-most li.disabled > span{
+	border: 1px solid rgba(245,245,245,.2);
+	color:grey;
+	font-size : 0.8em;
+	background: rgba(0,0,0,1);
 }
 .category-most > p{
 	font-size: 1rem;
 	font-weight: bold;
 }
-.most-content0{
-	position: relative;
-	height: 30%;
-	border-bottom: 1px solid rgba(0,0,0, 0.1);
+.category-most input.select-dropdown{
+	border:none;
 }
-.most-content1{
+.most-content{
 	position: relative;
-	height: 30%;
-	border-bottom: 1px solid rgba(0,0,0, 0.1);
+	height: 40%;
+	border-bottom: 1px solid rgba(255,255,255, .3);
+	line-height: 150%;
 }
 
-.most-content2{
-	position: relative;
-	height: 30%;
-}
 
 
 
@@ -161,7 +204,7 @@
 .most-chamimg{
 	width: 45px;
 	height: 45px;
-	border-radius: 100px;
+	border-radius: 15px;
 	border: 2px solid gold;
 }
 .myplayer-chamimg > img{
