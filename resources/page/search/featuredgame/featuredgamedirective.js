@@ -22,11 +22,9 @@ myApp.directive('featuredgame',function(FeaturedResource,TrollRestUrl,StaticLoca
 			
 			FeaturedResource.get().$promise.then(function(data){
 				$scope.featuredList=data.featuredList.gameList;
-				console.log(data);
 				$scope.$emit("loadingOff");
 			},function(error){
 				$scope.$emit("loadingOff");
-				console.log(error);
 			});
 
 			$scope.searchList=[];
@@ -50,6 +48,28 @@ myApp.directive('featuredgame',function(FeaturedResource,TrollRestUrl,StaticLoca
 			
 			iElm.on("$destroy",function(){
 				console.log("destroy!");
+			});
+		}
+	};
+});
+myApp.directive('featuredTime',function($interval){
+	// Runs during compile
+	
+	return {
+		scope: {time:"@time"}, // {} = isolate, true = child, false/undefined = no change
+		controller: function($scope, $element, $attrs, $transclude) {	
+					
+			var nowTime;
+			$scope.timeInterval=$interval(function(){
+				var nowTime=new Date();
+				$scope.subtime=nowTime.getTime()-$scope.time;
+			},1000);
+		},
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		templateUrl: '/resources/page/search/featuredgame/featured-time.html',
+		link: function($scope, iElm, iAttrs, controller) {
+			iElm.on("$destroy",function(){
+				$interval.cancel($scope.timeInterval);
 			});
 		}
 	};

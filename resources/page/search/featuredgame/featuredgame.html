@@ -12,7 +12,8 @@
 							style="width: 50px;height:50px">
 						</span>
 						<span class="hide-on-med-and-down" style="padding: 10px">
-							<a ng-click="search(user.summonerName)">{{user.summonerName}}</a>
+							<a ng-click="search(user.summonerName)" 
+							class="blue-text">{{user.summonerName}}</a>
 						</span>
 						<div>
 							<span ng-repeat="spell in spellList|binaryWhere:{id:user.spell1Id}">
@@ -31,7 +32,7 @@
 							</span>
 						</div>
 						<span class="hide-on-large-only" style="padding: 10px">
-							<a ng-click="search(user.summonerName)">{{user.summonerName}}</a>
+							<a ng-click="search(user.summonerName)" class="blue-text">{{user.summonerName}}</a>
 						</span>
 
 					</div>
@@ -42,15 +43,14 @@
 					</span>
 					<a ng-href="{{restUrl}}featuredgames/{{game.gameId}}?encryptionKey={{game.observers.encryptionKey}}" target="_blank">관전하기</a>
 					<span>
-						{{game.gameStartTime|date:'mediumTime'}}
-						시작시간
+						<featured-time time="{{::game.gameStartTime}}"></featured-time>
 					</span>
 				</div>
 				<div class="col s5 right-align">
 					<div ng-repeat="user in game.participants|filter:{teamId:'200'}">
 
 						<span class="hide-on-med-and-down" style="padding:10px;">
-							<a ng-click="search(user.summonerName)">{{user.summonerName}}</a>
+							<a ng-click="search(user.summonerName)" class="red-text">{{user.summonerName}}</a>
 						</span>
 						<span ng-repeat="champion in championList|binaryWhere:{id:user.championId}">
 							 <img 
@@ -75,7 +75,7 @@
 							</span>
 						</div>
 						<span class="hide-on-large-only" style="padding: 10px">
-							<a ng-click="search(user.summonerName)">{{user.summonerName}}</a>
+							<a ng-click="search(user.summonerName)" class="red-text">{{user.summonerName}}</a>
 						</span>
 					</div>
 				</div>
