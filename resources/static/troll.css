@@ -215,3 +215,29 @@
       height: 0px;
       
    }
+  .bluechip{
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+  background: rgba(33, 150, 243, 1);
+  cursor: pointer;
+  color:rgba(255,255,255, 1);
+}
+.bluechip:hover{
+ color: rgba(33, 150, 243 , 1);
+ background: rgba(255,255,255,1);
+}
+.redchip{
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+  background: #e53935;
+  cursor: pointer;
+  color:rgba(255,255,255, 1);
+}
+.redchip:hover{
+ color: #e53935;
+ background: rgba(255,255,255,1);
+}
