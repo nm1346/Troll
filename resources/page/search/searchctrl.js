@@ -2,7 +2,6 @@ myApp.controller('searchCtrl',function(
 	$scope,$routeParams,CurrentGameResource,currentGameData,$window,$document,$timeout){
 	$scope.$emit("CoverOff",{});
 	$scope.$emit("loadingOff",{});
-
 	$scope.search={
 		loading:false,
 		error:false
@@ -27,7 +26,8 @@ myApp.controller('searchCtrl',function(
 	$scope.layout={
 		section:[1,2,3,4],
 		index:0,
-		available:true
+		available:true,
+		pageClass:['page-contact','page-about','page-contact','page-about']
 	}
 	$scope.$on("searchViewChange",function(event,data){
 		$scope.$emit("loadingOff",{});
@@ -66,5 +66,5 @@ myApp.controller('searchCtrl',function(
 		},2000);
 	})
 
-	
+
 });
