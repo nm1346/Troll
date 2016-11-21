@@ -147,3 +147,15 @@ myApp.filter('orderObjectBy', function() {
     return filtered;
   };
 });
+
+myApp.filter('matchfilter',function () {
+	return function (match) {
+		var kda;
+		if (match.deaths === 0) {
+			kda= (match.assists + match.kills) / 1;
+		}else{
+			kda= (match.assists + match.kills) / match.deaths;
+		}
+		return kda.toFixed(1);
+	}
+});

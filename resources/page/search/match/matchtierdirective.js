@@ -5,8 +5,6 @@ myApp.directive('tier', function(matchResource,matchData,$filter,$interval){
       controller: function($scope, $element, $attrs, $transclude) {
         $scope.summoner=matchData.getsummoner();
         $scope.match=matchData.getmatch();
-        console.log($scope.match);
-        console.log($scope.summoner);
         var matchdata = matchData.getmatch();
         var avgdata = matchData.avg(matchdata);
         var tavgdata = $scope.match.avg
@@ -37,8 +35,6 @@ myApp.directive('tier', function(matchResource,matchData,$filter,$interval){
         $scope.tavgdata.wardsPlaced = Math.round($scope.tavgdata.wardsPlaced*10) / 10;
         $scope.tavgdata.towerkills = Math.round($scope.tavgdata.towerkills*10) / 10;
         $scope.tavgdata.goldEarned = Math.round($scope.tavgdata.goldEarned);
-
-        console.log($scope.tavgdata);
       },
       restrict: 'E',
       templateUrl: '/resources/page/search/match/matchtier.html',

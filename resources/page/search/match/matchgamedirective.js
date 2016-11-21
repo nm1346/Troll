@@ -7,10 +7,16 @@ myApp.directive('game', function(matchResource,matchData,$filter,$interval){
         $scope.match=matchData.getmatch();
         console.log($scope.match);
         var matchdata = matchData.getmatch();
-        var avgdata = matchData.avg(matchdata);
+        $scope.avgdata = matchData.avg(matchdata);
+        for (var i = 0; i < matchdata.match.length; i++) {
+          if(matchdata.match[i].summonerId == $scope.summoner.summonerData.id){
+            $scope.user = matchdata.match[i];
+          }
+        };
+
+
+
       },
-
-
       restrict: 'E',
       templateUrl: '/resources/page/search/match/matchgame.html',
       link: function($scope, iElm, iAttrs, controller) {
