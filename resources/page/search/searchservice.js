@@ -1,3 +1,13 @@
+myApp.animation(".fade", function() {
+        return {
+            addClass: function(element, className, callback) {
+                element.animate({ opacity: 1 }, callback);
+            },
+            removeClass: function(element, className, callback) {
+                element.animate({ opacity: 0 }, callback);
+            }
+        }
+    });
 myApp.factory('SearchResource',function($resource,TrollRestUrl){
     return $resource(TrollRestUrl+"user/:summonerName", {summonerName:"@summonerName"},{
         get:{method:"GET"}

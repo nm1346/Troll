@@ -1,5 +1,11 @@
 @import "font-awesome";
-@import "";
+::-webkit-scrollbar {
+display:none;
+}
+
+.most-card span.caret{
+	color:black;
+}
 .summoner{
 	background-color: rgba(255,255,255 , 0.8);
 	font-size: 1rem;
@@ -11,10 +17,10 @@
 	border-radius: 10px;
 }
 .most-card{
-	background-color: rgba(0,0,0 , .3);
+	background-color: rgba(255,255,255 , 0.8);
 	font-size: 1rem;
 	font-weight: bold;
-	color: white;
+	color: black;
 	height: 365px;
 	margin-bottom: 0px;
 	line-height: 120%;
@@ -91,24 +97,28 @@
 .category-most{
 	position: relative;
 	height: 13%;
-	border-bottom: 1px solid rgba(255,255,255, 0.2);
+	border-bottom: 1px solid rgba(0,0,0, 0.1);
 	background: rgba(0,0,0,0.0);
 	border-radius: 10px 10px 0 0;
 }
 .category-most ul{
 	border-radius: 10px;
+	background: rgba(0,0,0,0);
 }
 .category-most li > span{
-	border: 1px solid rgba(245,245,245,.2);
-	color:white;
+	color:black;
 	font-size : 0.8em;
-	background: rgba(0,0,0,1);
+	background: rgba(245,245,245,1);
+	transition: all 0.2s ease-in;
+}
+.category-most li > span:hover{
+	background: rgba(150,150,150,1);
 }
 .category-most li.disabled > span{
-	border: 1px solid rgba(245,245,245,.2);
+	border-bottom: 1px solid rgba(0,0,0,.2);
 	color:grey;
 	font-size : 0.8em;
-	background: rgba(0,0,0,1);
+	background: rgba(245,245,245,1);
 }
 .category-most > p{
 	font-size: 1rem;
@@ -120,7 +130,7 @@
 .most-content{
 	position: relative;
 	height: 40%;
-	border-bottom: 1px solid rgba(255,255,255, .3);
+	border-bottom: 1px solid rgba(0,0,0, .1);
 	line-height: 150%;
 }
 
@@ -205,7 +215,7 @@
 	width: 45px;
 	height: 45px;
 	border-radius: 15px;
-	border: 2px solid gold;
+	border: 2px solid grey;
 }
 .myplayer-chamimg > img{
 	width: 31px;
@@ -384,8 +394,6 @@
 		border-radius: 100px;
 		font-size: 15px;
 	}
-
-
 	.kda{
 		margin-left: -10px;
 	}
@@ -398,10 +406,6 @@
 	/* iPads (portrait and landscape) */
 	@media only screen
 	and (max-width : 1024px) {
-	.summoner{
-		height: 320px;
-
-	}
 	.league{
 		padding-top: 0px !important;
 	}

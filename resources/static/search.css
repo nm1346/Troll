@@ -116,6 +116,7 @@
   box-shadow: 1px 1px 2px 1px rgba(232, 245, 233,.8) inset ,0px 0px 1px 0px rgba(232, 245, 233,.5);
   transition: all 0.3s;
   margin-bottom: 15px;
+  display: table;
 }
 .search-input > label[class='active']{
   -webkit-transform :none;
@@ -130,7 +131,6 @@
   border-radius: 15px;
   color: white;
 }
-
 .search-input > input[type="search"]:focus{
   margin-left: -3px;
   border-radius: 15px 5px 5px 15px;
@@ -141,6 +141,7 @@
  transition:all 0.2s ease-out;
  color : #fff;
  margin-left: -3px;
+ display: table-cell;
 }
 
 .main-nav{
@@ -149,6 +150,51 @@
   box-shadow: none;
   z-index: 4;
   margin-bottom: 0;
+
+}
+.main-nav .checkicon{
+  transition:all 0.2s ease-in;
+  border-radius: 5px;
+}
+.main-nav .checkicon:hover{
+ background: rgba(255,255,255,1);
+ color: black;
+ box-shadow: inset 0 0 0 3px black;
+  
+}
+/*  content: "\f002"; */
+.main-nav .pedia{
+  content :'롤 백과사전';
+  transition:all 0.2s ease-in;
+  border-radius: 5px;
+}
+.main-nav .pedia:hover{
+ background: rgba(255,255,255,.4);
+ color: white;
+}
+.main-nav .user-category:hover{
+ cursor: pointer;
+ border-radius: 5px;
+ background: rgba(255,255,255,.4);
+ color: white;
+}
+.main-nav .dropdown-content{
+  border-radius: 7px;
+  margin-top:64px;
+  background-color: rgba(0,0,0,0);
+  border: 1px solid white;
+}
+.main-nav .dropdown-content li{
+ transition:all 0.2s ease-in;
+ border-top: 1px solid grey;
+ background-color: rgba(0,0,0,.5)
+}
+.main-nav .dropdown-content li > a{
+ transition:all 0.2s ease-in;
+ color:rgba(245,245,245, 1);
+}
+.main-nav .dropdown-content li:hover{
+ background: rgba(245,245,245,0.7)
 }
 .logo-search-field {
   margin: 13px auto 0px auto;

@@ -1,13 +1,13 @@
 <ul id="slide-out" class="side-nav side-mobile-nav" style="transform: translateX(-100%);">
 	<li>
-	<div class="row" style="margin-bottom: 0px;">
-	<div class="col s6 hover" >
-		<index-musicicon></index-musicicon>
-	</div>
-	<div class="col s6 hover">
-		<index-videoicon></index-videoicon>
-	</div>
-	</div>
+		<div class="row" style="margin-bottom: 0px;">
+			<div class="col s6 hover" >
+				<index-musicicon></index-musicicon>
+			</div>
+			<div class="col s6 hover">
+				<index-videoicon></index-videoicon>
+			</div>
+		</div>
 	</li>
 	<li>
 		<div class="userView summonerdata center-align row padding-top-hide">
@@ -16,14 +16,33 @@
 			</div>
 		</div>
 	</li>
-	<li><a href="#" ng-click="clicktest($event)">최근게임</a></li>
-	<li><a href="#">현재 게임</a></li>
-	<li><a href="#">트롤 탐색기</a></li>
-	<li><a class="dropdown-button" href="#" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
-	<ul id='dropdown1' class='dropdown-content'>
-		<li><a href="#">First</a></li>
-		<li><a href="#">Second</a></li>
-		<li><a href="#">Third</a></li>
-		<li><a href="#">Fourth</a></li>
-	</ul>
+	<li style="padding-right: 10px; padding-left: 10px;">
+	<div class="side-search-input valign-wrapper">
+		<input type="search" placeholder="소환사명 입력" required ng-model="summonerName">
+		<div class="search-btn center-align waves-effect waves-light valign-wrapper"><i class="fa fa-search valign" aria-hidden="true"></i></div>
+	</div>
+</li>
+	<li>
+		<ul class="collapsible collapsible-accordion" data-collapsible="accordion">
+			<li class="bold center-align">
+			<a class="collapsible-header waves-effect waves-blue">유저메뉴<i class="fa fa-caret-square-o-down right " aria-hidden="true"></i></a>
+			<div class="collapsible-body side-nav-usermenulist">
+				<ul>
+				<li><a class="waves-effect waves-light padding-hide" href="#" ng-click="clicktest($event)">최근게임</a></li>
+				<li><a class="waves-effect waves-light padding-hide" href="#" ng-click="clicktest($event)">현재 게임</a></li>
+				<li style="border-bottom: none;"><a class="waves-effect waves-light padding-hide" href="#" ng-click="clicktest($event)">트롤 탐색기</a></li>
+				</ul>
+			</div> 
+			</li>
+		</ul>
+        <!--     <a class="collapsible-header waves-effect waves-blue">Dropdown<i class="material-icons">arrow_drop_down</i></a>
+        <div class="collapsible-body">
+          <ul>
+            <li><a href="#!">First</a></li>
+            <li><a href="#!">Second</a></li>
+            <li><a href="#!">Third</a></li>
+            <li><a href="#!">Fourth</a></li>
+          </ul>
+      </div> -->
+  </li>
 </ul>

@@ -65,21 +65,21 @@
 </div> -->
 
 <div class="col l2 m6 s12 card most-card center-align padding-bottom-hide padding-right-hide padding-left-hide">
-<div class="category-most col s12">
-   <select class="icons" material-select watch  ng-model="mostindex">
+<div class="category-most col s12" >
+   <select class="icons" material-select watch  ng-model="mostindex" >
       <option value="" disabled selected>Most Champ List</option>
       <option  data-ng-repeat="data in mostchamplist" value="{{$index}}" data-icon="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{data.index.championNameE}}.png" class="circle">{{data.index.championNameK}}</option>
     </select>
 </div>
-<div class="ngFade card-content padding-bottom-hide padding-top-hide most-content col s12" ng-show="!mostindex">
+<div class="ngFade card-content padding-bottom-hide padding-top-hide most-content col s12" ng-hide="mostindex">
    <span class="col s12 tier padding-hide">영웅을 선택해주세요.</span>
  </div>
-<div class="ngFade card-content padding-bottom-hide padding-top-hide most-content col s12" ng-if="mostindex">
+<div class="ngFade card-content padding-bottom-hide padding-top-hide most-content col s12" ng-show="mostindex">
      <div class="col l12 m12 s12">
    점유율 : </b>{{(100 / (leaguedata.entrylist[0].wins + leaguedata.entrylist[0].losses) * mostchamplist[mostindex].index.played).toFixed(0)}}%
     </div> 
     <div class="col l12 m12 s12 center-align" tooltipped data-position="bottom" data-delay="100" data-html="true" 
-    data-tooltip="선택 순위 : {{mostchamplist[mostindex].pickrank}}위<br>점수 순위 : {{mostindex}}위" tooltip-reset>
+    data-tooltip="선택 순위 : {{mostchamplist[mostindex].pickrank}}위<br>점수 순위 : {{mostindex}}위" >
      <img class="most-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{mostchamplist[mostindex].index.championNameE}}.png" err-src/>
     </div> 
      <div class="col l12 m4 s12">
@@ -124,7 +124,7 @@
       </div>
       <div class="spell-slot padding-hide">
         <div class="slot">
-          <img  ng-if="data.rawstats.item6 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item6}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:15px;'><b style='color:yellow;'>{{itemdata.data[data.rawstats.item6].name}}</b><br>
+          <img  ng-if="data.rawstats.item6 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item6}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1rem;'>{{itemdata.data[data.rawstats.item6].name}}</b><br>
           {{itemdata.data[data.rawstats.item6].description}}</div>"/>
         </div>
         <div class="slot">

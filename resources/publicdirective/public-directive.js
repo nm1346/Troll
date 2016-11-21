@@ -192,9 +192,6 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement,su
 					$scope.summonerName=oldval.summonerName;
 				}
 			})
-
-
-
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/publicdirective/search-nav.html',

@@ -35,7 +35,11 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 		console.log('에러',error);
 		 	});
 		 	$scope.mostindex = "";
-		 	
+		 	$scope.mostindexreset = function () {
+		 		console.log("dasdsad")
+		 		$scope.mostindex = "";
+		 	}
+
 		 	$scope.$on('pageonview',function (data) {
 		 		var totaldata = summoner.get();
 		 		$scope.summonerdata = totaldata['summonerData'];
@@ -67,20 +71,5 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 	};
 });
 
-myApp.directive('tooltipReset', function(SearchResource,summoner,$routeParams,BoardData,$location){
-	return {
-		 scope: true, // {} = isolate, true = child, false/undefined = no change
-		 controller: function($scope, $element, $attrs, $transclude) {
 
-		 },
-		restrict: 'A', // E = Element, A = Attribute, C = Class, M = Commen
 
-		link: function($scope, iElm, iAttrs, controller) {
-			$scope.$watch('mostindex', function(data) {
-				console.log("Updated data ", iElm);
-				iElm = iElm;
-			}, true);
-
-		}
-	};
-});
