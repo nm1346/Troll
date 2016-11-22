@@ -5,7 +5,7 @@
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <!-- Compiled and minified CSS -->
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 <link rel="stylesheet" type="text/css" href="/resources/static/troll.css">
 <link rel="stylesheet" type="text/css" href="/resources/static/search.css">
@@ -47,7 +47,7 @@ myApp.config(function($routeProvider,$locationProvider) {
 		templateUrl:"/resources/page/search/search.html",
 		controller:"searchCtrl"
 	});
-	
+
 	$routeProvider.otherwise({
 		redirectTo:"/"
 	})
@@ -92,7 +92,8 @@ myApp.run(function($rootScope,$window){
 <script src="/resources/page/search/match/matchbasedirective.js"></script>
 <script src="/resources/page/search/match/matchtierdirective.js"></script>
 <script src="/resources/page/search/match/matchgamedirective.js"></script>
-
+<script src="/resources/page/search/featuredgame/featuredgamedirective.js"></script>
+<script src="/resources/page/search/featuredgame/featuredgameservice.js"></script>
 <!-- staticData(롤백과)페이지 컨트롤러 및 디렉티브 -->
 <script src="/resources/page/static/staticctrl.js"></script>
 <script src="/resources/page/static/staticdirective.js"></script>
@@ -107,16 +108,15 @@ myApp.run(function($rootScope,$window){
 </head>
 <body>
 <!--페이지 영역-->
-
 <loading class="firstLoad" ng-if="!fullLoad"></loading>
 <!-- 인덱스페이지가 아니면 사라지는 동영상 투명도 커버 -->
 <index-video></index-video>
 <index-music></index-music>
 <back-cover></back-cover>
-<!-- <status-toast></status-toast> -->
+<status-toast></status-toast>
 <loading-cover></loading-cover>
-
-<img class="backImage" src="/resources/static/backimage.jpg"> 
+<search-sidenav></search-sidenav>
+<img class="backImage" src="/resources/static/backimage.jpg">
 <div ng-if="fullLoad" ng-view class="ngFade search-nav">
 </div>
 </body>

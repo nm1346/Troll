@@ -8,8 +8,7 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval,Curren
         CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){        
           $scope.$emit("loadingOff",{});
           var c = 0;  
-          $scope.data = data
-          console.log($scope.data);
+          $scope.data = data;
           $interval(function () {
             if(Object.keys($scope.data).length!=0&&$scope.data.success!=false){
               var o = new Date($scope.data.gameInfo.gameStartTime)

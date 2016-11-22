@@ -1,4 +1,3 @@
-//search첫번째 페이지에 들어갈 인덱스모음
 
 myApp.directive('summonerData', function(matchResource,matchData,SearchResource,summoner,$routeParams,BoardData){
 	return {
