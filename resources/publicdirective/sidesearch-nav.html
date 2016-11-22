@@ -18,8 +18,8 @@
 	</li>
 	<li style="padding-right: 10px; padding-left: 10px;">
 	<div class="side-search-input valign-wrapper">
-		<input type="search" placeholder="소환사명 입력" required ng-model="summonerName">
-		<div class="search-btn center-align waves-effect waves-light valign-wrapper"><i class="fa fa-search valign" aria-hidden="true"></i></div>
+		<input type="search" placeholder="소환사명 입력" required ng-model="summonerName" ng-keypress="keysearch($event,summonerName)">
+		<div class="search-btn center-align waves-effect waves-light valign-wrapper" data-ng-click="search(summonerName)"><i class="fa fa-search valign" aria-hidden="true"></i></div>
 	</div>
 </li>
 	<li>
