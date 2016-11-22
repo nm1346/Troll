@@ -187,7 +187,6 @@
            <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item0}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item0].name}}</b><br>
            {{itemdata.data[data.rawstats.item0].description}}</div>"/>
          </div>
-
          <div class="col l4 s2 slot"><img ng-if="data.rawstats.item1 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item1}}.png" err-src 
            tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item1].name}}</b><br>
            {{itemdata.data[data.rawstats.item1].description}}</div>" /></div>
@@ -207,7 +206,6 @@
                <span class="myplayer-chamimg"><img class="mychampborder" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{data.chamName1}}.png"/></span>
                <span ng-repeat="player in data.fellowPlayers" ng-if="data.teamId == player.teamId">
                  <!--  플레이어 클릭시 리서치 임시보류 -->
-
          <!-- <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.summonerName}}" ng-click="researchsummoner(player.summonerName)">
            <img class="{{player.teamId === 100 ? 'blueteamborder':'redteamborder'}}" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{player.chamName1}}.png"/>
          </span> -->
@@ -237,12 +235,15 @@
  ng-if="!(data.subType | botfilter)">
  &nbsp;
 </div>
-
 <div class="col s6 card-btn match-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
 ng-if="!(data.subType | botfilter)"  ng-click="match(data.gameId)">
 &nbsp;
 </div>
-
+<div class="col s12 activator solocard-btn statscard-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
+ng-if="data.subType | botfilter">
+&nbsp;
+</div>
+</div>
 
 <div class="card-reveal statscard {{data.rawstats.win? 'Win':'Lose'}}stat padding-bottom-hide" style="background-image: url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{data.chamName1}}_1.jpg');">
  <div class="card-backcover">
