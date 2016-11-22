@@ -25,7 +25,7 @@ myApp.directive('featuredgame',function(FeaturedResource,TrollRestUrl,StaticLoca
 				for(var i in $scope.featuredList){
 					for(var j in $scope.featuredList[i].participants){
 						var entryData=$filter('binaryWhere')($scope.leagueIdList,{name:$scope.featuredList[i].participants[j].summonerName});
-						if($scope.featuredList[i].participants[j].summonerName==entryData[0].name){
+						if(angular.isDefined(entryData[0])&&$scope.featuredList[i].participants[j].summonerName==entryData[0].name){
 							angular.extend($scope.featuredList[i].participants[j],entryData[0]);
 						}
 						
