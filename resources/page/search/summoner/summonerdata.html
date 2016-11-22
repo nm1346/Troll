@@ -185,7 +185,7 @@
         <div class="col s10 item-slot push-s1">
          <div class="col l4  s2 slot">
            <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item0}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item0].name}}</b><br>
-           {{itemdata.data[data.rawstats.item0].description}}</div>"/>
+           {{itemdata.data[data.rawstats.item0].description[0]}}</div>"/>
          </div>
          <div class="col l4 s2 slot"><img ng-if="data.rawstats.item1 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item1}}.png" err-src 
            tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item1].name}}</b><br>
