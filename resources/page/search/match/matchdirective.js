@@ -3,12 +3,19 @@ myApp.directive('match', function(matchResource,matchData,$filter,$interval){
    return {
       scope:{}, // {} = isolate, true = child, false/undefined = no change
       controller: function($scope, $element, $attrs, $transclude) {
-        //console.log(matchData.getmatch());
-        //console.log(matchData.getsummoner());
+        $scope.summoner=matchData.getsummoner();
+        $scope.match=matchData.getmatch();
+        $scope.lane = matchData.getlane($scope.match,$scope.summoner);
         $scope.dt='경기분석';
         $scope.selectdt=function(data){
           $scope.dt=data;
         };
+        $scope.selecttdt=function(data1,data2,data3){
+          $scope.dt=$scope.summoner.leagueData.tier +','+ $scope.lane.lane + ' 기준';
+        };
+
+        
+
         $scope.$emit("loadingOff",{});
 
       },

@@ -1,12 +1,13 @@
 
 <div class="container row tff">
- <nav>
+ <nav class="tffnav">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo center">{{dt}}</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="#" ng-click="selectdt('경기분석')">경기분석</a></li>
-        <li><a href="#"  ng-click="selectdt('티어,라인별 비교')">티어,라인별 비교</a></li>
-        <li><a href="#" ng-click="selectdt('이번게임 비교')">이번게임 비교</a></li>
+        <li><a href="#"  ng-click="selecttdt()">
+        {{summoner.leagueData.tier}},{{lane.lane}} 기준</a></li>
+        <li><a href="#" ng-click="selectdt('게임 기준')">게임 기준</a></li>
       </ul>
     </div>
   </nav>
@@ -15,11 +16,11 @@
     <base></base>
  </div>
 
- <div ng-if="dt=='티어,라인별 비교'">
-   <h2>니미</h2>
+ <div ng-if="dt== summoner.leagueData.tier + ',' + lane.lane + ' 기준'" class="tierd" style="color: black">
+   <tier></tier>
  </div>
 
- <div ng-if="dt=='이번게임 비교'">
+ <div ng-if="dt=='게임 기준'">
    <game></game>
  </div>
 

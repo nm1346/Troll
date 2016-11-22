@@ -3,6 +3,7 @@ myApp.directive('summonerData', function(matchResource,matchData,SearchResource,
 	return {
 		 scope: {}, // {} = isolate, true = child, false/undefined = no change
 		 controller: function($scope, $element, $attrs, $transclude) {
+
 		 	/*$scope.$emit('searchPageStart',{});*/
 		 	$scope.$emit("loadingOn",{});
 		 	$scope.$emit('searchPageStart', {loading : true , error : false});
@@ -59,12 +60,12 @@ myApp.directive('summonerData', function(matchResource,matchData,SearchResource,
 	    		$scope.$emit("loadingOn",{});
 	            matchResource.get({matchId : matchId}).$promise.then(function(data){
 	            	matchData.setmatch(data);
-	            	matchData.setsummoner(sdata);
 	            	$scope.$emit("searchViewChange",3);
 				},function(error){
 					$scope.$emit("loadingOff",{});
 				});
 			};
+
 			$scope.avgcs =  function (stats) {
 				console.log(stats.minionsKilled,stats.timePlayed);
 				return (stats.minionsKilled / (stats.timePlayed / 60)).toFixed(2);

@@ -1,1 +1,454 @@
-<h2>tier</h2>
+<!-- 
+<div class="col s4">
+	<table>
+		<tr>
+			<td>
+				<img ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{user.championNameE}}.png" err-src/>
+			</td>
+		</tr>
+	</table>
+</div>
+<div class="col s8">
+	<table>
+		<tr>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>3</td>
+		</tr>
+	</table>
+</div>
+ -->
+<!-- 공격 -->
+<div class="col s4">
+	<table>
+		<thead>
+		<tr>
+			<th class="tierth" colspan="3">공격기여</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>킬</b></td>
+			<td></td>
+			<td class="max">{{user.kills}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.kills}})</td>
+			<td class="max">최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.kills>user.kills&&user.kills>=tavgdata.kills">
+  					<div style="width: {{user.kills/tavgdata.kills*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.kills>=2*tavgdata.kills">
+  					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.kills<tavgdata.kills">
+  					<div style="width: {{user.kills/tavgdata.kills*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td><b>어시스트</b></td>
+			<td></td>
+			<td class="max">{{user.assists}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.assists}})</td>
+			<td class="max">최대</td>
+		</tr>	
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.assists>user.assists&&user.assists>=tavgdata.assists">
+  					<div style="width: {{user.assists/tavgdata.assists*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.assists>=2*tavgdata.assists">
+  					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.assists<tavgdata.assists">
+  					<div style="width: {{user.assists/tavgdata.assists*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td><b>가한 데미지</b></td>
+			<td></td>
+			<td class="max">{{user.totalDamageDealt}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.totalDamageDealt}})</td>
+			<td class="max">최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.totalDamageDealt>user.totalDamageDealt&&user.totalDamageDealt>=tavgdata.totalDamageDealt">
+  					<div style="width: {{user.totalDamageDealt/tavgdata.totalDamageDealt*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.totalDamageDealt>=2*tavgdata.totalDamageDealt">
+  					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.totalDamageDealt<tavgdata.totalDamageDealt">
+  					<div style="width: {{user.totalDamageDealt/tavgdata.totalDamageDealt*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+			</td>
+		</tr>	
+		</tbody>	
+	</table>
+</div>
+<!-- 운영 -->
+<div class="col s4">
+	<table>
+		<thead>
+		<tr>
+			<th class="tierth" colspan="3">운영능력</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>타워철거</b></td>
+			<td></td>
+			<td class="max">{{user.towerkills}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.towerkills}})</td>
+			<td class="max">최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.towerkills>user.towerkills&&user.towerkills>=tavgdata.towerkills">
+  					<div style="width: {{user.towerkills/tavgdata.towerkills*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.towerkills>=2*tavgdata.towerkills">
+  					<div style="width:100%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.towerkills<tavgdata.towerkills">
+  					<div style="width: {{user.towerkills/tavgdata.towerkills*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td><b>CS</b></td>
+			<td></td>
+			<td class="max">{{user.minionskilled + user.neutralMinionsKilled}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.minionskilled}})</td>
+			<td class="max">최대</td>
+		</tr>	
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.minionskilled>user.minionskilled + user.neutralMinionsKilled&&user.minionskilled + user.neutralMinionsKilled>=tavgdata.minionskilled">
+  					<div style="width: {{(user.minionskilled + user.neutralMinionsKilled)/tavgdata.minionskilled*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.minionskilled + user.neutralMinionsKilled>=2*tavgdata.minionskilled">
+  					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.minionskilled + user.neutralMinionsKilled<tavgdata.minionskilled">
+  					<div style="width: {{(user.minionskilled + user.neutralMinionsKilled)/tavgdata.minionskilled*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td><b>중립 몬스터</b></td>
+			<td></td>
+			<td class="max">{{user.neutralMinionsKilledTeamjungle}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.neutralMinionsKilledTeamjungle}})</td>
+			<td class="max">최대</td>
+		</tr>	
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.neutralMinionsKilledTeamjungle>user.neutralMinionsKilledTeamjungle&&user.neutralMinionsKilledTeamjungle>=tavgdata.neutralMinionsKilledTeamjungle">
+  					<div style="width: {{user.neutralMinionsKilledTeamjungle/tavgdata.neutralMinionsKilledTeamjungle*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.neutralMinionsKilledTeamjungle>=2*tavgdata.neutralMinionsKilledTeamjungle">
+  					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.neutralMinionsKilledTeamjungle<tavgdata.neutralMinionsKilledTeamjungle">
+  					<div style="width: {{user.neutralMinionsKilledTeamjungle/tavgdata.neutralMinionsKilledTeamjungle*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+			</td>
+		</tr>
+		</tbody>	
+	</table>
+</div>
+<!-- cs -->
+<div class="col s4">
+	<table>
+		<thead>
+		<tr>
+			<th class="tierth" colspan="3">CS</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>CS</b></td>
+			<td></td>
+			<td class="max">{{user.minionskilled + user.neutralMinionsKilled}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.minionskilled}})</td>
+			<td class="max">최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.minionskilled>user.minionskilled + user.neutralMinionsKilled&&user.minionskilled + user.neutralMinionsKilled>=tavgdata.minionskilled">
+  					<div style="width: {{(user.minionskilled + user.neutralMinionsKilled)/tavgdata.minionskilled*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.minionskilled + user.neutralMinionsKilled>=2*tavgdata.minionskilled">
+  					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.minionskilled + user.neutralMinionsKilled<tavgdata.minionskilled">
+  					<div style="width: {{(user.minionskilled + user.neutralMinionsKilled)/tavgdata.minionskilled*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td><b>중립 몬스터</b></td>
+			<td></td>
+			<td class="max">{{user.neutralMinionsKilledTeamjungle}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.neutralMinionsKilledTeamjungle}})</td>
+			<td class="max">최대</td>
+		</tr>	
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.neutralMinionsKilledTeamjungle>user.neutralMinionsKilledTeamjungle&&user.neutralMinionsKilledTeamjungle>=tavgdata.neutralMinionsKilledTeamjungle">
+  					<div style="width: {{user.neutralMinionsKilledTeamjungle/tavgdata.neutralMinionsKilledTeamjungle*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.neutralMinionsKilledTeamjungle>=2*tavgdata.neutralMinionsKilledTeamjungle">
+  					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.neutralMinionsKilledTeamjungle<tavgdata.neutralMinionsKilledTeamjungle">
+  					<div style="width: {{user.neutralMinionsKilledTeamjungle/tavgdata.neutralMinionsKilledTeamjungle*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td><b>카정몬스터</b></td>
+			<td></td>
+			<td class="max">{{user.neutralMinionsKilledEnemyjungle}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.neutralMinionsKilledEnemyjungle}})</td>
+			<td class="max">최대</td>
+		</tr>	
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.neutralMinionsKilledEnemyjungle>user.neutralMinionsKilledEnemyjungle&&user.neutralMinionsKilledEnemyjungle>=tavgdata.neutralMinionsKilledEnemyjungle">
+  					<div style="width: {{user.neutralMinionsKilledEnemyjungle/tavgdata.neutralMinionsKilledEnemyjungle*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.neutralMinionsKilledEnemyjungle>=2*tavgdata.neutralMinionsKilledEnemyjungle">
+  					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.neutralMinionsKilledEnemyjungle<tavgdata.neutralMinionsKilledEnemyjungle">
+  					<div style="width: {{user.neutralMinionsKilledEnemyjungle/tavgdata.neutralMinionsKilledEnemyjungle*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+			</td>
+		</tr>
+		</tbody>	
+	</table>
+</div>
+
+<!-- 수비 -->
+<div class="col s4">
+	<table>
+		<thead>
+		<tr>
+			<th class="tierth" colspan="3">수비기여</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>데스</b></td>
+			<td></td>
+			<td class="max">{{user.deaths}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.deaths}})</td>
+			<td class="max">최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.deaths>user.deaths&&user.deaths>=tavgdata.deaths">
+  					<div style="width: {{user.deaths/tavgdata.deaths*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.deaths>=2*tavgdata.deaths">
+  					<div style="width: 100%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.deaths<tavgdata.deaths">
+  					<div style="width: {{100- user.deaths/tavgdata.deaths*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td><b>받은 데미지</b></td>
+			<td></td>
+			<td class="max">{{user.totalDamageTaken}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.totalDamageTaken}})</td>
+			<td class="max">최대</td>
+		</tr>	
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.totalDamageTaken>user.totalDamageTaken&&user.totalDamageTaken>=tavgdata.totalDamageTaken">
+  					<div style="width: {{user.totalDamageTaken/tavgdata.totalDamageTaken*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.totalDamageTaken>=2*tavgdata.totalDamageTaken">
+  					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.totalDamageTaken<tavgdata.totalDamageTaken">
+  					<div style="width: {{user.totalDamageTaken/tavgdata.totalDamageTaken*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+			</td>
+		</tr>
+		</tbody>	
+	</table>
+</div>
+
+<!-- 돈 -->
+<div class="col s4">
+	<table>
+		<thead>
+		<tr>
+			<th class="tierth" colspan="3">골드획득</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>골드</b></td>
+			<td></td>
+			<td class="max">{{user.goldEarned}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.goldEarned}})</td>
+			<td class="max">최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.goldEarned>user.goldEarned&&user.goldEarned>=tavgdata.goldEarned">
+  					<div style="width: {{user.goldEarned/tavgdata.goldEarned*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.goldEarned>=2*tavgdata.goldEarned">
+  					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.goldEarned<tavgdata.goldEarned">
+  					<div style="width: {{user.goldEarned/tavgdata.goldEarned*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td><b>CS</b></td>
+			<td></td>
+			<td class="max">{{user.minionskilled + user.neutralMinionsKilled}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.minionskilled}})</td>
+			<td class="max">최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.minionskilled>user.minionskilled&&user.minionskilled>=tavgdata.minionskilled">
+  					<div style="width: {{user.minionskilled/tavgdata.minionskilled*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.minionskilled>=2*tavgdata.minionskilled">
+  					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.minionskilled<tavgdata.minionskilled">
+  					<div style="width: {{user.minionskilled/tavgdata.minionskilled*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+			</td>
+		</tr>
+		</tbody>	
+	</table>
+</div>
+<!-- 시야 -->
+<div class="col s4">
+	<table>
+		<thead>
+		<tr>
+			<th class="tierth" colspan="3">시야싸움</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>와드 설치</b></td>
+			<td></td>
+			<td class="max">{{user.wardsPlaced}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.wardsPlaced}})</td>
+			<td class="max">최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.wardsPlaced>user.wardsPlaced&&user.wardsPlaced>=tavgdata.wardsPlaced">
+  					<div style="width: {{user.wardsPlaced/tavgdata.wardsPlaced*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.wardsPlaced>=2*tavgdata.wardsPlaced">
+  					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.wardsPlaced<tavgdata.wardsPlaced">
+  					<div style="width: {{user.wardsPlaced/tavgdata.wardsPlaced*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td><b>와드 제거</b></td>
+			<td></td>
+			<td class="max">{{user.wardsKilled}}</td>
+		</tr>
+		<tr>
+			<td>최저</td>
+			<td>평균({{tavgdata.wardsKilled}})</td>
+			<td class="max">최대</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<div class="tierbar" ng-if="2*tavgdata.wardsKilled>user.wardsKilled&&user.wardsKilled>=tavgdata.wardsKilled">
+  					<div style="width: {{user.wardsKilled/tavgdata.wardsKilled*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.wardsKilled>=2*tavgdata.wardsKilled">
+  					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
+				</div>
+				<div class="tierbar" ng-if="user.wardsKilled<tavgdata.wardsKilled">
+  					<div style="width: {{user.wardsKilled/tavgdata.wardsKilled*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				</div>
+			</td>
+		</tr>
+		</tbody>	
+	</table>
+</div>
+
+

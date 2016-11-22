@@ -1,18 +1,28 @@
 /*base css*/
 .tff div{
 color: white;
-font-size: 15px;
+font-size: 14px;
 margin: 0;
 padding: 0;
-background-color: rgba(223,231,254,0.5);
+background-color: rgba(173,181,204,0.5);
 }
-.ban img{
+.tffnav{
+color: white;
+font-size: 14px;
+margin: 0;
+padding: 0;
+background-color: rgba(153,161,184,0.5);
+}
+
+.object img{
 	width: 20px;
 	height: 20px;"
 }
+/*
 .sn a{
 color: white;
 }
+*/
 .ci{
 	width: 70px; height: 100px;
 }
@@ -46,3 +56,15 @@ width: 30px; height: 30px;
 }
 
 /*game css*/
+
+/*tier css*/
+.tierth{
+	text-align: center;
+	font-size: 16px;
+}
+.max {
+	text-align: right;
+}
+.tierbar{
+	width: 100%;height: 10px;background-color: #ddd;
+}

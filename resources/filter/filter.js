@@ -34,14 +34,6 @@ myApp.filter('commafilter',function () {
 	}
 });
 
-/*myApp.filter('Killingsfilter',function () {
-	return function (stats) {
-	  var killdata = [stats.firstBlood , stats.doubleKills , stats.tripleKills , stats.quadraKills , stats.pentaKills];
-	  console.log(killdata);
-	  return killdata;
-	}
-});*/
-
 myApp.filter('botfilter',function () {
 	return function(type){
 	if(type === 'BOT' ||type === 'BOT_3x3' || type ==='NIGHTMARE_BOT'){
@@ -174,3 +166,4 @@ myApp.filter('binaryWhere',function(){
 		}
 	}
 });
+

@@ -6,12 +6,28 @@ myApp.directive('base', function(matchResource,matchData,$filter,$interval){
         $scope.summoner=matchData.getsummoner();
         $scope.match=matchData.getmatch();
         console.log($scope.match);
-        console.log($scope.summoner);
-        for (var i = 0; i < 10; i++) {
-          if ($scope.match.match[i].summonerName == $scope.summoner.name) {
-            $scope.teamId = $scope.match.match[i].teamId;
-          }
-        };
+        /*$scope.lane = null;*/
+        
+
+        if($scope.match.match[0].summonerName != null){
+          for (var i = 0; i < $scope.match.match.length; i++) {
+            if ($scope.match.match[i].summonerName == $scope.summoner.summonerData.name) {
+              $scope.teamId = $scope.match.match[i].teamId;
+            }
+          };
+
+        }
+
+        for (var i = 0; i < $scope.summoner.recentgamelist.length; i++) {
+           if($scope.match.match[0].matchId == $scope.summoner.recentgamelist[i].gameId){
+            if($scope.summoner.recentgamelist[i].rawstats.win == true){
+              $scope.win = true;
+            }
+            if($scope.summoner.recentgamelist[i].rawstats.win != true){
+              $scope.win = false;
+            }
+           }
+        }
 
         $scope.uteamkill=0;
         $scope.uteamdeath=0;
@@ -25,7 +41,7 @@ myApp.directive('base', function(matchResource,matchData,$filter,$interval){
         $scope.ateambaron=0;
         $scope.ateamdragon=0;
         $scope.ateamturret=0;
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < $scope.match.match.length; i++) {
           if ($scope.match.match[i].teamId == $scope.teamId) {
             $scope.uteamkill+=$scope.match.match[i].kills;
             $scope.uteamdeath+=$scope.match.match[i].deaths;
