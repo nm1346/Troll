@@ -92,4 +92,4 @@ myApp.factory('summoner', function(){
             }
          }
       };
-   })
+   });

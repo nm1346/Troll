@@ -1,38 +1,58 @@
 myApp.directive('summonerData', function(matchResource,matchData,SearchResource,summoner,$routeParams,BoardData,$location,$http,itemResource,SpellResource,
-   recentchampResource){
-   return {
-       scope: {}, // {} = isolate, true = child, false/undefined = no change
-       controller: function($scope, $element, $attrs, $transclude) {
-       	  $scope.match= function(matchId){
-				//alert(matchId);
-				//match로 전달 후 페이지 시작
-	    		$scope.$emit("CoverOn",{});
-	    		$scope.$emit("loadingOn",{});
-	            matchResource.get({matchId : matchId}).$promise.then(function(data){
-	            	matchData.setmatch(data);
-	            	matchData.setsummoner(summoner.get());
-	            	$scope.$emit("searchViewChange",3);
-				},function(error){
-					$scope.$emit("loadingOff",{});
-				});
-			};
-          /*$scope.$emit('searchPageStart',{});*/
-          $scope.$emit("loadingOn",{});
-          $scope.$emit('searchPageStart', {loading : true , error : false});
-          itemResource.get({}).$promise.then(function (data) {
-             summoner.setitem(data);
-             $scope.itemdata = summoner.getitem();
-          },function (err) {
-             console.log('item 불러오기 err :  ',err)
-          })
-          SpellResource.get({}).$promise.then(function (data) {
-             summoner.setspell(data);
-             $scope.spelldata = summoner.getspell();
-             console.log($scope.spelldata);
-          },function (err) {
-             console.log('spell 불러오기 err :  ',err)
-          });
-          if (Object.keys(summoner.get()).length === 0) {
+   recentchampResource,BoardResource){
+	return {
+		 scope: {}, // {} = isolate, true = child, false/undefined = no change
+		 controller: function($scope, $element, $attrs, $transclude) {
+		 	/*$scope.$emit('searchPageStart',{});*/
+		 	$scope.$emit("loadingOn",{});
+		 	$scope.$emit('searchPageStart', {loading : true , error : false});
+		 
+     	
+		 	$scope.$on('pageonview',function (data) {
+		 		var totaldata = summoner.get();
+		 		$scope.summonerdata = totaldata['summonerData'];
+		 		$scope.leaguedata = totaldata['leagueData'];
+		 		$scope.recentgame = totaldata['recentgamelist'];
+		 		if (totaldata['most'].length > 0) {
+		 		var mostchamplist = summoner.champscore(totaldata['most']);
+		 		$scope.mostchamp = mostchamplist[0];
+		 		$scope.wostchamp = mostchamplist[mostchamplist.length - 1];
+		 		
+		 		}
+		 			if (angular.isObject(totaldata['leagueData'])){
+		 				if (totaldata['leagueData'].entrylist[0].division === 'I') {
+		 					$scope.tierurl = totaldata['leagueData'].tier.toLowerCase();
+		 				}else{
+		 					$scope.tierurl = totaldata['leagueData'].tier.toLowerCase() +'_'+totaldata['leagueData'].entrylist[0].division.toLowerCase();
+		 				}
+		 			}else{
+		 				$scope.tierurl = "unlanked";
+		 			}
+		 		});
+		 	$scope.researchsummoner = function (summonerName) {
+		 		
+		 		$location.path('/'+summonerName);
+		 	}
+		 	$scope.match= function(matchId){
+            //alert(matchId);
+            //match로 전달 후 페이지 시작
+             $scope.$emit("CoverOn",{});
+             $scope.$emit("loadingOn",{});
+               matchResource.get({matchId : matchId}).$promise.then(function(data){
+                  matchData.setmatch(data);
+                  matchData.setsummoner(summoner.get());
+                  $scope.$emit("searchViewChange",3);
+            },function(error){
+               $scope.$emit("loadingOff",{});
+            });
+         };
+
+			$scope.avgcs =  function (stats) {
+				console.log(stats.minionsKilled,stats.timePlayed);
+				return (stats.minionsKilled / (stats.timePlayed / 60)).toFixed(2);
+			}
+
+      if (Object.keys(summoner.get()).length === 0) {
              SearchResource.get({summonerName : $routeParams.summonerName}).$promise.then(function (data) {
                 if (Boolean(Number(data.success))){
                    summoner.set(data);
@@ -128,6 +148,12 @@ myApp.directive('summonerData', function(matchResource,matchData,SearchResource,
          };
       }
    };
+		 },
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		templateUrl: '/resources/page/search/summoner/summonerdata.html',
+		link: function($scope, iElm, iAttrs, controller) {
+		}
+	};
 });
 
 
