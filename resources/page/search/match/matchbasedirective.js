@@ -5,7 +5,7 @@ myApp.directive('base', function(matchResource,matchData,$filter,$interval){
       controller: function($scope, $element, $attrs, $transclude) {
         $scope.summoner=matchData.getsummoner();
         $scope.match=matchData.getmatch();
-
+        console.log($scope.match);
         /*$scope.lane = null;*/
         
 

@@ -148,14 +148,3 @@ myApp.filter('orderObjectBy', function() {
   };
 });
 
-myApp.filter('matchfilter',function () {
-	return function (match) {
-		var kda;
-		if (match.deaths === 0) {
-			kda= (match.assists + match.kills) / 1;
-		}else{
-			kda= (match.assists + match.kills) / match.deaths;
-		}
-		return kda.toFixed(1);
-	}
-});

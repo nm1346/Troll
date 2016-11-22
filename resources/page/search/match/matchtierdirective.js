@@ -17,6 +17,11 @@ myApp.directive('tier', function(matchResource,matchData,$filter,$interval){
         }
 
         for (var i = 0; i < $scope.match.avg.length; i++) {
+          if($scope.summoner.leagueData.tier == 'MASTER'){
+            if($scope.lane.lane1 == $scope.match.avg[i].lane && 'CHALLENGER' == $scope.match.avg[i].tier.toUpperCase()){
+            $scope.tavgdata =  ($scope.match.avg[i]);
+            }
+          }
           if($scope.lane.lane1 == $scope.match.avg[i].lane && $scope.summoner.leagueData.tier == $scope.match.avg[i].tier.toUpperCase()){
             $scope.tavgdata =  ($scope.match.avg[i]);
             }

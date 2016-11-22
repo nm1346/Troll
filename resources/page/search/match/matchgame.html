@@ -1,9 +1,63 @@
-<div>
-	<span ng-repeat="m in match.match ">
-		<img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{m.championNameE}}.png" err-src/>
-		{{m | matchfilter}}
-	</span>
+<div class="col s12">
+	<table>
+		<tr>
+			<td style="font-size: 22px;">
+					종합순위
+			</td>
+			<!-- <td rowspan="3" > -->
+				<td rowspan="3" style="font-size: 50px; color: #62AFFC;" ng-repeat="r in rank | orderBy:'-total'" ng-if="r.user==summoner.summonerData.name">
+				{{$index+1}}등
+				</td>
+			<!-- </td> -->
+			<td>공격기여</td>
+			<!-- <td> -->
+				<td ng-repeat="r in rank | orderBy:'-a'" ng-if="r.user==summoner.summonerData.name">
+					{{$index+1}}등
+				</td>
+			<!-- </td> -->
+			<td>수비기여</td>
+			<!-- <td> -->
+				<td ng-repeat="r in rank | orderBy:'-b'" ng-if="r.user==summoner.summonerData.name">
+					{{$index+1}}등
+				</td>
+			<!-- </td> -->
+		</tr>
+		<tr>
+			<td></td>
+			<td>운영능력</td>
+			<!-- <td> -->
+				<td ng-repeat="r in rank | orderBy:'-c'" ng-if="r.user==summoner.summonerData.name">
+					{{$index+1}}등
+				</td>
+			<!-- </td> -->
+			<td>골드획득</td>
+			<!-- <td> -->
+				<td ng-repeat="r in rank | orderBy:'-d'" ng-if="r.user==summoner.summonerData.name">
+					{{$index+1}}등
+				</td>	
+			<!-- </td> -->
+		</tr>
+		<tr>
+			<td></td>
+			<td>CS</td>
+			<!-- <td> -->
+				<td ng-repeat="r in rank | orderBy:'-e'" ng-if="r.user==summoner.summonerData.name">
+					{{$index+1}}등
+				</td>
+			</td>
+			<td>시야싸움</td>
+			<!-- <td> -->
+				<td ng-repeat="r in rank | orderBy:'-f'" ng-if="r.user==summoner.summonerData.name">
+					{{$index+1}}등
+				</td>
+			<!-- </td> -->
+		</tr>
+	</table>
+<!-- 	<div ng-repeat="m in rank | orderBy:'-total'">
+		{{$index}},{{m.user}}
+	</div> -->
 </div>
+
 <!-- 공격 -->
 <div class="col s4">
 	<table>
@@ -123,7 +177,7 @@
 		<tr>
 			<td><b>CS</b></td>
 			<td></td>
-			<td class="max">{{user.minionskilled}}</td>
+			<td class="max">{{user.minionskilled + user.neutralMinionsKilled}}</td>
 		</tr>
 		<tr>
 			<td>최저</td>
@@ -132,14 +186,14 @@
 		</tr>	
 		<tr>
 			<td colspan="3">
-				<div class="tierbar" ng-if="2*avgdata.minion>user.minionskilled&&user.minionskilled>=avgdata.minion">
-  					<div style="width: {{user.minionskilled/avgdata.minion*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				<div class="tierbar" ng-if="2*avgdata.minion>user.minionskilled + user.neutralMinionsKilled&&user.minionskilled + user.neutralMinionsKilled>=avgdata.minion">
+  					<div style="width: {{(user.minionskilled + user.neutralMinionsKilled)/avgdata.minion*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
 				</div>
-				<div class="tierbar" ng-if="user.minionskilled>=2*avgdata.minion">
+				<div class="tierbar" ng-if="user.minionskilled + user.neutralMinionsKilled>=2*avgdata.minion">
   					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
 				</div>
-				<div class="tierbar" ng-if="user.minionskilled<avgdata.minion">
-  					<div style="width: {{user.minionskilled/avgdata.minion*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				<div class="tierbar" ng-if="user.minionskilled + user.neutralMinionsKilled<avgdata.minion">
+  					<div style="width: {{(user.minionskilled + user.neutralMinionsKilled)/avgdata.minion*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
 				</div>
 			</td>
 		</tr>
@@ -170,19 +224,19 @@
 		</tbody>	
 	</table>
 </div>
-<!-- css -->
+<!-- cs -->
 <div class="col s4">
 	<table>
 		<thead>
 		<tr>
-			<th class="tierth" colspan="3">CSS</th>
+			<th class="tierth" colspan="3">CS</th>
 		</tr>
 		</thead>
 		<tbody>
 		<tr>
 			<td><b>CS</b></td>
 			<td></td>
-			<td class="max">{{user.minionskilled}}</td>
+			<td class="max">{{user.minionskilled + user.neutralMinionsKilled}}</td>
 		</tr>
 		<tr>
 			<td>최저</td>
@@ -191,14 +245,14 @@
 		</tr>
 		<tr>
 			<td colspan="3">
-				<div class="tierbar" ng-if="2*avgdata.minion>user.minionskilled&&user.minionskilled>=avgdata.minion">
-  					<div style="width: {{user.minionskilled/avgdata.minion*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
+				<div class="tierbar" ng-if="2*avgdata.minion>user.minionskilled + user.neutralMinionsKilled&&user.minionskilled + user.neutralMinionsKilled>=avgdata.minion">
+  					<div style="width: {{(user.minionskilled + user.neutralMinionsKilled)/avgdata.minion*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
 				</div>
-				<div class="tierbar" ng-if="user.minionskilled>=2*avgdata.minion">
+				<div class="tierbar" ng-if="user.minionskilled + user.neutralMinionsKilled>=2*avgdata.minion">
   					<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
 				</div>
-				<div class="tierbar" ng-if="user.minionskilled<avgdata.minion">
-  					<div style="width: {{user.minionskilled/avgdata.minion*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
+				<div class="tierbar" ng-if="user.minionskilled + user.neutralMinionsKilled<avgdata.minion">
+  					<div style="width: {{(user.minionskilled + user.neutralMinionsKilled)/avgdata.minion*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
 				</div>
 			</td>
 		</tr>
@@ -432,5 +486,4 @@
 		</tbody>	
 	</table>
 </div>
-
 

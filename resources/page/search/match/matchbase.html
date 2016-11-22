@@ -39,7 +39,8 @@
     <tr ng-repeat="m in match.match | orderBy: '-lane'" ng-if="m.teamId == teamId">
     	<div class="col s2">
        	<td class="ci">
-		<img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{m.championNameE}}.png" err-src/>
+		<img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{m.championNameE}}.png"
+    tooltipped data-position="top" data-delay="50" data-tooltip="{{m.championNameK}}" err-src/>
        	</td>
     	</div>
 
@@ -64,13 +65,13 @@
               {{m.championNameK}}            
             </li>
             <li>
-              <a href="/{{m.summonerName}}">{{m.summonerName}}</a>
+              <a href="/{{m.summonerName}}" style="color: white;">{{m.summonerName}}</a>
             </li>
             <li ng-if="m.deaths == 0">
               {{(m.kills+m.assists) | number: 2}}({{m.kills}}/{{m.deaths}}/{{m.assists}}) 
             </li>
             <li ng-if="m.deaths != 0">
-              {{(m.kills+m.assists)/m.deaths | number: 2}}({{m.kills}}/{{m.deaths}}/{{m.assists}}) 
+              {{(m.kills+m.assists)/1 | number: 2}}({{m.kills}}/{{m.deaths}}/{{m.assists}}) 
             </li>
         </b>
         </td>
@@ -107,7 +108,7 @@
        	</div>
 
        <div class="col s1">
-       <td>{{m.minionskilled}}</td>
+       <td>{{m.minionskilled+m.neutralMinionsKilled}}</td>
        </div>
     </tr>
 <!-- ng-repeat -->
@@ -157,7 +158,8 @@
     <tr ng-repeat="m in match.match | orderBy: '-lane'" ng-if="m.teamId != teamId">
       <div class="col s2">
         <td class="ci">
-    <img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{m.championNameE}}.png" err-src/>
+          <img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{m.championNameE}}.png"
+          tooltipped data-position="top" data-delay="50" data-tooltip="{{m.championNameK}}"  err-src/>
         </td>
       </div>
 
@@ -182,10 +184,13 @@
               {{m.championNameK}}            
             </li>
             <li>
-              <a href="/{{m.summonerName}}">{{m.summonerName}}</a>
+              <a href="/{{m.summonerName}}" style="color: white;">{{m.summonerName}}</a>
             </li>
-            <li>
+            <li ng-if="m.deaths != 0">
               {{(m.kills+m.assists)/m.deaths | number: 2}}({{m.kills}}/{{m.deaths}}/{{m.assists}}) 
+            </li>
+            <li ng-if="m.deaths == 0">
+              {{(m.kills+m.assists)/1 | number: 2}}({{m.kills}}/{{m.deaths}}/{{m.assists}}) 
             </li>
         </b>
         </td>
