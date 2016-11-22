@@ -53,18 +53,19 @@ myApp.directive('summonerData', function(matchResource,matchData,SearchResource,
 		 		
 		 		$location.path('/'+summonerName);
 		 	}
-		 	$scope.match= function(sdata,matchId){
-				//alert(matchId);
-				//match로 전달 후 페이지 시작
-	    		$scope.$emit("CoverOn",{});
-	    		$scope.$emit("loadingOn",{});
-	            matchResource.get({matchId : matchId}).$promise.then(function(data){
-	            	matchData.setmatch(data);
-	            	$scope.$emit("searchViewChange",3);
-				},function(error){
-					$scope.$emit("loadingOff",{});
-				});
-			};
+		 	$scope.match= function(matchId){
+            //alert(matchId);
+            //match로 전달 후 페이지 시작
+             $scope.$emit("CoverOn",{});
+             $scope.$emit("loadingOn",{});
+               matchResource.get({matchId : matchId}).$promise.then(function(data){
+                  matchData.setmatch(data);
+         matchData.setsummoner(summoner.get());
+                  $scope.$emit("searchViewChange",3);
+            },function(error){
+               $scope.$emit("loadingOff",{});
+            });
+         };
 
 			$scope.avgcs =  function (stats) {
 				console.log(stats.minionsKilled,stats.timePlayed);
