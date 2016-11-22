@@ -241,3 +241,37 @@
  color: #e53935;
  background: rgba(255,255,255,1);
 }
+.circle.tier{
+	border-image-slice: 35 35 35 35 fill; border-image-width: 20px 20px 20px 20px; border-image-repeat: stretch stretch;
+	margin: 10px;
+	border-image-source: url("/resources/tier_icons/노말.png");
+	border-image-outset: 1.0em 1.0em 1.0em 1.0em;
+}
+.circle.tier.BRONZE{
+	border-image-source: url("/resources/tier_icons/브론즈.png");
+	border-image-outset: 1.0em 1.0em 1.0em 1.0em;
+}
+.circle.tier.SILVER{
+	border-image-source: url("/resources/tier_icons/실버.png");
+	border-image-outset: 1.3em 1.0em 1.0em 1.0em;
+}
+.circle.tier.GOLD{
+	border-image-source: url("/resources/tier_icons/골드.png");
+	border-image-outset: 1.4em 1.3em 1.3em 1.3em;
+}
+.circle.tier.PLATINUM{
+	border-image-source: url("/resources/tier_icons/플레.png");
+	border-image-outset: 2em 1.0em 2em 1.0em;
+}
+.circle.tier.DIAMOND{
+	border-image-source: url("/resources/tier_icons/다이아.png");
+	border-image-outset: 2em 1.0em 2em 1.0em;
+}
+.circle.tier.MASTER{
+	border-image-source: url("/resources/tier_icons/마스터.png");
+	border-image-outset: 2.2em 1.5em 2.2em 1.5em;
+}
+.circle.tier.CHALLENGER{
+	border-image-source: url("/resources/tier_icons/챌린저.png");
+	border-image-outset: 1.0em 1.0em 1.0em 1.0em;
+}

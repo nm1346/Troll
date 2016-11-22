@@ -13,7 +13,7 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 			BoardResource.get({id:data.leagueData.id,board_category:"category"}).$promise.then(function(data){
 						if(data.success){
 							$scope.boardCategory=data;
-							console.log(data)
+					
 						}
 						$scope.$emit('searchPageSuccess', {loading : false , error : false});
 						$scope.$emit("loadingOff",{});
@@ -37,8 +37,7 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 		var mostchamplist = summoner.champscore(totaldata['most']);
 		 		$scope.mostchamp = mostchamplist[0];
 		 		$scope.wostchamp = mostchamplist[mostchamplist.length - 1];
-		 		console.log($scope.mostchamp);
-		 		console.log($scope.wostchamp);
+		 		
 		 		}
 		 			if (angular.isObject(totaldata['leagueData'])){
 		 				if (totaldata['leagueData'].entrylist[0].division === 'I') {
@@ -51,7 +50,7 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 			}
 		 		});
 		 	$scope.researchsummoner = function (summonerName) {
-		 		console.log(summonerName);
+		 		
 		 		$location.path('/'+summonerName);
 		 	}
 		 },
