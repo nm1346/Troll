@@ -30,7 +30,7 @@ myApp.factory('summoner', function(){
 		 					kda : kda.toFixed(2)}
 		 					jumsu.push(scoreobject);
 		 				}
-		 				console.log(jumsu);
+		 			
 		 				jumsu.sort(function (a,b) {
 		 					return parseFloat(a.score) > parseFloat(b.score) ? -1 : parseFloat(a.score) < parseFloat(b.score) ? 1 : 0;
 		 				});
