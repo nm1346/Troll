@@ -22,7 +22,7 @@ myApp.controller('searchCtrl',function(
 		$scope.search.error=data.error;
 		$scope.$broadcast('pageonview', {});
 	});
-	//
+	
 	$scope.layout={
 		section:[1,2,3,4],
 		index:0,

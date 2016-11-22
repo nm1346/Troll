@@ -1,0 +1,26 @@
+
+<div class="container row tff">
+ <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">{{dt}}</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="#" ng-click="selectdt('경기분석')">경기분석</a></li>
+        <li><a href="#"  ng-click="selectdt('티어,라인별 비교')">티어,라인별 비교</a></li>
+        <li><a href="#" ng-click="selectdt('이번게임 비교')">이번게임 비교</a></li>
+      </ul>
+    </div>
+  </nav>
+
+ <div ng-if="dt=='경기분석'">
+    <base></base>
+ </div>
+
+ <div ng-if="dt=='티어,라인별 비교'">
+   <h2>니미</h2>
+ </div>
+
+ <div ng-if="dt=='이번게임 비교'">
+   <game></game>
+ </div>
+
+ </div>

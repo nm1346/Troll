@@ -1,0 +1,200 @@
+
+ <div class="col s6">
+ <table class="bordered">
+  <tr class="ban">
+      <td colspan="5">
+      <img src="http://sk2.op.gg/images/scoreboardicon_score.png">{{uteamkill}} / {{uteamdeath}} / {{uteamassist}}
+      </td>
+      <td>
+        <img src="http://sk2.op.gg/images/baron_nashor_100.png" align="center"> {{uteambaron}} 
+        <img src="http://sk2.op.gg/images/dragon_100.png" align="center"> {{uteamdragon}} 
+        <img src="http://sk2.op.gg/images/turret_100.png" align="center"> {{uteamturret}}
+      </td>
+    </tr>
+ 
+ 	<tr>
+       	<th><b class="winner">승리</b><b class="teamName">{{teaId}}</b></th>
+       	<th></th>
+        <th></th>
+       	<th>아이템</th>
+    	<th>데미지</th>
+    	<th>CS</th>
+    </tr>
+
+    
+
+    <tr ng-repeat="m in match.match | orderBy: '-lane'" ng-if="m.teamId == teamId">
+    	<div class="col s2">
+       	<td class="ci">
+		<img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{m.championNameE}}.png" err-src/>
+       	</td>
+    	</div>
+
+    	<div class="col s1">
+        <td>
+        <ul>
+          <li>
+          <img ng-repeat="spell in match.spell" ng-if="m.spell1Id == spell.id" class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{spell.kee}}.png" err-src>
+          </li>
+          <li>   
+          <img ng-repeat="spell in match.spell" ng-if="m.spell2Id == spell.id" class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{spell.kee}}.png" err-src>
+          </li>
+          <li>
+          <img class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/{{m.mastery}}.png" err-src>
+          </li>
+        </ul>   
+        </td>
+       	<td>
+        <b class="sn">
+          <ul>
+            <li>
+              {{m.championNameK}}            
+            </li>
+            <li>
+              <a href="/{{m.summonerName}}">{{m.summonerName}}</a>
+            </li>
+            <li>
+              {{(m.kills+m.assists)/m.deaths | number: 2}}({{m.kills}}/{{m.deaths}}/{{m.assists}}) 
+            </li>
+        </b>
+        </td>
+       	</div>
+
+      	<div class="col s2">
+       	<td>
+       	<ul>
+       		<li>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item0}}.png" err-src>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item1}}.png" err-src>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item2}}.png" err-src>
+	        </li>
+       		<li>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item3}}.png" err-src>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item4}}.png" err-src>
+       		<img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item5}}.png" err-src>
+       		</li>
+       	</ul>
+       	</td>
+       	</div>
+
+       	<div class="col s1">
+       	<td>
+       	<ul>
+       		<li class="dealt">
+       		+{{m.totalDamageDealt}}
+       		</li>
+       		<li class="taken">
+       		- {{m.totalDamageTaken}}
+       		</li>
+       	</ul>
+       	</td>
+       	</div>
+
+       <div class="col s1">
+       <td>{{m.minionskilled}}</td>
+       </div>
+    </tr>
+<!-- ng-repeat -->
+
+ </table>
+ </div>
+
+
+ <div class="col s6">
+ <table class="bordered">
+     <tr class="ban">
+      <td colspan="5">
+        <img src="http://sk2.op.gg/images/baron_nashor_100.png" align="center"> {{ateambaron}} 
+        <img src="http://sk2.op.gg/images/dragon_100.png" align="center"> {{ateamdragon}} 
+        <img src="http://sk2.op.gg/images/turret_100.png" align="center"> {{ateamturret}}
+      </td>
+      <td>
+      <img src="http://sk2.op.gg/images/scoreboardicon_score.png">{{ateamkill}} / {{ateamdeath}} / {{ateamassist}}
+      </td>
+    </tr>
+
+  <tr>
+        <th><b class="winner">승리</b><b class="teamName">{{teaId}}</b></th>
+        <th></th>
+        <th></th>
+        <th>아이템</th>
+      <th>데미지</th>
+      <th>CS</th>
+    </tr>
+
+
+
+<!-- ng-repeat -->
+    <tr ng-repeat="m in match.match | orderBy: '-lane'" ng-if="m.teamId != teamId">
+      <div class="col s2">
+        <td class="ci">
+    <img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{m.championNameE}}.png" err-src/>
+        </td>
+      </div>
+
+      <div class="col s1">
+        <td>
+        <ul>
+          <li>
+          <img ng-repeat="spell in match.spell" ng-if="m.spell1Id == spell.id" class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{spell.kee}}.png" err-src>
+          </li>
+          <li>   
+          <img ng-repeat="spell in match.spell" ng-if="m.spell2Id == spell.id" class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{spell.kee}}.png" err-src>
+          </li>
+          <li>
+          <img class="si" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/{{m.mastery}}.png" err-src>
+          </li>
+        </ul>   
+        </td>
+        <td>
+        <b class="sn">
+          <ul>
+            <li>
+              {{m.championNameK}}            
+            </li>
+            <li>
+              <a href="/{{m.summonerName}}">{{m.summonerName}}</a>
+            </li>
+            <li>
+              {{(m.kills+m.assists)/m.deaths | number: 2}}({{m.kills}}/{{m.deaths}}/{{m.assists}}) 
+            </li>
+        </b>
+        </td>
+        </div>
+
+        <div class="col s2">
+        <td>
+        <ul>
+          <li>
+          <img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item0}}.png" err-src>
+          <img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item1}}.png" err-src>
+          <img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item2}}.png" err-src>
+          </li>
+          <li>
+          <img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item3}}.png" err-src>
+          <img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item4}}.png" err-src>
+          <img class="itemi" srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item5}}.png" err-src>
+          </li>
+        </ul>
+        </td>
+        </div>
+
+        <div class="col s1">
+        <td>
+        <ul>
+          <li class="dealt">
+          +{{m.totalDamageDealt}}
+          </li>
+          <li class="taken">
+          - {{m.totalDamageTaken}}
+          </li>
+        </ul>
+        </td>
+        </div>
+
+       <div class="col s1">
+       <td>{{m.minionskilled}}</td>
+       </div>
+    </tr>
+ </table>
+ </div>
