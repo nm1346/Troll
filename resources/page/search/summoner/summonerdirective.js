@@ -1,5 +1,5 @@
 
-myApp.directive('summonerData', function(matchResource,matchData,SearchResource,summoner,$routeParams,BoardData){
+myApp.directive('summonerData', function(matchResource,matchData,SearchResource,summoner,$routeParams,BoardData,BoardResource){
 	return {
 		 scope: {}, // {} = isolate, true = child, false/undefined = no change
 		 controller: function($scope, $element, $attrs, $transclude) {
