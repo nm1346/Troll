@@ -21,7 +21,18 @@ myApp.directive('featuredgame',function(FeaturedResource,TrollRestUrl,StaticLoca
 			
 			FeaturedResource.get().$promise.then(function(data){
 				$scope.featuredList=data.featuredList.gameList;
-				console.log(data);
+				$scope.leagueIdList=$filter('orderObjectBy')(data.leagueIdList,'name');
+				for(var i in $scope.featuredList){
+					for(var j in $scope.featuredList[i].participants){
+						var entryData=$filter('binaryWhere')($scope.leagueIdList,{name:$scope.featuredList[i].participants[j].summonerName});
+						if($scope.featuredList[i].participants[j].summonerName==entryData[0].name){
+							angular.extend($scope.featuredList[i].participants[j],entryData[0]);
+						}
+						
+					}
+				}
+				
+				//console.log($scope.leagueIdList);
 				$scope.$emit("loadingOff");
 			},function(error){
 				$scope.$emit("loadingOff");
@@ -38,6 +49,7 @@ myApp.directive('featuredgame',function(FeaturedResource,TrollRestUrl,StaticLoca
 				$cookies.putObject("searchList",$scope.searchList);
 				$location.path("/"+summonerName).replace();
 			}
+			
 			$scope.restUrl=TrollRestUrl;
 			
 
@@ -46,9 +58,7 @@ myApp.directive('featuredgame',function(FeaturedResource,TrollRestUrl,StaticLoca
 		templateUrl: '/resources/page/search/featuredgame/featuredgame.html',
 		link: function($scope, iElm, iAttrs, controller) {
 			
-			iElm.on("$destroy",function(){
-				console.log("destroy!");
-			});
+			
 		}
 	};
 });
