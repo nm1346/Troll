@@ -1,27 +1,33 @@
-
 <div class="container row tff">
- <nav class="tffnav">
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo center">{{dt}}</a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="#" ng-click="selectdt('경기분석')">경기분석</a></li>
-        <li><a href="#"  ng-click="selecttdt()">
+  <!-- material container -->
+  <nav class="tffnav">
+   <!-- 네비바 -->
+   <div class="nav-wrapper">
+    <a href="#" class="brand-logo center">{{dt}}</a>
+    <!-- 타이틀 -->
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <!-- 타이틀 변경 -->
+      <li><a href="#" ng-click="selectdt('경기분석')">경기분석</a></li>
+      <li><a href="#"  ng-click="selecttdt()">
         {{summoner.leagueData.tier}},{{lane.lane}} 기준</a></li>
         <li><a href="#" ng-click="selectdt('게임 기준')">게임 기준</a></li>
       </ul>
     </div>
   </nav>
 
- <div ng-if="dt=='경기분석'">
-    <base></base>
+  <div ng-if="dt=='경기분석'">
+   <!-- matchMainPage -->
+   <base></base>
  </div>
 
  <div ng-if="dt== summoner.leagueData.tier + ',' + lane.lane + ' 기준'" class="tierd" style="color: black">
+   <!-- 티어,라인Page -->
    <tier></tier>
  </div>
 
  <div ng-if="dt=='게임 기준'">
+   <!-- 이번게임Page -->
    <game></game>
  </div>
 
- </div>
+</div>

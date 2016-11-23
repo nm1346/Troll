@@ -1,3 +1,4 @@
+
 myApp.directive('tier', function(matchResource,matchData,$filter,$interval){
    // Runs during compile
    return {
@@ -16,17 +17,24 @@ myApp.directive('tier', function(matchResource,matchData,$filter,$interval){
           }
         }
 
+        /*평균값 중 소환사의 티어와 라인에 맞는 값 구하기*/
         for (var i = 0; i < $scope.match.avg.length; i++) {
+          /*마스터와 챌린저는 동일*/
           if($scope.summoner.leagueData.tier == 'MASTER'){
             if($scope.lane.lane1 == $scope.match.avg[i].lane && 'CHALLENGER' == $scope.match.avg[i].tier.toUpperCase()){
-            $scope.tavgdata =  ($scope.match.avg[i]);
+              $scope.tavgdata =  ($scope.match.avg[i]);
             }
+          }
+          if($scope.lane.lane1 == 'DUO'){
+            $scope.lane.lane1 = 'DUO_SUPPORT';
           }
           if($scope.lane.lane1 == $scope.match.avg[i].lane && $scope.summoner.leagueData.tier == $scope.match.avg[i].tier.toUpperCase()){
             $scope.tavgdata =  ($scope.match.avg[i]);
-            }
+          }
+
         }
-         
+
+        /*평균구하기*/
         $scope.tavgdata.kills = Math.round($scope.tavgdata.kills*10) / 10;
         $scope.tavgdata.assists = Math.round($scope.tavgdata.assists*10) / 10;
         $scope.tavgdata.totalDamageDealt = Math.round($scope.tavgdata.totalDamageDealt*10) / 10;
