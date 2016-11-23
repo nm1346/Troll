@@ -21,6 +21,7 @@ myApp.directive('featuredgame',function(FeaturedResource,TrollRestUrl,StaticLoca
 			
 			FeaturedResource.get().$promise.then(function(data){
 				$scope.featuredList=data.featuredList.gameList;
+				console.log($scope.featuredList);
 				$scope.leagueIdList=$filter('orderObjectBy')(data.leagueIdList,'name');
 				for(var i in $scope.featuredList){
 					for(var j in $scope.featuredList[i].participants){

@@ -146,8 +146,8 @@ myApp.directive('summonerData', function(matchResource,matchData,SearchResource,
          $scope.outCallback = function(event, ui) {
             console.log('I`m not, hehe');
          };
-      }
-   };
+      
+   
 		 },
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/summoner/summonerdata.html',
