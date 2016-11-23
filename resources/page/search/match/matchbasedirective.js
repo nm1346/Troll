@@ -1,13 +1,30 @@
-myApp.directive('base', function(matchResource,matchData,$filter,$interval){
+myApp.directive('base', function(matchResource,matchData,$filter,$interval,SpellResource,itemResource,MasteryResource){
    // Runs during compile
    return {
       scope:{}, // {} = isolate, true = child, false/undefined = no change
       controller: function($scope, $element, $attrs, $transclude) {
         $scope.summoner=matchData.getsummoner();
         $scope.match=matchData.getmatch();
-        console.log($scope.match);
-        /*$scope.lane = null;*/
-        
+
+        SpellResource.get({}).$promise.then(function (data) {
+             $scope.spelldata = data;
+        },function (err) {
+             console.log('item 불러오기 err :  ',err)
+        });
+
+        itemResource.get({}).$promise.then(function (data) {
+             $scope.itemdata = data;
+             console.log($scope.itemdata)
+          },function (err) {
+             console.log('item 불러오기 err :  ',err)
+          });
+
+        MasteryResource.get({}).$promise.then(function (data) {
+             $scope.masterydata = data;
+             console.log($scope.masterydata)
+          },function (err) {
+             console.log('item 불러오기 err :  ',err)
+          });
 
         if($scope.match.match[0].summonerName != null){
           for (var i = 0; i < $scope.match.match.length; i++) {
