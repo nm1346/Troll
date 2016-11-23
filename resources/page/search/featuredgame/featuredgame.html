@@ -1,10 +1,10 @@
 <div class="container" ng-cloak>
 	<div class="row">
-	<div class="col m12 l6" ng-repeat="game in featuredList">
+	<div class="col s12" ng-repeat="game in featuredList">
 		<div style="background-image: url('/resources/page/search/currentgame/images/Background2.png');background-repeat: no-repeat; width: 100%;
 		height: 100%; background-size:100% 100%; padding:10px;border-radius: 10px;margin:10px">
 			<div class="row valign-wrapper">
-				<div class="col s5">
+				<div class="col s4">
 					<div ng-repeat="user in game.participants|filter:{teamId:'100'}">
 						<span ng-repeat="champion in championList|binaryWhere:{id:user.championId}">
 							<img 
@@ -12,6 +12,7 @@
 							ng-srcset="{{imgsrc}}champion/{{champion.image.full}}" class="circle tier" 
 							ng-class="user.tier"
 							style="width: 50px;height:50px">
+							
 						</span>
 						
 						<div>
@@ -37,16 +38,36 @@
 
 					</div>
 				</div>
-				<div class="col s2 center">
-					<span class="black-text">
+				<div class="col s4 center">
+					<h5>{{game.gameMode|gametypefilter}}</h5>
+					<div class="row left-align">
+						<span ng-repeat="ban in game.bannedChampions|filter:{teamId:'100'}">
+							<img ng-repeat="champion in championList|binaryWhere:{id:ban.championId}"
+							ng-srcset="{{imgsrc}}champion/{{champion.image.full}}"
+							class="circle ban blue"
+							>
+						</span>
+					</div>
+					<div class="black-text">
 						<img class="responsive-img" ng-srcset="/resources/page/search/currentgame/images/vs4.png" >
-					</span>
-					<a class="chip white-text" style="background-color: rgb(0,0,0);" ng-href="{{restUrl}}featuredgames/{{game.gameId}}?encryptionKey={{game.observers.encryptionKey}}" target="_blank">관전</a>
+					</div>
+					<div class="row right-align">
+						<span ng-repeat="ban in game.bannedChampions|filter:{teamId:'200'}">
+							<img ng-repeat="champion in championList|binaryWhere:{id:ban.championId}"
+							ng-srcset="{{imgsrc}}champion/{{champion.image.full}}"
+							class="circle ban red"
+							>
+						</span>
+					</div>
+					<div>
+						<a class="chip white-text" style="background-color: rgb(0,0,0);" ng-href="{{restUrl}}featuredgames/{{game.gameId}}?encryptionKey={{game.observers.encryptionKey}}" target="_blank">
+						관전하기</a>
+					</div>
 					 <span>
 						<featured-time time="{{::game.gameStartTime}}"></featured-time>
 					</span> 
 				</div>
-				<div class="col s5 right-align">
+				<div class="col s4 right-align">
 					<div ng-repeat="user in game.participants|filter:{teamId:'200'}">
 
 						

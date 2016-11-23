@@ -341,3 +341,11 @@
 	border-image-source: url("/resources/tier_icons/챌린저.png");
 	border-image-outset: 1.0em 1.0em 1.0em 1.0em;
 }
+.circle.ban.blue{
+	border: 5px solid rgba(33, 150, 243 , 1);
+	width: 45px;height: 45px;
+}
+.circle.ban.red{
+	border: 5px solid #e53935;
+	width: 45px;height: 45px;
+}

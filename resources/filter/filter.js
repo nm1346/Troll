@@ -46,13 +46,13 @@ myApp.filter('gametypefilter',function () {
 	return function (type) {
 		if (type == 'RANKED_FLEX_SR'){
 			return '자유랭크'
-		}else if(type == 'NORMAL' || type === 'NORMAL_3x3'){
+		}else if(type == 'NORMAL' || type === 'NORMAL_3x3'||type==='CLASSIC'){
 			return '일반'
 		}else if(type === "ODIN_UNRANKED"){
 			return '도미니언'
-		}else if(type === 'ARAM_UNRANKED_5x5'){
+		}else if(type === 'ARAM_UNRANKED_5x5'||type==='ARAM'){
 			return '칼바람'
-		}else if(type === 'BOT' ||type === 'BOT_3x3' ){
+		}else if(type === 'BOT' ||type === 'BOT_3x3'){
 			return '봇전'
 		}else if(type === 'RANKED_SOLO_5x5' ){
 			return '랭크'
