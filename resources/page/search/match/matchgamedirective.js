@@ -53,6 +53,79 @@ myApp.directive('game', function(matchResource,matchData,$filter,$interval){
             Math.round((matchdata.match[i].neutralMinionsKilled/$scope.avgdata.neutralMinion * 10) + 1)
           };
         }
+
+        /**/
+        Highcharts.chart('chart', {
+
+          chart: {
+            polar: true,
+            backgroundColor:'rgba(0,0,0,0)',
+            plotBorderWidth: null,
+            margin: [0, 0, 0, 0],
+            spacingTop: 0,
+            spacingBottom: 0,
+            spacingLeft: 0,
+            spacingRight: 0
+          },
+          title: {
+            text: 'Budget vs spending',
+            style: {color:'white'},
+            x: -80
+          },
+
+          pane: {
+            size: '80%',
+          },
+
+          xAxis: {
+            categories: ['Sales', 'Marketing', 'Development', 'Customer Support',
+            'Information Technology', 'Administration'],
+            color:'white',
+            tickmarkPlacement: 'on',
+            lineWidth: 0,
+            gridLineColor: 'white',
+
+          },
+
+          yAxis: {
+            gridLineInterpolation: 'polygon',
+            lineWidth: 0,
+            min: 0
+          },
+
+          tooltip: {
+            shared: true,
+            pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+          },
+
+          legend: {
+            align: 'right',
+            verticalAlign: 'top',
+            y: 70,
+            layout: 'vertical'
+          },
+
+          series: [{
+            name: 'Allocated Budget',
+            data: [43000, 19000, 60000, 35000, 17000, 10000],
+            pointPlacement: 'on'
+          }, {
+            name: 'Actual Spending',
+            data: [50000, 39000, 42000, 31000, 26000, 14000],
+            pointPlacement: 'on'
+          }],
+          exporting: {
+            buttons: {
+              contextButton: {
+                enabled: false
+              },
+            }
+          }
+
+        });
+        /**/
+
+
       },
       restrict: 'E',
       templateUrl: '/resources/page/search/match/matchgame.html',

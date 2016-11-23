@@ -1,10 +1,13 @@
 /*base css*/
-.tff div{
+.tff {
+	
+	background-color: rgba(173,181,204,0.5);
+}
+.tff div {
 	color: white;
 	font-size: 14px;
 	margin: 0;
 	padding: 0;
-	background-color: rgba(173,181,204,0.5);
 }
 .tffnav{
 	color: white;

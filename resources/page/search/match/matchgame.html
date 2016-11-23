@@ -1,14 +1,25 @@
+
 <div class="col s12" style="border-bottom: 1px solid white;">
-	<table>
+	<table class="col s4">
 		<!-- 분야별 순위 구하기 -->
 		<tr>
 			<td style="font-size: 22px;">
 				<span style="width: 100%;">종합순위</span>
 			</td>
-			<td rowspan="3" style="font-size: 50px; color: #62AFFC;" ng-repeat="r in rank | orderBy:'-total'" ng-if="r.user==summoner.summonerData.name">
+		</tr>
+	</table>
+	<table class="col s4">
+		<tr>
+
+			<td style="font-size: 50px; color: #62AFFC;" ng-repeat="r in rank | orderBy:'-total'" ng-if="r.user==summoner.summonerData.name">
 				{{$index+1}}등
 			</td>
-			<td>공격기여</td>
+		</tr>
+	</table>
+	<div class="col s4">
+	<span id="chart" style="min-width: 400px; max-width: 600px; height: 400px; margin: 0 auto;"></span>
+	</div>
+			<!-- <td>공격기여</td>
 			<td ng-repeat="r in rank | orderBy:'-a'" ng-if="r.user==summoner.summonerData.name">
 				{{$index+1}}등
 			</td>
@@ -39,8 +50,8 @@
 		<td ng-repeat="r in rank | orderBy:'-f'" ng-if="r.user==summoner.summonerData.name">
 			{{$index+1}}등
 		</td>
-	</tr>
-</table>
+	</tr> -->
+
 </div>
 
 <!-- 분야별 수치 -->
