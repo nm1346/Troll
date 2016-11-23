@@ -85,6 +85,6 @@ myApp.factory('summoner', function(){
 				}else{
 					$scope.tierurl = "unlanked";
 				}
-			}
+			},
 		};
 	})

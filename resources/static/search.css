@@ -82,8 +82,6 @@
 .search-card .search-action .video:hover{
   background: rgba(0,0,0, 0.3)
 }
-
-
 .cookiechip{
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
@@ -130,6 +128,7 @@
   border:none;
   border-radius: 15px;
   color: white;
+  margin:0;
 }
 .search-input > input[type="search"]:focus{
   margin-left: -3px;
@@ -213,8 +212,6 @@
  color: rgba(0,0,0 , 0.9);
   font-size: 0.8em;
   font-weight: 500;
-
-
 }
 .logo-search-input:focus{
 	border:4px solid grey;
@@ -240,8 +237,6 @@
   -webkit-appearance: none;
   outline: none;
 }
-
-
 ::-webkit-input-placeholder {
  color: rgba(241, 241, 241 , 0.5);
  } /* 플레이스 홀더 색깔변경 */
@@ -257,9 +252,6 @@
  :-ms-input-placeholder {
    color: rgba(241, 241, 241 , 0.5);
  }
-
-
-
  .my {
   content: '검색';
   border: none;

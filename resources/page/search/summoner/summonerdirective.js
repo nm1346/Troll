@@ -8,6 +8,7 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 	/*$scope.$emit('searchPageStart',{});*/
 		 	$scope.$emit("loadingOn",{});
 		 	$scope.$emit('searchPageStart', {loading : true , error : false});
+		 	$scope.champresource = false;
 		 	itemResource.get({}).$promise.then(function (data) {
 		 		summoner.setitem(data);
 		 		$scope.itemdata = summoner.getitem();
@@ -17,7 +18,6 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 	SpellResource.get({}).$promise.then(function (data) {
 		 		summoner.setspell(data);
 		 		$scope.spelldata = summoner.getspell();
-		 		console.log($scope.spelldata);
 		 	},function (err) {
 		 		console.log('spell 불러오기 err :  ',err)
 		 	});
@@ -63,58 +63,48 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 	$scope.researchsummoner = function (summonerName) {
 		 		$location.path('/'+summonerName);
 		 	}
-
 		 },
+
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/summoner/summonerdata.html',
 		link: function($scope, iElm, iAttrs, controller) {
-			$('#recentchampmodal').modal({
-				opacity:0,
-				ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-					var overlay = $('.modal-overlay');
-				// remove it
-				overlay.detach();
-			},
-		});
-
+			$scope.recentchamplist = [];
 			$scope.getrecentchamp = function (summonerId) {
-				console.log(summonerId);
 				recentchampResource.get({summonerId : summonerId}).$promise.then(function (data) {
 					for (var i = 0; i < data['champlist'].length; i++) {
 						data['champlist'][i].drag = true;
 					}
-					$scope.recentchamplist = data['champlist'];
 					$('#recentchampmodal').modal({
-						opacity:0,
+					opacity:0,
 					ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 					var overlay = $('.modal-overlay');
 					// remove it
 					overlay.detach();
-				},
-				});
+					},
+					});
+					$scope.recentchamplist = data['champlist'];
 					$('#recentchampmodal').modal('open');
-					console.log($scope.recentchamplist);
 				},function (error) {	
+					champdata = error;
 					console.log(error);
 				});
 			}	
-			$scope.startCallback = function(event, ui, title) {
-				console.log('You started draggin: ' + title.title);
-				$scope.draggedTitle = title.title;
+			$scope.list2 = {};
+			$scope.startCallback = function(dragdata, index) {
+				console.log('You started draggin:');
 			};
 
 			$scope.stopCallback = function(event, ui) {
 				console.log('Why did you stop draggin me?');
 			};
+			$scope.dropCallback = function(dragdata, eventele) {
+				console.log('hey, you dumped me :-(');
+				console.log(dragdata);
+				var index = parseInt(eventele.draggable.context.attributes.value.value);
+				console.log(eventele.draggable.context.attributes.value.value);
+				$scope.recentchamplist.splice(index,1);
 
-			$scope.dragCallback = function(event, ui) {
-				console.log('hey, look I`m flying');
 			};
-
-			$scope.dropCallback = function(event, ui) {
-				console.log('hey, you dumped me :-(' , $scope.draggedTitle);
-			};
-
 			$scope.overCallback = function(event, ui) {
 				console.log('Look, I`m over you');
 			};
