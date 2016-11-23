@@ -4,7 +4,6 @@ myApp.filter('kdafilter',function () {
 		if (stats.numDeaths === 0) {
 			stats.numDeaths = 1;
 		}
-		
 		kda= (stats.assists + stats.championsKilled) / stats.numDeaths;
 		return kda.toFixed(2) + ':1' ;
 	}

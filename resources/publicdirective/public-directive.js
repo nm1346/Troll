@@ -82,6 +82,7 @@ myApp.directive('searchSidenav',function($cookies,$timeout,$location,mediaElemen
 				}
 				$scope.$emit("searchStart",{});
 				$timeout(function(){
+					$('.button-collapse').sideNav('hide');
 					$location.path("/"+summonerName).replace();
 				},1000);
 			}
@@ -92,13 +93,14 @@ myApp.directive('searchSidenav',function($cookies,$timeout,$location,mediaElemen
 					$scope.searchList.push(summonerName)
 				}
 				$cookies.putObject("searchList",$scope.searchList);
-
 				if (summonerName == "" ||summonerName == null) {
 					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000)
 					return;
 				}
+			
 				$scope.$emit("searchStart",{});
 				$timeout(function(){
+					$('.button-collapse').sideNav('hide');
 					$location.path("/"+summonerName).replace();
 				},1000);
 			  }
@@ -106,7 +108,24 @@ myApp.directive('searchSidenav',function($cookies,$timeout,$location,mediaElemen
 			$scope.clicktest = function (event) {
 				  $('.button-collapse').sideNav('hide');
 			}
-
+			$scope.goStatic=function(){
+				$('.button-collapse').sideNav('hide');
+				$location.path("/static").replace();
+			}
+			$scope.viewChange=function(view){
+				$('.button-collapse').sideNav('hide');
+				$scope.$emit("searchViewChange",view);
+			}
+			$scope.params=$routeParams;
+			$scope.dropdownLayout=true;
+			$scope.$watch("params",function(newval,oldval){
+				if(angular.isUndefined($scope.params.summonerName)){
+					$scope.dropdownLayout=false;
+				}else{
+					$scope.dropdownLayout=true;
+					$scope.summonerName=oldval.summonerName;
+				}
+			});
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/publicdirective/sidesearch-nav.html',
@@ -184,16 +203,11 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement,su
 			$scope.$watch("params",function(newval,oldval){
 				if(angular.isUndefined($scope.params.summonerName)){
 					$scope.dropdownLayout=false;
-
-
 				}else{
 					$scope.dropdownLayout=true;
 					$scope.summonerName=oldval.summonerName;
 				}
-			})
-
-
-
+			});
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/publicdirective/search-nav.html',
@@ -250,7 +264,6 @@ myApp.directive('loadingCover', function(){
     restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
     templateUrl: '/resources/publicdirective/loading-cover.html',
     link: function($scope, iElm, iAttrs, controller) {
-
     }
   };
 });

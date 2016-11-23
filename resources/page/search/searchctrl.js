@@ -18,6 +18,7 @@ myApp.controller('searchCtrl',function(
 		$scope.search.errorMessage=data.errorMessage;
 	});
 	$scope.$on("searchPageSuccess",function(event,data){
+		console.log('이벤트 받았다');
 		$scope.search.loading=data.loading;
 		$scope.search.error=data.error;
 		$scope.$broadcast('pageonview', {});
