@@ -42,9 +42,9 @@
 						<img class="responsive-img" ng-srcset="/resources/page/search/currentgame/images/vs4.png" >
 					</span>
 					<a class="chip white-text" style="background-color: rgb(0,0,0);" ng-href="{{restUrl}}featuredgames/{{game.gameId}}?encryptionKey={{game.observers.encryptionKey}}" target="_blank">관전</a>
-					<!-- <span>
+					 <span>
 						<featured-time time="{{::game.gameStartTime}}"></featured-time>
-					</span> -->
+					</span> 
 				</div>
 				<div class="col s5 right-align">
 					<div ng-repeat="user in game.participants|filter:{teamId:'200'}">
