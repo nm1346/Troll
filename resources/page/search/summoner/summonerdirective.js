@@ -1,13 +1,18 @@
-//search첫번째 페이지에 들어갈 인덱스모음
 
+<<<<<<< HEAD
 myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,BoardData,$location,$http,itemResource,SpellResource,
 	recentchampResource){
-	return {
+	=======
+	myApp.directive('summonerData', function(matchResource,matchData,SearchResource,summoner,$routeParams,BoardData,BoardResource){
+		>>>>>>> refs/remotes/TigerWest/develop
+		return {
 		 scope: {}, // {} = isolate, true = child, false/undefined = no change
 		 controller: function($scope, $element, $attrs, $transclude) {
+
 		 	/*$scope.$emit('searchPageStart',{});*/
 		 	$scope.$emit("loadingOn",{});
 		 	$scope.$emit('searchPageStart', {loading : true , error : false});
+		 	<<<<<<< HEAD
 		 	$scope.champresource = false;
 		 	itemResource.get({}).$promise.then(function (data) {
 		 		summoner.setitem(data);
@@ -26,8 +31,16 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 			if (Boolean(Number(data.success))){
 		 				summoner.set(data);
 		 				summoner.addsummonerdata($scope, summoner);
-		 				$scope.$emit('searchPageSuccess', {loading : false , error : false});
-		 				$scope.$emit("loadingOff",{});
+		 				BoardResource.get({id:data.leagueData.id,board_category:"category"}).$promise.then(function(data){
+		 					if(data.success){
+		 						$scope.boardCategory=data;
+		 					}
+		 					$scope.$emit('searchPageSuccess', {loading : false , error : false});
+		 					$scope.$emit("loadingOff",{});
+		 				},function(error){
+		 					$scope.$emit('searchPageSuccess', {loading : false , error : false});
+		 					$scope.$emit("loadingOff",{});
+		 				});
 		 			}else{
 		 				$scope.$emit('searchPageError', {errorCode : data.errorcode , errorMessage : data.errormsg});
 		 				$scope.$emit("loadingOff",{});
@@ -41,8 +54,16 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 				if (Boolean(Number(data.success))){
 		 					summoner.set(data);
 		 					summoner.addsummonerdata($scope, summoner);
-		 					$scope.$emit('searchPageSuccess', {loading : false , error : false});
-		 					$scope.$emit("loadingOff",{});
+		 					BoardResource.get({id:data.leagueData.id,board_category:"category"}).$promise.then(function(data){
+		 						if(data.success){
+		 							$scope.boardCategory=data;
+		 						}
+		 						$scope.$emit('searchPageSuccess', {loading : false , error : false});
+		 						$scope.$emit("loadingOff",{});
+		 					},function(error){
+		 						$scope.$emit('searchPageSuccess', {loading : false , error : false});
+		 						$scope.$emit("loadingOff",{});
+		 					});
 		 				}else{
 		 					$scope.$emit('searchPageError', {errorCode : data.errorcode , errorMessage : data.errormsg});
 		 					$scope.$emit("loadingOff",{});
@@ -63,7 +84,21 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 	$scope.researchsummoner = function (summonerName) {
 		 		$location.path('/'+summonerName);
 		 	}
-		 },
+		 	$scope.match= function(matchId){
+            //alert(matchId);
+            //match로 전달 후 페이지 시작
+            $scope.$emit("CoverOn",{});
+            $scope.$emit("loadingOn",{});
+            matchResource.get({matchId : matchId}).$promise.then(function(data){
+            	matchData.setmatch(data);
+            	matchData.setsummoner(summoner.get());
+            	$scope.$emit("searchViewChange",3);
+            },function(error){
+            	$scope.$emit("loadingOff",{});
+            });
+        };
+
+    },
 
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/summoner/summonerdata.html',
@@ -75,13 +110,13 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 						data['champlist'][i].drag = true;
 					}
 					$('#recentchampmodal').modal({
-					opacity:0,
+						opacity:0,
 					ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-					var overlay = $('.modal-overlay');
+						var overlay = $('.modal-overlay');
 					// remove it
 					overlay.detach();
-					},
-					});
+				},
+			});
 					$scope.recentchamplist = data['champlist'];
 					$('#recentchampmodal').modal('open');
 				},function (error) {	

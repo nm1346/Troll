@@ -86,5 +86,6 @@ myApp.factory('summoner', function(){
 					$scope.tierurl = "unlanked";
 				}
 			},
-		};
-	})
+	};
+});
+

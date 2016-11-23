@@ -23,9 +23,9 @@ myApp.controller('searchCtrl',function(
 		$scope.search.error=data.error;
 		$scope.$broadcast('pageonview', {});
 	});
-	//
+	
 	$scope.layout={
-		section:[1,2,3,4],
+		section:[1,2,3,4,5,6],
 		index:0,
 		available:true,
 		pageClass:['page-contact','page-about','page-contact','page-about']

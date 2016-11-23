@@ -5,11 +5,10 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval,Curren
       controller: function($scope, $element, $attrs, $transclude) {
         $scope.$emit("CoverOn",{});
         $scope.$emit("loadingOn",{});
-        CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){
+        CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){        
           $scope.$emit("loadingOff",{});
-          var c = 0;
-          $scope.data = data
-          console.log($scope.data);
+          var c = 0;  
+          $scope.data = data;
           $interval(function () {
             if(Object.keys($scope.data).length!=0&&$scope.data.success!=false){
               var o = new Date($scope.data.gameInfo.gameStartTime)
@@ -31,7 +30,7 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval,Curren
                   $scope.time = '시간을 받아오는중...'
                   c = 0
                 }
-
+                
               }
             }
 

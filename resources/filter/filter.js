@@ -33,14 +33,6 @@ myApp.filter('commafilter',function () {
 	}
 });
 
-/*myApp.filter('Killingsfilter',function () {
-	return function (stats) {
-	  var killdata = [stats.firstBlood , stats.doubleKills , stats.tripleKills , stats.quadraKills , stats.pentaKills];
-	  console.log(killdata);
-	  return killdata;
-	}
-});*/
-
 myApp.filter('botfilter',function () {
 	return function(type){
 	if(type === 'BOT' ||type === 'BOT_3x3' || type ==='NIGHTMARE_BOT'){
@@ -144,3 +136,33 @@ myApp.filter('orderObjectBy', function() {
     return filtered;
   };
 });
+myApp.filter('binaryWhere',function(){
+	return function(items,field){
+		if(angular.isArray(items)){
+			var low=0;
+			var high=items.length-1;
+			var mid;
+			var filtered=[];
+			var index;
+			var keys=Object.keys(field);
+			while(low <= high){
+				mid=Math.floor((low+high)/2);
+				if(items[mid][keys[0]]>field[keys[0]]){
+					high=mid-1;
+				}
+				else if(items[mid][keys[0]]<field[keys[0]]){
+					low=mid+1;
+				}
+				else {
+					index=mid;
+					break;
+				};
+			}
+			filtered.push(items[mid])
+			return filtered;
+		}else{
+			return [];
+		}
+	}
+});
+
