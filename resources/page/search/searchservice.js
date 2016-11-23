@@ -18,6 +18,7 @@ myApp.factory('SpellResource',function($resource){
 		get:{method:"GET"}
 	});
 });
+
 myApp.factory('summoner', function(){
 	var searchdata={};
 	var itemdata = {};

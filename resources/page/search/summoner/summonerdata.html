@@ -16,7 +16,7 @@
     <img class="profileicon" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/profileicon/{{summonerdata.profileIconId}}.png">
     <p class="nickname">{{summonerdata.name}}</p>
 
-    <p class="season" ng-if="angular.isUndefind(leaguedata)">시즌 전적 : {{leaguedata.entrylist[0].wins}}승 {{leaguedata.entrylist[0].losses}}패</p>
+    <p class="season">시즌 전적 : {{leaguedata.entrylist[0].wins}}승 {{leaguedata.entrylist[0].losses}}패</p>
     <!--  <p class="date" tooltipped data-position="top" data-delay="100" data-tooltip="최근 갱신">{{summonerdata.searchDate}}</p> -->
   </div>
 <!-- <span class="col l12 m12 s12">Most Champ</span>
@@ -109,7 +109,6 @@
   </div>
 </div>
 </div><!-- end most -->
-
 
 
 
@@ -227,15 +226,15 @@
 
 <div class="col s12 card-content padding-hide">
  <div class="col s6 activator card-btn statscard-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
- ng-if="!(data.subType | botfilter)">
+ ng-if="!(data.subType | buttonfilter)">
  &nbsp;
 </div>
 <div class="col s6 card-btn match-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
- ng-if="!(data.subType | botfilter)" ng-click="match(data.gameId)">
+ ng-if="!(data.subType | buttonfilter)" ng-click="match(data.gameId)">
 &nbsp;
 </div>
 <div class="col s12 activator card-btn statscard-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
- ng-if="data.subType | botfilter">
+ ng-if="data.subType | buttonfilter">
 &nbsp;
 </div>
 </div>
