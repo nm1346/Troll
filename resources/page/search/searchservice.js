@@ -13,6 +13,11 @@ myApp.factory('recentchampResource',function($resource, TrollRestUrl){
 		get:{method:"GET"}
 	});
 });
+myApp.factory('MasteryResource',function($resource){
+   return $resource("http://ddragon.leagueoflegends.com/cdn/6.22.1/data/ko_KR/mastery.json", {},{
+      get:{method:"GET"}
+   });
+});  
 myApp.factory('SpellResource',function($resource){
 	return $resource("http://ddragon.leagueoflegends.com/cdn/6.22.1/data/ko_KR/summoner.json", {},{
 		get:{method:"GET"}
