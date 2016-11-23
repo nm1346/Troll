@@ -94,7 +94,6 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
         };
 
     },
-
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/summoner/summonerdata.html',
 		link: function($scope, iElm, iAttrs, controller) {
@@ -133,12 +132,10 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 				var index = parseInt(eventele.draggable.context.attributes.value.value);
 				console.log(eventele.draggable.context.attributes.value.value);
 				$scope.recentchamplist.splice(index,1);
-
 			};
 			$scope.overCallback = function(event, ui) {
 				console.log('Look, I`m over you');
 			};
-
 			$scope.outCallback = function(event, ui) {
 				console.log('I`m not, hehe');
 			};
