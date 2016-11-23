@@ -1,10 +1,7 @@
 
-<<<<<<< HEAD
+
 myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,BoardData,$location,$http,itemResource,SpellResource,
-	recentchampResource){
-	=======
-	myApp.directive('summonerData', function(matchResource,matchData,SearchResource,summoner,$routeParams,BoardData,BoardResource){
-		>>>>>>> refs/remotes/TigerWest/develop
+	recentchampResource,BoardResource,matchResource,matchData){
 		return {
 		 scope: {}, // {} = isolate, true = child, false/undefined = no change
 		 controller: function($scope, $element, $attrs, $transclude) {
@@ -12,8 +9,6 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 	/*$scope.$emit('searchPageStart',{});*/
 		 	$scope.$emit("loadingOn",{});
 		 	$scope.$emit('searchPageStart', {loading : true , error : false});
-		 	<<<<<<< HEAD
-		 	$scope.champresource = false;
 		 	itemResource.get({}).$promise.then(function (data) {
 		 		summoner.setitem(data);
 		 		$scope.itemdata = summoner.getitem();

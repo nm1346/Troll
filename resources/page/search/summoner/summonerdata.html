@@ -38,7 +38,7 @@
      <br>KDA : {{wostchamp.kda}}<br>
      승률 : {{wostchamp.index.winlate}}%</span>
    </div> -->
-   <div class="col s12 league center-align mostchamp padding-hide  {{leaguedata.tier}}">
+   <div class="col s12 league center-align mostchamp padding-hide  {{leaguedata.tier}}" ng-if="tierurl !== 'unlanked'">
      <div class="col s12 padding-hide">
       <span class="col s12 tier padding-hide">{{leaguedata.tier}} {{leaguedata.entrylist[0].division}}</span>
       <span class="col s12 point">{{leaguedata.name}}</span>
@@ -48,7 +48,17 @@
       <img class="tier-img" ng-srcset="/resources/tier_icons/{{tierurl}}.png">
     </div>
   </div>
+  <div class="col s12 league center-align mostchamp padding-hide  {{leaguedata.tier}}" ng-if="tierurl === 'unlanked'">
+     <div class="col s12 padding-hide">
+      <span class="col s12 tier padding-hide  ">Unlanked</span>
+      <span class="col s12 point">등록된 리그 정보가 없습니다.</span>
+    </div>
+    <div class="col s12 center-align padding-hide">
+      <img class="tier-img" ng-srcset="/resources/tier_icons/{{tierurl}}.png">
+    </div>
+  </div>
 </div><!-- end summoner -->
+
 
 
 <!-- <div class="col s6 league center-align">
@@ -220,10 +230,10 @@
  &nbsp;
 </div>
 <div class="col s6 card-btn match-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
- ng-if="!(data.subType | botfilter)">
+ ng-if="!(data.subType | botfilter)" ng-click="match(data.gameId)">
 &nbsp;
 </div>
-<div class="col s12 activator   card-btn statscard-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
+<div class="col s12 activator card-btn statscard-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
  ng-if="data.subType | botfilter">
 &nbsp;
 </div>
