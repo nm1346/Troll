@@ -1,8 +1,8 @@
 
 
 myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,BoardData,$location,$http,itemResource,SpellResource,
-	recentchampResource,BoardResource,matchResource,matchData){
-		return {
+	recentchampResource,BoardResource,matchResource,matchData, $interval){
+	return {
 		 scope: {}, // {} = isolate, true = child, false/undefined = no change
 		 controller: function($scope, $element, $attrs, $transclude) {
 
@@ -92,11 +92,61 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
             	$scope.$emit("loadingOff",{});
             });
         };
-
     },
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/summoner/summonerdata.html',
 		link: function($scope, iElm, iAttrs, controller) {
+        var cou = 0;
+       	var promise;
+        var roop = function () {
+        	if ($scope.mostindex !== "" ) {
+        	if (cou == 0) {
+        		$scope.chartdata = [{label : '픽률' ,value : $scope.mostchamplist[$scope.mostindex].chartdata[0].value ,suffix: "%" , color : 'grey' , colorComplement : 'rgba(0,0,0,0.3)' }]
+        		$scope.options = {thickness: 10, mode: "gauge", total: 100};
+       		}
+       		if (cou == 1) {
+        		$scope.chartdata = [{label : 'KDA' ,value : $scope.mostchamplist[$scope.mostindex].kda , color : 'red' , colorComplement : 'rgba(0,0,0,0.3)' }]
+        		$scope.options = {thickness: 10, mode: "gauge", total: 8};
+       		}
+       		if (cou == 2) {
+        		$scope.chartdata = [{label : 'Score' ,value : $scope.mostchamplist[$scope.mostindex].score , color : 'blue' , colorComplement : 'rgba(0,0,0,0.3)' }]
+        		$scope.options = {thickness: 10, mode: "gauge", total: 5};
+       		}
+       		if (cou == 3) {
+        		$scope.chartdata = [{label : '승률' ,value : $scope.mostchamplist[$scope.mostindex].index.winlate ,suffix: "%", color : 'white' , colorComplement : 'rgba(0,0,0,0.3)' }]
+        		$scope.options = {thickness: 10, mode: "gauge", total: 100};
+       		}
+				cou++;
+			}
+			if (cou > 3) {
+        	 cou = 0;
+        	}
+		}
+		$scope.start = function () {
+			$scope.stop();
+			promise = $interval(roop , 3000);
+		}
+		$scope.stop = function () {
+			$interval.cancel(promise);
+		}
+		$scope.$watch("mostindex",function () {
+			cou = 0;
+			roop();
+			$scope.start();
+		})
+		$scope.$on('$destroy', function() {
+      		$scope.stop();
+    	});
+		/*$scope.$watch("mostindex",function (newValue) {
+			$interval.cancel(interval);
+		});*/
+       /* chartdata:[{label : mostarray[i].championNameK , value : fick , suffix: "%" , color : 'white' , colorComplement: "rgba(150,150,150,0)"}]}*/
+			/*$scope.options = {thickness: 10, mode: "gauge", total: 100};*/
+		}
+	};
+});
+
+/*임시보류link: function($scope, iElm, iAttrs, controller) {
 			$scope.recentchamplist = [];
 			$scope.getrecentchamp = function (summonerId) {
 				recentchampResource.get({summonerId : summonerId}).$promise.then(function (data) {
@@ -139,9 +189,5 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 			$scope.outCallback = function(event, ui) {
 				console.log('I`m not, hehe');
 			};
-		}
-	};
-});
-
-
+		}*/
 

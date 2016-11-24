@@ -29,8 +29,10 @@
 <script src="/resources/static/angular-cookies.js"></script>
 <script src="/resources/static/angular-dragdrop.js"></script>
 <!-- <script src="/resources/static/angular.min.js"></script> -->
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="/resources/static/pie-chart/dist/pie-chart.min.js"></script>
 <script>
-var myApp=angular.module("exampleApp",["ngRoute","ngResource","ngAnimate","ngCookies" , "ui.materialize",'ngDragDrop']);
+var myApp=angular.module("exampleApp",["ngRoute","ngResource","ngAnimate","ngCookies" , "ui.materialize",'n3-pie-chart']);
 //config
 myApp.config(function($routeProvider,$locationProvider) {
 	$locationProvider.html5Mode({

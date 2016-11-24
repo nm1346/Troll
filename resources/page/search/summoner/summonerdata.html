@@ -49,15 +49,15 @@
     </div>
   </div>
   <div class="col s12 league center-align mostchamp padding-hide  {{leaguedata.tier}}" ng-if="tierurl === 'unlanked'">
-     <div class="col s12 padding-hide">
-      <span class="col s12 point">&nbsp;</span>
-      <span class="col s12 season padding-hide  ">Unlanked</span>
-      <span class="col s12 point">등록된 리그 정보가 없습니다.</span>
-    </div>
-    <div class="col s12 center-align padding-hide">
-      <img class="tier-img" ng-srcset="/resources/tier_icons/{{tierurl}}.png">
-    </div>
+   <div class="col s12 padding-hide">
+    <span class="col s12 point">&nbsp;</span>
+    <span class="col s12 season padding-hide  ">Unlanked</span>
+    <span class="col s12 point">등록된 리그 정보가 없습니다.</span>
   </div>
+  <div class="col s12 center-align padding-hide">
+    <img class="tier-img" ng-srcset="/resources/tier_icons/{{tierurl}}.png">
+  </div>
+</div>
 </div><!-- end summoner -->
 
 
@@ -74,7 +74,7 @@
     <div class="chip veteran">베테랑</div>
   </div>
 </div> -->
-<div class="col l2 m6 s12 card most-card center-align padding-bottom-hide padding-right-hide padding-left-hide">
+<div class="col l2 m6 s12 card most-card center-align padding-bottom-hide padding-right-hide padding-left-hide" style="background-image: url('http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{mostchamplist[mostindex].index.championNameE}}_0.jpg');">
   <div class="category-most col s12" >
    <select class="icons" material-select watch  ng-model="mostindex" >
     <option value="" disabled selected>Most Champ List</option>
@@ -85,13 +85,10 @@
  <span class="col s12 tier padding-hide">영웅을 선택해주세요.</span>
 </div>
 <div class="ngFade card-content padding-bottom-hide padding-top-hide most-content col s12" ng-show="mostindex" style="line-height: 150%;">
- <div class="col l12 m12 s12"  >
-   점유율 : {{(100 / (leaguedata.entrylist[0].wins + leaguedata.entrylist[0].losses) * mostchamplist[mostindex].index.played).toFixed(0)}}%
- </div> 
- <div class="col l12 m12 s12 center-align" tooltipped data-position="bottom" data-delay="100" data-html="true" 
- data-tooltip="선택 순위 : {{mostchamplist[mostindex].pickrank}}위<br>점수 순위 : {{mostindex}}위" >
- <img class="most-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{mostchamplist[mostindex].index.championNameE}}.png" err-src/>
-</div> 
+<!--   <div class="col l12 m12 s12 center-align" tooltipped data-position="bottom" data-delay="100" data-html="true" 
+data-tooltip="선택 순위 : {{mostchamplist[mostindex].pickrank}}위<br>점수 순위 : {{mostindex}}위" >
+<img class="most-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{mostchamplist[mostindex].index.championNameE}}.png" err-src/>
+</div>  -->
 <div class="col s12">
   KDA : {{mostchamplist[mostindex].kda}}
 </div> 
@@ -102,44 +99,32 @@
   점수 : {{mostchamplist[mostindex].score}}
 </div> 
 </div>
-<div class="ngFade card-content padding-bottom-hide padding-top-hide most-content col s12">
-  <!-- Modal Trigger -->
-  <div class="col">
-    <a class='btn'  ng-click="getrecentchamp(summonerdata.id)">트롤검색</a>
-  </div>
+<div class="ngFade card-content padding-hide most-content col s12" ng-if="mostindex" style="text-align: center;">
+<pie-chart data="chartdata" options="options"></pie-chart>
 </div>
 </div><!-- end most -->
-
-
-
-<div id="recentchampmodal" class="modal trollzone-modal" >
+<!-- 임시보류 -->
+ <!-- <div class="col">
+    <a class='btn'  ng-click="getrecentchamp(summonerdata.id)">트롤검색</a>
+  </div>
+ 
+ <div id="recentchampmodal" class="modal trollzone-modal" >
   <div class="modal-content center-align">
     <div class='col s12 center-align'>트롤 검색기</div>  
     <div class="col s12 center-align">
      <img data-ng-repeat="champ in recentchamplist" class="troll-recent-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{champ.kee}}.png" err-src  data-drag="{{champ.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="champ" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}" ng-value="$index" />
    </div>
-
+ 
    <div class="col s12 center-align" >
-   <div data-drop="true" ng-model='list2' style="background-color: red;" jqyoui-droppable="{multiple:true,onDrop:'dropCallback'}">
+     <div data-drop="true" ng-model='list2' style="background-color: red;" jqyoui-droppable="{multiple:true,onDrop:'dropCallback'}">
        {{list2}}
      </div>
    </div>
  </div>
  <div class="modal-footer">
   <a class="modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
+ </div>
+</div> -->
 
 <div class="col l2 m6 s12 card recent {{data.rawstats.win? 'Win':'Lose' }} center-align padding-bottom-hide" ng-repeat="data in recentgame" >
  <!-- 승패여부 게임기본정보 -->
@@ -230,11 +215,11 @@
  &nbsp;
 </div>
 <div class="col s6 card-btn match-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
- ng-if="!(data.subType | buttonfilter)" ng-click="match(data.gameId)">
+ng-if="!(data.subType | buttonfilter)" ng-click="match(data.gameId)">
 &nbsp;
 </div>
 <div class="col s12 activator card-btn statscard-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
- ng-if="data.subType | buttonfilter">
+ng-if="data.subType | buttonfilter">
 &nbsp;
 </div>
 </div>

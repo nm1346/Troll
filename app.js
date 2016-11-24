@@ -12,8 +12,7 @@ app.use('/resources' , express.static(__dirname + '/resources'));
 /*app.use('/resources', function (req , res , next) {
    res.end();
  })*/
-
- app.get('*',function (req , res ) {
+  app.get('*',function (req , res ) {
    res.sendfile(__dirname + '/index.html', function (html) {
     if (html) {
      res.send(html);
