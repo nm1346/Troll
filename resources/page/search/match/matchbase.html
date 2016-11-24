@@ -1,0 +1,248 @@
+
+ <div class="col s6 based">
+ <table class="bordered">
+  <tr class="object">
+      <td colspan="3">
+      <img ng-srcset="http://sk2.op.gg/images/scoreboardicon_score.png" err-src>{{uteamkill}} / {{uteamdeath}} / {{uteamassist}}
+      </td>
+      <td colspan="3" style="text-align: right;">
+        <img ng-srcset="http://sk2.op.gg/images/baron_nashor_100.png" align="center" err-src> {{uteambaron}} 
+        <img ng-srcset="http://sk2.op.gg/images/dragon_100.png" align="center" err-src> {{uteamdragon}} 
+        <img ng-srcset="http://sk2.op.gg/images/turret_100.png" align="center" err-src> {{uteamturret}}
+      </td>
+    </tr>
+ 
+ 	<tr>
+          <th ng-switch on="win">
+          <b ng-switch-when="true">
+            <b ng-switch on="teamId">
+              <b ng-switch-when="100" class="winner">블루팀</b>
+              <b ng-switch-when="200" class="winner">레드팀</b>
+            </b>
+          </b>
+          <b ng-switch-when="false">
+            <b ng-switch on="teamId">
+              <b ng-switch-when="100" class="looser">블루팀</b>
+              <b ng-switch-when="200" class="looser">레드팀</b>
+           </b>
+          </b>  
+        </th>
+       	<th></th>
+        <th></th>
+       	<th>아이템</th>
+    	<th>데미지</th>
+    	<th>CS</th>
+    </tr>
+
+    
+
+    <tr ng-repeat="m in match.match | orderBy: '-lane'" ng-if="m.teamId == teamId">
+    	<div class="col s2">
+       	<td class="ci">
+		<img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{m.championNameE}}.png"
+    tooltipped data-position="top" data-delay="50" data-tooltip="{{m.championNameK}}" err-src/>
+       	</td>
+    	</div>
+
+    	<div class="col s1">
+        <td>
+        <ul>
+          <li>
+          <img ng-repeat="spell in match.spell" ng-if="m.spell1Id == spell.id" class="si" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{spell.kee}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:#81d4fa; font-size:1rem;'>{{spelldata.data[spell.kee].name}}</b><br>{{spelldata.data[spell.kee].description}}</div>">
+          </li>
+          <li>   
+          <img ng-repeat="spell in match.spell" ng-if="m.spell2Id == spell.id" class="si" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{spell.kee}}.png" err-src  tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:#81d4fa; font-size:1rem;'>{{spelldata.data[spell.kee].name}}</b><br>{{spelldata.data[spell.kee].description}}</div>">
+          </li>
+          <li>
+          <img class="si" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/{{m.mastery}}.png" err-src  tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:#81d4fa; font-size:1rem;'>{{masterydata.data[m.mastery].name}}</b><br>{{masterydata.data[m.mastery].description[0]}}</div>">
+          </li>
+        </ul>   
+        </td>
+       	<td>
+        <b class="sn">
+          <ul>
+            <li>
+              {{m.championNameK}}            
+            </li>
+            <li>
+              <a href="/{{m.summonerName}}" style="color: white;">{{m.summonerName}}</a>
+            </li>
+            <li ng-if="m.deaths == 0">
+              {{(m.kills+m.assists) | number: 2}}({{m.kills}}/{{m.deaths}}/{{m.assists}}) 
+            </li>
+            <li ng-if="m.deaths != 0">
+              {{(m.kills+m.assists)/1 | number: 2}}({{m.kills}}/{{m.deaths}}/{{m.assists}}) 
+            </li>
+        </b>
+        </td>
+       	</div>
+
+
+
+
+      	<div class="col s2">
+       	<td>
+       	<ul>
+       		<li>
+       		<img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item0}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[m.item0].name}}</b><br>
+           {{itemdata.data[m.item0].description}}</div>">
+       		<img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item1}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[m.item1].name}}</b><br>
+           {{itemdata.data[m.item0].description}}</div>">
+           <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item2}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[m.item2].name}}</b><br>
+           {{itemdata.data[m.item2].description}}</div>">
+	        </li>
+       		<li>
+           <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item3}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[m.item3].name}}</b><br>
+           {{itemdata.data[m.item3].description}}</div>">
+           <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item4}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[m.item4].name}}</b><br>
+           {{itemdata.data[m.item4].description}}</div>">
+           <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item5}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[m.item5].name}}</b><br>
+           {{itemdata.data[m.item5].description}}</div>">
+       		</li>
+       	</ul>
+       	</td>
+       	</div>
+
+       	<div class="col s1">
+       	<td>
+       	<ul>
+       		<li class="dealt">
+       		+{{m.totalDamageDealt}}
+       		</li>
+       		<li class="taken">
+       		- {{m.totalDamageTaken}}
+       		</li>
+       	</ul>
+       	</td>
+       	</div>
+
+       <div class="col s1">
+       <td>{{m.minionskilled+m.neutralMinionsKilled}}</td>
+       </div>
+    </tr>
+<!-- ng-repeat -->
+
+ </table>
+ </div>
+
+
+ <div class="col s6 based">
+ <table class="bordered">
+     <tr class="object">
+      <td colspan="3">
+        <img ng-srcset="http://sk2.op.gg/images/baron_nashor_100.png" align="center" err-src> {{ateambaron}} 
+        <img ng-srcset="http://sk2.op.gg/images/dragon_100.png" align="center" err-src> {{ateamdragon}} 
+        <img ng-srcset="http://sk2.op.gg/images/turret_100.png" align="center" err-src> {{ateamturret}}
+      </td>
+      <td colspan="3" style="text-align: right;">
+      <img ng-srcset="http://sk2.op.gg/images/scoreboardicon_score.png" err-src>{{ateamkill}} / {{ateamdeath}} / {{ateamassist}}
+      </td>
+    </tr>
+
+  <tr>
+        <th ng-switch on="win">
+          <b ng-switch-when="true">
+            <b ng-switch on="teamId">
+              <b ng-switch-when="200" class="looser">블루팀</b>
+              <b ng-switch-when="100" class="looser">레드팀</b>
+            </b>
+          </b>  
+          <b ng-switch-when="false">
+            <b ng-switch on="teamId">
+              <b ng-switch-when="200" class="winner">블루팀</b>
+              <b ng-switch-when="100" class="winner">레드팀</b>
+           </b>
+          </b>  
+        </th>
+        <th></th>
+        <th></th>
+        <th>아이템</th>
+      <th>데미지</th>
+      <th>CS</th>
+    </tr>
+
+
+
+<!-- ng-repeat -->
+    <tr ng-repeat="m in match.match | orderBy: '-lane'" ng-if="m.teamId != teamId">
+      <div class="col s2">
+        <td class="ci">
+          <img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{m.championNameE}}.png"
+          tooltipped data-position="top" data-delay="50" data-tooltip="{{m.championNameK}}"  err-src/>
+        </td>
+      </div>
+
+      <div class="col s1">
+        <td>
+        <ul>
+          <img ng-repeat="spell in match.spell" ng-if="m.spell1Id == spell.id" class="si" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{spell.kee}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:#81d4fa; font-size:1rem;'>{{spelldata.data[spell.kee].name}}</b><br>{{spelldata.data[spell.kee].description}}</div>">
+          </li>
+          <li>   
+          <img ng-repeat="spell in match.spell" ng-if="m.spell2Id == spell.id" class="si" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{spell.kee}}.png" err-src  tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:#81d4fa; font-size:1rem;'>{{spelldata.data[spell.kee].name}}</b><br>{{spelldata.data[spell.kee].description}}</div>">
+          </li>
+          <li>
+          <img class="si" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/{{m.mastery}}.png" err-src  tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:#81d4fa; font-size:1rem;'>{{masterydata.data[m.mastery].name}}</b><br>{{masterydata.data[m.mastery].description[0]}}</div>">
+          </li>
+        </ul>   
+        </td>
+        <td>
+        <b class="sn">
+          <ul>
+            <li>
+              {{m.championNameK}}            
+            </li>
+            <li>
+              <a href="/{{m.summonerName}}" style="color: white;">{{m.summonerName}}</a>
+            </li>
+            <li ng-if="m.deaths != 0">
+              {{(m.kills+m.assists)/m.deaths | number: 2}}({{m.kills}}/{{m.deaths}}/{{m.assists}}) 
+            </li>
+            <li ng-if="m.deaths == 0">
+              {{(m.kills+m.assists)/1 | number: 2}}({{m.kills}}/{{m.deaths}}/{{m.assists}}) 
+            </li>
+        </b>
+        </td>
+        </div>
+
+        <div class="col s2">
+        <td>
+        <ul>
+          <li>
+          <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item0}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[m.item0].name}}</b><br>
+           {{itemdata.data[m.item0].description}}</div>">
+          <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item1}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[m.item1].name}}</b><br>
+           {{itemdata.data[m.item0].description}}</div>">
+           <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item2}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[m.item2].name}}</b><br>
+           {{itemdata.data[m.item2].description}}</div>">
+          </li>
+          <li>
+           <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item3}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[m.item3].name}}</b><br>
+           {{itemdata.data[m.item3].description}}</div>">
+           <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item4}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[m.item4].name}}</b><br>
+           {{itemdata.data[m.item4].description}}</div>">
+           <img class="itemi" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{m.item5}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[m.item5].name}}</b><br>
+           {{itemdata.data[m.item5].description}}</div>">
+          </li>
+        </ul>
+        </td>
+        </div>
+
+        <div class="col s1">
+        <td>
+        <ul>
+          <li class="dealt">
+          +{{m.totalDamageDealt}}
+          </li>
+          <li class="taken">
+          - {{m.totalDamageTaken}}
+          </li>
+        </ul>
+        </td>
+        </div>
+
+       <div class="col s1">
+       <td>{{m.minionskilled}}</td>
+       </div>
+    </tr>
+ </table>
+ </div>

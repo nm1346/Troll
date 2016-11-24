@@ -2,7 +2,6 @@ myApp.controller('searchCtrl',function(
 	$scope,$routeParams,CurrentGameResource,$window,$document,$timeout){
 	$scope.$emit("CoverOff",{});
 	$scope.$emit("loadingOff",{});
-
 	$scope.search={
 		loading:false,
 		error:false
@@ -19,15 +18,18 @@ myApp.controller('searchCtrl',function(
 		$scope.search.errorMessage=data.errorMessage;
 	});
 	$scope.$on("searchPageSuccess",function(event,data){
+		console.log('이벤트 받았다');
 		$scope.search.loading=data.loading;
 		$scope.search.error=data.error;
 		$scope.$broadcast('pageonview', {});
 	});
-	//
+	
 	$scope.layout={
-		section:[1,2,3,4,5],
+
+		section:[1,2,3,4,5,6],
 		index:0,
-		available:true
+		available:true,
+		pageClass:['page-contact','page-about','page-contact','page-about']
 	}
 	$scope.$on("searchViewChange",function(event,data){
 		$scope.$emit("loadingOff",{});
@@ -66,5 +68,5 @@ myApp.controller('searchCtrl',function(
 		},2000);
 	})
 
-	
+
 });
