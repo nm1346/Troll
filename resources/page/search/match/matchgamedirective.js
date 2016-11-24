@@ -54,9 +54,28 @@ myApp.directive('game', function(matchResource,matchData,$filter,$interval){
           };
         }
 
-        /**/
-        Highcharts.chart('chart', {
+        /*차트 데이터 구하기*/
+        var ua = Math.round(($scope.user.kills/$scope.avgdata.kill * 100) + 1)*0.35+
+        Math.round(($scope.user.assists/$scope.avgdata.assist * 100) + 1)*0.35+
+        Math.round(($scope.user.totalDamageDealt/$scope.avgdata.dealt * 100) + 1)*0.30;
+        ua = ua >= 200 ? 190 : ua;
+        var ub = Math.round(($scope.user.towerkills/$scope.avgdata.tower * 100) + 1)*0.2+
+        Math.round(($scope.user.minionskilled/$scope.avgdata.minion * 100) + 1)*0.4+
+        Math.round(($scope.user.neutralMinionsKilled/$scope.avgdata.neutralMinion * 100) + 1)*0.4;
+        ub = ub >= 200 ? 190 : ub;
+        var uc = Math.round((($scope.user.totalDamageTaken/$scope.user.deaths)/($scope.avgdata.taken/$scope.avgdata.death) * 100) + 1);
+        uc = uc >= 200 ? 190 : uc;
+        var ud = Math.round(($scope.user.goldEarned/$scope.avgdata.gold * 10) + 1);
+        ud = ud >= 200 ? 190 : ud;
+        var ue =  Math.round((($scope.user.minionskilled+$scope.user.neutralMinionsKilled)/($scope.avgdata.minion+$scope.avgdata.neutralMinion) * 100) + 1);
+        ue = ue >= 200 ? 190 : ue;
+        var uf = Math.round(($scope.user.wardsPlaced/$scope.avgdata.wardplace * 10) + 1)*0.5+
+        Math.round(($scope.user.wardsKilled/$scope.avgdata.wardkill * 10) + 1)*0.5;
+        uf = uf >= 200 ? 190 : uf;
 
+
+        /*차트*/
+        Highcharts.chart('chart', {
           chart: {
             polar: true,
             backgroundColor:'rgba(0,0,0,0)',
@@ -68,8 +87,7 @@ myApp.directive('game', function(matchResource,matchData,$filter,$interval){
             spacingRight: 0
           },
           title: {
-            text: 'Budget vs spending',
-            style: {color:'white'},
+            text: '',
             x: -80
           },
 
@@ -78,17 +96,25 @@ myApp.directive('game', function(matchResource,matchData,$filter,$interval){
           },
 
           xAxis: {
-            categories: ['Sales', 'Marketing', 'Development', 'Customer Support',
-            'Information Technology', 'Administration'],
-            color:'white',
+            categories: ['공격기여', '운영능력', '수비기여', '골드획득',
+            'CS', '시야싸움'],
             tickmarkPlacement: 'on',
+            labels: {
+              style: {
+                color: 'white'
+              }
+            },
             lineWidth: 0,
             gridLineColor: 'white',
-
           },
 
           yAxis: {
             gridLineInterpolation: 'polygon',
+            labels: {
+              style: {
+                color: 'white'
+              }
+            },
             lineWidth: 0,
             min: 0
           },
@@ -99,19 +125,24 @@ myApp.directive('game', function(matchResource,matchData,$filter,$interval){
           },
 
           legend: {
+            itemStyle: {
+              color: 'white'
+            },
             align: 'right',
             verticalAlign: 'top',
             y: 70,
-            layout: 'vertical'
+            layout: 'vertical',
           },
 
           series: [{
-            name: 'Allocated Budget',
-            data: [43000, 19000, 60000, 35000, 17000, 10000],
-            pointPlacement: 'on'
+            name: '게임 평균',
+            color: '#FFBC00',
+            data: [100, 100, 100, 100, 100, 100],
+            pointPlacement: 'on', 
           }, {
-            name: 'Actual Spending',
-            data: [50000, 39000, 42000, 31000, 26000, 14000],
+            name: $scope.summoner.summonerData.name,
+            color: '#0009FF',
+            data: [ua,ub,uc,ud,ue,uf],
             pointPlacement: 'on'
           }],
           exporting: {
@@ -123,9 +154,6 @@ myApp.directive('game', function(matchResource,matchData,$filter,$interval){
           }
 
         });
-        /**/
-
-
       },
       restrict: 'E',
       templateUrl: '/resources/page/search/match/matchgame.html',
