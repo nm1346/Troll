@@ -1,13 +1,58 @@
 @media (max-width: 1100px) {
-.sname{
+/*.sname{
 	font-size: 1px;
 }
 .sname2{
 	font-size: 1px;
 }
+.ccname{
+	font-size: 1px;
+}
+.ccname2{
+	font-size: 1px;
+}*/
+}
+
+@media (max-width: 450px) {
+.sname{
+	font-size: 0px;
+}
+.sname2{
+	font-size: 0px;
+}
+.ccname{
+	font-size: 0px;
+}
+.ccname2{
+	font-size: 0px;
+}
 }
 
 
+@media (max-width: 770px) {
+.ban1{
+	width: 0px;
+}
+.ban2{
+	width: 0px;
+
+}
+
+/*.title{
+	font-size: 1px;
+}*/
+
+/*.ccname{
+	font-size: 0px;
+}
+.ccname2{
+	font-size: 0px;
+}*/
+}
+
+.cmain{
+	font-family: 나눔고딕;
+}
 
 
 /*.container.currentGame{
@@ -17,6 +62,10 @@
 		padding-top: 1%;
 }*/
 
+.title{
+	font-weight: bold;
+	margin-bottom: 0.5%;
+}
 .sname{
 	text-align: center;
 	padding-right: 0px;
@@ -37,11 +86,11 @@
 	background-color: #A6A6A6;*/
 }
 
-.cname{
+.ccname{
 	text-align: center;
-	color: #FF1212;
+	color: #F690E8;
 	font-weight: bold;
-	font-size: 15px;
+	
 	/*background:rgba(0,0,0,0.7);*/
 	/*color: #489CFF;
 	border-color: #489CFF;FF7E7E
@@ -49,11 +98,11 @@
 	border-style: solid;
 	background-color: black;*/
 }
-.cname2{
+.ccname2{
 	text-align: center;
 	color: #00D8FF;
 	font-weight: bold;
-	font-size: 15px;
+	
 	/*background:rgba(0,0,0,0.7);*/
 	/*color: #FF7E7E;
 	background-color: #A6A6A6;*/
@@ -80,10 +129,6 @@
 .tooltipMDesc{
 	text-align: left;
 	font-size: 12px;
-}
-
-.gtype{
-	font-size: 17px;
 }
 
 .championimg{
