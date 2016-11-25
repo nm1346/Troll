@@ -1,26 +1,32 @@
+/*URL을 통해 Ajax 처리*/
 myApp.factory('matchResource',function($resource,TrollRestUrl){
-    return $resource(TrollRestUrl+"match/:matchId", {matchId:"@matchId"},{
-        get:{method:"GET"}
-    });
+	return $resource(TrollRestUrl+"match/:matchId", {matchId:"@matchId"},{
+		get:{method:"GET"}
+	});
 });
+
+/*Ajax 처리된 데이터 구하기*/
 myApp.factory('matchData', function(){
 	var matchdata={};
 	var summonerdata={};
 	return {
+		/*경기정보*/
 		getmatch:function(){
 			return matchdata;
 		},
 		setmatch:function(data){
 			for (var member in matchdata) delete matchdata[member];
-			angular.extend(matchdata,data);
+				angular.extend(matchdata,data);
 		},
+		/*소환사 정보*/
 		getsummoner:function(){
 			return summonerdata;
 		},
 		setsummoner:function(data){
 			for (var member in summonerdata) delete summonerdata[member];
-			angular.extend(summonerdata,data);
+				angular.extend(summonerdata,data);
 		},
+		/*경기 평균값*/
 		avg:function(data){
 			var gameavg = {kill : 0, assist : 0, dealt : 0, death : 0, taken : 0, wardplace : 0, wardkill : 0, tower : 0, neutralMinion : 0, uneutralMinion : 0, aneutralMinion : 0, minion : 0, gold : 0 }
 			for (var i = 0; i < data.match.length; i++) {
@@ -53,30 +59,33 @@ myApp.factory('matchData', function(){
 			gameavg.gold = Math.round(gameavg.gold / data.match.length);
 			return gameavg;
 		},
+		/*타이틀을 위한 라인 한글 처리*/
 		getlane:function(data1,data2){
 			var lane = {lane : 0, lane1 : 0}
 			for (var i = 0; i < data1.match.length; i++) {
-          		if(data1.match[i].summonerId == data2.summonerData.id){
-          			lane.lane1 = data1.match[i].lane;
-
-            		if(data1.match[i].lane == 'TOP'){
-            		  lane.lane = '탑';
-           		 	}
-            		if(data1.match[i].lane == 'MIDDLE'){
-            		  lane.lane = '미드';
-           			}
-            		if(data1.match[i].lane == 'JUNGLE'){
-           		  	 lane.lane = '정글';
-           			}
-            		if(data1.match[i].lane == 'DUO_CARRY'){
-            		  lane.lane = '원딜';
-            		}
-            		if(data1.match[i].lane == 'DUO_SUPPORT'){
-             		 lane.lane = '서폿';
-            		}
-         		}
-       	 	}
-       	 	return lane;
+				if(data1.match[i].summonerId == data2.summonerData.id){
+					lane.lane1 = data1.match[i].lane;
+					if(data1.match[i].lane == 'DUO'){
+						lane.lane = '서폿';
+					}					
+					if(data1.match[i].lane == 'TOP'){
+						lane.lane = '탑';
+					}
+					if(data1.match[i].lane == 'MIDDLE'){
+						lane.lane = '미드';
+					}
+					if(data1.match[i].lane == 'JUNGLE'){
+						lane.lane = '정글';
+					}
+					if(data1.match[i].lane == 'DUO_CARRY'){
+						lane.lane = '원딜';
+					}
+					if(data1.match[i].lane == 'DUO_SUPPORT'){
+						lane.lane = '서폿';
+					}
+				}
+			}
+			return lane;
 		}
 	};
 })

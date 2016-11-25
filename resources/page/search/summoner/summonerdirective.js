@@ -1,6 +1,6 @@
 myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,BoardData,$location,$http,itemResource,SpellResource,
 	recentchampResource,BoardResource,matchResource,matchData){
-		return {
+	return {
 		 scope: {}, // {} = isolate, true = child, false/undefined = no change
 		 controller: function($scope, $element, $attrs, $transclude) {
 		 	/*$scope.$emit('searchPageStart',{});*/
@@ -80,7 +80,6 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 	$scope.match= function(matchId){
             //alert(matchId);
             //match로 전달 후 페이지 시작
-
             $scope.$emit("CoverOn",{});
             $scope.$emit("loadingOn",{});
             matchResource.get({matchId : matchId}).$promise.then(function(data){
@@ -92,8 +91,7 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
             });
         };
 
-    	},
-
+    },
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
 		templateUrl: '/resources/page/search/summoner/summonerdata.html',
 		link: function($scope, iElm, iAttrs, controller) {
