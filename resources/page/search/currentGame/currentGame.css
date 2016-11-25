@@ -1,13 +1,58 @@
 @media (max-width: 1100px) {
-.sname{
+/*.sname{
 	font-size: 1px;
 }
 .sname2{
 	font-size: 1px;
 }
+.ccname{
+	font-size: 1px;
+}
+.ccname2{
+	font-size: 1px;
+}*/
+}
+
+@media (max-width: 450px) {
+.sname{
+	font-size: 0px;
+}
+.sname2{
+	font-size: 0px;
+}
+.ccname{
+	font-size: 0px;
+}
+.ccname2{
+	font-size: 0px;
+}
 }
 
 
+@media (max-width: 770px) {
+.ban1{
+	width: 0px;
+}
+.ban2{
+	width: 0px;
+
+}
+
+/*.title{
+	font-size: 1px;
+}*/
+
+/*.ccname{
+	font-size: 0px;
+}
+.ccname2{
+	font-size: 0px;
+}*/
+}
+
+.cmain{
+	font-family: 나눔고딕;
+}
 
 
 /*.container.currentGame{
@@ -17,6 +62,10 @@
 		padding-top: 1%;
 }*/
 
+.title{
+	font-weight: bold;
+	margin-bottom: 0.5%;
+}
 .sname{
 	text-align: center;
 	padding-right: 0px;
@@ -34,5 +83,68 @@
 	padding-left: 0px;
 	color: white;
 	/*color: #FF7E7E;
-	background-color: #A6A6A6;
-}*/
+	background-color: #A6A6A6;*/
+}
+
+.ccname{
+	text-align: center;
+	color: #F690E8;
+	font-weight: bold;
+	
+	/*background:rgba(0,0,0,0.7);*/
+	/*color: #489CFF;
+	border-color: #489CFF;FF7E7E
+	border-width: 1px;
+	border-style: solid;
+	background-color: black;*/
+}
+.ccname2{
+	text-align: center;
+	color: #00D8FF;
+	font-weight: bold;
+	
+	/*background:rgba(0,0,0,0.7);*/
+	/*color: #FF7E7E;
+	background-color: #A6A6A6;*/
+}
+
+
+.tooltipName{
+	text-align: left;
+	font-size: 15px;
+	color: orange;
+}
+
+.tooltipDesc{
+	text-align: left;
+	font-size: 12px;
+}
+
+.tooltipMName{
+	text-align: left;
+	font-size: 15px;
+	color: #B2CCFF;
+}
+
+.tooltipMDesc{
+	text-align: left;
+	font-size: 12px;
+}
+
+.championimg{
+	border-style: solid;
+    border-width: 5px 5px 5px 5px;
+    border-image: url('/resources/page/search/currentgame/images/{{data.tier1[$index]}}.png') 6 5 7 6 round;
+}
+
+.championimg2{
+	border-style: solid;
+    border-width: 7px 5px 5px 5px;
+    border-image: url('/resources/page/search/currentgame/images/{{data.tier2[$index]}}.png') 7 7 8 7 round;
+}
+
+.logo{
+	width: 100%;
+	position: relative;
+	z-index: 1;
+}
