@@ -136,6 +136,123 @@ myApp.filter('orderObjectBy', function() {
     return filtered;
   };
 });
+
+
+myApp.filter('skillTooltip', function() {
+	return function(skilldata,skillKey) {
+		var skill;
+		angular.forEach(skilldata, function(value, key) {
+            if (key == skillKey) {
+               	skill = value.name
+                
+            }
+            
+        });
+
+		return skill;
+	}
+})
+
+myApp.filter('skillTooltipDetail', function() {
+	return function(skilldata,skillKey) {
+		var skill;
+		angular.forEach(skilldata, function(value, key) {
+            if (key == skillKey) {
+               	skill = value.description
+            }
+            
+        });
+
+		var result = skill.substring(0, 30)
+		result += '<br>' + skill.substring(30, 60)
+		if(skillKey == "SummonerSmite"){
+			if(skill.length > 60){
+			result += '<br>' + skill.substring(60, 86)
+			}
+
+			if(skill.length > 90){
+			result += '<br>' + skill.substring(86, 120)	
+			}
+		}else{
+			if(skill.length > 60){
+			result += '<br>' + skill.substring(60, 90)
+			}
+
+			if(skill.length > 90){
+			result += '<br>' + skill.substring(90, 120)	
+			}
+
+		}
+		
+		if(skill.length > 120){
+			result += '<br>' + skill.substring(120, 150)	
+		}
+		
+		return result;
+	}
+})
+
+myApp.filter('masteryTooltip', function() {
+	return function(masterydata,masteryid) {
+		var mastery;
+		angular.forEach(masterydata, function(value, key) {
+            if (key == masteryid) {
+               	mastery = value.name
+                
+            }
+            
+        });
+
+		return mastery;
+	}
+})
+
+myApp.filter('masteryTooltipDetail', function() {
+	return function(masterydata,masteryid) {
+		var mastery;
+		angular.forEach(masterydata, function(value, key) {
+            if (key == masteryid) {
+               	mastery = value.description[0]
+                
+            }
+            
+        });
+        if(masteryid == '6164' || masteryid == '6362'){
+        	return mastery;
+        }else{
+        	var result = mastery.substring(0, 30)
+        	if(masteryid == '6262'){
+        		result += '<br>' + mastery.substring(30, 64)
+        		result += '<br>' + mastery.substring(64, 100)
+        		return result;
+        	}if(masteryid == '6261'){
+        		result += '<br>' + mastery.substring(30, 58)
+        		result += '<br>' + mastery.substring(58, 88)
+        		result += '<br>' + mastery.substring(88, 120)
+        		return result;
+        	}else{
+        		result += '<br>' + mastery.substring(30, 60)
+        		result += '<br>' + mastery.substring(60, 90)
+        		result += '<br>' + mastery.substring(90, 120)
+        		return result;
+        	}
+			
+		
+        }
+		
+
+		
+	}
+})
+
+myApp.filter('winningrate', function() {
+	return function(wins,losses) {
+		var rate;
+		rate = Math.floor(100 / (wins + losses) * wins)
+		return rate;
+	}
+})
+
 myApp.filter('binaryWhere',function(){
 	return function(items,field){
 		if(angular.isArray(items)){
@@ -165,4 +282,5 @@ myApp.filter('binaryWhere',function(){
 		}
 	}
 });
+
 

@@ -339,7 +339,7 @@
 }
 .circle.tier.CHALLENGER{
 	border-image-source: url("/resources/tier_icons/챌린저.png");
-	border-image-outset: 1.0em 1.0em 1.0em 1.0em;
+	border-image-outset: 2.7em 1.0em 2.7em 1.0em;
 }
 .circle.ban.blue{
 	border: 5px solid rgba(33, 150, 243 , 1);

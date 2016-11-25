@@ -1,4 +1,4 @@
-myApp.directive('currentGame', function(currentGameData,$filter,$interval,CurrentGameResource,$routeParams){
+myApp.directive('currentGame', function($interval,CurrentGameResource,$routeParams){
    // Runs during compile
    return {
       scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -8,7 +8,8 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval,Curren
         CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){        
           $scope.$emit("loadingOff",{});
           var c = 0;  
-          $scope.data = data;
+          $scope.data = data
+          console.log(data)
           $interval(function () {
             if(Object.keys($scope.data).length!=0&&$scope.data.success!=false){
               var o = new Date($scope.data.gameInfo.gameStartTime)
@@ -45,7 +46,9 @@ myApp.directive('currentGame', function(currentGameData,$filter,$interval,Curren
         }
 
 
+
       },
+
        restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
       //template: 'asdasd',
       templateUrl: '/resources/page/search/currentGame/currentGame.html',
