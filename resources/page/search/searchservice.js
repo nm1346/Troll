@@ -31,10 +31,12 @@ myApp.factory('summoner', function(){
 			for (var member in searchdata) delete searchdata[member];
 				angular.extend(searchdata,data);
 		},
-		champscore:function (champarray,leaguedata) {
+		champscore:function (champarray,leaguedata,$scope) {
 			var mostarray = champarray;
 			var randomcolor = 'rgba('+(Math.random() * 254).toFixed(0)+','+(Math.random() * 254).toFixed(0)+','+(Math.random() * 254).toFixed(0)+',1)';
 			var jumsu = [];
+			var scoreavg = 0;
+			var kdaavg = 0;
 			for (var i = 0; i < mostarray.length; i++) {
 				if (mostarray[i].deaths === 0) {
 					mostarray[i].deaths = 1
@@ -50,16 +52,15 @@ myApp.factory('summoner', function(){
 					kda : kda.toFixed(2),
 					pickrank:i + 1,
 					chartdata:[{label : mostarray[i].championNameK , value : fick , suffix: "%" , color : 'white' , colorComplement: "rgba(150,150,150,0)"}]}
+					scoreavg += parseInt(scoreobject.score);
+					kdaavg += kda;
 					jumsu.push(scoreobject);
 				}
-				/*100 / (leaguedata.entrylist[0].wins + leaguedata.entrylist[0].losses) * mostchamplist[mostindex].index.played).toFixed(0)*/
-			/*	$scope.chartdata = [
-			{label: "CPU", value: 75, suffix: "%", color: "rgba(0,0,0,1)"}
-			];*/
+				$scope.scoreavg = ((scoreavg / jumsu.length) * 2).toFixed(2);
+				$scope.kdaavg = ((kdaavg / jumsu.length) * 2).toFixed(2);
 				jumsu.sort(function (a,b) {
 					return parseFloat(a.score) > parseFloat(b.score) ? -1 : parseFloat(a.score) < parseFloat(b.score) ? 1 : 0;
 				});
-				console.log(jumsu)
 				return jumsu;
 			},
 			getitem:function(){
@@ -81,10 +82,9 @@ myApp.factory('summoner', function(){
 				$scope.summonerdata = totaldata['summonerData'];
 				$scope.leaguedata = totaldata['leagueData'];
 				$scope.recentgame = totaldata['recentgamelist'];
-				if (totaldata['most'].length > 0) {
-					$scope.mostchamplist = summoner.champscore(totaldata['most'],totaldata['leagueData']);
+				if (totaldata['most'].length > 0 && angular.isObject(totaldata['leagueData'])) {
+					$scope.mostchamplist = summoner.champscore(totaldata['most'],totaldata['leagueData'],$scope);
 				}
-				console.log($scope.mostchamplist);
 				if (angular.isObject(totaldata['leagueData'])){
 					if (totaldata['leagueData'].entrylist[0].division === 'I') {
 						$scope.tierurl = totaldata['leagueData'].tier.toLowerCase();
@@ -92,7 +92,7 @@ myApp.factory('summoner', function(){
 						$scope.tierurl = totaldata['leagueData'].tier.toLowerCase() +'_'+totaldata['leagueData'].entrylist[0].division.toLowerCase();
 					}
 				}else{
-					$scope.tierurl = "unlanked";
+					$scope.tierurl = "unRanked";
 				}
 			},
 	};

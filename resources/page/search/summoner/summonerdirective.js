@@ -73,9 +73,6 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 		}
 		 	}
 		 	$scope.mostindex = "";
-		 	$scope.mostindexreset = function () {
-		 		$scope.mostindex = "";
-		 	}
 		 	$scope.researchsummoner = function (summonerName) {
 		 		$location.path('/'+summonerName);
 		 	}
@@ -101,19 +98,19 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
         var roop = function () {
         	if ($scope.mostindex !== "" ) {
         	if (cou == 0) {
-        		$scope.chartdata = [{label : '픽률' ,value : $scope.mostchamplist[$scope.mostindex].chartdata[0].value ,suffix: "%" , color : 'grey' , colorComplement : 'rgba(0,0,0,0.3)' }]
+        		$scope.chartdata = [{label : '픽률' ,value : $scope.mostchamplist[$scope.mostindex].chartdata[0].value ,suffix: "%" , color : 'black' , colorComplement : 'rgba(0,0,0,0.1)' }]
         		$scope.options = {thickness: 10, mode: "gauge", total: 100};
        		}
        		if (cou == 1) {
-        		$scope.chartdata = [{label : 'KDA' ,value : $scope.mostchamplist[$scope.mostindex].kda , color : 'red' , colorComplement : 'rgba(0,0,0,0.3)' }]
-        		$scope.options = {thickness: 10, mode: "gauge", total: 8};
+        		$scope.chartdata = [{label : 'KDA' ,value : $scope.mostchamplist[$scope.mostindex].kda , color : 'black' , colorComplement : 'rgba(0,0,0,0.1)' }]
+        		$scope.options = {thickness: 10, mode: "gauge", total: Math.ceil($scope.kdaavg)};
        		}
        		if (cou == 2) {
-        		$scope.chartdata = [{label : 'Score' ,value : $scope.mostchamplist[$scope.mostindex].score , color : 'blue' , colorComplement : 'rgba(0,0,0,0.3)' }]
-        		$scope.options = {thickness: 10, mode: "gauge", total: 5};
+        		$scope.chartdata = [{label : 'Score' ,value : $scope.mostchamplist[$scope.mostindex].score , color : 'black' , colorComplement : 'rgba(0,0,0,0.1)' }]
+        		$scope.options = {thickness: 10, mode: "gauge", total: Math.ceil($scope.scoreavg)};
        		}
        		if (cou == 3) {
-        		$scope.chartdata = [{label : '승률' ,value : $scope.mostchamplist[$scope.mostindex].index.winlate ,suffix: "%", color : 'white' , colorComplement : 'rgba(0,0,0,0.3)' }]
+        		$scope.chartdata = [{label : '승률' ,value : $scope.mostchamplist[$scope.mostindex].index.winlate ,suffix: "%", color : 'black' , colorComplement : 'rgba(0,0,0,0.1)' }]
         		$scope.options = {thickness: 10, mode: "gauge", total: 100};
        		}
 				cou++;
@@ -163,11 +160,11 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 			});
 					$scope.recentchamplist = data['champlist'];
 					$('#recentchampmodal').modal('open');
-				},function (error) {	
+				},function (error) {
 					champdata = error;
 					console.log(error);
 				});
-			}	
+			}
 			$scope.list2 = {};
 			$scope.startCallback = function(dragdata, index) {
 				console.log('You started draggin:');

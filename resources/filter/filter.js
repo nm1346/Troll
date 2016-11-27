@@ -22,6 +22,13 @@ myApp.filter('kdatxtcolorfilter',function () {
 	}
 });
 
+
+myApp.filter('scorerank',function () {
+	return function (index) {
+		return parseInt(index) + 1;
+	}
+});
+
 myApp.filter('avgcsfilter' ,function(){
 	return function (stats) {
 		return (stats.minionsKilled / (stats.timePlayed / 60)).toFixed(2);

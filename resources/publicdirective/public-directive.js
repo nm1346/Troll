@@ -97,7 +97,7 @@ myApp.directive('searchSidenav',function($cookies,$timeout,$location,mediaElemen
 					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000)
 					return;
 				}
-			
+
 				$scope.$emit("searchStart",{});
 				$timeout(function(){
 					$('.button-collapse').sideNav('hide');
