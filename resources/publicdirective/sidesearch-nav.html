@@ -17,22 +17,23 @@
 		</div>
 	</li>
 	<li style="padding-right: 10px; padding-left: 10px;">
-	<div class="side-search-input valign-wrapper">
-		<input type="search" placeholder="소환사명 입력" required ng-model="summonerName" ng-keypress="keysearch($event,summonerName)">
-		<div class="search-btn center-align waves-effect waves-light valign-wrapper" data-ng-click="search(summonerName)"><i class="fa fa-search valign" aria-hidden="true"></i></div>
-	</div>
-</li>
+		<div class="side-search-input valign-wrapper">
+			<input type="search" placeholder="소환사명 입력" required ng-model="summonerName" ng-keypress="keysearch($event,summonerName)">
+			<div class="search-btn center-align waves-effect waves-light valign-wrapper" data-ng-click="search(summonerName)"><i class="fa fa-search valign" aria-hidden="true"></i></div>
+		</div>
+	</li>
 	<li>
 		<ul class="collapsible collapsible-accordion" data-collapsible="accordion">
 			<li class="bold center-align">
-			<a class="collapsible-header waves-effect waves-blue">유저메뉴<i class="fa fa-caret-square-o-down right " aria-hidden="true"></i></a>
-			<div class="collapsible-body side-nav-usermenulist">
-				<ul>
-				<li><a class="waves-effect waves-light padding-hide" href="#" ng-click="clicktest($event)">최근게임</a></li>
-				<li><a class="waves-effect waves-light padding-hide" href="#" ng-click="clicktest($event)">현재 게임</a></li>
-				<li style="border-bottom: none;"><a class="waves-effect waves-light padding-hide" href="#" ng-click="clicktest($event)">트롤 탐색기</a></li>
-				</ul>
-			</div> 
+				<a class="collapsible-header waves-effect waves-blue">유저메뉴<i class="fa fa-caret-square-o-down right " aria-hidden="true"></i></a>
+				<div class="collapsible-body side-nav-usermenulist">
+					<ul>
+						<li><a class="waves-effect waves-light padding-hide" href="#" ng-click="viewChange('0')">최근게임</a></li>
+						<li><a class="waves-effect waves-light padding-hide" href="#" ng-click="viewChange('1');">게시판</a></li>
+						<li><a class="waves-effect waves-light padding-hide" href="#" ng-click="viewChange('2');">인게임</a></li>
+						<li><a class="waves-effect waves-light padding-hide" href="#" ng-click="viewChange('5');">관전</a></li>
+					</ul>
+				</div>
 			</li>
 		</ul>
         <!--     <a class="collapsible-header waves-effect waves-blue">Dropdown<i class="material-icons">arrow_drop_down</i></a>

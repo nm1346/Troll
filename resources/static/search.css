@@ -22,7 +22,7 @@
   -moz-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   border-radius: 7px 7px 7px 7px;
-  background:rgba(3, 4,22,0.7);
+  background:rgba(0, 0,0,.5);
   box-shadow: 1px 1px 2px 1px rgba(0,0,0,.8)  , 0 1px 0 rgba(0,0,0,.5);
   text-align: center;
 }
@@ -253,11 +253,14 @@
    color: rgba(241, 241, 241 , 0.5);
  }
  .my {
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
   content: '검색';
   border: none;
   cursor: pointer;
   text-transform: uppercase;
-  background: rgba(50, 126, 150, 0.5);
+  background: rgba(245, 245,245, 0.5);
   outline: none;
   position: relative;
   z-index: 4;
@@ -268,14 +271,14 @@
   background: rgba(0,0,0,0);
 }
 .my[disabled='disabled']:before {
-  color : rgba(230,230,230, 0.5);
+  color : rgba(245,245,245, 0.5);
 }
 .my:focus{
-  background: rgba(38, 50, 56, 0.5);
+  background: rgba(155, 155, 155, 0.5);
 }
-.my:hover {
+/* .my:hover {
  background: rgba(50, 126, 150, .9);
-}
+} */
 .my:active {
   top: 2px;
 }
@@ -306,4 +309,16 @@
 }
 .my:active:before {
   color: rgba(0, 0, 0,0.8);
+}
+.addimg{
+  position: absolute;
+  right: 3%;
+  top: 50%;
+  border-radius: 10px;
+}
+.addimg2{
+  position: absolute;
+  left: 3%;
+  top: 50%;
+  border-radius: 10px;
 }

@@ -1,3 +1,8 @@
+myApp.factory('indexResource',function($resource){
+	return $resource("http://www.leagueoflegends.co.kr/?m=news&cate=update", {},{
+		get:{method:"GET"}
+	});
+});
 myApp.factory('mediaElement', function(){
 	var media={
 		video:{

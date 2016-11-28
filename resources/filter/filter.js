@@ -22,6 +22,13 @@ myApp.filter('kdatxtcolorfilter',function () {
 	}
 });
 
+
+myApp.filter('scorerank',function () {
+	return function (index) {
+		return parseInt(index) + 1;
+	}
+});
+
 myApp.filter('avgcsfilter' ,function(){
 	return function (stats) {
 		return (stats.minionsKilled / (stats.timePlayed / 60)).toFixed(2);
@@ -40,8 +47,18 @@ myApp.filter('botfilter',function () {
 	}
 		return false;
 	}
-	
-})
+});
+
+myApp.filter('buttonfilter',function () {
+	return function(type){
+	if(type === 'RANKED_FLEX_SR' || type === 'RANKED_SOLO_5x5' || type === 'RANKED_TEAM_5x5' ){
+		return false;
+	}
+		return true;
+	}
+});
+
+
 myApp.filter('gametypefilter',function () {
 	return function (type) {
 		if (type == 'RANKED_FLEX_SR'){
@@ -58,7 +75,7 @@ myApp.filter('gametypefilter',function () {
 			return '랭크'
 		}else if(type === 'RANKED_TEAM_3x3'){
 			return '랭크{3:3}'
-		}else if(type === 'RANKED_TEAM_5x5' ||type === 'BOT_3x3' ){
+		}else if(type === 'RANKED_TEAM_5x5' ){
 			return '랭크{5:5}'
 		}else if(type === 'ONEFORALL_5x5'){
 			return '원챔프'

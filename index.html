@@ -27,13 +27,16 @@
 <script src="/resources/static/angular-resource.js"></script>
 <script src="/resources/static/angular-animate.js"></script>
 <script src="/resources/static/angular-cookies.js"></script>
-<script src="/resources/static/angular-dragdrop.js"></script>
 <!-- Matchchart -->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
+<!-- <script src="/resources/static/angular.min.js"></script> -->
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="/resources/static/pie-chart/dist/pie-chart.min.js"></script>
+
 <script>
-var myApp=angular.module("exampleApp",["ngRoute","ngResource","ngAnimate","ngCookies" , "ui.materialize",'ngDragDrop']);
+var myApp=angular.module("exampleApp",["ngRoute","ngResource","ngAnimate","ngCookies" , "ui.materialize",'n3-pie-chart']);
 //config
 //html5모드 사용 basetag미사용
 //static을 제외한 모든 url은 검색페이지로 넘어감
@@ -83,6 +86,12 @@ myApp.run(function($rootScope,$window){
 	$rootScope.$on("loadingOff",function(event,data){
 		$rootScope.$broadcast("loadingCoverOff",{})
 	})
+	$rootScope.$on("loadingOff",function(event,data){
+		$rootScope.$broadcast("loadingCoverOff",{})
+	});
+	$rootScope.$on("sidenavViewChange",function(event,data){
+		$rootScope.$broadcast("searchViewChange",data)
+	});
 });
 </script>
 <!-- 사용자 정의 서비스 컨트롤러 디렉티브들 ...-->
@@ -128,11 +137,10 @@ myApp.run(function($rootScope,$window){
 <index-music></index-music>
 <!-- 이벤트 수신시 나타나는 cover -->
 <back-cover></back-cover>
+<search-sidenav></search-sidenav>
 <!-- <status-toast></status-toast> -->
 <!-- 이벤트 수신시 나타나는 loding cover -->
 <loading-cover></loading-cover>
-<!-- side-nav directive -->
-<search-sidenav></search-sidenav>
 <!-- 동영상 뒤 배경이미지 -->
 <img class="backImage" src="/resources/static/backimage.jpg">
 <!-- 전부 로딩됐을때 나오는 메인뷰 -->
