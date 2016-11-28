@@ -1,3 +1,5 @@
+
+//static 페이지의 view 관리 controller
 myApp.controller('staticCtrl',function($scope){
 	$scope.category={
 		loading:false,

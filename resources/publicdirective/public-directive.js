@@ -1,3 +1,4 @@
+//loading css에 대한 디렉티브
 myApp.directive('loading',function(){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -7,6 +8,7 @@ myApp.directive('loading',function(){
 		}
 	};
 });
+//에러페이지 처리를 위한 가상돔
 myApp.directive('error',function($route){
 	// Runs during compile
 	return {
@@ -22,6 +24,8 @@ myApp.directive('error',function($route){
 		}
 	};
 });
+
+//back cover이벤트 수신시 on off되는 페이지 디렉티브 
 myApp.directive('backCover',function($routeParams,$location){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -133,6 +137,7 @@ myApp.directive('searchSidenav',function($cookies,$timeout,$location,mediaElemen
 		}
 	};
 });
+//상단 검색바 
 myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement,summoner,$routeParams){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -216,6 +221,7 @@ myApp.directive('searchNav',function($cookies,$timeout,$location,mediaElement,su
 	};
 });
 
+//서버 상태에 대한 정보요청후 toast로 띄우는 디렉티브
 myApp.directive('statusToast', function(ShardResource){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -247,6 +253,8 @@ myApp.directive('statusToast', function(ShardResource){
 		}
 	};
 });
+
+//이벤트 수신시 loading cover on off띄우는 디렉티브 
 myApp.directive('loadingCover', function(){
   return {
     scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -268,6 +276,7 @@ myApp.directive('loadingCover', function(){
   };
 });
 
+//태그에 attr로 삽입하고 삽입한 태그에서 error 발생시 img태그 지움
 myApp.directive('errSrc', function() {
   return {
   	restrict : "A",
