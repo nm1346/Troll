@@ -7,10 +7,12 @@ myApp.directive('currentGame', function($interval,CurrentGameResource,$routePara
         $scope.$emit("loadingOn",{});
         CurrentGameResource.get({summonerName2 : $routeParams.summonerName}).$promise.then(function(data){        
           $scope.$emit("loadingOff",{});
-          var c = 0;  
+          var c = 0;
           $scope.data = data
+
           console.log(data)
-          $interval(function () {
+          //시간을 받아와서 인터벌함수로 1초씩 더해서 시간갱신
+          $scope.inter = $interval(function () {
             if(Object.keys($scope.data).length!=0&&$scope.data.success!=false){
               var o = new Date($scope.data.gameInfo.gameStartTime)
               var n = new Date()
@@ -41,6 +43,7 @@ myApp.directive('currentGame', function($interval,CurrentGameResource,$routePara
          $scope.$emit("loadingOff",{});
 
        });
+        // 뒤로가기
         $scope.back=function(){
           $scope.$emit("searchViewChange",0);
         }
@@ -53,7 +56,10 @@ myApp.directive('currentGame', function($interval,CurrentGameResource,$routePara
       //template: 'asdasd',
       templateUrl: '/resources/page/search/currentGame/currentGame.html',
       link: function($scope, iElm, iAttrs, controller) {
-
+        // 다른페이지로 옮겼을때 인터벌함수 취소
+        iElm.on("$destroy",function(){
+          $interval.cancel($scope.inter)
+        })
       }
     };
   });

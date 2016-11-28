@@ -1,91 +1,88 @@
-
-
-
-
-
+<!-- 현재 게임중이 아닐때 보이는 페이지 -->
 <div class="center" ng-if="data.errorCode==404" >
   <h3 class="white-text">현재 게임중이 아닙니다!</h3>
   <h5 class="white-text">{{data.errorMessage}}</h5>
   <button class="btn" ng-click="back()">돌아가기</button>
 </div>
+<!-- ng-if 데이터가 있을때만 보임 -->
 <div class="black-text ngFade cmain" ng-if="data.success" ng-cloak>
-  
-
   <div class="container currentGame">
     <div class="row">
-
+    <!-- 인게임 로고 -->
     <div class="col s4 offset-s4 col m4 offset-m4 col l2 offset-l5">     
         <img src="/resources/page/search/currentgame/images/logo5.png" class="logo">
       </div>
+      <!-- 현재 게임타입과 시간 -->
       <div class="center white-text col s12 title">
         <div>{{data.gametype[0]}}&nbsp;&nbsp;|&nbsp;&nbsp;<i class="tiny material-icons center">schedule</i><span>{{time}}</span>
         </div>
       </div>
 
       <div class="col l10 push-l1 m10 push-m1 s10 push-s1">
-
+      <!-- 가운데정렬을 위해 빈 div -->
       <div class="col l2 push-l1 m2 push-m1 s2 push-s1" ng-repeat="item in data.championKey1" ng-if="data.gameInfo.participants.length == 1 || data.gameInfo.participants.length == 6"></div>
       <div class="col l2 push-l1 m2 push-m1 s2 push-s1" ng-repeat="item in data.championKey1" ng-if="data.gameInfo.participants.length == 1"></div>
-
-        <div class="col l2 push-l1 m4 s4" ng-repeat="item in data.championKey1">
-            
-         
+        <!-- 받아온 데이터를 유저 한명당 반복(ng-repeat) -->
+        <div class="col l2 push-l1 m4 s4" ng-repeat="item in data.championKey1">         
+         <!-- 챔피언 이미지와 티어별 테두리(DB에 없으면 기본테두리적용) -->
           <div class="col l12 m12 s12">
             <img class="responsive-img championimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{item}}_0.jpg" style="border-image: url('/resources/page/search/currentgame/images/{{data.tier1[$index]}}.png') 6 5 7 6 round;">
-
           </div>
-
+          <!-- 챔피언 이름 -->
           <div class="col l12 m12 s12 ccname">
             {{data.championName1[$index]}}
           </div>
+          <!-- 소환사이름 -->
           <div class="col l12 m12 s12 sname">
-            {{data.summonerName_list1[$index]}}
+            <a href="/{{data.summonerName_list1[$index]}}" style="color: white;">{{data.summonerName_list1[$index]}}</a>
           </div>
 
-
+          <!-- 소환사 아이콘 -->
           <div class="col l3 m3 s3" style="padding: 0px;">
-            <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/profileicon/{{data.icon_list1[$index]}}.png">
+            <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/profileicon/{{data.icon_list1[$index]}}.png">
           </div>
 
 
           <div class="col l6 push-l0.5 m6 push-m0.5 s6 push-s0.5" style="padding: 5px;">
+          <!-- 스펠1,스펠정보 툴팁 -->
             <div class="col l6 m6 s6" style="padding: 0px;">
                 <a class="tooltip" tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div class='tooltipName'>{{data.spellinfo.data | skillTooltip : data.summonerSpell1[$index]}}</div><div class='tooltipDesc'>{{data.spellinfo.data | skillTooltipDetail : data.summonerSpell1[$index]}}</div>">
-                    <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{data.summonerSpell1[$index]}}.png">
+                    <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/spell/{{data.summonerSpell1[$index]}}.png">
                  </a>
            </div>
+            <!-- 스펠2,스펠정보 툴팁 -->
            <div class="col l6 m6 s6" style="padding: 0px;">
             <a class="tooltip" tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div class='tooltipName'>{{data.spellinfo.data | skillTooltip : data.summonerSpell2[$index]}}</div><div class='tooltipDesc'>{{data.spellinfo.data | skillTooltipDetail : data.summonerSpell2[$index]}}</div>">
-                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{data.summonerSpell2[$index]}}.png">
+                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/spell/{{data.summonerSpell2[$index]}}.png">
             </a>
            </div>
          </div>
 
 
-
+         <!-- 마스터리와 정보 툴팁 -->
          <div class="col l3 m3 s3" style="padding: 4px 4px 4px 0px;">
             <a class="tooltip" tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div class='tooltipMName'>{{data.masteryinfo.data | masteryTooltip : data.mastery1[$index]}}</div><div class='tooltipMDesc'>{{data.masteryinfo.data | masteryTooltipDetail : data.mastery1[$index]}}</div>">
-                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/{{data.mastery1[$index]}}.png" >
+                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/mastery/{{data.mastery1[$index]}}.png" >
             </a>
          </div> 
                             
        </div>
      </div> 
      
-
+     <!-- 랭크게임일경우 레드팀벤챔피언 -->
      <div class="col s3 m4 l5">
       <div style="margin-left: 58%" class="ban1">
-          <img class="circle responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{item}}.png" width="19%" ng-repeat="item in data.banChampionName" style="margin-left: 2%">
+          <img class="circle responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/{{item}}.png" width="19%" ng-repeat="item in data.banChampionName" style="margin-left: 2%">
       </div>
      </div>
-
+     <!-- vs이미지 -->
     <div class="col s6 m4 l2">
       <img class="responsive-img" ng-srcset="/resources/page/search/currentgame/images/vs.png">
     </div>
-
+    <!-- 랭크게임일경우 블루팀벤챔피언 -->
     <div class="col s3 m4 l5">
       <div style="margin-left: 11%" class="ban2">
-          <img class="circle responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{item}}.png" width="9%" ng-repeat="item in data.banChampionName2" style="margin-left: 2%">
+          <img class="circle responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/{{item}}.png" width="9%" ng-repeat="item in data.banChampionName2" style="margin-left: 2%">
       </div>
      </div>
 
@@ -95,48 +92,51 @@
 
    <div class="row" style="margin-top: -1%; margin-bottom: 0px;"><!-- 'resources/page/search/currentGame/images/challenger.png' -->
     <div class="col l10 push-l1 m10 push-m1 s10 push-s1">
-
+        <!-- 가운데정렬을 위해 빈 div -->
         <div class="col l2 push-l1 m2 push-m1 s2 push-s1" ng-repeat="item in data.championKey1" ng-if="data.gameInfo.participants.length == 1 || data.gameInfo.participants.length == 3"></div>
         <div class="col l2 push-l1 m2 push-m1 s2 push-s1" ng-repeat="item in data.championKey1" ng-if="data.gameInfo.participants.length == 1"></div>
-
+         <!-- 받아온 데이터를 유저 한명당 반복(ng-repeat) -->
       <div class="col l2 push-l1 m4 s4" ng-repeat="item in data.championKey2">
-
+        <!-- 챔피언 이미지와 티어별 테두리(DB에 없으면 기본테두리적용) -->
         <div class="col l12 m12 s12">
-          <img class="responsive-img championimg2" ng-srcset="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{item}}_0.jpg" style="border-image: url('/resources/page/search/currentgame/images/{{data.tier2[$index]}}.png') 7 7 8 7 round;">
+          <img class="responsive-img championimg2" ng-srcset="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{item}}_0.jpg" style="border-image: url('/resources/page/search/currentgame/images/{{data.tier2[$index]}}.png'); border-style: solid; border-width: 5px 5px 5px 5px; border-image-slice: 6 7 6 8 fill; border-image-repeat: round; border-image-outset: 0px 0px 0px 0px;">
         </div>
-
+        <!-- 챔피언 이름 -->
         <div class="col l12 m12 s12 ccname2">
           {{data.championName2[$index]}}
         </div>
+        <!-- 소환사이름 -->
         <div class="col l12 m12 s12 sname2">
           {{data.summonerName_list2[$index]}}
         </div>
 
         
-
+        <!-- 소환사 아이콘 -->
         <div class="col l3 m3 s3" style="padding: 0px;">
-          <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/profileicon/{{data.icon_list2[$index]}}.png" >
+          <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/profileicon/{{data.icon_list2[$index]}}.png" >
         </div>
 
 
         <div class="col l6 push-l0.5 m6 push-m0.5 s6 push-s0.5" style="padding: 5px;">
+        <!-- 스펠1,스펠정보 툴팁 -->
           <div class="col l6 m6 s6" style="padding: 0px;">
             <a class="tooltip" tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div class='tooltipName'>{{data.spellinfo.data | skillTooltip : data.summonerSpell3[$index]}}</div><div class='tooltipDesc'>{{data.spellinfo.data | skillTooltipDetail : data.summonerSpell3[$index]}}</div>">
-                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{data.summonerSpell3[$index]}}.png">
+                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/spell/{{data.summonerSpell3[$index]}}.png">
             </a>
          </div>
+         <!-- 스펠2,스펠정보 툴팁 -->
          <div class="col l6 m6 s6" style="padding: 0px;">
             <a class="tooltip" tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div class='tooltipName'>{{data.spellinfo.data | skillTooltip : data.summonerSpell4[$index]}}</div><div class='tooltipDesc'>{{data.spellinfo.data | skillTooltipDetail : data.summonerSpell4[$index]}}</div>">
-                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{data.summonerSpell4[$index]}}.png">
+                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/spell/{{data.summonerSpell4[$index]}}.png">
             </a>
          </div>
        </div>
 
 
-
+       <!-- 마스터리와 정보 툴팁 -->
        <div class="col l3 m3 s3" style="padding: 4px 4px 4px 0px;">
             <a class="tooltip" tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div class='tooltipMName'>{{data.masteryinfo.data | masteryTooltip : data.mastery2[$index]}}</div><div class='tooltipMDesc'>{{data.masteryinfo.data | masteryTooltipDetail : data.mastery2[$index]}}</div>">
-                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/{{data.mastery2[[$index]]}}.png" >
+                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/mastery/{{data.mastery2[[$index]]}}.png" >
             </a>
        </div> 
 
