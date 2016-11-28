@@ -3,7 +3,6 @@ myApp.directive('base', function(matchResource,matchData,$filter,$interval,Spell
    return {
       scope:{}, // {} = isolate, true = child, false/undefined = no change
       controller: function($scope, $element, $attrs, $transclude) {
-        /*Ajax소환사 정보와 게임 정보*/
         $scope.summoner=matchData.getsummoner();
         $scope.match=matchData.getmatch();
 
@@ -28,7 +27,7 @@ myApp.directive('base', function(matchResource,matchData,$filter,$interval,Spell
          console.log('item 불러오기 err :  ',err)
        });
 
-        /*소환사정보와 경기정보 비교하여 팀 구하기*/
+        /*소환사정보와 경기정보 비교하여 소환사 팀 구하기*/
         if($scope.match.match[0].summonerName != null){
           for (var i = 0; i < $scope.match.match.length; i++) {
             if ($scope.match.match[i].summonerName == $scope.summoner.summonerData.name) {

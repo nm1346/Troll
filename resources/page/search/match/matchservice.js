@@ -26,7 +26,7 @@ myApp.factory('matchData', function(){
 			for (var member in summonerdata) delete summonerdata[member];
 				angular.extend(summonerdata,data);
 		},
-		/*경기 평균값*/
+		/*순위를 위한 경기 평균값*/
 		avg:function(data){
 			var gameavg = {kill : 0, assist : 0, dealt : 0, death : 0, taken : 0, wardplace : 0, wardkill : 0, tower : 0, neutralMinion : 0, uneutralMinion : 0, aneutralMinion : 0, minion : 0, gold : 0 }
 			for (var i = 0; i < data.match.length; i++) {
