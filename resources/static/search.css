@@ -12,7 +12,27 @@
   z-index: 3;
   position: relative;
 }
-
+.updatetable{
+  position: absolute;
+  top :-190px;
+  background-color: rgba(0,0,0,0.6);
+  border-collapse:separate;
+  border-radius:10px;
+  -moz-border-radius:10px;
+  color : white;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+}
+.updatetable tbody > tr:hover{
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  background-color: rgba(255,255,255,1);
+  color:black;
+}
+.updatetable thead > tr{
+  background-color: rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(255,255,255 , 1);
+}
 .soundmovie {
   margin-bottom: 0px;
   text-align: center;
@@ -306,6 +326,9 @@
   .my:before {
     content: "\f002";
   }
+  .updatetable{
+  top :0px;
+}
 }
 .my:active:before {
   color: rgba(0, 0, 0,0.8);

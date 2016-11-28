@@ -45,7 +45,6 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 				}else if($scope.errorcode === 429){
 		 					$scope.errormsg = "요청이 많아 처리가 지연되고 있습니다. 잠시 후에 다시시도해주세요.";
 		 				}
-
 		 				Materialize.toast($scope.errormsg, 4000);
 		 				$timeout(function () {
 		 					$scope.cookieList=[];
