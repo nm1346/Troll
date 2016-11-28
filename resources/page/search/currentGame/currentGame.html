@@ -34,12 +34,12 @@
           </div>
           <!-- 소환사이름 -->
           <div class="col l12 m12 s12 sname">
-            {{data.summonerName_list1[$index]}}
+            <a href="/{{data.summonerName_list1[$index]}}" style="color: white;">{{data.summonerName_list1[$index]}}</a>
           </div>
 
           <!-- 소환사 아이콘 -->
           <div class="col l3 m3 s3" style="padding: 0px;">
-            <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/profileicon/{{data.icon_list1[$index]}}.png">
+            <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/profileicon/{{data.icon_list1[$index]}}.png">
           </div>
 
 
@@ -47,13 +47,13 @@
           <!-- 스펠1,스펠정보 툴팁 -->
             <div class="col l6 m6 s6" style="padding: 0px;">
                 <a class="tooltip" tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div class='tooltipName'>{{data.spellinfo.data | skillTooltip : data.summonerSpell1[$index]}}</div><div class='tooltipDesc'>{{data.spellinfo.data | skillTooltipDetail : data.summonerSpell1[$index]}}</div>">
-                    <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{data.summonerSpell1[$index]}}.png">
+                    <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/spell/{{data.summonerSpell1[$index]}}.png">
                  </a>
            </div>
             <!-- 스펠2,스펠정보 툴팁 -->
            <div class="col l6 m6 s6" style="padding: 0px;">
             <a class="tooltip" tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div class='tooltipName'>{{data.spellinfo.data | skillTooltip : data.summonerSpell2[$index]}}</div><div class='tooltipDesc'>{{data.spellinfo.data | skillTooltipDetail : data.summonerSpell2[$index]}}</div>">
-                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{data.summonerSpell2[$index]}}.png">
+                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/spell/{{data.summonerSpell2[$index]}}.png">
             </a>
            </div>
          </div>
@@ -62,7 +62,7 @@
          <!-- 마스터리와 정보 툴팁 -->
          <div class="col l3 m3 s3" style="padding: 4px 4px 4px 0px;">
             <a class="tooltip" tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div class='tooltipMName'>{{data.masteryinfo.data | masteryTooltip : data.mastery1[$index]}}</div><div class='tooltipMDesc'>{{data.masteryinfo.data | masteryTooltipDetail : data.mastery1[$index]}}</div>">
-                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/{{data.mastery1[$index]}}.png" >
+                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/mastery/{{data.mastery1[$index]}}.png" >
             </a>
          </div> 
                             
@@ -72,7 +72,7 @@
      <!-- 랭크게임일경우 레드팀벤챔피언 -->
      <div class="col s3 m4 l5">
       <div style="margin-left: 58%" class="ban1">
-          <img class="circle responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{item}}.png" width="19%" ng-repeat="item in data.banChampionName" style="margin-left: 2%">
+          <img class="circle responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/{{item}}.png" width="19%" ng-repeat="item in data.banChampionName" style="margin-left: 2%">
       </div>
      </div>
      <!-- vs이미지 -->
@@ -82,7 +82,7 @@
     <!-- 랭크게임일경우 블루팀벤챔피언 -->
     <div class="col s3 m4 l5">
       <div style="margin-left: 11%" class="ban2">
-          <img class="circle responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{item}}.png" width="9%" ng-repeat="item in data.banChampionName2" style="margin-left: 2%">
+          <img class="circle responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/{{item}}.png" width="9%" ng-repeat="item in data.banChampionName2" style="margin-left: 2%">
       </div>
      </div>
 
@@ -113,7 +113,7 @@
         
         <!-- 소환사 아이콘 -->
         <div class="col l3 m3 s3" style="padding: 0px;">
-          <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/profileicon/{{data.icon_list2[$index]}}.png" >
+          <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/profileicon/{{data.icon_list2[$index]}}.png" >
         </div>
 
 
@@ -121,13 +121,13 @@
         <!-- 스펠1,스펠정보 툴팁 -->
           <div class="col l6 m6 s6" style="padding: 0px;">
             <a class="tooltip" tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div class='tooltipName'>{{data.spellinfo.data | skillTooltip : data.summonerSpell3[$index]}}</div><div class='tooltipDesc'>{{data.spellinfo.data | skillTooltipDetail : data.summonerSpell3[$index]}}</div>">
-                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{data.summonerSpell3[$index]}}.png">
+                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/spell/{{data.summonerSpell3[$index]}}.png">
             </a>
          </div>
          <!-- 스펠2,스펠정보 툴팁 -->
          <div class="col l6 m6 s6" style="padding: 0px;">
             <a class="tooltip" tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div class='tooltipName'>{{data.spellinfo.data | skillTooltip : data.summonerSpell4[$index]}}</div><div class='tooltipDesc'>{{data.spellinfo.data | skillTooltipDetail : data.summonerSpell4[$index]}}</div>">
-                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{data.summonerSpell4[$index]}}.png">
+                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/spell/{{data.summonerSpell4[$index]}}.png">
             </a>
          </div>
        </div>
@@ -136,7 +136,7 @@
        <!-- 마스터리와 정보 툴팁 -->
        <div class="col l3 m3 s3" style="padding: 4px 4px 4px 0px;">
             <a class="tooltip" tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div class='tooltipMName'>{{data.masteryinfo.data | masteryTooltip : data.mastery2[$index]}}</div><div class='tooltipMDesc'>{{data.masteryinfo.data | masteryTooltipDetail : data.mastery2[$index]}}</div>">
-                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/mastery/{{data.mastery2[[$index]]}}.png" >
+                <img class="responsive-img" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/mastery/{{data.mastery2[[$index]]}}.png" >
             </a>
        </div> 
 
