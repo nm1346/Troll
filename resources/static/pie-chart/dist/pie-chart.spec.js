@@ -17,21 +17,16 @@ describe('n3-piechart', function() {
         this.message = function () {
           return "Expected " + actual + notText + " to be same as " + expected;
         };
-
         var exp = expected.split(/\s*;\s*/g);
         var comp = actual.split(/\s*;\s*/g);
-
         var colors = ['fill', 'stroke'];
-
         for (var key in exp) {
           if (comp[key] === undefined) {
             return false;
           }
-
           if (comp[key] !== exp[key]) {
             var spl = comp[key].split(/\s*:\s*/);
             var expSpl = exp[key].split(/\s*:\s*/);
-
             if (colors.indexOf(spl[0]) !== -1) {
               if (d3.rgb(spl[1]).toString() !== d3.rgb(expSpl[1]).toString()) {
                 return false;
@@ -41,7 +36,6 @@ describe('n3-piechart', function() {
             }
           }
         }
-
         return true;
       },
 

@@ -78,6 +78,12 @@ myApp.run(function($rootScope,$window){
 	$rootScope.$on("loadingOff",function(event,data){
 		$rootScope.$broadcast("loadingCoverOff",{})
 	})
+	$rootScope.$on("loadingOff",function(event,data){
+		$rootScope.$broadcast("loadingCoverOff",{})
+	});
+	$rootScope.$on("sidenavViewChange",function(event,data){
+		$rootScope.$broadcast("searchViewChange",data)
+	});
 });
 </script>
 <!-- 사용자 정의 서비스 컨트롤러 디렉티브들 ...-->

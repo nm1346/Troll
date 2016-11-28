@@ -1,29 +1,28 @@
 
 
 myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,BoardData,$location,$http,itemResource,SpellResource,
-	recentchampResource,BoardResource,matchResource,matchData, $interval){
+	recentchampResource,BoardResource,matchResource,matchData, $interval,$timeout,$cookies){
 	return {
 		 scope: {}, // {} = isolate, true = child, false/undefined = no change
 		 controller: function($scope, $element, $attrs, $transclude) {
-
-		 	/*$scope.$emit('searchPageStart',{});*/
 		 	$scope.$emit("loadingOn",{});
 		 	$scope.$emit('searchPageStart', {loading : true , error : false});
 		 	itemResource.get({}).$promise.then(function (data) {
 		 		summoner.setitem(data);
 		 		$scope.itemdata = summoner.getitem();
 		 	},function (err) {
-		 		console.log('item 불러오기 err :  ',err)
+		 		console.log('item 불러오기 err :  ',err);
 		 	})
 		 	SpellResource.get({}).$promise.then(function (data) {
 		 		summoner.setspell(data);
 		 		$scope.spelldata = summoner.getspell();
 		 	},function (err) {
-		 		console.log('spell 불러오기 err :  ',err)
+		 		console.log('spell 불러오기 err :  ',err);
 		 	});
 		 	if (Object.keys(summoner.get()).length === 0) {
 		 		SearchResource.get({summonerName : $routeParams.summonerName}).$promise.then(function (data) {
 		 			if (Boolean(Number(data.success))){
+		 				$scope.success = data.success;
 		 				summoner.set(data);
 		 				summoner.addsummonerdata($scope, summoner);
 		 				BoardResource.get({id:data.leagueData.id,board_category:"category"}).$promise.then(function(data){
@@ -37,16 +36,39 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 					$scope.$emit("loadingOff",{});
 		 				});
 		 			}else{
-		 				$scope.$emit('searchPageError', {errorCode : data.errorcode , errorMessage : data.errormsg});
+		 				$scope.success = data.success;
+		 				$scope.errorcode = data.errorcode;
+		 				if ($scope.errorcode == 404) {
+		 					$scope.errormsg = "존재하지않는 소환사명 다시검색해주세요.";
+		 				}else if($scope.errorcode == 400){
+		 					$scope.errormsg = "잘못된 접근입니다.";
+		 				}else if($scope.errorcode === 429){
+		 					$scope.errormsg = "요청이 많아 처리가 지연되고 있습니다. 잠시 후에 다시시도해주세요.";
+		 				}
+
+		 				Materialize.toast($scope.errormsg, 4000);
+		 				$timeout(function () {
+		 					$scope.cookieList=[];
+							if(angular.isDefined($cookies.get("searchList"))){
+							angular.extend($scope.cookieList,angular.fromJson($cookies.get("searchList")));
+							console.log($routeParams.summonerName);
+							$scope.cookieList.splice($scope.cookieList.indexOf($routeParams.summonerName),1)
+							$cookies.putObject("searchList",$scope.cookieList);
+							}
+							$location.path("/");
+		 				}, 500);
+		 				$scope.$emit('searchPageSuccess', {loading : false , error : false});
 		 				$scope.$emit("loadingOff",{});
 		 			}
 		 		},function (error) {
+		 			$scope.error = error;
 		 			console.log('에러',error);
 		 		});
 		 	}else{
 		 		if ($routeParams.summonerName !== summoner.get().summonerData.name) {
 		 			SearchResource.get({summonerName : $routeParams.summonerName}).$promise.then(function (data) {
 		 				if (Boolean(Number(data.success))){
+		 					$scope.success = data.success;
 		 					summoner.set(data);
 		 					summoner.addsummonerdata($scope, summoner);
 		 					BoardResource.get({id:data.leagueData.id,board_category:"category"}).$promise.then(function(data){
@@ -60,13 +82,34 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		 						$scope.$emit("loadingOff",{});
 		 					});
 		 				}else{
-		 					$scope.$emit('searchPageError', {errorCode : data.errorcode , errorMessage : data.errormsg});
+		 					$scope.success = data.success;
+		 					$scope.errorcode = data.errorcode;
+		 					if ($scope.errorcode == 404) {
+		 					$scope.errormsg = "존재하지않는 소환사명입니다. 다시검색해주세요.";
+		 					}else if($scope.errorcode == 400){
+		 					$scope.errormsg = "잘못된 접근입니다.";
+		 					}else if($scope.errorcode === 429){
+		 					$scope.errormsg = "요청이 많아 처리가 지연되고 있습니다. 잠시 후에 다시시도해주세요.";
+		 					}
+		 					$timeout(function () {
+		 					$scope.cookieList=[];
+							if(angular.isDefined($cookies.get("searchList"))){
+							angular.extend($scope.cookieList,angular.fromJson($cookies.get("searchList")));
+							console.log($routeParams.summonerName);
+							$scope.cookieList.splice($scope.cookieList.indexOf($routeParams.summonerName),1)
+							$cookies.putObject("searchList",$scope.cookieList);
+							}
+		 					$location.path("/");
+		 					}, 500);
+		 					Materialize.toast($scope.errormsg, 4000);
+		 					$scope.$emit('searchPageSuccess', {loading : false , error : false});
 		 					$scope.$emit("loadingOff",{});
 		 				}
 		 			},function (error) {
 		 				console.log('에러',error);
 		 			});
 		 		}else{
+		 			$scope.success = "1";
 		 			summoner.addsummonerdata($scope, summoner);
 		 			$scope.$emit('searchPageSuccess', {loading : false , error : false});
 		 			$scope.$emit("loadingOff",{});
@@ -134,57 +177,8 @@ myApp.directive('summonerData', function(SearchResource,summoner,$routeParams,Bo
 		$scope.$on('$destroy', function() {
       		$scope.stop();
     	});
-		/*$scope.$watch("mostindex",function (newValue) {
-			$interval.cancel(interval);
-		});*/
-       /* chartdata:[{label : mostarray[i].championNameK , value : fick , suffix: "%" , color : 'white' , colorComplement: "rgba(150,150,150,0)"}]}*/
-			/*$scope.options = {thickness: 10, mode: "gauge", total: 100};*/
 		}
 	};
 });
 
-/*임시보류link: function($scope, iElm, iAttrs, controller) {
-			$scope.recentchamplist = [];
-			$scope.getrecentchamp = function (summonerId) {
-				recentchampResource.get({summonerId : summonerId}).$promise.then(function (data) {
-					for (var i = 0; i < data['champlist'].length; i++) {
-						data['champlist'][i].drag = true;
-					}
-					$('#recentchampmodal').modal({
-						opacity:0,
-					ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-						var overlay = $('.modal-overlay');
-					// remove it
-					overlay.detach();
-				},
-			});
-					$scope.recentchamplist = data['champlist'];
-					$('#recentchampmodal').modal('open');
-				},function (error) {
-					champdata = error;
-					console.log(error);
-				});
-			}
-			$scope.list2 = {};
-			$scope.startCallback = function(dragdata, index) {
-				console.log('You started draggin:');
-			};
-
-			$scope.stopCallback = function(event, ui) {
-				console.log('Why did you stop draggin me?');
-			};
-			$scope.dropCallback = function(dragdata, eventele) {
-				console.log('hey, you dumped me :-(');
-				console.log(dragdata);
-				var index = parseInt(eventele.draggable.context.attributes.value.value);
-				console.log(eventele.draggable.context.attributes.value.value);
-				$scope.recentchamplist.splice(index,1);
-			};
-			$scope.overCallback = function(event, ui) {
-				console.log('Look, I`m over you');
-			};
-			$scope.outCallback = function(event, ui) {
-				console.log('I`m not, hehe');
-			};
-		}*/
 

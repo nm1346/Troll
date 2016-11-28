@@ -172,7 +172,7 @@
      height: 80px;
    }
    .side-mobile-nav{
-     background: rgba(255, 255, 255,.8);
+     background: rgba(255, 255, 255,.9);
    }
 	/*.loadingCover.ng-leave{
 		background-color: rgba(0,0,0,0.5);
@@ -184,7 +184,8 @@
 		transition: all 1s;
 		}*/
 		.side-mobile-nav .side-nav-usermenulist a{
-			background: rgba(245,245,245,1)
+      border-bottom: 1px solid rgba(0,0,0,0.3);
+			background: white;
 		}
     .side-search-input{
       background: rgba(0,0,0,0.5);

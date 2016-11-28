@@ -4,7 +4,7 @@ myApp.factory('SearchResource',function($resource,TrollRestUrl){
 	});
 });
 myApp.factory('itemResource',function($resource){
-	return $resource("http://ddragon.leagueoflegends.com/cdn/6.22.1/data/ko_KR/item.json", {},{
+	return $resource("http://ddragon.leagueoflegends.com/cdn/6.23.1/data/ko_KR/item.json", {},{
 		get:{method:"GET"}
 	});
 });
@@ -14,11 +14,10 @@ myApp.factory('recentchampResource',function($resource, TrollRestUrl){
 	});
 });
 myApp.factory('SpellResource',function($resource){
-	return $resource("http://ddragon.leagueoflegends.com/cdn/6.22.1/data/ko_KR/summoner.json", {},{
+	return $resource("http://ddragon.leagueoflegends.com/cdn/6.23.1/data/ko_KR/summoner.json", {},{
 		get:{method:"GET"}
 	});
 });
-
 myApp.factory('summoner', function(){
 	var searchdata={};
 	var itemdata = {};
