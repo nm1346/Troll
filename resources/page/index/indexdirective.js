@@ -32,12 +32,19 @@ myApp.directive('updateList', function(mediaElement,$cookies){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change	
 		controller: function($scope, $element, $attrs, $transclude) {
-			
+			var mainurl = "http://www.leagueoflegends.co.kr/?m=news&cate=update";
+			var url = "";
+			$element.find("table th").eq(2).addClass("hide-on-med-and-down");
+			for (var i = 0; i < $element.find("table> tbody > tr").length; i++) {
+				url = $element.find("table> tbody > tr").eq(i).children().find("a").attr('href');
+				$element.find("table> tbody > tr").eq(i).children().find("a").attr('href',mainurl+url);
+				$element.find("table> tbody > tr").eq(i).children().find("a").attr('target',"_blank");
+				$element.find("table> tbody > tr").eq(i).children().eq(2).addClass("hide-on-med-and-down");
+			}
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
-		templateUrl: '/resources/page/index/update2.html',
+		templateUrl: '/resources/page/index/update.html',
 		link: function($scope, iElm, iAttrs, controller) {
-			console.log(iElm);
 		}
 	};
 });

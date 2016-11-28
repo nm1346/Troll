@@ -47,7 +47,6 @@ myApp.directive('backCover',function($routeParams,$location){
 		}
 	};
 });
-
 myApp.directive('searchSidenav',function($cookies,$timeout,$location,mediaElement,summoner,$routeParams){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -72,7 +71,6 @@ myApp.directive('searchSidenav',function($cookies,$timeout,$location,mediaElemen
 					$scope.unlanked = totaldata['leagueData'];
 				}
 			});
-
 			//검색시 실행 메소드
 			$scope.search = function (summonerName) {
 				if($scope.searchList.indexOf(summonerName)==-1&&$scope.searchList.length<5){
@@ -90,7 +88,6 @@ myApp.directive('searchSidenav',function($cookies,$timeout,$location,mediaElemen
 					$location.path("/"+summonerName).replace();
 				},1000);
 			}
-
 			$scope.keysearch = function (event,summonerName) {
 				if(event.keyCode == 13){
 				if($scope.searchList.indexOf(summonerName)==-1&&$scope.searchList.length<5){
