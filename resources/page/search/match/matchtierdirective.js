@@ -1,8 +1,7 @@
 
 myApp.directive('tier', function(matchResource,matchData,$filter,$interval){
-   // Runs during compile
-   return {
-      scope:{}, // {} = isolate, true = child, false/undefined = no change
+ return {
+      scope:{}, // 
       controller: function($scope, $element, $attrs, $transclude) {
         $scope.summoner=matchData.getsummoner();
         $scope.match=matchData.getmatch();
@@ -25,16 +24,17 @@ myApp.directive('tier', function(matchResource,matchData,$filter,$interval){
               $scope.tavgdata =  ($scope.match.avg[i]);
             }
           }
-          if($scope.lane.lane1 == 'DUO'){
+/*          if($scope.lane.lane1 == 'DUO'){
             $scope.lane.lane1 = 'DUO_SUPPORT';
-          }
+          }*/
+          /*라인 비교(대소문자)*/
           if($scope.lane.lane1 == $scope.match.avg[i].lane && $scope.summoner.leagueData.tier == $scope.match.avg[i].tier.toUpperCase()){
             $scope.tavgdata =  ($scope.match.avg[i]);
           }
 
         }
 
-        /*평균구하기*/
+        /*평균구하기(자리수 정렬)*/
         $scope.tavgdata.kills = Math.round($scope.tavgdata.kills*10) / 10;
         $scope.tavgdata.assists = Math.round($scope.tavgdata.assists*10) / 10;
         $scope.tavgdata.totalDamageDealt = Math.round($scope.tavgdata.totalDamageDealt*10) / 10;

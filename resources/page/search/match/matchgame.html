@@ -25,6 +25,7 @@
 			<td></td>
 		</tr>
 		<tr>
+			<!-- 순위별로 반복, 소환사 출력 -->
 			<td colspan="3" style="font-size: 50px; color: #62AFFC;" ng-repeat="r in rank | orderBy:'-total'" ng-if="r.user==summoner.summonerData.name">
 				{{$index+1}}등
 			</td>
@@ -66,7 +67,7 @@
 		</tr>
 	</table>
 	<div class="col s4">
-		<!-- 차트 -->
+		<!-- highcharts -->
 		<span id="chart" style="min-width: 360px; max-width: 345px; height: 230px; margin: 0 auto;"></span>
 	</div>
 
@@ -96,12 +97,15 @@
 			<tr>
 				<!-- tier,lane평균값 대비 소환사 수치에 따라 바 그래프 % 설정 -->
 				<td colspan="3">
+					<!-- 소환사값이 평균값보다 크고 2배 보다 작으면 -->
 					<div class="tierbar" ng-if=" 2*avgdata.kill>user.kills&&user.kills>=avgdata.kill">
 						<div style="width: {{user.kills/avgdata.kill*50}}%;height: 100%;background-color: rgb(10,130,251);"></div>
 					</div>
+					<!-- 평균값을 50%로 잡고 소환사 값이 평균값 보다 2배 이상 크면 -->
 					<div class="tierbar" ng-if="user.kills>=2*avgdata.kill">
 						<div style="width: 100%;height: 100%;background-color: rgb(10,130,251);"></div>
 					</div>
+					<!-- 소환사값이 평균값보다 작으면 -->
 					<div class="tierbar" ng-if="user.kills<avgdata.kill">
 						<div style="width: {{user.kills/avgdata.kill*50}}%;height: 100%;background-color: rgb(255,021,000);"></div>
 					</div>

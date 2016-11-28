@@ -3,7 +3,7 @@
  <!-- 유저팀 영역 -->
  <table class="bordered">
   <tr class="object">
-    <!-- 팀 정보(kda종합, 오브젝트) -->
+    <!-- 팀 정보(kda종합, 오브젝트(바론,용,타워)) -->
     <td colspan="3">
       <img ng-srcset="http://sk2.op.gg/images/scoreboardicon_score.png" err-src>{{uteamkill}} / {{uteamdeath}} / {{uteamassist}}
     </td>
@@ -15,7 +15,7 @@
   </tr>
 
   <tr>
-    <!-- switch로 팀 명시 -->
+    <!-- switch로 팀 명시(이기면 blue, 지면 red) -->
     <th ng-switch on="win">
       <b ng-switch-when="true">
         <b ng-switch on="teamId">
@@ -37,8 +37,7 @@
     <th>CS</th>
   </tr>
 
-
-  <!-- repeat:반복문, 유저 정보 반복(라인별로 정렬) -->
+  <!-- repeat:유저 정보 반복(라인별로 정렬 - 탑,미드,정글,서폿,미드) -->
   <tr ng-repeat="m in match.match | orderBy: '-lane'" ng-if="m.teamId == teamId">
     <div class="col s2">
       <td class="ci">
@@ -76,6 +75,7 @@
             <li>
               <a href="/{{m.summonerName}}" style="color: white;">{{m.summonerName}}</a>
             </li>
+            <!-- 데스가 0인 경우 무한대로 계산되기 때문에 데스를 1로 처리 -->
             <li ng-if="m.deaths == 0">
               {{m.kills+m.assists | number: 2}}({{m.kills}}/{{m.deaths}}/{{m.assists}}) 
             </li>
@@ -85,9 +85,6 @@
           </b>
         </td>
       </div>
-
-
-
 
       <div class="col s2">
         <!-- 아이템 이미지 및 툴팁 -->  
@@ -133,13 +130,11 @@
    </div>
  </tr>
 
- <!-- 반복문 -->
-
 </table>
 </div>
 
 
-<!-- 위와 동일 -->
+<!-- 상대팀 영역 -->
 
 <div class="col s6 based">
  <table class="bordered">
@@ -176,9 +171,6 @@
     <th>CS</th>
   </tr>
 
-
-
-  <!-- ng-repeat -->
   <tr ng-repeat="m in match.match | orderBy: '-lane'" ng-if="m.teamId != teamId">
     <div class="col s2">
       <td class="ci">
