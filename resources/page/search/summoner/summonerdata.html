@@ -1,27 +1,17 @@
-
-<!-- <div class="summoner card horizontal row">
-  <div class="card-image profileicon {{leaguedata.tier}} s4">
-    <img class="icon_img s12" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/profileicon/{{summonerdata.profileIconId}}.png">
-  </div>
-  <div class="card-stacked">
-    <div class="card-content">
-      <p class="nickname">{{summonerdata.name}}</p>
-    </div>
-  </div>
-</div>end summoner card -->
-<div class="container row">
- <div class="col l2 m6 s12 card summoner center-align padding-bottom-hide padding-right-hide padding-left-hide " >
+</div>
+<div class="container row summonercontainer" ng-show="success === '1'">
+ <div class="col l2 m6 s12 card summoner center-align padding-bottom-hide padding-right-hide padding-left-hide" >
   <p class="level col s12">Level : {{summonerdata.summonerLevel}}</p>
   <div class="card-content padding-bottom-hide" style="line-height: 150%;">
-    <img class="profileicon" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/profileicon/{{summonerdata.profileIconId}}.png">
+    <img class="profileicon" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/profileicon/{{summonerdata.profileIconId}}.png">
     <p class="nickname">{{summonerdata.name}}</p>
-
-    <p class="season" ng-if="angular.isUndefind(leaguedata)">시즌 전적 : {{leaguedata.entrylist[0].wins}}승 {{leaguedata.entrylist[0].losses}}패</p>
+    <p class="season" ng-if="tierurl === 'unRanked'">등록된 전적이 없습니다.</p>
+    <p class="season" ng-if="tierurl !== 'unRanked'">시즌 전적 : {{leaguedata.entrylist[0].wins}}승 {{leaguedata.entrylist[0].losses}}패</p>
     <!--  <p class="date" tooltipped data-position="top" data-delay="100" data-tooltip="최근 갱신">{{summonerdata.searchDate}}</p> -->
   </div>
 <!-- <span class="col l12 m12 s12">Most Champ</span>
    <div class="col l12 m6" tooltipped data-position="bottom" data-delay="100" data-tooltip="{{mostchamp.index.championNameK}}">
-     <img class="most-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{mostchamp.index.championNameE}}.png" err-src/>
+     <img class="most-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/{{mostchamp.index.championNameE}}.png" err-src/>
      </div>
      <span class="col l12 m6 padding-hide">{{mostchamp.index.championNameK}}
       <br>점수 : {{mostchamp.score}}
@@ -32,13 +22,13 @@
 <!-- 워스트 챔프
 <div class="col s6 league center-align wostchamp padding-hide" tooltipped data-position="bottom" data-delay="100" data-tooltip="{{wostchamp.index.championNameK}}">
    <span class="col s12 padding-hide">Wost Champ</span>
-     <img class="most-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{wostchamp.index.championNameE}}.png" err-src/>
+     <img class="most-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/{{wostchamp.index.championNameE}}.png" err-src/>
      <span class="col s12  padding-hide">{{wostchamp.index.championNameK}}</span>
      <span class="col s12  padding-hide">점수 : {{wostchamp.score}}
      <br>KDA : {{wostchamp.kda}}<br>
      승률 : {{wostchamp.index.winlate}}%</span>
    </div> -->
-   <div class="col s12 league center-align mostchamp padding-hide  {{leaguedata.tier}}" ng-if="tierurl !== 'unlanked'">
+   <div class="col s12 league center-align padding-hide  {{leaguedata.tier}}" ng-if="tierurl !== 'unRanked'">
      <div class="col s12 padding-hide">
       <span class="col s12 tier padding-hide">{{leaguedata.tier}} {{leaguedata.entrylist[0].division}}</span>
       <span class="col s12 point">{{leaguedata.name}}</span>
@@ -48,101 +38,52 @@
       <img class="tier-img" ng-srcset="/resources/tier_icons/{{tierurl}}.png">
     </div>
   </div>
-  <div class="col s12 league center-align mostchamp padding-hide  {{leaguedata.tier}}" ng-if="tierurl === 'unlanked'">
-     <div class="col s12 padding-hide">
-      <span class="col s12 point">&nbsp;</span>
-      <span class="col s12 season padding-hide  ">Unlanked</span>
-      <span class="col s12 point">등록된 리그 정보가 없습니다.</span>
-    </div>
-    <div class="col s12 center-align padding-hide">
-      <img class="tier-img" ng-srcset="/resources/tier_icons/{{tierurl}}.png">
-    </div>
-  </div>
-</div><!-- end summoner -->
-
-
-
-<!-- <div class="col s6 league center-align">
+  <div class="col s12 league center-align mostchamp padding-hide  {{leaguedata.tier}}" ng-if="tierurl === 'unRanked'">
    <div class="col s12 padding-hide">
-    <span class="col s12 tier {{leaguedata.tier}} padding-hide">{{leaguedata.tier}} {{leaguedata.entrylist[0].division}}</span>
-    <span class="col s12 point">LP : {{leaguedata.entrylist[0].leaguePoints}}</span>
+    <span class="col s12 point">&nbsp;</span>
+    <span class="col s12 point padding-hide">UnRanked</span>
+    <span class="col s12 point">등록된 리그 정보가 없습니다.</span>
   </div>
   <div class="col s12 center-align padding-hide">
     <img class="tier-img" ng-srcset="/resources/tier_icons/{{tierurl}}.png">
   </div>
-  <div class="col s12 center-align padding-hide hide-on-med-and-down" ng-if="leaguedata.entrylist[0].veteran">
-    <div class="chip veteran">베테랑</div>
-  </div>
-</div> -->
+</div>
+</div><!-- end summoner -->
+
+
 <div class="col l2 m6 s12 card most-card center-align padding-bottom-hide padding-right-hide padding-left-hide">
   <div class="category-most col s12" >
    <select class="icons" material-select watch  ng-model="mostindex" >
-    <option value="" disabled selected>Most Champ List</option>
-    <option  data-ng-repeat="data in mostchamplist" value="{{$index}}" data-icon="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{data.index.championNameE}}.png" class="circle">{{data.index.championNameK}}</option>
+    <option value="" disabled selected >Most Champ List</option>
+    <option  data-ng-repeat="data in mostchamplist" value="{{$index}}" data-icon="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/{{data.index.championNameE}}.png" class="circle">{{data.index.championNameK}}</option>
   </select>
 </div>
 <div class="ngFade card-content padding-bottom-hide padding-top-hide most-content col s12" ng-hide="mostindex">
  <span class="col s12 tier padding-hide">영웅을 선택해주세요.</span>
 </div>
 <div class="ngFade card-content padding-bottom-hide padding-top-hide most-content col s12" ng-show="mostindex" style="line-height: 150%;">
- <div class="col l12 m12 s12"  >
-   점유율 : {{(100 / (leaguedata.entrylist[0].wins + leaguedata.entrylist[0].losses) * mostchamplist[mostindex].index.played).toFixed(0)}}%
- </div> 
- <div class="col l12 m12 s12 center-align" tooltipped data-position="bottom" data-delay="100" data-html="true" 
- data-tooltip="선택 순위 : {{mostchamplist[mostindex].pickrank}}위<br>점수 순위 : {{mostindex}}위" >
- <img class="most-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{mostchamplist[mostindex].index.championNameE}}.png" err-src/>
-</div> 
+   <div class="col l12 m12 s12 center-align" >
+<img class="most-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/{{mostchamplist[mostindex].index.championNameE}}.png"
+ err-src/>
+</div>
 <div class="col s12">
   KDA : {{mostchamplist[mostindex].kda}}
-</div> 
-<div class="col s12">
-  승률 : {{mostchamplist[mostindex].index.winlate}}%
-</div> 
-<div class="col s12">
-  점수 : {{mostchamplist[mostindex].score}}
-</div> 
 </div>
-<div class="ngFade card-content padding-bottom-hide padding-top-hide most-content col s12">
-  <!-- Modal Trigger -->
-  <div class="col">
-    <a class='btn'  ng-click="getrecentchamp(summonerdata.id)">트롤검색</a>
-  </div>
+<div class="col s12">
+  선택 순위 : {{mostchamplist[mostindex].pickrank}}
+</div>
+<div class="col s12">
+  점수 순위 : {{mostindex | scorerank}}
+</div>
+</div>
+<div class="ngFade card-content padding-hide most-content col s12" ng-if="mostindex" style="text-align: center;">
+  <pie-chart data="chartdata" options="options"></pie-chart>
 </div>
 </div><!-- end most -->
 
 
 
-
-<div id="recentchampmodal" class="modal trollzone-modal" >
-  <div class="modal-content center-align">
-    <div class='col s12 center-align'>트롤 검색기</div>  
-    <div class="col s12 center-align">
-     <img data-ng-repeat="champ in recentchamplist" class="troll-recent-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{champ.kee}}.png" err-src  data-drag="{{champ.drag}}" data-jqyoui-options="{revert: 'invalid'}" ng-model="champ" jqyoui-draggable="{index: {{$index}},placeholder:true,animate:true}" ng-value="$index" />
-   </div>
-
-   <div class="col s12 center-align" >
-   <div data-drop="true" ng-model='list2' style="background-color: red;" jqyoui-droppable="{multiple:true,onDrop:'dropCallback'}">
-       {{list2}}
-     </div>
-   </div>
- </div>
- <div class="modal-footer">
-  <a class="modal-action modal-close waves-effect waves-green btn-flat">닫기</a>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="col l2 m6 s12 card recent {{data.rawstats.win? 'Win':'Lose' }} center-align padding-bottom-hide" ng-repeat="data in recentgame" >
+<div class="col l2 m6 s12 card recent {{data.rawstats.win? 'Win':'Lose' }} center-align padding-bottom-hide" ng-repeat="data in recentgame" ng-if="recentgame" >
  <!-- 승패여부 게임기본정보 -->
  <div class="col s12 card-content gamedata padding-hide left-align ">
    <div class="col s12">
@@ -156,21 +97,21 @@
      </div>
      <!-- 영웅이미지  스펠 아이템-->
      <div class="card-content padding-top-hide padding-bottom-hide">
-      <img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{data.chamName1}}.png" tooltipped data-position="top" data-delay="50" data-tooltip="{{data.chamName2}}" err-src/>
+      <img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/{{data.chamName1}}.png" tooltipped data-position="top" data-delay="50" data-tooltip="{{data.chamName2}}" err-src/>
       <div class="col s12 card-content padding-hide center-align">
       </div>
       <div class="spell-slot padding-hide">
         <div class="slot">
-          <img  ng-if="data.rawstats.item6 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item6}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1rem;'>{{itemdata.data[data.rawstats.item6].name}}</b><br>
+          <img  ng-if="data.rawstats.item6 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/item/{{data.rawstats.item6}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1rem;'>{{itemdata.data[data.rawstats.item6].name}}</b><br>
           {{itemdata.data[data.rawstats.item6].description}}</div>"/>
         </div>
         <div class="slot">
-          <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{data.spellName1}}.png" err-src
+          <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/spell/{{data.spellName1}}.png" err-src
           tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:#81d4fa; font-size:1rem;'>{{spelldata.data[data.spellName1].name}}</b><br>
           {{spelldata.data[data.spellName1].description}}</div>"/>
         </div>
         <div class="slot">
-          <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/spell/{{data.spellName2}}.png" err-src
+          <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/spell/{{data.spellName2}}.png" err-src
           tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:#81d4fa; font-size:1rem;'>{{spelldata.data[data.spellName2].name}}</b><br>
           {{spelldata.data[data.spellName2].description}}</div>" />
         </div>
@@ -179,33 +120,32 @@
       <div class="row">
         <div class="col s10 item-slot push-s1">
          <div class="col l4  s2 slot">
-           <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item0}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item0].name}}</b><br>
-           {{itemdata.data[data.rawstats.item0].description[0]}}</div>"/>
+
+           <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/item/{{data.rawstats.item0}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item0].name}}</b><br>
+           {{itemdata.data[data.rawstats.item0].description}}</div>"/>
+
          </div>
-         <div class="col l4 s2 slot"><img ng-if="data.rawstats.item1 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item1}}.png" err-src 
+         <div class="col l4 s2 slot"><img ng-if="data.rawstats.item1 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item1}}.png" err-src
            tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item1].name}}</b><br>
            {{itemdata.data[data.rawstats.item1].description}}</div>" /></div>
-           <div class="col l4 s2 slot"><img ng-if="data.rawstats.item2 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item2}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item2].name}}</b><br>
+           <div class="col l4 s2 slot"><img ng-if="data.rawstats.item2 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/item/{{data.rawstats.item2}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item2].name}}</b><br>
             {{itemdata.data[data.rawstats.item2].description}}</div>" /></div>
-            <div class="col l4 s2 slot"><img ng-if="data.rawstats.item3 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item3}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item3].name}}</b><br>
+            <div class="col l4 s2 slot"><img ng-if="data.rawstats.item3 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/item/{{data.rawstats.item3}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item3].name}}</b><br>
               {{itemdata.data[data.rawstats.item3].description}}</div>"/></div>
-              <div class="col l4 s2 slot"><img ng-if="data.rawstats.item4 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item4}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item4].name}}</b><br>
+              <div class="col l4 s2 slot"><img ng-if="data.rawstats.item4 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/item/{{data.rawstats.item4}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item4].name}}</b><br>
                 {{itemdata.data[data.rawstats.item4].description}}</div>"/></div>
-                <div class="col l4 s2 slot"><img ng-if="data.rawstats.item5 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/item/{{data.rawstats.item5}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item5].name}}</b><br>
+                <div class="col l4 s2 slot"><img ng-if="data.rawstats.item5 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/item/{{data.rawstats.item5}}.png" err-src tooltipped data-position="top" data-delay="50" data-html="true" data-tooltip="<div style='width:300px; font-size:0.8em;'><b style='color:yellow; font-size:1em;'>{{itemdata.data[data.rawstats.item5].name}}</b><br>
                   {{itemdata.data[data.rawstats.item5].description}}</div>"/></div>
                 </div>
               </div>
             </div>
             <div class="col s12 card-content padding-hide">
              <div class="col s12 padding-hide">
-               <span class="myplayer-chamimg"><img class="mychampborder" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{data.chamName1}}.png"/></span>
+               <span class="myplayer-chamimg"><img class="mychampborder" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/{{data.chamName1}}.png"/></span>
                <span ng-repeat="player in data.fellowPlayers" ng-if="data.teamId == player.teamId">
                  <!--  플레이어 클릭시 리서치 임시보류 -->
-         <!-- <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.summonerName}}" ng-click="researchsummoner(player.summonerName)">
-           <img class="{{player.teamId === 100 ? 'blueteamborder':'redteamborder'}}" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{player.chamName1}}.png"/>
-         </span> -->
          <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.chamName2}}" >
-           <img class="{{player.teamId === 100 ? 'blueteamborder':'redteamborder'}}" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{player.chamName1}}.png"/>
+           <img class="{{player.teamId === 100 ? 'blueteamborder':'redteamborder'}}" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/{{player.chamName1}}.png"/>
          </span>
        </span>
      </div>
@@ -215,9 +155,9 @@
       <span ng-repeat="player in data.fellowPlayers" ng-if="data.teamId != player.teamId" >
         <!--   플레이어 클릭시 리서치 임시보류 -->
      <!--   <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.summonerName}}"  ng-click="researchsummoner(player.summonerName)">
-     <img class="{{player.teamId === 100 ? 'blueteamborder':'redteamborder'}}" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{player.chamName1}}.png"/></span> -->
+     <img class="{{player.teamId === 100 ? 'blueteamborder':'redteamborder'}}" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/{{player.chamName1}}.png"/></span> -->
      <span class="player-chamimg" tooltipped data-position="top" data-delay="100" data-tooltip="{{player.chamName2}}" >
-       <img class="{{player.teamId === 100 ? 'blueteamborder':'redteamborder'}}" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{player.chamName1}}.png"/></span>
+       <img class="{{player.teamId === 100 ? 'blueteamborder':'redteamborder'}}" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/{{player.chamName1}}.png"/></span>
      </span>
    </div>
    <div class="col s12 padding-hide bot center-align" ng-if="data.subType | botfilter">
@@ -227,15 +167,15 @@
 
 <div class="col s12 card-content padding-hide">
  <div class="col s6 activator card-btn statscard-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
- ng-if="!(data.subType | botfilter)">
+ ng-if="!(data.subType | buttonfilter)">
  &nbsp;
 </div>
 <div class="col s6 card-btn match-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
- ng-if="!(data.subType | botfilter)" ng-click="match(data.gameId)">
+ng-if="!(data.subType | buttonfilter)" ng-click="match(data.gameId)">
 &nbsp;
 </div>
 <div class="col s12 activator card-btn statscard-btn padding-hide waves-effect waves-light {{data.rawstats.win? 'Win':'Lose'}}"
- ng-if="data.subType | botfilter">
+ng-if="data.subType | buttonfilter">
 &nbsp;
 </div>
 </div>
@@ -245,7 +185,7 @@
    <span class="col s12 card-title" style="padding-top: 10px;"><i class="material-icons right" >close</i></span>
    <div class="card-content padding-hide">
      <div class="col s12"> Level :  {{data.rawstats.level}}</div>
-     <img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.22.1/img/champion/{{data.chamName1}}.png" tooltipped data-position="top" data-delay="50" data-tooltip="{{data.chamName2}}" err-src/>
+     <img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.23.1/img/champion/{{data.chamName1}}.png" tooltipped data-position="top" data-delay="50" data-tooltip="{{data.chamName2}}" err-src/>
      <div class="col s12 card-content padding-hide center-align">
        <div class="col s12">
          KDA :  {{data.rawstats | kdafilter}}
@@ -293,76 +233,3 @@
 
 
 
-<!-- <div class="row">
-  <div class="col s12 recent-games">
-    <div class="card recent {{data.rawstats.win | victoryclassfilter}} col l12 m12 s12 " ng-repeat="data in recentgame">
-      <div class="card-content col s12 recentcontent">
-        <div class="col s2">
-          <div class="col s12 gamewins">
-            <h6 class="col s12 victory">{{data.rawstats.win? 'Win':'Lose'}}</h6>
-            <div class="col s12">{{data.subType}}</div>
-            <div class="col s12">{{data.rawstats.timePlayed | gametimefilter}} {{data.rawstats.timePlayed | gametimefilter}}
-            </div>
-          </div>
-          </div>
-
-          <div class="col s4">
-          <div class="spellandmychamp col s4">
-           <img class="my-chamimg" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/champion/{{data.chamName1}}.png"/>
-           <div class="col l4 m3 s3 spell-slot right-align">
-            <idv class="col l12 slot">
-              <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item6}}.png"/>
-            </div>
-            <div class="col l12 slot">
-              <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/spell/{{data.spellName1}}.png"/>
-            </div>
-            <div class="col l12 slot">
-              <img ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/spell/{{data.spellName2}}.png"/>
-            </div>
-          </div>
-        </div>
-          <div class="col s8">
-          <div class="col s12 left-align">
-          <span>{{data.chamName2}}</span><br>
-             KDA : <span class="{{data.rawstats | kdatxtcolorfilter}}">{{data.rawstats | kdafilter}}</span>({{data.rawstats.championsKilled}}/{{data.rawstats.assists}}/{{data.rawstats.numDeaths}})
-          </div>
-          아이템 영역
-          <div class="col s12 item-slot">
-           <div class="col l2 m4 s6 slot">
-             <img  ng-if="data.rawstats.item0 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item0}}.png"/>
-           </div>
-           <img ng-if="data.rawstats.item0 != 0" src="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item0}}.png"/>
-           <div class="col l2 m4 s6 slot" tooltipped data-position="top" data-delay="100" data-tooltip="I am tooltip"><img ng-if="data.rawstats.item1 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item1}}.png"/></div>
-
-           <div class="col l2 m4 s6 slot"><img ng-if="data.rawstats.item2 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item2}}.png"/></div>
-
-           <div class="col l2 m4 s6 slot"><img ng-if="data.rawstats.item3 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item3}}.png"/></div>
-
-           <div class="col l2 m4 s6 slot"><img ng-if="data.rawstats.item4 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item4}}.png"/></div>
-
-           <div class="col l2 m4 s6 slot"><img ng-if="data.rawstats.item5 != 0" ng-srcset="http://ddragon.leagueoflegends.com/cdn/6.21.1/img/item/{{data.rawstats.item5}}.png"/></div>
-         </div>
-         </div>
-     </div>
-        아이템 1 : {{data.rawstats.item1}} &nbsp;
-        아이템 2 : {{data.rawstats.item2}} &nbsp;
-        아이템 3 : {{data.rawstats.item3}} &nbsp;
-        아이템 4 : {{data.rawstats.item4}} &nbsp;
-        아이템 5 : {{data.rawstats.item5}} &nbsp;
-        아이템 6 : {{data.rawstats.item6}} &nbsp;
-        스펠 1 : {{data.spell1}} &nbsp;
-        스펠 2 : {{data.spell2}} &nbsp;
-     <div class="col l3 s12  allplayers center-align">
-     플레이어 팀
-       <div class="col s12">
-
-     </div>
-          </div>
-
- </div>
-</div>
-</div>
-</div> -->
-
-
- <!-- <img class="tier_icon_img col s12" src="/resources/tier_icons/{{tierurl}}_{{divisionurl}}.png"> -->

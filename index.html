@@ -27,14 +27,19 @@
 <script src="/resources/static/angular-resource.js"></script>
 <script src="/resources/static/angular-animate.js"></script>
 <script src="/resources/static/angular-cookies.js"></script>
-<script src="/resources/static/angular-dragdrop.js"></script>
 <!-- Matchchart -->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
+<!-- <script src="/resources/static/angular.min.js"></script> -->
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="/resources/static/pie-chart/dist/pie-chart.min.js"></script>
+
 <script>
-var myApp=angular.module("exampleApp",["ngRoute","ngResource","ngAnimate","ngCookies" , "ui.materialize",'ngDragDrop']);
+var myApp=angular.module("exampleApp",["ngRoute","ngResource","ngAnimate","ngCookies" , "ui.materialize",'n3-pie-chart']);
 //config
+//html5모드 사용 basetag미사용
+//static을 제외한 모든 url은 검색페이지로 넘어감
 myApp.config(function($routeProvider,$locationProvider) {
 	$locationProvider.html5Mode({
 		enabled: true,
@@ -61,6 +66,7 @@ myApp.config(function($routeProvider,$locationProvider) {
 	})
 });
 
+//이벤트 수신시 cover뷰와 loding cover 뷰 On Off 시켜줌
 myApp.run(function($rootScope,$window){
 	//첫로드가 전부 완료됐을시 페이지 보임
 	$rootScope.fullLoad=false;
@@ -80,6 +86,12 @@ myApp.run(function($rootScope,$window){
 	$rootScope.$on("loadingOff",function(event,data){
 		$rootScope.$broadcast("loadingCoverOff",{})
 	})
+	$rootScope.$on("loadingOff",function(event,data){
+		$rootScope.$broadcast("loadingCoverOff",{})
+	});
+	$rootScope.$on("sidenavViewChange",function(event,data){
+		$rootScope.$broadcast("searchViewChange",data)
+	});
 });
 </script>
 <!-- 사용자 정의 서비스 컨트롤러 디렉티브들 ...-->
@@ -116,15 +128,22 @@ myApp.run(function($rootScope,$window){
 </head>
 <body>
 <!--페이지 영역-->
+<!-- full Load 됐을시에 사라지는 loading -->
 <loading class="firstLoad" ng-if="!fullLoad"></loading>
 <!-- 인덱스페이지가 아니면 사라지는 동영상 투명도 커버 -->
+<!-- 메인페이지 비디오 태그에 대한 디렉티브 -->
 <index-video></index-video>
+<!-- 메인페이지 오디오 태그에 대한 디렉티브 -->
 <index-music></index-music>
+<!-- 이벤트 수신시 나타나는 cover -->
 <back-cover></back-cover>
-<!-- <status-toast></status-toast> -->
-<loading-cover></loading-cover>
 <search-sidenav></search-sidenav>
+<!-- <status-toast></status-toast> -->
+<!-- 이벤트 수신시 나타나는 loding cover -->
+<loading-cover></loading-cover>
+<!-- 동영상 뒤 배경이미지 -->
 <img class="backImage" src="/resources/static/backimage.jpg">
+<!-- 전부 로딩됐을때 나오는 메인뷰 -->
 <div ng-if="fullLoad" ng-view class="ngFade search-nav">
 </div>
 </body>

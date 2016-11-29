@@ -27,6 +27,27 @@ myApp.directive('indexVideo', function(mediaElement,$cookies){
 		}
 	};
 });
+
+myApp.directive('updateList', function(mediaElement,$cookies){
+	return {
+		scope: {}, // {} = isolate, true = child, false/undefined = no change	
+		controller: function($scope, $element, $attrs, $transclude) {
+			var mainurl = "http://www.leagueoflegends.co.kr/?m=news&cate=update";
+			var url = "";
+			$element.find("table th").eq(2).addClass("hide-on-med-and-down");
+			for (var i = 0; i < $element.find("table> tbody > tr").length; i++) {
+				url = $element.find("table> tbody > tr").eq(i).children().find("a").attr('href');
+				$element.find("table> tbody > tr").eq(i).children().find("a").attr('href',mainurl+url);
+				$element.find("table> tbody > tr").eq(i).children().find("a").attr('target',"_blank");
+				$element.find("table> tbody > tr").eq(i).children().eq(2).addClass("hide-on-med-and-down");
+			}
+		},
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		templateUrl: '/resources/page/index/update.html',
+		link: function($scope, iElm, iAttrs, controller) {
+		}
+	};
+});
 myApp.directive('indexMusic', function(mediaElement,$cookies){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -66,11 +87,9 @@ myApp.directive('indexSearchform',function($cookies,$timeout,$location){
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
 		controller: function($scope, $element, $attrs, $transclude) {
 			//cookie 클릭시 search input에 값 입력
-		
 			$scope.searchList=[];
 			if(angular.isDefined($cookies.get("searchList"))){
 				angular.extend($scope.searchList,angular.fromJson($cookies.get("searchList")));
-				
 			}
 			/*$scope.cookieClick=function(searchval){
 				$scope.summonerName=searchval;
@@ -86,15 +105,31 @@ myApp.directive('indexSearchform',function($cookies,$timeout,$location){
 					$scope.searchList.push(summonerName)
 				}
 				$cookies.putObject("searchList",$scope.searchList);
-				
 				if (summonerName == "" ||summonerName == null) {
-					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000)
+					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000);
 					return;
 				}
 				$scope.$emit("loadingOn",{});
 				$timeout(function(){
 					$location.path("/"+summonerName);
 				},1000);	
+			}
+			$scope.keysearch = function (event,summonerName) {
+				if(event.keyCode == 13){
+				if($scope.searchList.indexOf(summonerName)==-1&&$scope.searchList.length<5){
+					$scope.searchList.push(summonerName)
+				}
+				$cookies.putObject("searchList",$scope.searchList);
+				if (summonerName == "" ||summonerName == null) {
+					Materialize.toast('소환사의 아이디를 입력해주세요.', 4000)
+					return;
+				}
+				$scope.$emit("searchStart",{});
+				$timeout(function(){
+					$('.button-collapse').sideNav('hide');
+					$location.path("/"+summonerName).replace();
+				},1000);
+			  }
 			}
 		},
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment

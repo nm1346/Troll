@@ -2,9 +2,13 @@
 ::-webkit-scrollbar {
 display:none;
 }
-
 .most-card span.caret{
 	color:black;
+}
+@media only screen and (min-width: 993px){
+.summonercontainer {
+    width: 90%;
+}
 }
 .summoner{
 	background-color: rgba(255,255,255 , 0.8);
@@ -16,6 +20,7 @@ display:none;
 	line-height: 120%;
 	border-radius: 10px;
 }
+
 .most-card{
 	background-color: rgba(255,255,255 , 0.8);
 	font-size: 1rem;
@@ -25,6 +30,8 @@ display:none;
 	margin-bottom: 0px;
 	line-height: 120%;
 	border-radius: 10px;
+	background-size: cover;
+ 	background-repeat: no-repeat;
 }
 .level{
 	font-size: 0.9em;
@@ -54,7 +61,7 @@ display:none;
 	font-size: 0.5rem;
 }
 .mostchamp{
-	font-size: 0.5rem;
+	font-size: 0.8rem;
 }
 .season{
 	font-size: 0.9em;
@@ -75,7 +82,7 @@ display:none;
 	font-size: .8rem;
 }
 .point{
-	font-size: .7rem;
+	font-size: .9rem;
 }
 .league{
 	 border-top: 1px solid rgba(0,0,0,0.15);
@@ -105,10 +112,13 @@ display:none;
 	border-radius: 10px;
 	background: rgba(0,0,0,0);
 }
+.category-most .select-dropdown{
+	color: black;
+}
 .category-most li > span{
 	color:black;
 	font-size : 0.8em;
-	background: rgba(245,245,245,1);
+	background: rgba(255,255,255,1);
 	transition: all 0.2s ease-in;
 }
 .category-most li > span:hover{
@@ -116,9 +126,9 @@ display:none;
 }
 .category-most li.disabled > span{
 	border-bottom: 1px solid rgba(0,0,0,.2);
-	color:grey;
+	color:rgba(200,200,200,1);
 	font-size : 0.8em;
-	background: rgba(245,245,245,1);
+	background: rgba(255,255,255,1);
 }
 .category-most > p{
 	font-size: 1rem;

@@ -1,3 +1,5 @@
+//select box에 대한 html과 controller 관리하는 디렉티브
+//locale정보와 category 정보 수신후 service에 삽입
 myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,staticData,$window){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -49,6 +51,9 @@ myApp.directive('staticNav',function(StaticLocaleResource,staticLocaleData,stati
 		}
 	};
 });
+
+//카테고리버튼에 대한 디렉티브 
+//locale정보 서비스에서 데이터를 받고 data에서 추출하여 버튼 값 입력
 myApp.directive('staticCategory',function(StaticLocaleResource,staticLocaleData,staticData){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -73,6 +78,8 @@ myApp.directive('staticCategory',function(StaticLocaleResource,staticLocaleData,
 		}
 	};
 });
+
+//메인뷰중 하나인 champion 뷰에 대한 디렉티브
 myApp.directive('staticChampion', function(StaticLocaleResource,staticLocaleData,staticData,staticDetail){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -100,6 +107,7 @@ myApp.directive('staticChampion', function(StaticLocaleResource,staticLocaleData
 	};
 });
 
+//champion데이터의 modal에 대한 디렉티브
 myApp.directive('staticChampionmodal',function(staticLocaleData,staticData,staticDetail,$sce){
 
 	return {
@@ -148,6 +156,8 @@ myApp.directive('staticChampionmodal',function(staticLocaleData,staticData,stati
 		}
 	};
 });
+
+//메인뷰에서 item category에 대한 디렉티브
 myApp.directive('staticItem', function(staticLocaleData,staticData,staticDetail){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -164,19 +174,10 @@ myApp.directive('staticItem', function(staticLocaleData,staticData,staticDetail)
 		}
 	};
 });
-myApp.directive('staticMastery', function(){
-	return {
-		scope: {}, // {} = isolate, true = child, false/undefined = no change
-		controller: function($scope, $element, $attrs, $transclude) {
 
-		},
-		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
-		templateUrl: '/resources/page/static/static-mastery.html',
-		link: function($scope, iElm, iAttrs, controller) {
-			
-		}
-	};
-});
+
+
+//runeCategory정보에 대한 directive
 myApp.directive('staticRune', function(staticData){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
@@ -190,6 +191,8 @@ myApp.directive('staticRune', function(staticData){
 		}
 	};
 });
+
+//summoner 디렉티브에 대한 view
 myApp.directive('staticSummoner',function(staticData){
 	return {
 		scope: {}, // {} = isolate, true = child, false/undefined = no change
